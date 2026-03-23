@@ -5,8 +5,13 @@ Genera páginas índice para zonas y contextos (navegación por territorios).
 """
 
 import json
+import sys
 from pathlib import Path
 from typing import List, Dict, Any
+
+# Añadir el directorio scripts al path para importar el helper
+sys.path.append(str(Path(__file__).parent))
+from metadata_helper import MetadataHelper
 
 class HubGenerator:
     """Generador de páginas hub para navegación por territorios."""
@@ -14,6 +19,7 @@ class HubGenerator:
     def __init__(self, corpus_dir: str = "corpus", output_dir: str = "public"):
         self.corpus_dir = Path(corpus_dir)
         self.output_dir = Path(output_dir)
+        self.metadata = MetadataHelper("config.json")
         
     def load_corpus(self) -> Dict[str, Any]:
         """Cargar datos del corpus."""
@@ -66,7 +72,28 @@ class HubGenerator:
         
         html = self._template_zona_detalle(entidad, contextos)
         
-        slug = entidad.get("nombre", "").lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ñ", "n")
+    def _slugify(self, text: str) -> str:
+        """Slugificar texto de forma consistente con el motor."""
+        import re
+        text = text.lower()
+        text = re.sub(r'[áàäâ]', 'a', text)
+        text = re.sub(r'[éèëê]', 'e', text)
+        text = re.sub(r'[íìïî]', 'i', text)
+        text = re.sub(r'[óòöô]', 'o', text)
+        text = re.sub(r'[úùüû]', 'u', text)
+        text = re.sub(r'[ñ]', 'n', text)
+        text = re.sub(r'[^a-z0-9-]', '-', text)
+        text = re.sub(r'-+', '-', text)
+        return text.strip('-')
+
+    def generar_pagina_por_zona(self, entidad: Dict) -> bool:
+        """Generar página índice para una zona específica."""
+        data = self.load_corpus()
+        contextos = data["contextos"]
+        
+        html = self._template_zona_detalle(entidad, contextos)
+        
+        slug = self._slugify(entidad.get("nombre", ""))
         output_path = self.output_dir / "zona" / slug / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -83,7 +110,7 @@ class HubGenerator:
         
         html = self._template_contexto_detalle(contexto, entidades)
         
-        slug = contexto.get("nombre", "").lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ñ", "n")
+        slug = self._slugify(contexto.get("nombre", ""))
         output_path = self.output_dir / "contexto" / slug / "index.html"
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -112,17 +139,22 @@ class HubGenerator:
                     <span class="hub-tag" style="background: {color}">{sistema}</span>
                 </div>
                 <p class="hub-card-desc">{descripcion}</p>
-                <a href="/zona/{slug}/" class="hub-card-link" style="color: {color}">Explorar lecturas →</a>
+                <a href="/zona/{slug}" class="hub-card-link" style="color: {color}">Explorar lecturas →</a>
             </div>
             '''
+        
+        
+        metadata_html = self.metadata.generate_head_metadata(
+            title="Zonas Corporales",
+            description="Explora las 20 zonas corporales de SINTOMARIO. Cada zona contiene 20 lecturas sobre diferentes contextos emocionales.",
+            path="/zona",
+            page_type="WebPage"
+        )
         
         return f'''<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zonas Corporales | SINTOMARIO</title>
-    <meta name="description" content="Explora las 20 zonas corporales de SINTOMARIO. Cada zona contiene 20 lecturas sobre diferentes contextos emocionales.">
+{metadata_html}
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
 </head>
@@ -134,7 +166,6 @@ class HubGenerator:
                 <a href="/">Inicio</a>
                 <a href="/zona/" class="active">Zonas</a>
                 <a href="/contexto/">Contextos</a>
-                <a href="/buscar/">Buscar</a>
             </nav>
         </div>
     </header>
@@ -151,7 +182,7 @@ class HubGenerator:
         </div>
 
         <div class="hub-navigation">
-            <p>También puedes explorar por <a href="/contexto/">contextos emocionales</a> o usar el <a href="/buscar/">buscador</a>.</p>
+            <p>También puedes explorar por <a href="/contexto">contextos emocionales</a>.</p>
         </div>
     </main>
 
@@ -276,17 +307,22 @@ class HubGenerator:
                 </div>
                 <p class="hub-card-herida"><strong>Herida:</strong> {herida}</p>
                 <p class="hub-card-desc">{descripcion}</p>
-                <a href="/contexto/{slug}/" class="hub-card-link" style="color: {color}">Explorar lecturas →</a>
+                <a href="/contexto/{slug}" class="hub-card-link" style="color: {color}">Explorar lecturas →</a>
             </div>
             '''
         
+        
+        metadata_html = self.metadata.generate_head_metadata(
+            title="Contextos Emocionales",
+            description="Explora los 20 contextos emocionales de SINTOMARIO. Cada contexto contiene 20 lecturas sobre diferentes zonas corporales.",
+            path="/contexto",
+            page_type="WebPage"
+        )
+
         return f'''<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contextos Emocionales | SINTOMARIO</title>
-    <meta name="description" content="Explora los 20 contextos emocionales de SINTOMARIO. Cada contexto contiene 20 lecturas sobre diferentes zonas corporales.">
+{metadata_html}
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
 </head>
@@ -298,7 +334,6 @@ class HubGenerator:
                 <a href="/">Inicio</a>
                 <a href="/zona/">Zonas</a>
                 <a href="/contexto/" class="active">Contextos</a>
-                <a href="/buscar/">Buscar</a>
             </nav>
         </div>
     </header>
@@ -315,7 +350,7 @@ class HubGenerator:
         </div>
 
         <div class="hub-navigation">
-            <p>También puedes explorar por <a href="/zona/">zonas corporales</a> o usar el <a href="/buscar/">buscador</a>.</p>
+            <p>También puedes explorar por <a href="/zona">zonas corporales</a>.</p>
         </div>
     </main>
 
@@ -433,23 +468,29 @@ class HubGenerator:
         
         lecturas_list = ""
         for ctx in contextos:
-            ctx_slug = ctx.get("nombre", "").lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ñ", "n")
+            nombre_ctx = ctx.get("nombre", "")
+            ctx_slug = nombre_ctx.lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ü", "u").replace("ñ", "n")
             herida = ctx.get("herida_emocional", "")
             lecturas_list += f'''
             <div class="lectura-item">
-                <a href="/cuerpo/{slug_base}/{ctx_slug}/" class="lectura-link">
+                <a href="/cuerpo/{slug_base}/{ctx_slug}" class="lectura-link">
                     <span class="lectura-title">{nombre} + {ctx.get("nombre", "")}</span>
                     <span class="lectura-meta">Herida: {herida}</span>
                 </a>
             </div>
             '''
+            
+        metadata_html = self.metadata.generate_head_metadata(
+            title=f"{nombre} - Zona Corporal",
+            description=f"Explora las lecturas de {nombre} con diferentes contextos emocionales.",
+            path=f"/zona/{slug_base}",
+            page_type="WebPage"
+        )
         
         return f'''<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>{nombre} | SINTOMARIO</title>
-    <meta name="description" content="Explora las lecturas de {nombre} con diferentes contextos emocionales.">
+{metadata_html}
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -462,7 +503,7 @@ class HubGenerator:
         <div class="lecturas-list">
             {lecturas_list}
         </div>
-        <a href="/zona/">← Volver a zonas</a>
+        <a href="/zona">← Volver a zonas</a>
     </main>
 </body>
 </html>'''
@@ -472,7 +513,8 @@ class HubGenerator:
         # Implementation for individual contexto pages
         nombre = contexto.get("nombre", "")
         herida = contexto.get("herida_emocional", "")
-        slug_base = nombre.lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ñ", "n")
+        
+        slug_base = nombre.lower().replace(" ", "-").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").replace("ü", "u").replace("ñ", "n")
         
         lecturas_list = ""
         for ent in entidades:
@@ -480,19 +522,24 @@ class HubGenerator:
             sistema = ent.get("sistema", "")
             lecturas_list += f'''
             <div class="lectura-item">
-                <a href="/cuerpo/{ent_slug}/{slug_base}/" class="lectura-link">
+                <a href="/cuerpo/{ent_slug}/{slug_base}" class="lectura-link">
                     <span class="lectura-title">{ent.get("nombre", "")} + {nombre}</span>
                     <span class="lectura-meta">Sistema: {sistema}</span>
                 </a>
             </div>
             '''
+            
+        metadata_html = self.metadata.generate_head_metadata(
+            title=f"{nombre} - Contexto Emocional",
+            description=f"Explora las lecturas de {nombre} en diferentes zonas corporales.",
+            path=f"/contexto/{slug_base}",
+            page_type="WebPage"
+        )
         
         return f'''<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>{nombre} | SINTOMARIO</title>
-    <meta name="description" content="Explora las lecturas de {nombre} en diferentes zonas corporales.">
+{metadata_html}
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -505,7 +552,7 @@ class HubGenerator:
         <div class="lecturas-list">
             {lecturas_list}
         </div>
-        <a href="/contexto/">← Volver a contextos</a>
+        <a href="/contexto">← Volver a contextos</a>
     </main>
 </body>
 </html>'''

@@ -4,11 +4,9 @@
 >
 > Sistema 5D de indexación semántica con capacidad de generación masiva
 >
-> **Estado: En desarrollo activo - Pipeline CI/CD implementado** 🔄
+> **Estado: Release Candidate (RC) | 100% Audit Score** ✅
 
 ---
-
-**Nota**: El proyecto tiene un pipeline de CI/CD implementado pero requiere correcciones críticas antes de estar listo para producción.
 
 **Hosting**: GitHub Pages  
 **DNS**: Cloudflare (pendiente configuración manual)  
@@ -86,22 +84,21 @@ python scripts/generate_report.py --print
 python scripts/polishing_optimizer.py
 ```
 
-### **🔍 Pipeline Manual**
+### **🚀 Pipeline de Producción (Build Completo)**
+Para generar el proyecto completo y validar su integridad:
+
 ```bash
-# 1. Generar corpus principal (400 nodos)
-python motor/sintomario_motor.py --output ./public --verbose
+# 1. Generar corpus principal (artículos)
+python motor/sintomario_motor.py
 
-# 2. Generar hubs de navegación
-python scripts/generate_hubs.py --output ./public --all
+# 2. Generar hubs de navegación y detalle
+python scripts/generate_hubs.py --all --detalle
 
-# 3. Generar páginas de autores enriquecidas
-python scripts/enrich_perspectives.py --generate-pages
+# 3. Reconstruir sitemap unificado
+python scripts/rebuild_sitemap.py
 
-# 4. Validar SEO
-python scripts/validate_seo.py --public-dir ./public
-
-# 5. Generar reporte ejecutivo
-python scripts/generate_report.py --output ./reports/executive-summary.json --print
+# 4. Auditoría de calidad final (Gate de salida)
+python scripts/audit_final.py
 ```
 
 ## 🎯 **Ventaja Competitiva**

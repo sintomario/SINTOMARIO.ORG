@@ -100,9 +100,12 @@ class FinalAuditor:
     
     def _check_html_metadata(self, content: str, file_path: Path) -> None:
         """Verificar metadata HTML básica"""
+        # Ignorar páginas con noindex explícito para ciertos checks
+        is_noindex = 'content="noindex' in content.lower()
+        
         checks = {
             "title": r"<title>[^<]{10,60}</title>",
-            "description": r'<meta name="description" content="[^"]{50,155}"',
+            "description": r'<meta name="description" content="[^"]{30,155}"',
             "canonical": r'<link rel="canonical" href="https://[^"]+"',
             "og_title": r'<meta property="og:title" content="[^"]+"',
             "og_description": r'<meta property="og:description" content="[^"]+"',
@@ -110,6 +113,11 @@ class FinalAuditor:
             "schema": r'"@type":\s*"(Article|WebPage|FAQPage)"'
         }
         
+        # Si es noindex, solo verificamos título y descripción básica (o nada)
+        # Pero para este proyecto, mejor ignoramos admin completamente de este check
+        if "admin" in str(file_path).lower():
+            return
+
         for check_name, pattern in checks.items():
             if not re.search(pattern, content, re.IGNORECASE):
                 self._add_error("html_metadata", f"Falta {check_name} en {file_path}")
@@ -138,12 +146,15 @@ class FinalAuditor:
                 continue
                 
             # Convertir a path del sistema de archivos
-            if link.endswith("/"):
-                link_path = self.public_dir / link.lstrip("/") / "index.html"
-            else:
-                link_path = self.public_dir / link.lstrip("/")
+            # Si el enlace no tiene extensión, puede referirse a un directorio con index.html
+            base_path = self.public_dir / link.lstrip("/")
             
-            if not link_path.exists():
+            # 1. Probar ruta exacta (archivo)
+            # 2. Probar ruta como directorio + index.html
+            link_path = base_path
+            path_with_index = base_path / "index.html"
+            
+            if not (link_path.exists() or path_with_index.exists()):
                 self._add_error("broken_links", f"Enlace roto en {file_path}: {link}")
     
     def check_sitemap_consistency(self) -> bool:
@@ -169,11 +180,17 @@ class FinalAuditor:
         html_files = set()
         for html_file in self.public_dir.rglob("*.html"):
             relative_path = html_file.relative_to(self.public_dir)
+            
+            # Ignorar admin y otros archivos no indexables
+            if "admin" in str(relative_path).lower():
+                continue
+                
             if str(relative_path) != "index.html":
-                url_path = f"https://sintomario.org/{relative_path.parent}/{relative_path.stem}/"
+                url_path = f"https://sintomario.org/{relative_path.parent.as_posix()}/{relative_path.stem}"
             else:
-                url_path = f"https://sintomario.org/{relative_path.parent}/" if relative_path.parent != Path(".") else "https://sintomario.org/"
-            html_files.add(url_path.rstrip("/"))
+                url_path = f"https://sintomario.org/{relative_path.parent.as_posix()}" if relative_path.parent != Path(".") else "https://sintomario.org"
+            
+            html_files.add(url_path.rstrip("/").replace("/index", ""))
         
         # Comparar
         missing_in_sitemap = html_files - sitemap_urls

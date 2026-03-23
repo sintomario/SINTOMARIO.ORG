@@ -14,10 +14,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
-from dotenv import load_dotenv
-
-# Cargar variables de entorno
-load_dotenv()
+from dataclasses import dataclass
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SISTEMA DE DISEÑO — Design Tokens integrados
@@ -119,7 +116,7 @@ class NodoData:
 class SintomarioMotor:
     """Motor principal de generación del corpus SINTOMARIO."""
     
-    def __init__(self, config_path: str = "sabia.config.json"):
+    def __init__(self, config_path: str = "config.json"):
         self.config_path = config_path
         self.config = self._load_config()
         self.corpus_dir = Path("corpus")
@@ -615,6 +612,16 @@ class SintomarioMotor:
         """Generar el corpus completo."""
         start_time = time.time()
         
+        # Limpiar directorios de salida para evitar basura de builds previos
+        if not dry_run:
+            for subdir in ["cuerpo", "zona", "contexto", "autores"]:
+                dir_to_clean = self.output_dir / subdir
+                if dir_to_clean.exists():
+                    import shutil
+                    shutil.rmtree(dir_to_clean)
+                    if verbose:
+                        print(f"Limpiado: {subdir}")
+        
         try:
             # Cargar datos del corpus
             corpus_data = self._load_corpus_data()
@@ -790,14 +797,14 @@ class SintomarioMotor:
         
         # Añadir homepage
         sitemap_content += '  <url>\n'
-        sitemap_content += '    <loc>https://sintomario.org/</loc>\n'
+        sitemap_content += '    <loc>https://sintomario.org</loc>\n'
         sitemap_content += f'    <lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod>\n'
         sitemap_content += '    <changefreq>weekly</changefreq>\n'
         sitemap_content += '    <priority>1.0</priority>\n'
         sitemap_content += '  </url>\n'
         
-        # Añadir páginas administrativas
-        paginas_admin = ["sobre", "faq", "metodologia", "afiliados"]
+        # Páginas administrativas y hubs principales
+        paginas_admin = ["sobre", "faq", "metodologia", "afiliados", "zona", "contexto"]
         for pagina in paginas_admin:
             sitemap_content += '  <url>\n'
             sitemap_content += f'    <loc>https://sintomario.org/{pagina}</loc>\n'
@@ -806,19 +813,32 @@ class SintomarioMotor:
             sitemap_content += '    <priority>0.8</priority>\n'
             sitemap_content += '  </url>\n'
         
-        # Añadir nodos del corpus (simplificado)
+        # Nodos del corpus y hubs secundarios
+        processed_urls = set()
         for root, dirs, files in os.walk(self.output_dir):
-            if "index.html" in files and root != str(self.output_dir):
-                # Extraer URL del path
+            if "index.html" in files:
                 rel_path = Path(root).relative_to(self.output_dir)
-                url = f"https://sintomario.org/{rel_path.as_posix()}/"
+                if rel_path == Path("."):
+                    continue
+                    
+                path_posix = rel_path.as_posix()
+                # Omitir admin (noindex) y lo que ya agregamos
+                if path_posix == "admin" or path_posix in paginas_admin:
+                    continue
                 
-                sitemap_content += '  <url>\n'
-                sitemap_content += f'    <loc>{url}</loc>\n'
-                sitemap_content += f'    <lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod>\n'
-                sitemap_content += '    <changefreq>monthly</changefreq>\n'
-                sitemap_content += '    <priority>0.8</priority>\n'
-                sitemap_content += '  </url>\n'
+                # Omitir autores por completo
+                if path_posix.startswith("autores"):
+                    continue
+                    
+                url = f"https://sintomario.org/{path_posix}"
+                if url not in processed_urls:
+                    sitemap_content += '  <url>\n'
+                    sitemap_content += f'    <loc>{url}</loc>\n'
+                    sitemap_content += f'    <lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod>\n'
+                    sitemap_content += '    <changefreq>monthly</changefreq>\n'
+                    sitemap_content += '    <priority>0.6</priority>\n'
+                    sitemap_content += '  </url>\n'
+                    processed_urls.add(url)
         
         sitemap_content += '</urlset>\n'
         
@@ -873,7 +893,7 @@ def main():
     parser.add_argument("--output", default="./public", help="Directorio de salida")
     parser.add_argument("--dry-run", action="store_true", help="Ejecutar en modo prueba sin generar archivos")
     parser.add_argument("--verbose", action="store_true", help="Mostrar información detallada")
-    parser.add_argument("--config", default="sabia.config.json", help="Archivo de configuración")
+    parser.add_argument("--config", default="config.json", help="Archivo de configuración")
     
     args = parser.parse_args()
     
