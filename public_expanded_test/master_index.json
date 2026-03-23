@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "system": "SINTOMARIO.ORG Expanded 5D v5.0",
+    "generated_at": "2026-03-23T00:59:04.562486",
+    "total_articles": 5,
+    "target_articles": 5,
+    "words_per_article": 2000,
+    "total_words": 2519,
+    "entities_used": 5,
+    "contexts_used": 5,
+    "specialties_used": 16
+  },
+  "statistics": {
+    "territory_distribution": {
+      "0": 5
+    },
+    "system_distribution": {
+      "0": 5
+    },
+    "depth_distribution": {
+      "1": 1,
+      "7": 2,
+      "4": 1,
+      "0": 1
+    },
+    "frequency_distribution": {
+      "5": 4,
+      "6": 1
+    },
+    "complexity_distribution": {
+      "1": 1,
+      "7": 2,
+      "4": 1,
+      "0": 1
+    },
+    "ams_risoma_distribution": {
+      "AMS": 5
+    },
+    "word_count_stats": {
+      "min": 477,
+      "max": 526,
+      "avg": 503.8,
+      "median": 505
+    }
+  },
+  "articles_index": [
+    {
+      "index": "SINTO-36850",
+      "entidad": "esófago",
+      "contexto": "despido",
+      "word_count": 505,
+      "ams_risoma": "AMS-03",
+      "territory": 0,
+      "complexity": 1
+    },
+    {
+      "index": "SINTO-29384",
+      "entidad": "estómago",
+      "contexto": "incertidumbre",
+      "word_count": 477,
+      "ams_risoma": "AMS-06",
+      "territory": 0,
+      "complexity": 7
+    },
+    {
+      "index": "SINTO-10744",
+      "entidad": "duodeno",
+      "contexto": "orgullo",
+      "word_count": 526,
+      "ams_risoma": "AMS-09",
+      "territory": 0,
+      "complexity": 4
+    },
+    {
+      "index": "SINTO-84224",
+      "entidad": "yeyuno",
+      "contexto": "deadlines",
+      "word_count": 513,
+      "ams_risoma": "AMS-06",
+      "territory": 0,
+      "complexity": 7
+    },
+    {
+      "index": "SINTO-16961",
+      "entidad": "íleon",
+      "contexto": "crisis de fe",
+      "word_count": 498,
+      "ams_risoma": "AMS-01",
+      "territory": 0,
+      "complexity": 0
+    }
+  ]
+}

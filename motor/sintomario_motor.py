@@ -737,7 +737,51 @@ class SintomarioMotor:
         
         # Generar _headers
         self._generar_headers()
+        
+        # Copiar páginas estáticas adicionales
+        self._generar_paginas_estaticas()
+        
+        # Copiar CSS
+        self._copiar_assets()
     
+    def _generar_paginas_estaticas(self):
+        """Generar páginas estáticas adicionales (FAQ, Metodología, Afiliados)."""
+        paginas = [
+            ("faq.html", "faq/index.html"),
+            ("metodologia.html", "metodologia/index.html"),
+            ("afiliados.html", "afiliados/index.html"),
+            ("admin.html", "admin/index.html")
+        ]
+        
+        for template_name, output_path in paginas:
+            template_file = self.templates_dir / template_name
+            if template_file.exists():
+                output_file = self.output_dir / output_path
+                output_file.parent.mkdir(parents=True, exist_ok=True)
+                
+                with open(template_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                
+                print(f"[OK] Generada pagina: {output_path}")
+    
+    def _copiar_assets(self):
+        """Copiar assets CSS y otros recursos estáticos."""
+        css_source = Path("css/main.css")
+        if css_source.exists():
+            css_dest = self.output_dir / "css" / "main.css"
+            css_dest.parent.mkdir(parents=True, exist_ok=True)
+            
+            with open(css_source, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            with open(css_dest, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print("[OK] Copiado CSS")
+
     def _generar_sitemap(self):
         """Generar sitemap.xml."""
         sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -839,14 +883,14 @@ def main():
         success = motor.generate_corpus(dry_run=args.dry_run, verbose=args.verbose)
         
         if success:
-            print("✅ Build completado exitosamente")
+            print("[OK] Build completado exitosamente")
             sys.exit(0)
         else:
-            print("❌ Build completado con errores")
+            print("[ERROR] Build completado con errores")
             sys.exit(1)
     
     except Exception as e:
-        print(f"❌ Error crítico: {e}")
+        print(f"[ERROR] Error critico: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

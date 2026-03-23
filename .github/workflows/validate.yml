@@ -1,0 +1,81 @@
+name: Validate Build
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate corpus data
+        run: |
+          python -c "
+          import json
+          from pathlib import Path
+          
+          # Validar existencia de archivos
+          required_files = ['corpus/entidades.json', 'corpus/contextos.json', 'corpus/perspectivas.json']
+          missing_files = []
+          
+          for file_path in required_files:
+              if not Path(file_path).exists():
+                  missing_files.append(file_path)
+          
+          if missing_files:
+              print(f'❌ Archivos faltantes: {missing_files}')
+              exit(1)
+          
+          # Validate entidades
+          with open('corpus/entidades.json') as f:
+              entidades = json.load(f)
+              assert len(entidades) >= 20, f'Expected 20+ entidades, got {len(entidades)}'
+              for e in entidades:
+                  assert 'nombre' in e, f'Missing nombre in {e}'
+                  assert 'sistema' in e, f'Missing sistema in {e}'
+          print(f'✓ Validated {len(entidades)} entidades')
+          
+          # Validate contextos
+          with open('corpus/contextos.json') as f:
+              contextos = json.load(f)
+              assert len(contextos) >= 20, f'Expected 20+ contextos, got {len(contextos)}'
+              for c in contextos:
+                  assert 'nombre' in c, f'Missing nombre in {c}'
+                  assert 'herida_emocional' in c, f'Missing herida_emocional in {c}'
+          print(f'✓ Validated {len(contextos)} contextos')
+          
+          # Validate perspectivas
+          with open('corpus/perspectivas.json') as f:
+              perspectivas = json.load(f)
+              assert len(perspectivas) >= 4, f'Expected 4+ perspectivas, got {len(perspectivas)}'
+          print(f'✓ Validated {len(perspectivas)} perspectivas')
+          
+          print('\n✅ All corpus data validated successfully')
+          "
+
+      - name: Dry-run build
+        run: |
+          python motor/sintomario_motor.py --dry-run --verbose
+
+      - name: Check build would succeed
+        run: |
+          python motor/sintomario_motor.py --output ./test-public --verbose
+          test -f test-public/sitemap.xml && echo "✓ Sitemap generated"
+          test -f test-public/robots.txt && echo "✓ robots.txt generated"
+          test -f test-public/CNAME && echo "✓ CNAME generated"
+          rm -rf test-public

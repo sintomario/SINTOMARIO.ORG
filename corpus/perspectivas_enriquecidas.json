@@ -1,0 +1,80 @@
+{
+  "sintomario": {
+    "nombre": "Visión SINTOMARIO",
+    "autor": "Editorial SINTOMARIO",
+    "descripcion_corta": "Visión integrativa holística",
+    "filosofia": "\n                Desde la visión SINTOMARIO, cada síntoma es una forma de comunicación inteligente del cuerpo. \n                No existe el 'error' orgánico, solo mensajes que no hemos aprendido a escuchar. El cuerpo \n                no traiciona: informa. Cada molestia física es una invitación a prestar atención a \n                dimensiones de nuestra vida que hemos ignorado, negado o suprimido.\n                ",
+    "principios": [
+      "El cuerpo y la mente son inseparables",
+      "Los síntomas tienen significado y propósito",
+      "La sanación requiere escucha, no solo tratamiento",
+      "Cada persona tiene su propia verdad corporal"
+    ],
+    "metodo": "\n                El método SINTOMARIO propone 6 capas de exploración:\n                1. Reconocimiento del síntoma sin juicio\n                2. Contextualización en el sistema orgánico\n                3. Exploración de perspectivas terapéuticas\n                4. Identificación de la emoción subyacente\n                5. Práctica de integración consciente\n                6. Recursos para el proceso de sanación\n                ",
+    "template_nodo": "\n                Desde la visión integrativa de SINTOMARIO, {termino} representa una comunicación \n                específica del sistema {sistema}. Este síntoma emerge típicamente cuando hay \n                {contexto_emocional} no procesado, señalando que {herida_emocional} requiere \n                atención consciente.\n                \n                El cuerpo, en su sabiduría, manifesta {termino} como una forma de hacer visible \n                lo invisible: patrones emocionales y mentales que operan en la sombra de nuestra \n                conciencia. No es un fallo del sistema, sino una estrategia de supervivencia \n                emocional que ha dejado de ser necesaria pero permanece activa.\n                \n                La invitación es escuchar sin miedo, comprender sin juzgar, y actuar desde la \n                compasión hacia uno mismo.\n                "
+  },
+  "louise_hay": {
+    "nombre": "Louise Hay",
+    "autor": "Louise L. Hay",
+    "obra_principal": "Puedes Sanar Tu Vida (1984)",
+    "descripcion_corta": "Causas mentales de las enfermedades físicas",
+    "filosofia": "\n                Louise Hay propone que los pensamientos crean nuestra realidad, incluyendo \n                nuestra salud física. Las enfermedades y síntomas no son eventos aleatorios \n                sino la manifestación física de patrones mentales y emocionales disfuncionales. \n                Cambiar los pensamientos — especialmente mediante afirmaciones positivas — \n                puede sanar el cuerpo.\n                ",
+    "principios": [
+      "Los pensamientos crean la realidad física",
+      "Cada enfermedad tiene una causa mental específica",
+      "Las afirmaciones pueden reprogramar patrones negativos",
+      "El amor propio es la base de toda sanación",
+      "El perdón libera energía bloqueada"
+    ],
+    "metodo": "\n                El método de Louise Hay consiste en:\n                1. Identificar el síntoma o condición física\n                2. Buscar su correspondencia mental en su 'lista'\n                3. Reconocer el patrón de pensamiento subyacente\n                4. Practicar la afirmación opuesta correspondiente\n                5. Trabajar el perdón hacia uno mismo y otros\n                6. Cultivar el amor propio como medicina primaria\n                ",
+    "biografia_corta": "\n                Louise Hay (1926-2017) fue una escritora y conferencista estadounidense pionera \n                en el campo de la sanación mental-emocional-física. Su propia experiencia de \n                sanación de cáncer mediante cambios profundos en sus patrones mentales la llevó \n                a desarrollar una metodología que ha ayudado a millones.\n                ",
+    "template_nodo": "\n                Según Louise Hay, {termino} en el sistema {sistema} está directamente conectado \n                con el patrón mental de {patron_mental}. Esta creación física emerge cuando \n                mantenemos pensamientos repetitivos de {tipo_pensamiento}.\n                \n                La causa mental probable es: '{causal_louise}'\n                \n                El nuevo modelo de pensamiento sugerido es: '{afirmacion_louise}'\n                \n                Practica esta afirmación diariamente, especialmente al despertar y antes de \n                dormir. Visualiza tu {sistema} funcionando perfectamente, lleno de luz y salud. \n                Recuerda: el cuerpo obedece a la mente. Cambia tus pensamientos y tu cuerpo \n                seguirá.\n                "
+  },
+  "hamer": {
+    "nombre": "Dr. Ryke Geerd Hamer",
+    "autor": "Dr. Ryke Geerd Hamer",
+    "obra_principal": "Verma's Vermachtnis (1991)",
+    "descripcion_corta": "Nueva Medicina Germánica",
+    "filosofia": "\n                La Nueva Medicina Germánica (NGM) del Dr. Hamer propone que las enfermedades \n                físicas son el resultado de conflictos biológicos específicos — shocks \n                emocionales que el organismo no pudo procesar. Cada síntoma tiene una causa \n                biológica precisa, un sentido biológico, y sigue leyes biológicas universales.\n                La sanación ocurre cuando el conflicto subyacente se resuelve.\n                ",
+    "principios": [
+      "Las enfermedades tienen sentido biológico, no son errores",
+      "Cada conflicto biológico produce síntomas específicos",
+      "El shock emocional es el origen de todo proceso patológico",
+      "Existen fases de conflicto activo y fases de sanación",
+      "El cerebro controla todos los procesos mediante los llamados 'anillos de Hamer'"
+    ],
+    "metodo": "\n                El método de la NGM:\n                1. Identificar el conflicto biológico específico (DHS - Dirhamerische Scher)\n                2. Localizar el foco cerebral en el llamado 'anillo de Hamer'\n                3. Comprender el sentido biológico del síntoma\n                4. Resolver el conflicto subyacente\n                5. Acompañar la fase de sanación (puede intensificarse temporalmente)\n                ",
+    "biografia_corta": "\n                El Dr. Ryke Geerd Hamer (1935-2017) fue un médico alemán que desarrolló la \n                Nueva Medicina Germánica tras la muerte de su hijo y su propio diagnóstico \n                de cáncer. Su trabajo ha sido controvertido pero ha influido profundamente \n                en la comprensión psicosomática de la salud.\n                ",
+    "leyes_biologicas": [
+      "Primera Ley: La Iron Rule of Cancer - todo proceso patológico tiene origen en DHS",
+      "Segunda Ley: Las dos fases - activa y de sanación",
+      "Tercera Ley: El ontogenéticamente sistema de sustancia",
+      "Cuarta Ley: El microorganismo no causa, coopera"
+    ],
+    "template_nodo": "\n                Desde la Nueva Medicina Germánica, {termino} en {sistema} corresponde al \n                conflicto biológico de {conflicto_hamer}.\n                \n                El DHS (Dirhamerische Scher) típico implica: {descripcion_dhs}\n                \n                Fase de conflicto activo:\n                - El organismo se adapta al conflicto\n                - El síntoma puede no ser perceptible o ser funcional\n                - El foco cerebral muestra el anillo de Hamer correspondiente\n                \n                Fase de sanación (tras resolver el conflicto):\n                - El síntoma se manifiesta plenamente\n                - El edema en el foco cerebral se reabsorbe\n                - Es necesario acompañar el proceso sin miedo\n                \n                Resolución: {resolucion_hamer}\n                "
+  },
+  "mate": {
+    "nombre": "Dr. Gabor Maté",
+    "autor": "Dr. Gabor Maté",
+    "obra_principal": "Cuando el Cuerpo Dice No (2003)",
+    "descripcion_corta": "Trauma, estrés y enfermedad",
+    "filosofia": "\n                Gabor Maté propone que el trauma y el estrés crónico son factores determinantes \n                en la mayoría de las enfermedades físicas. La supresión de emociones \n                'negativas' — especialmente la ira y el instinto de defensa — y la compulsión \n                a complacer a otros debilitan el sistema inmune y causan enfermedades. La \n                autenticidad emocional es clave para la salud.\n                ",
+    "principios": [
+      "El trauma no es el evento, sino la respuesta interna",
+      "El estrés crónico suprime la inmunidad y sanación",
+      "La ira reprimida es tóxica para el organismo",
+      "Los 'buenos' que se niegan a sí mismos enferman",
+      "La autenticidad emocional previene y sana"
+    ],
+    "metodo": "\n                El enfoque de Gabor Maté:\n                1. Identificar patrones de supresión emocional crónicos\n                2. Reconocer el trauma temprano y sus adaptaciones\n                3. Permitir la expresión de emociones 'inaceptables'\n                4. Desarrollar límites saludables (decir 'no')\n                5. Cultivar autenticidad sobre complacencia\n                6. Trabajar con el cuerpo somáticamente\n                ",
+    "biografia_corta": "\n                El Dr. Gabor Maté es un médico canadiense de origen húngaro, especializado \n                en medicina de adicciones y salud mental. Su trabajo pionero en el Downtown \n                Eastside de Vancouver y sus investigaciones sobre ADHD, trauma y enfermedad \n                lo han convertido en una voz influyente sobre la conexión mente-cuerpo.\n                ",
+    "conceptos_clave": [
+      "Trauma: no lo que te sucede, sino lo que ocurre dentro",
+      "Estrés crónico: la respuesta de lucha-huida constantemente activada",
+      "Compulsión a complacer: negación de necesidades propias",
+      "Autenticidad vs. Aceptación: el dilema del niño traumatizado",
+      "Somatica: el cuerpo guarda el score"
+    ],
+    "template_nodo": "\n                Según Gabor Maté, {termino} en {sistema} puede estar profundamente conectado \n                con patrones de supresión emocional crónica.\n                \n                Preguntas de exploración:\n                - ¿Cuándo comenzó este síntoma? ¿Qué estaba ocurriendo en tu vida?\n                - ¿Qué emociones has tenido que suprimir repetidamente?\n                - ¿Hay ira que no te has sentido con derecho a expresar?\n                - ¿Te sientes obligado a complacer a otros a costa de ti mismo?\n                - ¿Puedes identificar eventos traumáticos tempranos en tu historia?\n                \n                El cuerpo no miente. {termino} puede ser la manifestación física de \n                {emocion_somaticizada} que has cargado durante años. La buena noticia es que \n                al volver a conectar con tu autenticidad emocional, el cuerpo puede sanar.\n                \n                No es culpa tuya: son adaptaciones de supervivencia que ya no necesitas.\n                "
+  }
+}

@@ -1,30 +1,13 @@
 {
-  "build_info": {
-    "timestamp": "2026-03-22T22:59:06.042319",
-    "duration_seconds": 1.128915786743164,
-    "motor_version": "4.0"
+  "timestamp": "2026-03-23T03:09:47.397387",
+  "stats": {
+    "html_files": 409,
+    "json_files": 400,
+    "total_size": 10.227744102478027,
+    "errors": 6,
+    "warnings": 3
   },
-  "corpus_stats": {
-    "total_nodes": 400,
-    "indexable_nodes": 400,
-    "ymyl_nodes": 0,
-    "errors": 0
-  },
-  "config": {
-    "site": {
-      "domain": "https://sintomario.org",
-      "name": "SINTOMARIO",
-      "tagline": "El diccionario del síntoma"
-    },
-    "affiliate": {
-      "amazon_tag": "sintomario-20"
-    },
-    "build": {
-      "min_word_count_for_index": 50
-    },
-    "seo": {
-      "default_author": "SINTOMARIO",
-      "default_locale": "es"
-    }
-  }
+  "build_time": 23.1301531791687,
+  "amazon_configured": false,
+  "success": true
 }

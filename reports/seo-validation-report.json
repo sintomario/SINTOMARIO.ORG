@@ -1,0 +1,2728 @@
+{
+  "summary": {
+    "total_nodes": 446,
+    "indexable_nodes": 446,
+    "non_indexable": 0,
+    "average_score": 90.46,
+    "pass_rate": 100.0
+  },
+  "score_distribution": {
+    "excellent (90-100)": 401,
+    "good (70-89)": 1,
+    "fair (50-69)": 3,
+    "poor (0-49)": 41
+  },
+  "top_issues": [
+    {
+      "issue": "Title demasiado corto (29 < 30)",
+      "count": 46,
+      "percentage": 10.31
+    },
+    {
+      "issue": "Faltan Twitter Card tags",
+      "count": 45,
+      "percentage": 10.09
+    },
+    {
+      "issue": "Falta URL canónica",
+      "count": 44,
+      "percentage": 9.87
+    },
+    {
+      "issue": "Falta schema JSON-LD",
+      "count": 44,
+      "percentage": 9.87
+    },
+    {
+      "issue": "Faltan tags Open Graph",
+      "count": 44,
+      "percentage": 9.87
+    },
+    {
+      "issue": "Title demasiado corto (28 < 30)",
+      "count": 28,
+      "percentage": 6.28
+    },
+    {
+      "issue": "Title demasiado corto (27 < 30)",
+      "count": 26,
+      "percentage": 5.83
+    },
+    {
+      "issue": "Title demasiado corto (26 < 30)",
+      "count": 15,
+      "percentage": 3.36
+    },
+    {
+      "issue": "Title demasiado corto (21 < 30)",
+      "count": 9,
+      "percentage": 2.02
+    },
+    {
+      "issue": "Title demasiado corto (25 < 30)",
+      "count": 9,
+      "percentage": 2.02
+    }
+  ],
+  "nodes_with_issues": [
+    {
+      "url": "https://sintomario.org/admin/",
+      "score": 50,
+      "issues": [
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 1151
+    },
+    {
+      "url": "https://sintomario.org/afiliados/",
+      "score": 50,
+      "issues": [
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 1081
+    },
+    {
+      "url": "https://sintomario.org/contexto/",
+      "score": 50,
+      "issues": [
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 630
+    },
+    {
+      "url": "https://sintomario.org/metodologia/",
+      "score": 83,
+      "issues": [
+        "Title demasiado corto (24 < 30)",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 1375
+    },
+    {
+      "url": "https://sintomario.org/zona/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (29 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 538
+    },
+    {
+      "url": "https://sintomario.org/zona/cabeza/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (19 < 30)",
+        "Description demasiado corta (68 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/colon/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/corazon/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (69 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/cuello/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (19 < 30)",
+        "Description demasiado corta (68 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/espalda/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (69 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/estomago/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/garganta/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/higado/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (19 < 30)",
+        "Description demasiado corta (68 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/hombros/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (69 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/intestino/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (22 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/ojos/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (17 < 30)",
+        "Description demasiado corta (66 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/pancreas/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/pecho/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/pulmones/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/rinones/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (69 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/rodillas/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/sistema-nervioso/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (29 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 147
+    },
+    {
+      "url": "https://sintomario.org/zona/suprarrenales/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (26 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/tiroides/",
+      "score": 40,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/zona/vejiga/",
+      "score": 30,
+      "issues": [
+        "Title demasiado corto (19 < 30)",
+        "Description demasiado corta (68 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 125
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/ansiedad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (24 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/traicion/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1348
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/tristeza/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1348
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/ansiedad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1359
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/confusion/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (23 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/traicion/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/tristeza/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/verguenza/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1350
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1358
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1357
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1360
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1354
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1355
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1347
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1347
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1347
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1349
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1347
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/ansiedad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1357
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1353
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (24 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (26 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1352
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/traicion/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/tristeza/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1351
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/apego/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/bloqueo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1362
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/celos/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/culpa/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/estres/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (28 < 30)"
+      ],
+      "word_count": 1358
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/ira/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (25 < 30)"
+      ],
+      "word_count": 1357
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/miedo/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (27 < 30)"
+      ],
+      "word_count": 1356
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/soledad/",
+      "score": 90,
+      "issues": [
+        "Title demasiado corto (29 < 30)"
+      ],
+      "word_count": 1357
+    },
+    {
+      "url": "https://sintomario.org/contexto/agotamiento/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (24 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/ansiedad/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Description demasiado corta (64 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 94
+    },
+    {
+      "url": "https://sintomario.org/contexto/apego/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (61 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 94
+    },
+    {
+      "url": "https://sintomario.org/contexto/bloqueo/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (63 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/celos/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (61 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 91
+    },
+    {
+      "url": "https://sintomario.org/contexto/confusion/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (22 < 30)",
+        "Description demasiado corta (65 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/culpa/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (61 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/dependencia/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (24 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/desesperanza/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (25 < 30)",
+        "Description demasiado corta (68 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/estres/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (19 < 30)",
+        "Description demasiado corta (62 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/frustracion/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (24 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/impotencia/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (23 < 30)",
+        "Description demasiado corta (66 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 94
+    },
+    {
+      "url": "https://sintomario.org/contexto/inseguridad/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (24 < 30)",
+        "Description demasiado corta (67 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/ira/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (16 < 30)",
+        "Description demasiado corta (59 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/miedo/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (18 < 30)",
+        "Description demasiado corta (61 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/resentimiento/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (26 < 30)",
+        "Description demasiado corta (69 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/soledad/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (20 < 30)",
+        "Description demasiado corta (63 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/traicion/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Description demasiado corta (64 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 92
+    },
+    {
+      "url": "https://sintomario.org/contexto/tristeza/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (21 < 30)",
+        "Description demasiado corta (64 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 93
+    },
+    {
+      "url": "https://sintomario.org/contexto/vergüenza/",
+      "score": 25,
+      "issues": [
+        "Title demasiado corto (22 < 30)",
+        "Description demasiado corta (65 < 70)",
+        "Falta URL canónica",
+        "Falta schema JSON-LD",
+        "Faltan tags Open Graph",
+        "Faltan Twitter Card tags"
+      ],
+      "word_count": 95
+    }
+  ],
+  "perfect_nodes": [
+    {
+      "url": "https://sintomario.org/faq/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/vejiga/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/tiroides/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/apego/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/celos/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/culpa/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/ira/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/miedo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/suprarrenales/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/apego/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/celos/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/culpa/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/ira/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/miedo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/sistema-nervioso/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rodillas/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/rinones/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pulmones/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pecho/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/pancreas/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/ojos/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/apego/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/celos/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/culpa/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/miedo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/intestino/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/hombros/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/higado/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/garganta/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/estres/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/estomago/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/espalda/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cuello/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/bloqueo/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/soledad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/corazon/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/colon/verguenza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/agotamiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/ansiedad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/confusion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/dependencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/desesperanza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/frustracion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/impotencia/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/inseguridad/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/resentimiento/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/traicion/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/tristeza/",
+      "score": 100
+    },
+    {
+      "url": "https://sintomario.org/cuerpo/cabeza/verguenza/",
+      "score": 100
+    }
+  ]
+}

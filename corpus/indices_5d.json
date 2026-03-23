@@ -1,0 +1,3173 @@
+{
+  "metadata": {
+    "system": "SINTOMARIO.ORG Index5D",
+    "version": "5.0",
+    "description": "Sistema de indexación 5D con asociaciones AMS-Risomáticas",
+    "generated_at": "2026-03-23T00:56:03.807982",
+    "total_indices": 125
+  },
+  "dimensions": [
+    "territorio",
+    "sistema",
+    "profundidad",
+    "frecuencia",
+    "complejidad"
+  ],
+  "ams_risoma_matrix": {
+    "AMS-01": "AMS-01: Asociación Mente-Somatización nivel 1",
+    "AMS-02": "AMS-02: Asociación Mente-Somatización nivel 2",
+    "AMS-03": "AMS-03: Asociación Mente-Somatización nivel 3",
+    "AMS-04": "AMS-04: Asociación Mente-Somatización nivel 4",
+    "AMS-05": "AMS-05: Asociación Mente-Somatización nivel 5",
+    "AMS-06": "AMS-06: Asociación Mente-Somatización nivel 6",
+    "AMS-07": "AMS-07: Asociación Mente-Somatización nivel 7",
+    "AMS-08": "AMS-08: Asociación Mente-Somatización nivel 8",
+    "AMS-09": "AMS-09: Asociación Mente-Somatización nivel 9",
+    "RIS-01": "RIS-01: Red Interconexión Simbólica nivel 1",
+    "RIS-02": "RIS-02: Red Interconexión Simbólica nivel 2",
+    "RIS-03": "RIS-03: Red Interconexión Simbólica nivel 3",
+    "RIS-04": "RIS-04: Red Interconexión Simbólica nivel 4",
+    "RIS-05": "RIS-05: Red Interconexión Simbólica nivel 5",
+    "RIS-06": "RIS-06: Red Interconexión Simbólica nivel 6",
+    "RIS-07": "RIS-07: Red Interconexión Simbólica nivel 7",
+    "RIS-08": "RIS-08: Red Interconexión Simbólica nivel 8",
+    "RIS-09": "RIS-09: Red Interconexión Simbólica nivel 9",
+    "OMA-01": "OMA-01: Ontología Matemática Arquetípica nivel 1",
+    "OMA-02": "OMA-02: Ontología Matemática Arquetípica nivel 2",
+    "OMA-03": "OMA-03: Ontología Matemática Arquetípica nivel 3",
+    "OMA-04": "OMA-04: Ontología Matemática Arquetípica nivel 4",
+    "OMA-05": "OMA-05: Ontología Matemática Arquetípica nivel 5",
+    "OMA-06": "OMA-06: Ontología Matemática Arquetípica nivel 6",
+    "OMA-07": "OMA-07: Ontología Matemática Arquetípica nivel 7",
+    "OMA-08": "OMA-08: Ontología Matemática Arquetípica nivel 8",
+    "OMA-09": "OMA-09: Ontología Matemática Arquetípica nivel 9",
+    "SOM-01": "SOM-01: Sistema Orgánico Matemático nivel 1",
+    "SOM-02": "SOM-02: Sistema Orgánico Matemático nivel 2",
+    "SOM-03": "SOM-03: Sistema Orgánico Matemático nivel 3",
+    "SOM-04": "SOM-04: Sistema Orgánico Matemático nivel 4",
+    "SOM-05": "SOM-05: Sistema Orgánico Matemático nivel 5",
+    "SOM-06": "SOM-06: Sistema Orgánico Matemático nivel 6",
+    "SOM-07": "SOM-07: Sistema Orgánico Matemático nivel 7",
+    "SOM-08": "SOM-08: Sistema Orgánico Matemático nivel 8",
+    "SOM-09": "SOM-09: Sistema Orgánico Matemático nivel 9",
+    "ARI-01": "ARI-01: Arquetipo Relacional Intuitivo nivel 1",
+    "ARI-02": "ARI-02: Arquetipo Relacional Intuitivo nivel 2",
+    "ARI-03": "ARI-03: Arquetipo Relacional Intuitivo nivel 3",
+    "ARI-04": "ARI-04: Arquetipo Relacional Intuitivo nivel 4",
+    "ARI-05": "ARI-05: Arquetipo Relacional Intuitivo nivel 5",
+    "ARI-06": "ARI-06: Arquetipo Relacional Intuitivo nivel 6",
+    "ARI-07": "ARI-07: Arquetipo Relacional Intuitivo nivel 7",
+    "ARI-08": "ARI-08: Arquetipo Relacional Intuitivo nivel 8",
+    "ARI-09": "ARI-09: Arquetipo Relacional Intuitivo nivel 9",
+    "MAS-01": "MAS-01: Matriz Afectiva Simbólica nivel 1",
+    "MAS-02": "MAS-02: Matriz Afectiva Simbólica nivel 2",
+    "MAS-03": "MAS-03: Matriz Afectiva Simbólica nivel 3",
+    "MAS-04": "MAS-04: Matriz Afectiva Simbólica nivel 4",
+    "MAS-05": "MAS-05: Matriz Afectiva Simbólica nivel 5",
+    "MAS-06": "MAS-06: Matriz Afectiva Simbólica nivel 6",
+    "MAS-07": "MAS-07: Matriz Afectiva Simbólica nivel 7",
+    "MAS-08": "MAS-08: Matriz Afectiva Simbólica nivel 8",
+    "MAS-09": "MAS-09: Matriz Afectiva Simbólica nivel 9",
+    "ISO-01": "ISO-01: Índice Simbólico Ontológico nivel 1",
+    "ISO-02": "ISO-02: Índice Simbólico Ontológico nivel 2",
+    "ISO-03": "ISO-03: Índice Simbólico Ontológico nivel 3",
+    "ISO-04": "ISO-04: Índice Simbólico Ontológico nivel 4",
+    "ISO-05": "ISO-05: Índice Simbólico Ontológico nivel 5",
+    "ISO-06": "ISO-06: Índice Simbólico Ontológico nivel 6",
+    "ISO-07": "ISO-07: Índice Simbólico Ontológico nivel 7",
+    "ISO-08": "ISO-08: Índice Simbólico Ontológico nivel 8",
+    "ISO-09": "ISO-09: Índice Simbólico Ontológico nivel 9",
+    "RAM-01": "RAM-01: Red Afectiva Matemática nivel 1",
+    "RAM-02": "RAM-02: Red Afectiva Matemática nivel 2",
+    "RAM-03": "RAM-03: Red Afectiva Matemática nivel 3",
+    "RAM-04": "RAM-04: Red Afectiva Matemática nivel 4",
+    "RAM-05": "RAM-05: Red Afectiva Matemática nivel 5",
+    "RAM-06": "RAM-06: Red Afectiva Matemática nivel 6",
+    "RAM-07": "RAM-07: Red Afectiva Matemática nivel 7",
+    "RAM-08": "RAM-08: Red Afectiva Matemática nivel 8",
+    "RAM-09": "RAM-09: Red Afectiva Matemática nivel 9",
+    "SMA-01": "SMA-01: Sistema Matemático Arquetípico nivel 1",
+    "SMA-02": "SMA-02: Sistema Matemático Arquetípico nivel 2",
+    "SMA-03": "SMA-03: Sistema Matemático Arquetípico nivel 3",
+    "SMA-04": "SMA-04: Sistema Matemático Arquetípico nivel 4",
+    "SMA-05": "SMA-05: Sistema Matemático Arquetípico nivel 5",
+    "SMA-06": "SMA-06: Sistema Matemático Arquetípico nivel 6",
+    "SMA-07": "SMA-07: Sistema Matemático Arquetípico nivel 7",
+    "SMA-08": "SMA-08: Sistema Matemático Arquetípico nivel 8",
+    "SMA-09": "SMA-09: Sistema Matemático Arquetípico nivel 9"
+  },
+  "indices": {
+    "cuerpo/digestivo/ansiedad": {
+      "primary": "SINTO-33506",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-55866",
+        "SINTO-00308",
+        "SINTO-24585",
+        "SINTO-44896",
+        "SINTO-79323",
+        "SINTO-23301",
+        "SINTO-98041",
+        "SINTO-83408"
+      ],
+      "ams_risoma": "AMS-02",
+      "entropy": 1.5466,
+      "timestamp": "2026-03-23T00:56:03.793377"
+    },
+    "cuerpo/digestivo/estrés": {
+      "primary": "SINTO-99406",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 0,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-38939",
+        "SINTO-37104",
+        "SINTO-62717",
+        "SINTO-02947",
+        "SINTO-26489",
+        "SINTO-25482",
+        "SINTO-66625",
+        "SINTO-35859"
+      ],
+      "ams_risoma": "AMS-04",
+      "entropy": 1.571,
+      "timestamp": "2026-03-23T00:56:03.793461"
+    },
+    "cuerpo/digestivo/bloqueo": {
+      "primary": "SINTO-21577",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 0,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 2
+      },
+      "connections": [
+        "SINTO-52720",
+        "SINTO-94508",
+        "SINTO-16509",
+        "SINTO-44696",
+        "SINTO-07606",
+        "SINTO-96423",
+        "SINTO-08645",
+        "SINTO-24827"
+      ],
+      "ams_risoma": "AMS-05",
+      "entropy": 1.3093,
+      "timestamp": "2026-03-23T00:56:03.793512"
+    },
+    "cuerpo/digestivo/frustracion": {
+      "primary": "SINTO-02276",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 0,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 1
+      },
+      "connections": [
+        "SINTO-89172",
+        "SINTO-59051",
+        "SINTO-67005",
+        "SINTO-57581",
+        "SINTO-73297",
+        "SINTO-38714",
+        "SINTO-91988",
+        "SINTO-12668"
+      ],
+      "ams_risoma": "AMS-03",
+      "entropy": 0.9864,
+      "timestamp": "2026-03-23T00:56:03.793591"
+    },
+    "cuerpo/digestivo/tristeza": {
+      "primary": "SINTO-90070",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-65869",
+        "SINTO-05480",
+        "SINTO-66065",
+        "SINTO-90856",
+        "SINTO-28747",
+        "SINTO-07625",
+        "SINTO-89160",
+        "SINTO-72278"
+      ],
+      "ams_risoma": "AMS-02",
+      "entropy": 1.5657,
+      "timestamp": "2026-03-23T00:56:03.793662"
+    },
+    "cuerpo/respiratorio/ansiedad": {
+      "primary": "SINTO-91211",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-72506",
+        "SINTO-31617",
+        "SINTO-17208",
+        "SINTO-53819",
+        "SINTO-55556",
+        "SINTO-71957",
+        "SINTO-24124",
+        "SINTO-19536",
+        "SINTO-32545"
+      ],
+      "ams_risoma": "AMS-04",
+      "entropy": 1.7863,
+      "timestamp": "2026-03-23T00:56:03.793752"
+    },
+    "cuerpo/respiratorio/estrés": {
+      "primary": "SINTO-36041",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 1,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-68581",
+        "SINTO-93995",
+        "SINTO-29286",
+        "SINTO-66829",
+        "SINTO-60492",
+        "SINTO-57522",
+        "SINTO-15269",
+        "SINTO-89491",
+        "SINTO-44535",
+        "SINTO-97983",
+        "SINTO-19685",
+        "SINTO-95850"
+      ],
+      "ams_risoma": "AMS-06",
+      "entropy": 1.7822,
+      "timestamp": "2026-03-23T00:56:03.793825"
+    },
+    "cuerpo/respiratorio/bloqueo": {
+      "primary": "SINTO-53459",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 1,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 3
+      },
+      "connections": [
+        "SINTO-87091",
+        "SINTO-79241",
+        "SINTO-92427",
+        "SINTO-82825",
+        "SINTO-47341",
+        "SINTO-84794",
+        "SINTO-61154",
+        "SINTO-07173",
+        "SINTO-90488"
+      ],
+      "ams_risoma": "AMS-07",
+      "entropy": 1.6692,
+      "timestamp": "2026-03-23T00:56:03.793877"
+    },
+    "cuerpo/respiratorio/frustracion": {
+      "primary": "SINTO-31078",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 1,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 2
+      },
+      "connections": [
+        "SINTO-42519",
+        "SINTO-85898",
+        "SINTO-99128",
+        "SINTO-44698",
+        "SINTO-66815",
+        "SINTO-19485",
+        "SINTO-10400",
+        "SINTO-42336",
+        "SINTO-64893"
+      ],
+      "ams_risoma": "AMS-05",
+      "entropy": 1.4911,
+      "timestamp": "2026-03-23T00:56:03.793929"
+    },
+    "cuerpo/respiratorio/tristeza": {
+      "primary": "SINTO-31586",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-27682",
+        "SINTO-86245",
+        "SINTO-42613",
+        "SINTO-62649",
+        "SINTO-19059",
+        "SINTO-83296",
+        "SINTO-65650",
+        "SINTO-92717",
+        "SINTO-31547"
+      ],
+      "ams_risoma": "AMS-04",
+      "entropy": 1.7863,
+      "timestamp": "2026-03-23T00:56:03.794022"
+    },
+    "cuerpo/nervioso/ansiedad": {
+      "primary": "SINTO-30675",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-37815",
+        "SINTO-94691",
+        "SINTO-19396",
+        "SINTO-15269",
+        "SINTO-60723",
+        "SINTO-39474",
+        "SINTO-60528",
+        "SINTO-44535",
+        "SINTO-58844",
+        "SINTO-80305",
+        "SINTO-66843",
+        "SINTO-97983"
+      ],
+      "ams_risoma": "AMS-06",
+      "entropy": 1.8567,
+      "timestamp": "2026-03-23T00:56:03.794105"
+    },
+    "cuerpo/nervioso/estrés": {
+      "primary": "SINTO-29386",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 2,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-79760",
+        "SINTO-25340",
+        "SINTO-04323",
+        "SINTO-73896",
+        "SINTO-54639",
+        "SINTO-65457",
+        "SINTO-90052",
+        "SINTO-23160",
+        "SINTO-84709",
+        "SINTO-53799",
+        "SINTO-38529",
+        "SINTO-62563"
+      ],
+      "ams_risoma": "AMS-08",
+      "entropy": 1.8554,
+      "timestamp": "2026-03-23T00:56:03.794190"
+    },
+    "cuerpo/nervioso/bloqueo": {
+      "primary": "SINTO-32220",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 2,
+        "profundidad": 2,
+        "frecuencia": 8,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-91497",
+        "SINTO-80317",
+        "SINTO-20340",
+        "SINTO-44788",
+        "SINTO-80875",
+        "SINTO-88567",
+        "SINTO-07432",
+        "SINTO-36076",
+        "SINTO-99648"
+      ],
+      "ams_risoma": "AMS-09",
+      "entropy": 1.75,
+      "timestamp": "2026-03-23T00:56:03.794272"
+    },
+    "cuerpo/nervioso/frustracion": {
+      "primary": "SINTO-51127",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 2,
+        "profundidad": 1,
+        "frecuencia": 8,
+        "complejidad": 3
+      },
+      "connections": [
+        "SINTO-84801",
+        "SINTO-02579",
+        "SINTO-66561",
+        "SINTO-85954",
+        "SINTO-82771",
+        "SINTO-20806",
+        "SINTO-28391",
+        "SINTO-06186",
+        "SINTO-41878"
+      ],
+      "ams_risoma": "AMS-07",
+      "entropy": 1.6106,
+      "timestamp": "2026-03-23T00:56:03.794319"
+    },
+    "cuerpo/nervioso/tristeza": {
+      "primary": "SINTO-22482",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-13645",
+        "SINTO-12036",
+        "SINTO-15269",
+        "SINTO-43919",
+        "SINTO-20069",
+        "SINTO-36313",
+        "SINTO-00808",
+        "SINTO-62836",
+        "SINTO-44535",
+        "SINTO-04779",
+        "SINTO-97983",
+        "SINTO-45608"
+      ],
+      "ams_risoma": "AMS-06",
+      "entropy": 1.8567,
+      "timestamp": "2026-03-23T00:56:03.794466"
+    },
+    "cuerpo/cardiovascular/ansiedad": {
+      "primary": "SINTO-03145",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-76104",
+        "SINTO-75979",
+        "SINTO-73896",
+        "SINTO-19560",
+        "SINTO-56770",
+        "SINTO-75416",
+        "SINTO-06330",
+        "SINTO-70956",
+        "SINTO-23160",
+        "SINTO-84820",
+        "SINTO-87698",
+        "SINTO-25340"
+      ],
+      "ams_risoma": "AMS-08",
+      "entropy": 1.9031,
+      "timestamp": "2026-03-23T00:56:03.794578"
+    },
+    "cuerpo/cardiovascular/estrés": {
+      "primary": "SINTO-85836",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 3,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-26414",
+        "SINTO-71147",
+        "SINTO-39547",
+        "SINTO-46474",
+        "SINTO-21002",
+        "SINTO-85129",
+        "SINTO-67146",
+        "SINTO-68304",
+        "SINTO-87054",
+        "SINTO-58993",
+        "SINTO-19280"
+      ],
+      "ams_risoma": "AMS-01",
+      "entropy": 1.9007,
+      "timestamp": "2026-03-23T00:56:03.794725"
+    },
+    "cuerpo/cardiovascular/bloqueo": {
+      "primary": "SINTO-55377",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 3,
+        "profundidad": 2,
+        "frecuencia": 8,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-18181",
+        "SINTO-66323",
+        "SINTO-80716",
+        "SINTO-26505",
+        "SINTO-62501",
+        "SINTO-62338",
+        "SINTO-92741",
+        "SINTO-74433",
+        "SINTO-59924"
+      ],
+      "ams_risoma": "AMS-02",
+      "entropy": 1.8163,
+      "timestamp": "2026-03-23T00:56:03.794815"
+    },
+    "cuerpo/cardiovascular/frustracion": {
+      "primary": "SINTO-79593",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 3,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-17697",
+        "SINTO-73824",
+        "SINTO-31586",
+        "SINTO-88779",
+        "SINTO-37221",
+        "SINTO-68521",
+        "SINTO-85399",
+        "SINTO-16394",
+        "SINTO-62078"
+      ],
+      "ams_risoma": "AMS-09",
+      "entropy": 1.7465,
+      "timestamp": "2026-03-23T00:56:03.794886"
+    },
+    "cuerpo/cardiovascular/tristeza": {
+      "primary": "SINTO-43043",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-77010",
+        "SINTO-28131",
+        "SINTO-93373",
+        "SINTO-21116",
+        "SINTO-78676",
+        "SINTO-73896",
+        "SINTO-23503",
+        "SINTO-67616",
+        "SINTO-00696",
+        "SINTO-93381",
+        "SINTO-23160",
+        "SINTO-25340"
+      ],
+      "ams_risoma": "AMS-08",
+      "entropy": 1.9031,
+      "timestamp": "2026-03-23T00:56:03.794994"
+    },
+    "cuerpo/muscular/ansiedad": {
+      "primary": "SINTO-56098",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-76475",
+        "SINTO-53039",
+        "SINTO-48356",
+        "SINTO-67146",
+        "SINTO-68304",
+        "SINTO-41658",
+        "SINTO-19280",
+        "SINTO-43534",
+        "SINTO-50290",
+        "SINTO-11311",
+        "SINTO-65006"
+      ],
+      "ams_risoma": "AMS-01",
+      "entropy": 1.9259,
+      "timestamp": "2026-03-23T00:56:03.795079"
+    },
+    "cuerpo/muscular/estrés": {
+      "primary": "SINTO-85146",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 4,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-57153",
+        "SINTO-61931",
+        "SINTO-59318",
+        "SINTO-77444",
+        "SINTO-71872",
+        "SINTO-67146",
+        "SINTO-68304",
+        "SINTO-48558",
+        "SINTO-34355",
+        "SINTO-19280",
+        "SINTO-93708"
+      ],
+      "ams_risoma": "AMS-02",
+      "entropy": 1.9386,
+      "timestamp": "2026-03-23T00:56:03.795180"
+    },
+    "cuerpo/muscular/bloqueo": {
+      "primary": "SINTO-15771",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 4,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-88739",
+        "SINTO-50155",
+        "SINTO-54031",
+        "SINTO-56866",
+        "SINTO-06704",
+        "SINTO-41385",
+        "SINTO-51785",
+        "SINTO-75474",
+        "SINTO-72408"
+      ],
+      "ams_risoma": "AMS-04",
+      "entropy": 1.871,
+      "timestamp": "2026-03-23T00:56:03.795272"
+    },
+    "cuerpo/muscular/frustracion": {
+      "primary": "SINTO-11141",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 4,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-92259",
+        "SINTO-30721",
+        "SINTO-60995",
+        "SINTO-31534",
+        "SINTO-89734",
+        "SINTO-41899",
+        "SINTO-12559",
+        "SINTO-38399",
+        "SINTO-24538"
+      ],
+      "ams_risoma": "AMS-02",
+      "entropy": 1.778,
+      "timestamp": "2026-03-23T00:56:03.795352"
+    },
+    "cuerpo/muscular/tristeza": {
+      "primary": "SINTO-65204",
+      "dimensions": {
+        "territorio": 0,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-37354",
+        "SINTO-49184",
+        "SINTO-67146",
+        "SINTO-30065",
+        "SINTO-86806",
+        "SINTO-61983",
+        "SINTO-68304",
+        "SINTO-04448",
+        "SINTO-19280",
+        "SINTO-83257",
+        "SINTO-14439"
+      ],
+      "ams_risoma": "AMS-01",
+      "entropy": 1.9322,
+      "timestamp": "2026-03-23T00:56:03.795441"
+    },
+    "mente/digestivo/ansiedad": {
+      "primary": "SINTO-96566",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-97555",
+        "SINTO-30661",
+        "SINTO-88362",
+        "SINTO-98302",
+        "SINTO-81069",
+        "SINTO-44552",
+        "SINTO-33339",
+        "SINTO-38659",
+        "SINTO-96308"
+      ],
+      "ams_risoma": "RIS-03",
+      "entropy": 1.7863,
+      "timestamp": "2026-03-23T00:56:03.795526"
+    },
+    "mente/digestivo/estrés": {
+      "primary": "SINTO-26747",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 0,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-14209",
+        "SINTO-11720",
+        "SINTO-12138",
+        "SINTO-23250",
+        "SINTO-93876",
+        "SINTO-05141",
+        "SINTO-98933",
+        "SINTO-30197",
+        "SINTO-08087",
+        "SINTO-25051",
+        "SINTO-72408",
+        "SINTO-61037",
+        "SINTO-18266"
+      ],
+      "ams_risoma": "RIS-05",
+      "entropy": 1.7822,
+      "timestamp": "2026-03-23T00:56:03.795622"
+    },
+    "mente/digestivo/bloqueo": {
+      "primary": "SINTO-13201",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 0,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 3
+      },
+      "connections": [
+        "SINTO-05599",
+        "SINTO-41941",
+        "SINTO-08126",
+        "SINTO-15841",
+        "SINTO-29501",
+        "SINTO-86665",
+        "SINTO-20715",
+        "SINTO-54176",
+        "SINTO-88176"
+      ],
+      "ams_risoma": "RIS-06",
+      "entropy": 1.6692,
+      "timestamp": "2026-03-23T00:56:03.795675"
+    },
+    "mente/digestivo/frustracion": {
+      "primary": "SINTO-25641",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 0,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 2
+      },
+      "connections": [
+        "SINTO-75395",
+        "SINTO-55919",
+        "SINTO-46827",
+        "SINTO-73278",
+        "SINTO-97963",
+        "SINTO-13513",
+        "SINTO-60905",
+        "SINTO-77820",
+        "SINTO-93938"
+      ],
+      "ams_risoma": "RIS-04",
+      "entropy": 1.4911,
+      "timestamp": "2026-03-23T00:56:03.795730"
+    },
+    "mente/digestivo/tristeza": {
+      "primary": "SINTO-54031",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-63072",
+        "SINTO-66945",
+        "SINTO-11882",
+        "SINTO-13387",
+        "SINTO-71920",
+        "SINTO-99529",
+        "SINTO-44747",
+        "SINTO-23252",
+        "SINTO-08279"
+      ],
+      "ams_risoma": "RIS-03",
+      "entropy": 1.7863,
+      "timestamp": "2026-03-23T00:56:03.795818"
+    },
+    "mente/respiratorio/ansiedad": {
+      "primary": "SINTO-79877",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-43382",
+        "SINTO-26387",
+        "SINTO-89406",
+        "SINTO-99995",
+        "SINTO-00680",
+        "SINTO-96055",
+        "SINTO-75633",
+        "SINTO-93140",
+        "SINTO-47052",
+        "SINTO-69517"
+      ],
+      "ams_risoma": "RIS-05",
+      "entropy": 1.9679,
+      "timestamp": "2026-03-23T00:56:03.795876"
+    },
+    "mente/respiratorio/estrés": {
+      "primary": "SINTO-80575",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 1,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-52418",
+        "SINTO-79554",
+        "SINTO-12138",
+        "SINTO-43022",
+        "SINTO-77305",
+        "SINTO-30217",
+        "SINTO-38276",
+        "SINTO-69820",
+        "SINTO-52338",
+        "SINTO-61507",
+        "SINTO-25855",
+        "SINTO-30197",
+        "SINTO-72408",
+        "SINTO-18266"
+      ],
+      "ams_risoma": "RIS-07",
+      "entropy": 1.9513,
+      "timestamp": "2026-03-23T00:56:03.795941"
+    },
+    "mente/respiratorio/bloqueo": {
+      "primary": "SINTO-05517",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 1,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-83222",
+        "SINTO-39285",
+        "SINTO-76347",
+        "SINTO-37481",
+        "SINTO-31915",
+        "SINTO-16438",
+        "SINTO-07755",
+        "SINTO-75925",
+        "SINTO-56780",
+        "SINTO-75026"
+      ],
+      "ams_risoma": "RIS-08",
+      "entropy": 1.9301,
+      "timestamp": "2026-03-23T00:56:03.796000"
+    },
+    "mente/respiratorio/frustracion": {
+      "primary": "SINTO-46943",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 1,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 3
+      },
+      "connections": [
+        "SINTO-02437",
+        "SINTO-28428",
+        "SINTO-94134",
+        "SINTO-99814",
+        "SINTO-88971",
+        "SINTO-90906",
+        "SINTO-59666",
+        "SINTO-94535",
+        "SINTO-49322",
+        "SINTO-00565"
+      ],
+      "ams_risoma": "RIS-06",
+      "entropy": 1.8962,
+      "timestamp": "2026-03-23T00:56:03.796054"
+    },
+    "mente/respiratorio/tristeza": {
+      "primary": "SINTO-89801",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-47345",
+        "SINTO-94694",
+        "SINTO-24847",
+        "SINTO-63061",
+        "SINTO-03330",
+        "SINTO-43917",
+        "SINTO-65871",
+        "SINTO-21980",
+        "SINTO-45091",
+        "SINTO-76906"
+      ],
+      "ams_risoma": "RIS-05",
+      "entropy": 1.9679,
+      "timestamp": "2026-03-23T00:56:03.796104"
+    },
+    "mente/nervioso/ansiedad": {
+      "primary": "SINTO-86816",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-36688",
+        "SINTO-57469",
+        "SINTO-31472",
+        "SINTO-90555",
+        "SINTO-49072",
+        "SINTO-41770",
+        "SINTO-89458",
+        "SINTO-45087",
+        "SINTO-52886",
+        "SINTO-17375"
+      ],
+      "ams_risoma": "RIS-07",
+      "entropy": 2.0179,
+      "timestamp": "2026-03-23T00:56:03.796161"
+    },
+    "mente/nervioso/estrés": {
+      "primary": "SINTO-33103",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 2,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-74051",
+        "SINTO-12138",
+        "SINTO-66816",
+        "SINTO-99611",
+        "SINTO-80769",
+        "SINTO-61193",
+        "SINTO-37376",
+        "SINTO-14889",
+        "SINTO-30197",
+        "SINTO-55236",
+        "SINTO-72408",
+        "SINTO-89883",
+        "SINTO-18266"
+      ],
+      "ams_risoma": "RIS-09",
+      "entropy": 2.0066,
+      "timestamp": "2026-03-23T00:56:03.796233"
+    },
+    "mente/nervioso/bloqueo": {
+      "primary": "SINTO-30590",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 2,
+        "profundidad": 2,
+        "frecuencia": 8,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-18354",
+        "SINTO-15521",
+        "SINTO-95079",
+        "SINTO-05552",
+        "SINTO-61133",
+        "SINTO-58850",
+        "SINTO-57902",
+        "SINTO-35443",
+        "SINTO-25294",
+        "SINTO-21401"
+      ],
+      "ams_risoma": "RIS-01",
+      "entropy": 1.9694,
+      "timestamp": "2026-03-23T00:56:03.796291"
+    },
+    "mente/nervioso/frustracion": {
+      "primary": "SINTO-01670",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 2,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-61304",
+        "SINTO-78349",
+        "SINTO-41734",
+        "SINTO-12379",
+        "SINTO-14783",
+        "SINTO-00939",
+        "SINTO-44610",
+        "SINTO-98005",
+        "SINTO-23743",
+        "SINTO-03102"
+      ],
+      "ams_risoma": "RIS-08",
+      "entropy": 1.9301,
+      "timestamp": "2026-03-23T00:56:03.796345"
+    },
+    "mente/nervioso/tristeza": {
+      "primary": "SINTO-87550",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-28809",
+        "SINTO-38849",
+        "SINTO-89881",
+        "SINTO-78369",
+        "SINTO-63292",
+        "SINTO-68291",
+        "SINTO-53951",
+        "SINTO-63184",
+        "SINTO-28066",
+        "SINTO-40425"
+      ],
+      "ams_risoma": "RIS-07",
+      "entropy": 2.0179,
+      "timestamp": "2026-03-23T00:56:03.796399"
+    },
+    "mente/cardiovascular/ansiedad": {
+      "primary": "SINTO-21638",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-05499",
+        "SINTO-71604",
+        "SINTO-66066",
+        "SINTO-22114",
+        "SINTO-97794",
+        "SINTO-53471",
+        "SINTO-62700",
+        "SINTO-09695",
+        "SINTO-26012"
+      ],
+      "ams_risoma": "RIS-09",
+      "entropy": 2.0507,
+      "timestamp": "2026-03-23T00:56:03.796448"
+    },
+    "mente/cardiovascular/estrés": {
+      "primary": "SINTO-45461",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 3,
+        "profundidad": 6,
+        "frecuencia": 8,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-52398",
+        "SINTO-78103",
+        "SINTO-12138",
+        "SINTO-74020",
+        "SINTO-24266",
+        "SINTO-87999",
+        "SINTO-20260",
+        "SINTO-37185",
+        "SINTO-30197",
+        "SINTO-67503",
+        "SINTO-16964",
+        "SINTO-72408",
+        "SINTO-18266"
+      ],
+      "ams_risoma": "RIS-01",
+      "entropy": 2.0588,
+      "timestamp": "2026-03-23T00:56:03.796516"
+    },
+    "mente/cardiovascular/bloqueo": {
+      "primary": "SINTO-20476",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 3,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-62337",
+        "SINTO-94111",
+        "SINTO-45067",
+        "SINTO-11217",
+        "SINTO-79681",
+        "SINTO-00831",
+        "SINTO-84244",
+        "SINTO-58568",
+        "SINTO-82390",
+        "SINTO-04274"
+      ],
+      "ams_risoma": "RIS-03",
+      "entropy": 2.0418,
+      "timestamp": "2026-03-23T00:56:03.796568"
+    },
+    "mente/cardiovascular/frustracion": {
+      "primary": "SINTO-95175",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 3,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-06847",
+        "SINTO-63818",
+        "SINTO-32429",
+        "SINTO-32630",
+        "SINTO-12310",
+        "SINTO-89839",
+        "SINTO-20864",
+        "SINTO-82483",
+        "SINTO-81437",
+        "SINTO-67614"
+      ],
+      "ams_risoma": "RIS-01",
+      "entropy": 1.9689,
+      "timestamp": "2026-03-23T00:56:03.796621"
+    },
+    "mente/cardiovascular/tristeza": {
+      "primary": "SINTO-95190",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-11786",
+        "SINTO-36981",
+        "SINTO-66565",
+        "SINTO-17691",
+        "SINTO-10827",
+        "SINTO-08677",
+        "SINTO-84049",
+        "SINTO-15228",
+        "SINTO-22070"
+      ],
+      "ams_risoma": "RIS-09",
+      "entropy": 2.062,
+      "timestamp": "2026-03-23T00:56:03.796668"
+    },
+    "mente/muscular/ansiedad": {
+      "primary": "SINTO-42024",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-53894",
+        "SINTO-42242",
+        "SINTO-70335",
+        "SINTO-03690",
+        "SINTO-43591",
+        "SINTO-24388",
+        "SINTO-09458",
+        "SINTO-76223",
+        "SINTO-66368"
+      ],
+      "ams_risoma": "RIS-01",
+      "entropy": 2.0931,
+      "timestamp": "2026-03-23T00:56:03.796720"
+    },
+    "mente/muscular/estrés": {
+      "primary": "SINTO-20122",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 4,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-13813",
+        "SINTO-58817",
+        "SINTO-12138",
+        "SINTO-69754",
+        "SINTO-48535",
+        "SINTO-34917",
+        "SINTO-71500",
+        "SINTO-30197",
+        "SINTO-72408",
+        "SINTO-98971",
+        "SINTO-03049",
+        "SINTO-26811",
+        "SINTO-18266"
+      ],
+      "ams_risoma": "RIS-02",
+      "entropy": 2.0997,
+      "timestamp": "2026-03-23T00:56:03.796788"
+    },
+    "mente/muscular/bloqueo": {
+      "primary": "SINTO-93733",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 4,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-14202",
+        "SINTO-46628",
+        "SINTO-57669",
+        "SINTO-93542",
+        "SINTO-96545",
+        "SINTO-12669",
+        "SINTO-60675",
+        "SINTO-67130",
+        "SINTO-94572",
+        "SINTO-64798"
+      ],
+      "ams_risoma": "RIS-05",
+      "entropy": 2.0446,
+      "timestamp": "2026-03-23T00:56:03.796840"
+    },
+    "mente/muscular/frustracion": {
+      "primary": "SINTO-40968",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 4,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-75980",
+        "SINTO-86766",
+        "SINTO-60523",
+        "SINTO-58383",
+        "SINTO-48190",
+        "SINTO-62488",
+        "SINTO-58681",
+        "SINTO-55012",
+        "SINTO-14544",
+        "SINTO-69769"
+      ],
+      "ams_risoma": "RIS-03",
+      "entropy": 1.9763,
+      "timestamp": "2026-03-23T00:56:03.796889"
+    },
+    "mente/muscular/tristeza": {
+      "primary": "SINTO-89833",
+      "dimensions": {
+        "territorio": 1,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-12844",
+        "SINTO-64698",
+        "SINTO-50462",
+        "SINTO-83564",
+        "SINTO-51990",
+        "SINTO-53809",
+        "SINTO-95061",
+        "SINTO-62859",
+        "SINTO-61577"
+      ],
+      "ams_risoma": "RIS-01",
+      "entropy": 2.0931,
+      "timestamp": "2026-03-23T00:56:03.796936"
+    },
+    "espiritu/digestivo/ansiedad": {
+      "primary": "SINTO-71380",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-46879",
+        "SINTO-80950",
+        "SINTO-91802",
+        "SINTO-97208",
+        "SINTO-92838",
+        "SINTO-88249",
+        "SINTO-19183",
+        "SINTO-42096",
+        "SINTO-37281"
+      ],
+      "ams_risoma": "OMA-04",
+      "entropy": 1.8834,
+      "timestamp": "2026-03-23T00:56:03.796986"
+    },
+    "espiritu/digestivo/estrés": {
+      "primary": "SINTO-46364",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 0,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-73413",
+        "SINTO-97308",
+        "SINTO-72771",
+        "SINTO-14220",
+        "SINTO-63110",
+        "SINTO-84302",
+        "SINTO-20455",
+        "SINTO-34526",
+        "SINTO-81978"
+      ],
+      "ams_risoma": "OMA-06",
+      "entropy": 1.8676,
+      "timestamp": "2026-03-23T00:56:03.797040"
+    },
+    "espiritu/digestivo/bloqueo": {
+      "primary": "SINTO-13156",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 0,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-57602",
+        "SINTO-11030",
+        "SINTO-04942",
+        "SINTO-05809",
+        "SINTO-93583",
+        "SINTO-28482",
+        "SINTO-98875",
+        "SINTO-29567",
+        "SINTO-45618"
+      ],
+      "ams_risoma": "OMA-07",
+      "entropy": 1.8424,
+      "timestamp": "2026-03-23T00:56:03.797089"
+    },
+    "espiritu/digestivo/frustracion": {
+      "primary": "SINTO-43271",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 0,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 3
+      },
+      "connections": [
+        "SINTO-53884",
+        "SINTO-89983",
+        "SINTO-05419",
+        "SINTO-77999",
+        "SINTO-10622",
+        "SINTO-65150",
+        "SINTO-75163",
+        "SINTO-42011",
+        "SINTO-69851"
+      ],
+      "ams_risoma": "OMA-05",
+      "entropy": 1.7899,
+      "timestamp": "2026-03-23T00:56:03.797141"
+    },
+    "espiritu/digestivo/tristeza": {
+      "primary": "SINTO-60442",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-26228",
+        "SINTO-57263",
+        "SINTO-97809",
+        "SINTO-53369",
+        "SINTO-73312",
+        "SINTO-10632",
+        "SINTO-80602",
+        "SINTO-66679",
+        "SINTO-98841"
+      ],
+      "ams_risoma": "OMA-04",
+      "entropy": 1.8834,
+      "timestamp": "2026-03-23T00:56:03.797192"
+    },
+    "espiritu/respiratorio/ansiedad": {
+      "primary": "SINTO-57466",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-63488",
+        "SINTO-40428",
+        "SINTO-29814",
+        "SINTO-69124",
+        "SINTO-57565",
+        "SINTO-61263",
+        "SINTO-37683",
+        "SINTO-90203",
+        "SINTO-06823",
+        "SINTO-77845"
+      ],
+      "ams_risoma": "OMA-06",
+      "entropy": 2.0449,
+      "timestamp": "2026-03-23T00:56:03.797244"
+    },
+    "espiritu/respiratorio/estrés": {
+      "primary": "SINTO-57959",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 1,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-57955",
+        "SINTO-18071",
+        "SINTO-61860",
+        "SINTO-28298",
+        "SINTO-77071",
+        "SINTO-33924",
+        "SINTO-72085",
+        "SINTO-88552",
+        "SINTO-35713"
+      ],
+      "ams_risoma": "OMA-08",
+      "entropy": 2.0204,
+      "timestamp": "2026-03-23T00:56:03.797291"
+    },
+    "espiritu/respiratorio/bloqueo": {
+      "primary": "SINTO-44765",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 1,
+        "profundidad": 2,
+        "frecuencia": 5,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-99102",
+        "SINTO-15357",
+        "SINTO-10078",
+        "SINTO-20846",
+        "SINTO-44721",
+        "SINTO-11069",
+        "SINTO-36237",
+        "SINTO-31795",
+        "SINTO-73143",
+        "SINTO-14723"
+      ],
+      "ams_risoma": "OMA-09",
+      "entropy": 2.0923,
+      "timestamp": "2026-03-23T00:56:03.797349"
+    },
+    "espiritu/respiratorio/frustracion": {
+      "primary": "SINTO-84976",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 1,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-26592",
+        "SINTO-73863",
+        "SINTO-31872",
+        "SINTO-25574",
+        "SINTO-72559",
+        "SINTO-42578",
+        "SINTO-79766",
+        "SINTO-53855",
+        "SINTO-40898",
+        "SINTO-75867"
+      ],
+      "ams_risoma": "OMA-07",
+      "entropy": 2.0382,
+      "timestamp": "2026-03-23T00:56:03.797399"
+    },
+    "espiritu/respiratorio/tristeza": {
+      "primary": "SINTO-12947",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 5,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-31200",
+        "SINTO-71639",
+        "SINTO-21352",
+        "SINTO-30029",
+        "SINTO-55741",
+        "SINTO-53930",
+        "SINTO-03336",
+        "SINTO-39126",
+        "SINTO-52838",
+        "SINTO-01136"
+      ],
+      "ams_risoma": "OMA-06",
+      "entropy": 2.0485,
+      "timestamp": "2026-03-23T00:56:03.797452"
+    },
+    "espiritu/nervioso/ansiedad": {
+      "primary": "SINTO-89396",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-77642",
+        "SINTO-90511",
+        "SINTO-57263",
+        "SINTO-19662",
+        "SINTO-57943",
+        "SINTO-70185",
+        "SINTO-80616",
+        "SINTO-85492",
+        "SINTO-94325"
+      ],
+      "ams_risoma": "OMA-08",
+      "entropy": 2.0922,
+      "timestamp": "2026-03-23T00:56:03.797504"
+    },
+    "espiritu/nervioso/estrés": {
+      "primary": "SINTO-22986",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 2,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-55868",
+        "SINTO-61415",
+        "SINTO-29668",
+        "SINTO-50175",
+        "SINTO-01346",
+        "SINTO-65923",
+        "SINTO-17642",
+        "SINTO-80253",
+        "SINTO-88385"
+      ],
+      "ams_risoma": "OMA-09",
+      "entropy": 2.097,
+      "timestamp": "2026-03-23T00:56:03.797552"
+    },
+    "espiritu/nervioso/bloqueo": {
+      "primary": "SINTO-53765",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 2,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-45753",
+        "SINTO-57334",
+        "SINTO-28716",
+        "SINTO-79674",
+        "SINTO-10448",
+        "SINTO-70341",
+        "SINTO-49057",
+        "SINTO-58774",
+        "SINTO-23957",
+        "SINTO-78548"
+      ],
+      "ams_risoma": "OMA-02",
+      "entropy": 2.1133,
+      "timestamp": "2026-03-23T00:56:03.797602"
+    },
+    "espiritu/nervioso/frustracion": {
+      "primary": "SINTO-06018",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 2,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-95762",
+        "SINTO-35449",
+        "SINTO-28839",
+        "SINTO-62334",
+        "SINTO-76509",
+        "SINTO-40744",
+        "SINTO-13163",
+        "SINTO-07269",
+        "SINTO-34210",
+        "SINTO-99712"
+      ],
+      "ams_risoma": "OMA-09",
+      "entropy": 2.055,
+      "timestamp": "2026-03-23T00:56:03.797654"
+    },
+    "espiritu/nervioso/tristeza": {
+      "primary": "SINTO-99445",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-46539",
+        "SINTO-17428",
+        "SINTO-59482",
+        "SINTO-82379",
+        "SINTO-46220",
+        "SINTO-84407",
+        "SINTO-33120",
+        "SINTO-84100",
+        "SINTO-74684"
+      ],
+      "ams_risoma": "OMA-08",
+      "entropy": 2.0996,
+      "timestamp": "2026-03-23T00:56:03.797702"
+    },
+    "espiritu/cardiovascular/ansiedad": {
+      "primary": "SINTO-71942",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-54856",
+        "SINTO-83381",
+        "SINTO-72662",
+        "SINTO-96729",
+        "SINTO-70838",
+        "SINTO-05500",
+        "SINTO-06952",
+        "SINTO-82323",
+        "SINTO-23102"
+      ],
+      "ams_risoma": "OMA-09",
+      "entropy": 2.1477,
+      "timestamp": "2026-03-23T00:56:03.797750"
+    },
+    "espiritu/cardiovascular/estrés": {
+      "primary": "SINTO-03925",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 3,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-24911",
+        "SINTO-51777",
+        "SINTO-69223",
+        "SINTO-36642",
+        "SINTO-15323",
+        "SINTO-47994",
+        "SINTO-21440",
+        "SINTO-68604",
+        "SINTO-03579"
+      ],
+      "ams_risoma": "OMA-01",
+      "entropy": 2.1503,
+      "timestamp": "2026-03-23T00:56:03.797797"
+    },
+    "espiritu/cardiovascular/bloqueo": {
+      "primary": "SINTO-77834",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 3,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-24844",
+        "SINTO-23009",
+        "SINTO-00463",
+        "SINTO-91740",
+        "SINTO-31915",
+        "SINTO-33716",
+        "SINTO-82515",
+        "SINTO-34970",
+        "SINTO-76088",
+        "SINTO-17527"
+      ],
+      "ams_risoma": "OMA-04",
+      "entropy": 2.1261,
+      "timestamp": "2026-03-23T00:56:03.797847"
+    },
+    "espiritu/cardiovascular/frustracion": {
+      "primary": "SINTO-11651",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 3,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-28899",
+        "SINTO-89918",
+        "SINTO-67260",
+        "SINTO-45425",
+        "SINTO-21117",
+        "SINTO-24930",
+        "SINTO-28218",
+        "SINTO-54803",
+        "SINTO-88653",
+        "SINTO-27875"
+      ],
+      "ams_risoma": "OMA-02",
+      "entropy": 2.0713,
+      "timestamp": "2026-03-23T00:56:03.797903"
+    },
+    "espiritu/cardiovascular/tristeza": {
+      "primary": "SINTO-23268",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-74691",
+        "SINTO-96593",
+        "SINTO-73178",
+        "SINTO-26847",
+        "SINTO-88404",
+        "SINTO-89088",
+        "SINTO-38159",
+        "SINTO-64414",
+        "SINTO-42790"
+      ],
+      "ams_risoma": "OMA-09",
+      "entropy": 2.1477,
+      "timestamp": "2026-03-23T00:56:03.797950"
+    },
+    "espiritu/muscular/ansiedad": {
+      "primary": "SINTO-25819",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-06856",
+        "SINTO-89799",
+        "SINTO-57526",
+        "SINTO-21087",
+        "SINTO-37965",
+        "SINTO-70759",
+        "SINTO-97326",
+        "SINTO-40664",
+        "SINTO-90282"
+      ],
+      "ams_risoma": "OMA-01",
+      "entropy": 2.1755,
+      "timestamp": "2026-03-23T00:56:03.797996"
+    },
+    "espiritu/muscular/estrés": {
+      "primary": "SINTO-80504",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 4,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-49038",
+        "SINTO-51433",
+        "SINTO-82621",
+        "SINTO-27328",
+        "SINTO-45435",
+        "SINTO-95955",
+        "SINTO-68574",
+        "SINTO-14231",
+        "SINTO-76050"
+      ],
+      "ams_risoma": "OMA-02",
+      "entropy": 2.179,
+      "timestamp": "2026-03-23T00:56:03.798044"
+    },
+    "espiritu/muscular/bloqueo": {
+      "primary": "SINTO-65590",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 4,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-05310",
+        "SINTO-37201",
+        "SINTO-24912",
+        "SINTO-07228",
+        "SINTO-02273",
+        "SINTO-36190",
+        "SINTO-76462",
+        "SINTO-79789",
+        "SINTO-52265",
+        "SINTO-87281"
+      ],
+      "ams_risoma": "OMA-06",
+      "entropy": 2.1181,
+      "timestamp": "2026-03-23T00:56:03.798098"
+    },
+    "espiritu/muscular/frustracion": {
+      "primary": "SINTO-85567",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 4,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-51472",
+        "SINTO-56736",
+        "SINTO-01690",
+        "SINTO-20627",
+        "SINTO-71237",
+        "SINTO-94881",
+        "SINTO-44530",
+        "SINTO-38307",
+        "SINTO-27264",
+        "SINTO-72951"
+      ],
+      "ams_risoma": "OMA-04",
+      "entropy": 2.0763,
+      "timestamp": "2026-03-23T00:56:03.798156"
+    },
+    "espiritu/muscular/tristeza": {
+      "primary": "SINTO-67143",
+      "dimensions": {
+        "territorio": 2,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-61737",
+        "SINTO-69125",
+        "SINTO-72267",
+        "SINTO-95693",
+        "SINTO-34284",
+        "SINTO-09635",
+        "SINTO-18196",
+        "SINTO-65768",
+        "SINTO-99000"
+      ],
+      "ams_risoma": "OMA-01",
+      "entropy": 2.1755,
+      "timestamp": "2026-03-23T00:56:03.798281"
+    },
+    "social/digestivo/ansiedad": {
+      "primary": "SINTO-68555",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-26625",
+        "SINTO-04264",
+        "SINTO-10121",
+        "SINTO-07682",
+        "SINTO-37775",
+        "SINTO-13558",
+        "SINTO-85627",
+        "SINTO-19730",
+        "SINTO-53074"
+      ],
+      "ams_risoma": "SOM-05",
+      "entropy": 1.9142,
+      "timestamp": "2026-03-23T00:56:03.798336"
+    },
+    "social/digestivo/estrés": {
+      "primary": "SINTO-83723",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 0,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-88425",
+        "SINTO-74280",
+        "SINTO-33000",
+        "SINTO-45173",
+        "SINTO-33066",
+        "SINTO-07549",
+        "SINTO-24982",
+        "SINTO-50989"
+      ],
+      "ams_risoma": "SOM-07",
+      "entropy": 1.906,
+      "timestamp": "2026-03-23T00:56:03.798402"
+    },
+    "social/digestivo/bloqueo": {
+      "primary": "SINTO-95800",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 0,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-43713",
+        "SINTO-35922",
+        "SINTO-62471",
+        "SINTO-38164",
+        "SINTO-58619",
+        "SINTO-55407",
+        "SINTO-32467",
+        "SINTO-96318",
+        "SINTO-71294"
+      ],
+      "ams_risoma": "SOM-08",
+      "entropy": 1.8829,
+      "timestamp": "2026-03-23T00:56:03.798524"
+    },
+    "social/digestivo/frustracion": {
+      "primary": "SINTO-19495",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 0,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 4
+      },
+      "connections": [
+        "SINTO-11733",
+        "SINTO-55435",
+        "SINTO-38919",
+        "SINTO-59109",
+        "SINTO-55277",
+        "SINTO-78272",
+        "SINTO-98521",
+        "SINTO-59489",
+        "SINTO-77428"
+      ],
+      "ams_risoma": "SOM-06",
+      "entropy": 1.7885,
+      "timestamp": "2026-03-23T00:56:03.798585"
+    },
+    "social/digestivo/tristeza": {
+      "primary": "SINTO-73734",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-52126",
+        "SINTO-40735",
+        "SINTO-73765",
+        "SINTO-20945",
+        "SINTO-55852",
+        "SINTO-52629",
+        "SINTO-15945",
+        "SINTO-06449",
+        "SINTO-68571"
+      ],
+      "ams_risoma": "SOM-05",
+      "entropy": 1.9197,
+      "timestamp": "2026-03-23T00:56:03.798633"
+    },
+    "social/respiratorio/ansiedad": {
+      "primary": "SINTO-84214",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-86870",
+        "SINTO-70490",
+        "SINTO-37115",
+        "SINTO-77472",
+        "SINTO-36615",
+        "SINTO-14288",
+        "SINTO-14297",
+        "SINTO-58877",
+        "SINTO-67202"
+      ],
+      "ams_risoma": "SOM-07",
+      "entropy": 2.0681,
+      "timestamp": "2026-03-23T00:56:03.798714"
+    },
+    "social/respiratorio/estrés": {
+      "primary": "SINTO-62998",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 1,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-35911",
+        "SINTO-86499",
+        "SINTO-38910",
+        "SINTO-42104",
+        "SINTO-92220",
+        "SINTO-30916",
+        "SINTO-97031",
+        "SINTO-95897",
+        "SINTO-98030"
+      ],
+      "ams_risoma": "SOM-08",
+      "entropy": 2.0717,
+      "timestamp": "2026-03-23T00:56:03.798769"
+    },
+    "social/respiratorio/bloqueo": {
+      "primary": "SINTO-84555",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 1,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-74116",
+        "SINTO-76183",
+        "SINTO-98857",
+        "SINTO-11578",
+        "SINTO-50044",
+        "SINTO-29712",
+        "SINTO-89258",
+        "SINTO-65581",
+        "SINTO-96513",
+        "SINTO-48863"
+      ],
+      "ams_risoma": "SOM-01",
+      "entropy": 2.0713,
+      "timestamp": "2026-03-23T00:56:03.798808"
+    },
+    "social/respiratorio/frustracion": {
+      "primary": "SINTO-90929",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 1,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-73486",
+        "SINTO-11298",
+        "SINTO-41454",
+        "SINTO-09624",
+        "SINTO-91671",
+        "SINTO-84987",
+        "SINTO-64801",
+        "SINTO-44732",
+        "SINTO-94417",
+        "SINTO-60850"
+      ],
+      "ams_risoma": "SOM-08",
+      "entropy": 2.0079,
+      "timestamp": "2026-03-23T00:56:03.798865"
+    },
+    "social/respiratorio/tristeza": {
+      "primary": "SINTO-53250",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-73201",
+        "SINTO-48937",
+        "SINTO-30564",
+        "SINTO-43244",
+        "SINTO-10204",
+        "SINTO-74879",
+        "SINTO-74675",
+        "SINTO-04072",
+        "SINTO-70585"
+      ],
+      "ams_risoma": "SOM-07",
+      "entropy": 2.0681,
+      "timestamp": "2026-03-23T00:56:03.798903"
+    },
+    "social/nervioso/ansiedad": {
+      "primary": "SINTO-86025",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-87201",
+        "SINTO-03118",
+        "SINTO-67093",
+        "SINTO-22164",
+        "SINTO-98326",
+        "SINTO-43972",
+        "SINTO-12853",
+        "SINTO-71087",
+        "SINTO-21437"
+      ],
+      "ams_risoma": "SOM-08",
+      "entropy": 2.141,
+      "timestamp": "2026-03-23T00:56:03.798975"
+    },
+    "social/nervioso/estrés": {
+      "primary": "SINTO-56270",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 2,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-46706",
+        "SINTO-81011",
+        "SINTO-96731",
+        "SINTO-10174",
+        "SINTO-95686",
+        "SINTO-27932",
+        "SINTO-02349",
+        "SINTO-18629",
+        "SINTO-89758"
+      ],
+      "ams_risoma": "SOM-09",
+      "entropy": 2.1458,
+      "timestamp": "2026-03-23T00:56:03.799014"
+    },
+    "social/nervioso/bloqueo": {
+      "primary": "SINTO-60489",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 2,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-01119",
+        "SINTO-16184",
+        "SINTO-63382",
+        "SINTO-72954",
+        "SINTO-19763",
+        "SINTO-17893",
+        "SINTO-23259",
+        "SINTO-29086",
+        "SINTO-26973",
+        "SINTO-32403"
+      ],
+      "ams_risoma": "SOM-03",
+      "entropy": 2.1038,
+      "timestamp": "2026-03-23T00:56:03.799051"
+    },
+    "social/nervioso/frustracion": {
+      "primary": "SINTO-28197",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 2,
+        "profundidad": 1,
+        "frecuencia": 7,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-31465",
+        "SINTO-34926",
+        "SINTO-52845",
+        "SINTO-71343",
+        "SINTO-37581",
+        "SINTO-96242",
+        "SINTO-63611",
+        "SINTO-52688",
+        "SINTO-20731",
+        "SINTO-94177"
+      ],
+      "ams_risoma": "SOM-01",
+      "entropy": 2.0418,
+      "timestamp": "2026-03-23T00:56:03.799096"
+    },
+    "social/nervioso/tristeza": {
+      "primary": "SINTO-15942",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-01260",
+        "SINTO-21020",
+        "SINTO-32661",
+        "SINTO-30540",
+        "SINTO-56852",
+        "SINTO-34042",
+        "SINTO-82470",
+        "SINTO-21601",
+        "SINTO-37419"
+      ],
+      "ams_risoma": "SOM-08",
+      "entropy": 2.141,
+      "timestamp": "2026-03-23T00:56:03.799149"
+    },
+    "social/cardiovascular/ansiedad": {
+      "primary": "SINTO-17928",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-68520",
+        "SINTO-76579",
+        "SINTO-04760",
+        "SINTO-77870",
+        "SINTO-24684",
+        "SINTO-10353",
+        "SINTO-92433",
+        "SINTO-61403",
+        "SINTO-73705"
+      ],
+      "ams_risoma": "SOM-09",
+      "entropy": 2.1882,
+      "timestamp": "2026-03-23T00:56:03.799206"
+    },
+    "social/cardiovascular/estrés": {
+      "primary": "SINTO-46556",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 3,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-87715",
+        "SINTO-85909",
+        "SINTO-13532",
+        "SINTO-55310",
+        "SINTO-75274",
+        "SINTO-81311",
+        "SINTO-37054",
+        "SINTO-93214",
+        "SINTO-10992"
+      ],
+      "ams_risoma": "SOM-01",
+      "entropy": 2.1931,
+      "timestamp": "2026-03-23T00:56:03.799265"
+    },
+    "social/cardiovascular/bloqueo": {
+      "primary": "SINTO-96580",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 3,
+        "profundidad": 2,
+        "frecuencia": 7,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-61719",
+        "SINTO-53618",
+        "SINTO-98514",
+        "SINTO-52366",
+        "SINTO-42693",
+        "SINTO-76223",
+        "SINTO-49321",
+        "SINTO-20312",
+        "SINTO-77484",
+        "SINTO-74048"
+      ],
+      "ams_risoma": "SOM-05",
+      "entropy": 2.1252,
+      "timestamp": "2026-03-23T00:56:03.799316"
+    },
+    "social/cardiovascular/frustracion": {
+      "primary": "SINTO-62659",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 3,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-32761",
+        "SINTO-71649",
+        "SINTO-11048",
+        "SINTO-02866",
+        "SINTO-67668",
+        "SINTO-18227",
+        "SINTO-98087",
+        "SINTO-12550",
+        "SINTO-85908",
+        "SINTO-39528"
+      ],
+      "ams_risoma": "SOM-03",
+      "entropy": 2.0884,
+      "timestamp": "2026-03-23T00:56:03.799402"
+    },
+    "social/cardiovascular/tristeza": {
+      "primary": "SINTO-21451",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-42283",
+        "SINTO-40193",
+        "SINTO-39946",
+        "SINTO-52850",
+        "SINTO-17590",
+        "SINTO-21547",
+        "SINTO-50585",
+        "SINTO-31795",
+        "SINTO-09142"
+      ],
+      "ams_risoma": "SOM-09",
+      "entropy": 2.1882,
+      "timestamp": "2026-03-23T00:56:03.799492"
+    },
+    "social/muscular/ansiedad": {
+      "primary": "SINTO-04417",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-45415",
+        "SINTO-27461",
+        "SINTO-50889",
+        "SINTO-81888",
+        "SINTO-34446",
+        "SINTO-75894",
+        "SINTO-79135",
+        "SINTO-20239",
+        "SINTO-54487"
+      ],
+      "ams_risoma": "SOM-01",
+      "entropy": 2.2165,
+      "timestamp": "2026-03-23T00:56:03.799572"
+    },
+    "social/muscular/estrés": {
+      "primary": "SINTO-35844",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 4,
+        "profundidad": 6,
+        "frecuencia": 7,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-03011",
+        "SINTO-18214",
+        "SINTO-53534",
+        "SINTO-37613",
+        "SINTO-59848",
+        "SINTO-41841",
+        "SINTO-90783",
+        "SINTO-86124",
+        "SINTO-81552"
+      ],
+      "ams_risoma": "SOM-02",
+      "entropy": 2.2219,
+      "timestamp": "2026-03-23T00:56:03.799643"
+    },
+    "social/muscular/bloqueo": {
+      "primary": "SINTO-82886",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 4,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-29069",
+        "SINTO-45937",
+        "SINTO-22578",
+        "SINTO-95318",
+        "SINTO-10820",
+        "SINTO-81693",
+        "SINTO-59390",
+        "SINTO-93830",
+        "SINTO-39437"
+      ],
+      "ams_risoma": "SOM-07",
+      "entropy": 2.1352,
+      "timestamp": "2026-03-23T00:56:03.799709"
+    },
+    "social/muscular/frustracion": {
+      "primary": "SINTO-24830",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 4,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-27584",
+        "SINTO-94253",
+        "SINTO-53046",
+        "SINTO-92294",
+        "SINTO-97381",
+        "SINTO-27025",
+        "SINTO-62346",
+        "SINTO-41017",
+        "SINTO-68578",
+        "SINTO-82097"
+      ],
+      "ams_risoma": "SOM-05",
+      "entropy": 2.0838,
+      "timestamp": "2026-03-23T00:56:03.799782"
+    },
+    "social/muscular/tristeza": {
+      "primary": "SINTO-92808",
+      "dimensions": {
+        "territorio": 3,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-23051",
+        "SINTO-39067",
+        "SINTO-95464",
+        "SINTO-18705",
+        "SINTO-05243",
+        "SINTO-98861",
+        "SINTO-40998",
+        "SINTO-28186",
+        "SINTO-18928"
+      ],
+      "ams_risoma": "SOM-01",
+      "entropy": 2.2214,
+      "timestamp": "2026-03-23T00:56:03.799849"
+    },
+    "ambiental/digestivo/ansiedad": {
+      "primary": "SINTO-22041",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-48459",
+        "SINTO-25595",
+        "SINTO-14783",
+        "SINTO-98411",
+        "SINTO-17462",
+        "SINTO-32682",
+        "SINTO-11701",
+        "SINTO-19701"
+      ],
+      "ams_risoma": "ARI-06",
+      "entropy": 1.9329,
+      "timestamp": "2026-03-23T00:56:03.799911"
+    },
+    "ambiental/digestivo/estrés": {
+      "primary": "SINTO-61541",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 0,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-50128",
+        "SINTO-90142",
+        "SINTO-56797",
+        "SINTO-37334",
+        "SINTO-86990",
+        "SINTO-30581",
+        "SINTO-25931",
+        "SINTO-21873"
+      ],
+      "ams_risoma": "ARI-07",
+      "entropy": 1.9419,
+      "timestamp": "2026-03-23T00:56:03.799972"
+    },
+    "ambiental/digestivo/bloqueo": {
+      "primary": "SINTO-40984",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 0,
+        "profundidad": 2,
+        "frecuencia": 5,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-57133",
+        "SINTO-07009",
+        "SINTO-88181",
+        "SINTO-17136",
+        "SINTO-64129",
+        "SINTO-22913",
+        "SINTO-87823",
+        "SINTO-01985",
+        "SINTO-61838"
+      ],
+      "ams_risoma": "ARI-09",
+      "entropy": 1.904,
+      "timestamp": "2026-03-23T00:56:03.800049"
+    },
+    "ambiental/digestivo/frustracion": {
+      "primary": "SINTO-18604",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 0,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 5
+      },
+      "connections": [
+        "SINTO-87259",
+        "SINTO-81665",
+        "SINTO-93095",
+        "SINTO-42181",
+        "SINTO-78967",
+        "SINTO-10971",
+        "SINTO-69746",
+        "SINTO-73529",
+        "SINTO-11612"
+      ],
+      "ams_risoma": "ARI-07",
+      "entropy": 1.8256,
+      "timestamp": "2026-03-23T00:56:03.800131"
+    },
+    "ambiental/digestivo/tristeza": {
+      "primary": "SINTO-51689",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 0,
+        "profundidad": 5,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-70786",
+        "SINTO-48258",
+        "SINTO-13387",
+        "SINTO-53878",
+        "SINTO-42889",
+        "SINTO-93025",
+        "SINTO-06231",
+        "SINTO-01866"
+      ],
+      "ams_risoma": "ARI-06",
+      "entropy": 1.9258,
+      "timestamp": "2026-03-23T00:56:03.800201"
+    },
+    "ambiental/respiratorio/ansiedad": {
+      "primary": "SINTO-58880",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-44472",
+        "SINTO-46591",
+        "SINTO-46085",
+        "SINTO-79129",
+        "SINTO-06157",
+        "SINTO-30904",
+        "SINTO-35186",
+        "SINTO-79334",
+        "SINTO-78624"
+      ],
+      "ams_risoma": "ARI-07",
+      "entropy": 2.0954,
+      "timestamp": "2026-03-23T00:56:03.800254"
+    },
+    "ambiental/respiratorio/estrés": {
+      "primary": "SINTO-46817",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 1,
+        "profundidad": 6,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-41185",
+        "SINTO-25570",
+        "SINTO-48332",
+        "SINTO-00095",
+        "SINTO-69774",
+        "SINTO-62985",
+        "SINTO-18752",
+        "SINTO-57431",
+        "SINTO-99306"
+      ],
+      "ams_risoma": "ARI-08",
+      "entropy": 2.0979,
+      "timestamp": "2026-03-23T00:56:03.800338"
+    },
+    "ambiental/respiratorio/bloqueo": {
+      "primary": "SINTO-04371",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 1,
+        "profundidad": 2,
+        "frecuencia": 5,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-90792",
+        "SINTO-10675",
+        "SINTO-67509",
+        "SINTO-46578",
+        "SINTO-93061",
+        "SINTO-01735",
+        "SINTO-50934",
+        "SINTO-62249",
+        "SINTO-13140",
+        "SINTO-49947"
+      ],
+      "ams_risoma": "ARI-02",
+      "entropy": 2.0763,
+      "timestamp": "2026-03-23T00:56:03.800426"
+    },
+    "ambiental/respiratorio/frustracion": {
+      "primary": "SINTO-13926",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 1,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 6
+      },
+      "connections": [
+        "SINTO-34900",
+        "SINTO-10884",
+        "SINTO-15652",
+        "SINTO-98804",
+        "SINTO-28993",
+        "SINTO-83698",
+        "SINTO-75281",
+        "SINTO-50100",
+        "SINTO-98258",
+        "SINTO-80612"
+      ],
+      "ams_risoma": "ARI-09",
+      "entropy": 2.0216,
+      "timestamp": "2026-03-23T00:56:03.800507"
+    },
+    "ambiental/respiratorio/tristeza": {
+      "primary": "SINTO-98907",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 1,
+        "profundidad": 5,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-35646",
+        "SINTO-25230",
+        "SINTO-46436",
+        "SINTO-20184",
+        "SINTO-68650",
+        "SINTO-91514",
+        "SINTO-56325",
+        "SINTO-35180",
+        "SINTO-94736"
+      ],
+      "ams_risoma": "ARI-07",
+      "entropy": 2.0954,
+      "timestamp": "2026-03-23T00:56:03.800573"
+    },
+    "ambiental/nervioso/ansiedad": {
+      "primary": "SINTO-65052",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-66628",
+        "SINTO-14214",
+        "SINTO-10801",
+        "SINTO-05894",
+        "SINTO-08929",
+        "SINTO-28276",
+        "SINTO-05179",
+        "SINTO-49724",
+        "SINTO-08295"
+      ],
+      "ams_risoma": "ARI-08",
+      "entropy": 2.1755,
+      "timestamp": "2026-03-23T00:56:03.800638"
+    },
+    "ambiental/nervioso/estrés": {
+      "primary": "SINTO-93779",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 2,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-59877",
+        "SINTO-32953",
+        "SINTO-84968",
+        "SINTO-62455",
+        "SINTO-30677",
+        "SINTO-44180",
+        "SINTO-22294",
+        "SINTO-12504",
+        "SINTO-85632"
+      ],
+      "ams_risoma": "ARI-09",
+      "entropy": 2.179,
+      "timestamp": "2026-03-23T00:56:03.800736"
+    },
+    "ambiental/nervioso/bloqueo": {
+      "primary": "SINTO-53200",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 2,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-51682",
+        "SINTO-22946",
+        "SINTO-65822",
+        "SINTO-97215",
+        "SINTO-54534",
+        "SINTO-16599",
+        "SINTO-86362",
+        "SINTO-45217",
+        "SINTO-10261",
+        "SINTO-09459"
+      ],
+      "ams_risoma": "ARI-04",
+      "entropy": 2.1181,
+      "timestamp": "2026-03-23T00:56:03.800820"
+    },
+    "ambiental/nervioso/frustracion": {
+      "primary": "SINTO-19087",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 2,
+        "profundidad": 1,
+        "frecuencia": 6,
+        "complejidad": 7
+      },
+      "connections": [
+        "SINTO-24325",
+        "SINTO-91814",
+        "SINTO-65674",
+        "SINTO-81645",
+        "SINTO-39399",
+        "SINTO-97616",
+        "SINTO-51217",
+        "SINTO-38816",
+        "SINTO-72072",
+        "SINTO-01592"
+      ],
+      "ams_risoma": "ARI-02",
+      "entropy": 2.0639,
+      "timestamp": "2026-03-23T00:56:03.800885"
+    },
+    "ambiental/nervioso/tristeza": {
+      "primary": "SINTO-06382",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 2,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-24877",
+        "SINTO-69215",
+        "SINTO-65239",
+        "SINTO-40217",
+        "SINTO-49801",
+        "SINTO-75830",
+        "SINTO-60008",
+        "SINTO-70493",
+        "SINTO-36768"
+      ],
+      "ams_risoma": "ARI-08",
+      "entropy": 2.1755,
+      "timestamp": "2026-03-23T00:56:03.800935"
+    },
+    "ambiental/cardiovascular/ansiedad": {
+      "primary": "SINTO-94420",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-87590",
+        "SINTO-47050",
+        "SINTO-93952",
+        "SINTO-02824",
+        "SINTO-49051",
+        "SINTO-41757",
+        "SINTO-55497",
+        "SINTO-86609",
+        "SINTO-68685"
+      ],
+      "ams_risoma": "ARI-09",
+      "entropy": 2.2214,
+      "timestamp": "2026-03-23T00:56:03.800984"
+    },
+    "ambiental/cardiovascular/estrés": {
+      "primary": "SINTO-23434",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 3,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-79079",
+        "SINTO-56139",
+        "SINTO-92820",
+        "SINTO-95371",
+        "SINTO-76836",
+        "SINTO-41836",
+        "SINTO-13783",
+        "SINTO-37341",
+        "SINTO-10830"
+      ],
+      "ams_risoma": "ARI-01",
+      "entropy": 2.2251,
+      "timestamp": "2026-03-23T00:56:03.801033"
+    },
+    "ambiental/cardiovascular/bloqueo": {
+      "primary": "SINTO-72786",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 3,
+        "profundidad": 2,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-95084",
+        "SINTO-89006",
+        "SINTO-59258",
+        "SINTO-19741",
+        "SINTO-38480",
+        "SINTO-89717",
+        "SINTO-70476",
+        "SINTO-93580",
+        "SINTO-57779"
+      ],
+      "ams_risoma": "ARI-06",
+      "entropy": 2.1352,
+      "timestamp": "2026-03-23T00:56:03.801081"
+    },
+    "ambiental/cardiovascular/frustracion": {
+      "primary": "SINTO-02732",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 3,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 8
+      },
+      "connections": [
+        "SINTO-94647",
+        "SINTO-08617",
+        "SINTO-98562",
+        "SINTO-96752",
+        "SINTO-12592",
+        "SINTO-11115",
+        "SINTO-72767",
+        "SINTO-05975",
+        "SINTO-08479",
+        "SINTO-45652"
+      ],
+      "ams_risoma": "ARI-04",
+      "entropy": 2.0892,
+      "timestamp": "2026-03-23T00:56:03.801133"
+    },
+    "ambiental/cardiovascular/tristeza": {
+      "primary": "SINTO-33930",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 3,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-00832",
+        "SINTO-95394",
+        "SINTO-60331",
+        "SINTO-95150",
+        "SINTO-89202",
+        "SINTO-71682",
+        "SINTO-12731",
+        "SINTO-21839",
+        "SINTO-48236"
+      ],
+      "ams_risoma": "ARI-09",
+      "entropy": 2.2214,
+      "timestamp": "2026-03-23T00:56:03.801186"
+    },
+    "ambiental/muscular/ansiedad": {
+      "primary": "SINTO-70330",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-63488",
+        "SINTO-99803",
+        "SINTO-32759",
+        "SINTO-02506",
+        "SINTO-36874",
+        "SINTO-11983",
+        "SINTO-66053",
+        "SINTO-97801",
+        "SINTO-55501"
+      ],
+      "ams_risoma": "ARI-01",
+      "entropy": 2.2485,
+      "timestamp": "2026-03-23T00:56:03.801241"
+    },
+    "ambiental/muscular/estrés": {
+      "primary": "SINTO-35976",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 4,
+        "profundidad": 6,
+        "frecuencia": 6,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-11652",
+        "SINTO-45551",
+        "SINTO-10230",
+        "SINTO-49660",
+        "SINTO-66004",
+        "SINTO-57706",
+        "SINTO-84108",
+        "SINTO-57136",
+        "SINTO-29479"
+      ],
+      "ams_risoma": "ARI-02",
+      "entropy": 2.2528,
+      "timestamp": "2026-03-23T00:56:03.801293"
+    },
+    "ambiental/muscular/bloqueo": {
+      "primary": "SINTO-73667",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 4,
+        "profundidad": 2,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-74949",
+        "SINTO-29687",
+        "SINTO-22144",
+        "SINTO-46160",
+        "SINTO-82427",
+        "SINTO-44146",
+        "SINTO-04539",
+        "SINTO-28719",
+        "SINTO-20373"
+      ],
+      "ams_risoma": "ARI-07",
+      "entropy": 2.1625,
+      "timestamp": "2026-03-23T00:56:03.801371"
+    },
+    "ambiental/muscular/frustracion": {
+      "primary": "SINTO-99645",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 4,
+        "profundidad": 1,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-34513",
+        "SINTO-25961",
+        "SINTO-11722",
+        "SINTO-38119",
+        "SINTO-38502",
+        "SINTO-61140",
+        "SINTO-08249",
+        "SINTO-05407",
+        "SINTO-30483"
+      ],
+      "ams_risoma": "ARI-06",
+      "entropy": 2.0827,
+      "timestamp": "2026-03-23T00:56:03.801431"
+    },
+    "ambiental/muscular/tristeza": {
+      "primary": "SINTO-28861",
+      "dimensions": {
+        "territorio": 4,
+        "sistema": 4,
+        "profundidad": 5,
+        "frecuencia": 5,
+        "complejidad": 9
+      },
+      "connections": [
+        "SINTO-27210",
+        "SINTO-68780",
+        "SINTO-88545",
+        "SINTO-41809",
+        "SINTO-13559",
+        "SINTO-36876",
+        "SINTO-87732",
+        "SINTO-65450",
+        "SINTO-38305"
+      ],
+      "ams_risoma": "ARI-01",
+      "entropy": 2.2457,
+      "timestamp": "2026-03-23T00:56:03.801503"
+    }
+  }
+}
