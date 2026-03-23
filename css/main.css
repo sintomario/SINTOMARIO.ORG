@@ -1,0 +1,635 @@
+/* SISTEMA DE COLOR POR SISTEMA ORGÁNICO */
+
+/* Sistema Digestivo */
+html[data-system="digestivo"] {
+  --color-accent: #2d7d32;
+}
+
+html.theme-dark[data-system="digestivo"] {
+  --color-accent: #4caf50;
+}
+
+/* Sistema Respiratorio */
+html[data-system="respiratorio"] {
+  --color-accent: #1976d2;
+}
+
+html.theme-dark[data-system="respiratorio"] {
+  --color-accent: #42a5f5;
+}
+
+/* Sistema Nervioso */
+html[data-system="nervioso"] {
+  --color-accent: #ff8f00;
+}
+
+html.theme-dark[data-system="nervioso"] {
+  --color-accent: #ffc107;
+}
+
+/* Sistema Cardiovascular */
+html[data-system="cardiovascular"] {
+  --color-accent: #d32f2f;
+}
+
+html.theme-dark[data-system="cardiovascular"] {
+  --color-accent: #f44336;
+}
+
+/* Sistema Muscular */
+html[data-system="muscular"] {
+  --color-accent: #7b1fa2;
+}
+
+html.theme-dark[data-system="muscular"] {
+  --color-accent: #9c27b0;
+}
+
+/* Sistema Esquelético */
+html[data-system="esqueletico"] {
+  --color-accent: #5d4037;
+}
+
+html.theme-dark[data-system="esqueletico"] {
+  --color-accent: #795548;
+}
+
+/* Sistema Endocrino */
+html[data-system="endocrino"] {
+  --color-accent: #00897b;
+}
+
+html.theme-dark[data-system="endocrino"] {
+  --color-accent: #009688;
+}
+
+/* Sistema Linfático */
+html[data-system="linfatico"] {
+  --color-accent: #303f9f;
+}
+
+html.theme-dark[data-system="linfatico"] {
+  --color-accent: #3f51b5;
+}
+
+/* Sistema Reproductivo */
+html[data-system="reproductivo"] {
+  --color-accent: #c2185b;
+}
+
+html.theme-dark[data-system="reproductivo"] {
+  --color-accent: #e91e63;
+}
+
+/* Sistema Urinario */
+html[data-system="urinario"] {
+  --color-accent: #0288d1;
+}
+
+html.theme-dark[data-system="urinario"] {
+  --color-accent: #03a9f4;
+}
+
+/* Sistema Hepático */
+html[data-system="hepatico"] {
+  --color-accent: #689f38;
+}
+
+html.theme-dark[data-system="hepatico"] {
+  --color-accent: #8bc34a;
+}
+
+/* Sistema Renal */
+html[data-system="renal"] {
+  --color-accent: #00796b;
+}
+
+html.theme-dark[data-system="renal"] {
+  --color-accent: #009688;
+}
+
+/* Sistema Pancreático */
+html[data-system="pancreatico"] {
+  --color-accent: #f57c00;
+}
+
+html.theme-dark[data-system="pancreatico"] {
+  --color-accent: #ff9800;
+}
+
+/* Sistema Biliar */
+html[data-system="biliar"] {
+  --color-accent: #fbc02d;
+}
+
+html.theme-dark[data-system="biliar"] {
+  --color-accent: #ffeb3b;
+}
+
+/* Sistema Inmunológico */
+html[data-system="inmunologico"] {
+  --color-accent: #6a1b9a;
+}
+
+html.theme-dark[data-system="inmunologico"] {
+  --color-accent: #9c27b0;
+}
+
+/* Sistema Tegumentario */
+html[data-system="tegumentario"] {
+  --color-accent: #e65100;
+}
+
+html.theme-dark[data-system="tegumentario"] {
+  --color-accent: #ff9800;
+}
+
+/* Sistema Visual */
+html[data-system="visual"] {
+  --color-accent: #1565c0;
+}
+
+html.theme-dark[data-system="visual"] {
+  --color-accent: #2196f3;
+}
+
+/* Sistema Auditivo */
+html[data-system="auditivo"] {
+  --color-accent: #00695c;
+}
+
+html.theme-dark[data-system="auditivo"] {
+  --color-accent: #009688;
+}
+
+/* TIPOGRAFÍA Y LAYOUT */
+
+body {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-primary);
+  margin: 0;
+  padding: 0;
+  padding-bottom: 48px;
+  max-width: none;
+}
+
+.container {
+  max-width: var(--sabia-measure);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.header .tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-top: 0.5rem;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--color-text-primary);
+}
+
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.8rem;
+  color: var(--color-text-primary);
+}
+
+p {
+  margin: 1rem 0;
+  max-width: var(--sabia-measure);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* METADATA Y PILLS */
+
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-accent);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pill.indice {
+  background-color: var(--color-text-primary);
+  color: var(--color-background-primary);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.pill.contexto {
+  background-color: var(--color-text-secondary);
+}
+
+/* CONTENIDO EDITORIAL */
+
+.capa1, .capa2 {
+  margin: 1.5rem 0;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.capa1 {
+  font-weight: 600;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1rem;
+}
+
+.capa2 {
+  color: var(--color-text-secondary);
+}
+
+.perspectivas {
+  margin: 2rem 0;
+}
+
+.perspectiva {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+html.theme-dark .perspectiva {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.perspectiva h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+.perspectiva .autor {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+/* SELECTOR DE PERSPECTIVAS CON CSS PURO */
+
+.selector-perspectivas {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.selector-perspectivas input[type="radio"] {
+  display: none;
+}
+
+.selector-perspectivas label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.selector-perspectivas label:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.selector-perspectivas input[type="radio"]:checked + label {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.contenido-perspectivas .perspectiva {
+  display: none;
+}
+
+.contenido-perspectivas .perspectiva:target,
+.contenido-perspectivas .perspectiva:target ~ .perspectiva {
+  display: block;
+}
+
+/* PRÁCTICA DE INTEGRACIÓN */
+
+.practica {
+  margin: 2rem 0;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.practica summary {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.practica[open] summary {
+  border-bottom: 1px solid var(--color-text-secondary);
+}
+
+.practica .pasos {
+  padding: 1.5rem;
+}
+
+.practica .paso {
+  margin: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.practica .paso::before {
+  content: attr(data-paso);
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* FAQS */
+
+.faqs {
+  margin: 2rem 0;
+}
+
+.faqs dl {
+  margin: 0;
+}
+
+.faqs dt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.faqs dd {
+  margin: 0.5rem 0 1.5rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* BLOQUE DE AFILIADOS */
+
+.afiliados {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+html.theme-dark .afiliados {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.afiliados .disclaimer {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.afiliados .productos {
+  display: grid;
+  gap: 1rem;
+}
+
+.afiliados .producto {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease;
+}
+
+.afiliados .producto:hover {
+  border-color: var(--color-accent);
+}
+
+.afiliados .producto-info {
+  flex: 1;
+}
+
+.afiliados .producto h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.afiliados .producto p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.afiliados .producto a {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.afiliados .producto a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--color-text-secondary);
+  margin-top: 4rem;
+  color: var(--color-text-secondary);
+}
+
+.footer nav {
+  margin: 1rem 0;
+}
+
+.footer nav a {
+  margin: 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.footer .disclaimer {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  margin-top: 1rem;
+  max-width: var(--sabia-measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BARRA FLOTANTE (MEJORADA) */
+
+.barra-flotante {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: var(--color-text-primary);
+  color: var(--color-background-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.barra-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barra-derecha {
+  display: flex;
+  gap: 10px;
+}
+
+.boton-afiliado {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.boton-afiliado:hover {
+  background-color: var(--color-accent);
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .barra-flotante {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+  }
+  
+  .barra-izquierda,
+  .barra-derecha {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
+  .metadata {
+    flex-direction: column;
+  }
+  
+  .selector-perspectivas {
+    flex-direction: column;
+  }
+  
+  .afiliados .producto {
+    flex-direction: column;
+  }
+}

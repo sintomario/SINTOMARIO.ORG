@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" data-system="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('sintomario-theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.add('theme-' + theme);
+        })();
+    </script>
+    <title>{{title}} | SINTOMARIO</title>
+    <meta name="description" content="{{description}}">
+    <link rel="canonical" href="{{canonical_url}}">
+    <link rel="alternate" hreflang="es" href="{{canonical_url}}">
+    <meta name="robots" content="{{meta_robots}}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{canonical_url}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="SINTOMARIO">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:image" content="{{og_image}}">
+    
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS Crítico Inline -->
+    <style>
+        :root {
+            --color-background-primary: #FAF8F4;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-accent: #2d7d32;
+            --font-sans: system-ui, -apple-system, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --font-mono: 'DM Mono', monospace;
+            --sabia-measure: 65ch;
+        }
+        
+        html.theme-dark {
+            --color-background-primary: #141210;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #999999;
+            --color-accent: #4caf50;
+        }
+        
+        body {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background-color: var(--color-background-primary);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 48px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--color-text-primary);
+        }
+        
+        .barra-flotante {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: var(--color-text-primary);
+            color: var(--color-background-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100;
+            font-family: var(--font-mono);
+            font-size: 11px;
+        }
+        
+        .barra-izquierda {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .barra-derecha {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .boton-afiliado {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+    
+    <!-- Preload CSS Principal -->
+    <link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+    
+    <meta name="theme-color" content="{{theme_color}}">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>SINTOMARIO</h1>
+    </header>
+    
+    <main>
+        {{content}}
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2026 SINTOMARIO.ORG</p>
+        <nav>
+            <a href="/sobre">Sobre</a>
+            <a href="/faq">FAQ</a>
+            <a href="/metodologia">Metodología</a>
+            <a href="/afiliados">Afiliados</a>
+        </nav>
+        <p class="disclaimer">Este contenido no reemplaza la evaluación profesional. Consulta siempre con un especialista.</p>
+    </footer>
+    
+    <div class="barra-flotante">
+        <div class="barra-izquierda">
+            <span>SINTOMARIO.ORG</span>
+            <span class="disclaimer">No reemplaza atención médica</span>
+        </div>
+        <div class="barra-derecha">
+            <a href="{{afiliado_url}}" class="boton-afiliado" rel="sponsored noopener noreferrer" target="_blank">
+                Ver recurso recomendado
+            </a>
+        </div>
+    </div>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {{schema_json}}
+    </script>
+</body>
+</html>

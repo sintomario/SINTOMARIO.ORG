@@ -1,0 +1,30 @@
+{
+  "build_info": {
+    "timestamp": "2026-03-22T22:59:06.042319",
+    "duration_seconds": 1.128915786743164,
+    "motor_version": "4.0"
+  },
+  "corpus_stats": {
+    "total_nodes": 400,
+    "indexable_nodes": 400,
+    "ymyl_nodes": 0,
+    "errors": 0
+  },
+  "config": {
+    "site": {
+      "domain": "https://sintomario.org",
+      "name": "SINTOMARIO",
+      "tagline": "El diccionario del síntoma"
+    },
+    "affiliate": {
+      "amazon_tag": "sintomario-20"
+    },
+    "build": {
+      "min_word_count_for_index": 50
+    },
+    "seo": {
+      "default_author": "SINTOMARIO",
+      "default_locale": "es"
+    }
+  }
+}

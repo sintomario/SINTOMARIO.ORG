@@ -1,0 +1,32 @@
+[
+  {
+    "id": "libro-sintomas",
+    "titulo": "El Cuerpo Habla: El Diccionario de los Síntomas y sus Significados",
+    "descripcion": "Guía completa de simbología médica y emocional para comprender el lenguaje del cuerpo.",
+    "asin": "8497726862",
+    "url": "https://amazon.es/dp/8497726862",
+    "categoria": "libro",
+    "precio": "24.95",
+    "comision": "4%"
+  },
+  {
+    "id": "diario-terapeutico",
+    "titulo": "Diario Terapéutico: Explora Tus Síntomas y Emociones",
+    "descripcion": "Cuaderno de trabajo guiado para explorar la conexión entre síntomas físicos y emociones.",
+    "asin": "B08Y456DEF",
+    "url": "https://amazon.es/dp/B08Y456DEF",
+    "categoria": "producto",
+    "precio": "18.50",
+    "comision": "6%"
+  },
+  {
+    "id": "kit-aceites",
+    "titulo": "Kit de Aceites Esenciales para Bienestar Emocional",
+    "descripcion": "Conjunto de 10 aceites esenciales puros para equilibrar emociones y aliviar estrés.",
+    "asin": "B09Z789GHI",
+    "url": "https://amazon.es/dp/B09Z789GHI",
+    "categoria": "producto",
+    "precio": "42.00",
+    "comision": "8%"
+  }
+]

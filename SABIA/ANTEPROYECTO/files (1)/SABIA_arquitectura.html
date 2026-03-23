@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SABIA.INFO — Arquitectura del sistema</title>
+<style>
+  body { font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.9;
+         background: #0a1a10; color: #c8d8c0; margin: 0; padding: 24px 32px; }
+  h2 { font-family: Arial, sans-serif; font-size: 11px; font-weight: 600;
+       text-transform: uppercase; letter-spacing: .12em; color: #4a9a6a;
+       margin: 24px 0 6px; border-bottom: 1px solid #1d3d25; padding-bottom: 4px; }
+  pre { margin: 0; white-space: pre; overflow-x: auto; }
+  .dk  { color: #e8f5ee; font-weight: bold; }
+  .tg  { color: #5dcaa5; font-weight: bold; }
+  .tb  { color: #85b7eb; }
+  .tw  { color: #ef9f27; }
+  .tp  { color: #afa9ec; }
+  .tc  { color: #f0997b; }
+  .cm  { color: #4a6a52; font-style: italic; }
+  .title { font-family: Arial, sans-serif; font-size: 22px; font-weight: bold;
+           color: #5dcaa5; margin-bottom: 4px; }
+  .sub { font-family: Arial, sans-serif; font-size: 13px; color: #4a9a6a;
+         margin-bottom: 24px; }
+</style>
+</head>
+<body>
+<div class="title">SABIA.INFO</div>
+<div class="sub">Arquitectura completa — Sitemap · Carpetas · Schema de datos</div>
+
+<h2>Sitemap — URLs públicas (1.001 indexables)</h2>
+<pre>
+<span class="dk">sabia.info/</span>                          <span class="cm">home · SVG corporal · selector de contexto</span>
+├── <span class="tg">[zona]-[contexto]/</span>               <span class="cm">450 lecturas SSG — todas indexables</span>
+│   └── espalda-baja-carga/           <span class="cm">URL canónica · OG dinámica · schema markup</span>
+├── zona/<span class="tg">[zona]/</span>                    <span class="cm">25 zonas hub — lista sus 6 lecturas</span>
+├── contexto/<span class="tg">[ctx]/</span>                <span class="cm">6 contextos hub — lista sus 25 lecturas</span>
+├── terapias/<span class="tw">[terapia]/</span>            <span class="cm">80 páginas — EFT · biodescodif · flores…</span>
+├── autores/<span class="tw">[autor]/</span>              <span class="cm">10 páginas Haussler — Bourbeau · Hay…</span>
+├── condicion/<span class="tw">[enfermedad]/</span>       <span class="cm">30 páginas — fibromialgia · lupus · burnout…</span>
+├── mapa/                            <span class="cm">mapa colectivo semanal · datos anónimos</span>
+├── terapeutas/                      <span class="cm">programa Las Sabias · kit embajadoras</span>
+├── unlock/success/                  <span class="cm">post-Stripe · entrega Bálsamo Emocional</span>
+└── api/<span class="tc">*</span>                          <span class="cm">no indexadas · robots.txt disallow</span>
+    ├── reading/                     <span class="cm">GET → JSON lectura por zona+contexto</span>
+    ├── unlock/ + verify/            <span class="cm">POST → Stripe session · verificación pago</span>
+    ├── og/                          <span class="cm">GET → PNG 1200×630 dinámica</span>
+    ├── generate/                    <span class="cm">POST → Gemini pipeline (cron)</span>
+    └── map-data/ · indexnow/        <span class="cm">stats semanales · push buscadores</span>
+</pre>
+
+<h2>Estructura de carpetas — repositorio GitHub</h2>
+<pre>
+<span class="dk">sabia-info/</span>
+│
+├── <span class="dk">app/</span>                              <span class="cm">Next.js 14 App Router</span>
+│   ├── layout.tsx                    <span class="cm">shell global · fonts · analytics</span>
+│   ├── page.tsx                      <span class="cm">home · BodySVG · hero · tagline</span>
+│   ├── <span class="tg">[zona]-[contexto]/</span>
+│   │   └── page.tsx                  <span class="cm">ruta dinámica principal · SSG</span>
+│   ├── zona/[zona]/page.tsx
+│   ├── contexto/[ctx]/page.tsx
+│   ├── terapias/[t]/page.tsx
+│   ├── autores/[a]/page.tsx
+│   ├── condicion/[e]/page.tsx
+│   ├── mapa/page.tsx
+│   ├── terapeutas/page.tsx
+│   ├── unlock/success/page.tsx
+│   └── <span class="tc">api/</span>
+│       ├── reading/route.ts
+│       ├── unlock/route.ts
+│       ├── unlock/verify/route.ts
+│       ├── og/route.tsx              <span class="cm">@vercel/og ImageResponse</span>
+│       ├── generate/route.ts         <span class="cm">Gemini pipeline</span>
+│       ├── map-data/route.ts
+│       └── indexnow/route.ts
+│
+├── <span class="tb">components/</span>
+│   ├── <span class="tg">BodySVG.tsx</span>                 <span class="cm">SVG interactivo · 15 zonas · emite zona-selected</span>
+│   ├── <span class="tg">ContextSelector.tsx</span>         <span class="cm">6 botones · estado contextActivo</span>
+│   ├── <span class="tg">ReadingCard.tsx</span>             <span class="cm">narrativa · fade-in · tipografía Lora</span>
+│   ├── <span class="tb">UnlockCTA.tsx</span>               <span class="cm">IntersectionObserver 85% · Stripe $3</span>
+│   ├── <span class="tb">SharePanel.tsx</span>              <span class="cm">WhatsApp · PNG descargable · URL copy</span>
+│   ├── <span class="tb">DonateButton.tsx</span>            <span class="cm">Ko-fi · aparece 30s post-lectura</span>
+│   ├── AffiliateLink.tsx             <span class="cm">libro citado · rel=sponsored</span>
+│   └── DisclaimerBanner.tsx          <span class="cm">3 ubicaciones · texto canónico</span>
+│
+├── <span class="tw">content/</span>                         <span class="cm">datos · no código · versionado en git</span>
+│   ├── <span class="tg">readings/</span>                   <span class="cm">450 archivos JSON (zona-contexto.json)</span>
+│   │   ├── espalda-baja-carga.json
+│   │   ├── rodilla-conflicto.json
+│   │   └── … 448 más
+│   ├── therapies/                    <span class="cm">80 archivos MDX de terapias</span>
+│   ├── conditions/                   <span class="cm">30 archivos MDX enfermedades</span>
+│   └── authors/authors.json          <span class="cm">10 autores Haussler con referencias</span>
+│
+├── <span class="tp">lib/</span>
+│   ├── gemini.ts                     <span class="cm">cliente + prompt base SabiaSavia</span>
+│   ├── stripe.ts                     <span class="cm">checkout · verify · guest mode</span>
+│   ├── kv.ts                         <span class="cm">Vercel KV · counters views/unlocks/shares</span>
+│   ├── readings.ts                   <span class="cm">leer · validar schema · resolver rutas</span>
+│   ├── schema.ts                     <span class="cm">JSON-LD MedicalCondition + FAQPage</span>
+│   └── analytics.ts                  <span class="cm">Plausible custom events</span>
+│
+├── scripts/
+│   ├── <span class="tw">generate-batch.ts</span>           <span class="cm">Gemini · genera N lecturas · valida · commit</span>
+│   ├── validate-readings.ts
+│   └── indexnow-submit.ts
+│
+├── public/
+│   ├── <span class="tg">llms.txt</span>                    <span class="cm">instrucciones ChatGPT · Perplexity · Gemini</span>
+│   ├── robots.txt
+│   ├── sitemap.xml                   <span class="cm">1.001 URLs · generado en build</span>
+│   ├── body-front.svg
+│   ├── body-back.svg
+│   └── fonts/                        <span class="cm">Playfair · Inter · Lora self-hosted</span>
+│
+├── styles/
+│   ├── globals.css                   <span class="cm">CSS variables · dark mode · resets</span>
+│   └── typography.css
+│
+├── <span class="tc">.github/workflows/</span>
+│   ├── deploy.yml                    <span class="cm">push → Vercel deploy automático</span>
+│   ├── <span class="tc">generate.yml</span>                <span class="cm">cron L/M/V 09:00 UTC → 3 lecturas nuevas</span>
+│   └── indexnow.yml
+│
+├── .env.local                        <span class="cm">STRIPE · GEMINI · KV · INDEXNOW · KOFI</span>
+├── .env.example
+├── next.config.js
+└── package.json
+</pre>
+
+<h2>Schema de datos — el ID que construye todo</h2>
+<pre>
+<span class="cm">// content/readings/espalda-baja-carga.json</span>
+{
+  <span class="tg">"id"</span>:        <span class="tw">"espalda-baja-carga"</span>,     <span class="cm">→ URL · slug · filename</span>
+  <span class="tg">"zona"</span>:      <span class="tw">"espalda-baja"</span>,           <span class="cm">del SVG táctil</span>
+  <span class="tg">"contexto"</span>:  <span class="tw">"carga"</span>,                  <span class="cm">del selector de frase</span>
+  <span class="tg">"emocion"</span>:   <span class="tw">"no soy suficiente"</span>,      <span class="cm">— visible al usuario —</span>
+  <span class="tg">"lectura"</span>:   <span class="tw">"Tu cuerpo está..."</span>,      <span class="cm">120-180 palabras narrativa</span>
+  <span class="tg">"micro"</span>:     <span class="tw">"Pon la mano aquí..."</span>,    <span class="cm">acción concreta &lt; 5 min</span>
+
+  <span class="cm">// internos — invisibles al usuario —</span>
+  <span class="tb">"herida"</span>:    <span class="tw">"rechazo"</span>,               <span class="cm">Bourbeau → match terapia</span>
+  <span class="tb">"conflicto"</span>: <span class="tw">"desvalorizacion"</span>,       <span class="cm">Hamer → tono de lectura</span>
+  <span class="tb">"tcm"</span>:       <span class="tw">"agua"</span>,                  <span class="cm">elemento TCM</span>
+  <span class="tb">"fase"</span>:      <span class="tw">"cronica"</span>,               <span class="cm">fase biológica Hamer</span>
+  <span class="tb">"ref_autor"</span>: <span class="tw">"Bourbeau"</span>,
+  <span class="tb">"ref_libro"</span>: <span class="tw">"Tu cuerpo dice amame"</span>,  <span class="cm">link afiliado Amazon</span>
+  <span class="tb">"nodos"</span>:     [<span class="tw">"hombro-carga"</span>, <span class="tw">"cadera-carga"</span>, <span class="tw">"espalda-baja-soledad"</span>],
+  <span class="tb">"keywords"</span>:  [<span class="tw">"dolor espalda emocional"</span>, <span class="tw">"biodescodificacion espalda baja"</span>],
+  <span class="tb">"premium"</span>:   true
+}
+
+<span class="cm">// URL generada automáticamente desde el id:</span>
+sabia.info/<span class="tg">espalda-baja-carga</span>         <span class="cm">lectura gratuita</span>
+sabia.info/api/og?id=<span class="tb">espalda-baja-carga</span> <span class="cm">OG image dinámica</span>
+sabia.info/api/unlock?id=<span class="tc">espalda-baja-carga</span> <span class="cm">Stripe $3</span>
+</pre>
+
+<h2>Variables de entorno — .env.local</h2>
+<pre>
+<span class="cm"># Stripe</span>
+STRIPE_SECRET_KEY=<span class="tw">sk_live_...</span>
+STRIPE_WEBHOOK_SECRET=<span class="tw">whsec_...</span>
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=<span class="tw">pk_live_...</span>
+UNLOCK_PRICE_CENTS=<span class="tw">300</span>
+
+<span class="cm"># Gemini AI</span>
+GEMINI_API_KEY=<span class="tw">AIzaSy...</span>
+
+<span class="cm"># Vercel KV</span>
+KV_REST_API_URL=<span class="tw">https://...</span>
+KV_REST_API_TOKEN=<span class="tw">...</span>
+
+<span class="cm"># Servicios</span>
+KOFI_WIDGET_ID=<span class="tw">sabia</span>
+INDEXNOW_API_KEY=<span class="tw">...</span>
+AMAZON_AFFILIATE_TAG=<span class="tw">sabia-21</span>
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=<span class="tw">sabia.info</span>
+NEXT_PUBLIC_SITE_URL=<span class="tw">https://sabia.info</span>
+</pre>
+
+</body>
+</html>

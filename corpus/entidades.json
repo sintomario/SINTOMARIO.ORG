@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cabeza",
+    "nombre": "cabeza",
+    "descripcion": "La parte superior del cuerpo que alberga el cerebro y los principales órganos sensoriales.",
+    "sistema": "nervioso",
+    "tcm_elemento": "fuego",
+    "tcm_meridiano": "corazón",
+    "cie11": "R00",
+    "categoria": "sintoma",
+    "aliases": ["dolor de cabeza", "cefalea", "migraña", "jaqueca"]
+  },
+  {
+    "id": "estomago",
+    "nombre": "estómago",
+    "descripcion": "Órgano digestivo que procesa los alimentos y extrae nutrientes esenciales.",
+    "sistema": "digestivo",
+    "tcm_elemento": "tierra",
+    "tcm_meridiano": "bazo-estómago",
+    "cie11": "K92.9",
+    "categoria": "sintoma",
+    "aliases": ["dolor estomacal", "malestar gástrico", "indigestión", "dispepsia"]
+  },
+  {
+    "id": "espalda",
+    "nombre": "espalda",
+    "descripcion": "La estructura posterior del torso que soporta el cuerpo y protege la columna vertebral.",
+    "sistema": "muscular",
+    "tcm_elemento": "agua",
+    "tcm_meridiano": "riñón",
+    "cie11": "M54.5",
+    "categoria": "sintoma",
+    "aliases": ["dolor de espalda", "lumbalgia", "dorsalgia", "cervicalgia"]
+  },
+  {
+    "id": "hombros",
+    "nombre": "hombros",
+    "descripcion": "Articulaciones que conectan los brazos con el torso, permitiendo movimiento y expresión.",
+    "sistema": "muscular",
+    "tcm_elemento": "metal",
+    "tcm_meridiano": "pulmón",
+    "cie11": "M25.5",
+    "categoria": "sintoma",
+    "aliases": ["dolor de hombro", "tensión cervical", "rigidez", "contractura"]
+  },
+  {
+    "id": "garganta",
+    "nombre": "garganta",
+    "descripcion": "Canal que conecta la boca con las vías respiratorias y digestivas.",
+    "sistema": "respiratorio",
+    "tcm_elemento": "metal",
+    "tcm_meridiano": "pulmón",
+    "cie11": "J02.9",
+    "categoria": "sintoma",
+    "aliases": ["dolor de garganta", "faringitis", "amigdalitis", "ronquera"]
+  },
+  {
+    "id": "pecho",
+    "nombre": "pecho",
+    "descripcion": "Parte frontal del torso que contiene el corazón y los pulmones.",
+    "sistema": "cardiovascular",
+    "tcm_elemento": "fuego",
+    "tcm_meridiano": "corazón",
+    "cie11": "R07.4",
+    "categoria": "sintoma",
+    "aliases": ["dolor torácico", "opresión", "malestar pectoral", "dolor en el pecho"]
+  },
+  {
+    "id": "higado",
+    "nombre": "hígado",
+    "descripcion": "Órgano vital responsable de la detoxificación y metabolismo.",
+    "sistema": "hepatico",
+    "tcm_elemento": "madera",
+    "tcm_meridiano": "hígado",
+    "cie11": "R17.0",
+    "categoria": "sintoma",
+    "aliases": ["malestar hepático", "dolor en el costado", "pesadez", "hinchazón"]
+  },
+  {
+    "id": "rodillas",
+    "nombre": "rodillas",
+    "descripcion": "Articulaciones que soportan el peso del cuerpo y permiten el movimiento.",
+    "sistema": "esqueletico",
+    "tcm_elemento": "agua",
+    "tcm_meridiano": "riñón",
+    "cie11": "M25.5",
+    "categoria": "sintoma",
+    "aliases": ["dolor de rodilla", "articulación", "gonalgia", "rigidez"]
+  },
+  {
+    "id": "ojos",
+    "nombre": "ojos",
+    "descripcion": "Órganos sensoriales que permiten la visión y la percepción del mundo.",
+    "sistema": "visual",
+    "tcm_elemento": "madera",
+    "tcm_meridiano": "hígado",
+    "cie11": "H57.9",
+    "categoria": "sintoma",
+    "aliases": ["visión borrosa", "fatiga ocular", "ojos secos", "dolor ocular"]
+  },
+  {
+    "id": "cuello",
+    "nombre": "cuello",
+    "descripcion": "Estructura que conecta la cabeza con el torso, protegiendo la columna cervical.",
+    "sistema": "muscular",
+    "tcm_elemento": "madera",
+    "tcm_meridiano": "hígado",
+    "cie11": "M54.2",
+    "categoria": "sintoma",
+    "aliases": ["rigidez cervical", "tensión", "dolor cervical", "cervicalgia"]
+  },
+  {
+    "id": "riñones",
+    "nombre": "riñones",
+    "descripcion": "Órganos que filtran la sangre y regulan el equilibrio hídrico.",
+    "sistema": "renal",
+    "tcm_elemento": "agua",
+    "tcm_meridiano": "riñón",
+    "cie11": "N99.9",
+    "categoria": "sintoma",
+    "aliases": ["malestar renal", "dolor lumbar", "problemas urinarios", "retención"]
+  },
+  {
+    "id": "pancreas",
+    "nombre": "pancreas",
+    "descripcion": "Glándula que produce insulina y enzimas digestivas esenciales.",
+    "sistema": "pancreatico",
+    "tcm_elemento": "tierra",
+    "tcm_meridiano": "bazo-estómago",
+    "cie11": "K86.9",
+    "categoria": "sintoma",
+    "aliases": ["malestar pancreático", "problemas digestivos", "dolor abdominal", "disfunción"]
+  },
+  {
+    "id": "tiroides",
+    "nombre": "tiroides",
+    "descripcion": "Glándula que regula el metabolismo y la energía corporal.",
+    "sistema": "endocrino",
+    "tcm_elemento": "fuego",
+    "tcm_meridiano": "corazón",
+    "cie11": "E03.9",
+    "categoria": "sintoma",
+    "aliases": ["problemas tiroideos", "fatiga", "cambios de peso", "temblores"]
+  },
+  {
+    "id": "suprarrenales",
+    "nombre": "suprarrenales",
+    "descripcion": "Glándulas que producen hormonas del estrés y regulan la respuesta al estrés.",
+    "sistema": "endocrino",
+    "tcm_elemento": "agua",
+    "tcm_meridiano": "riñón",
+    "cie11": "E27.9",
+    "categoria": "sintoma",
+    "aliases": ["fatiga adrenal", "estrés crónico", "agotamiento", "insomnio"]
+  },
+  {
+    "id": "intestino",
+    "nombre": "intestino",
+    "descripcion": "Sistema digestivo que absorbe nutrientes y elimina desechos.",
+    "sistema": "digestivo",
+    "tcm_elemento": "tierra",
+    "tcm_meridiano": "bazo-estómago",
+    "cie11": "K59.9",
+    "categoria": "sintoma",
+    "aliases": ["problemas intestinales", "digestión", "estreñimiento", "diarrea"]
+  },
+  {
+    "id": "colon",
+    "nombre": "colon",
+    "descripcion": "Porción final del intestino grueso responsable de la eliminación.",
+    "sistema": "digestivo",
+    "tcm_elemento": "metal",
+    "tcm_meridiano": "intestino grueso",
+    "cie11": "K63.9",
+    "categoria": "sintoma",
+    "aliases": ["problemas de colon", "inflamación", "gases", "hinchazón"]
+  },
+  {
+    "id": "vejiga",
+    "nombre": "vejiga",
+    "descripcion": "Órgano que almacena y elimina la orina.",
+    "sistema": "urinario",
+    "tcm_elemento": "agua",
+    "tcm_meridiano": "vejiga",
+    "cie11": "N32.9",
+    "categoria": "sintoma",
+    "aliases": ["problemas de vejiga", "infección", "urgencia", "retención"]
+  },
+  {
+    "id": "corazon",
+    "nombre": "corazón",
+    "descripcion": "Bomba vital que circula la sangre y sustenta la vida.",
+    "sistema": "cardiovascular",
+    "tcm_elemento": "fuego",
+    "tcm_meridiano": "corazón",
+    "cie11": "I51.9",
+    "categoria": "sintoma",
+    "aliases": ["palpitaciones", "dolor cardíaco", "arritmia", "presión"]
+  },
+  {
+    "id": "pulmones",
+    "nombre": "pulmones",
+    "descripcion": "Órganos respiratorios que oxigenan la sangre y eliminan dióxido de carbono.",
+    "sistema": "respiratorio",
+    "tcm_elemento": "metal",
+    "tcm_meridiano": "pulmón",
+    "cie11": "J98.9",
+    "categoria": "sintoma",
+    "aliases": ["problemas pulmonares", "dificultad respiratoria", "tos", "falta de aire"]
+  },
+  {
+    "id": "sistema-nervioso",
+    "nombre": "sistema nervioso",
+    "descripcion": "Red de comunicación que coordina todas las funciones corporales.",
+    "sistema": "nervioso",
+    "tcm_elemento": "fuego",
+    "tcm_meridiano": "corazón",
+    "cie11": "G93.9",
+    "categoria": "sistema",
+    "aliases": ["nerviosismo", "ansiedad", "estrés", "tensión nerviosa"]
+  }
+]

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es" data-system="{{sistema_orgánico}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            var theme = localStorage.getItem('sintomario-theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.add('theme-' + theme);
+        })();
+    </script>
+    <title>{{title_tag}}</title>
+    <meta name="description" content="{{meta_description}}">
+    <link rel="canonical" href="{{canonical_url}}">
+    <link rel="alternate" hreflang="es" href="{{canonical_url}}">
+    <meta name="robots" content="{{meta_robots}}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{title_tag}}">
+    <meta property="og:description" content="{{meta_description}}">
+    <meta property="og:url" content="{{canonical_url}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="SINTOMARIO">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title_tag}}">
+    <meta name="twitter:description" content="{{meta_description}}">
+    <meta name="twitter:image" content="{{og_image}}">
+    
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS Crítico Inline -->
+    <style>
+        :root {
+            --color-background-primary: #FAF8F4;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-accent: #2d7d32;
+            --font-sans: system-ui, -apple-system, sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            --font-mono: 'DM Mono', monospace;
+            --sabia-measure: 65ch;
+        }
+        
+        html.theme-dark {
+            --color-background-primary: #141210;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #999999;
+            --color-accent: #4caf50;
+        }
+        
+        html[data-system="{{sistema_orgánico}}"] {
+            --color-accent: {{color_acento}};
+        }
+        
+        html.theme-dark[data-system="{{sistema_orgánico}}"] {
+            --color-accent: {{color_acento_dark}};
+        }
+        
+        body {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+            background-color: var(--color-background-primary);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 48px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--color-text-primary);
+        }
+        
+        .metadata {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+        
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            background-color: var(--color-accent);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .barra-flotante {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: var(--color-text-primary);
+            color: var(--color-background-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100;
+            font-family: var(--font-mono);
+            font-size: 11px;
+        }
+        
+        .barra-izquierda {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .barra-derecha {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .boton-afiliado {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+    
+    <!-- Preload CSS Principal -->
+    <link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+    
+    <meta name="theme-color" content="{{color_acento}}">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>SINTOMARIO</h1>
+    </header>
+    
+    <main class="container">
+        <div class="metadata">
+            <span class="pill indice">{{sintomario_indice}}</span>
+            <span class="pill sistema">{{sistema_orgánico}}</span>
+            <span class="pill contexto">{{contexto_emocional}}</span>
+        </div>
+        
+        <h1>{{término_principal}}</h1>
+        
+        <div class="capa1">
+            {{capa1_reconocimiento}}
+        </div>
+        
+        <div class="capa2">
+            {{capa2_contextualización}}
+        </div>
+        
+        <section class="perspectivas">
+            <h2>Perspectivas Múltiples</h2>
+            
+            <div class="selector-perspectivas">
+                <input type="radio" id="pers-sintomario" name="perspectiva" value="sintomario" checked>
+                <label for="pers-sintomario">SINTOMARIO</label>
+                
+                <input type="radio" id="pers-louise" name="perspectiva" value="louise">
+                <label for="pers-louise">Louise Hay</label>
+                
+                <input type="radio" id="pers-hamer" name="perspectiva" value="hamer">
+                <label for="pers-hamer">Ryke Geerd Hamer</label>
+                
+                <input type="radio" id="pers-mate" name="perspectiva" value="mate">
+                <label for="pers-mate">Gabor Maté</label>
+            </div>
+            
+            <div class="contenido-perspectivas">
+                <div id="sintomario" class="perspectiva">
+                    <div class="autor">SINTOMARIO - Voz Editorial</div>
+                    <h3>Visión Integrativa</h3>
+                    <p>{{perspectiva_sintomario}}</p>
+                </div>
+                
+                <div id="louise" class="perspectiva">
+                    <div class="autor">Louise Hay - Metapsíquica del Cuerpo</div>
+                    <h3>Patrones Mentales y Emocionales</h3>
+                    <p>{{perspectiva_louise}}</p>
+                </div>
+                
+                <div id="hamer" class="perspectiva">
+                    <div class="autor">Ryke Geerd Hamer - Medicina Germánica</div>
+                    <h3>Conflictos Biológicos</h3>
+                    <p>{{perspectiva_hamer}}</p>
+                </div>
+                
+                <div id="mate" class="perspectiva">
+                    <div class="autor">Gabor Maté - Trauma y Enfermedad</div>
+                    <h3>Conexiones Cuerpo-Mente</h3>
+                    <p>{{perspectiva_mate}}</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="practica">
+            <summary>Práctica de Integración</summary>
+            <div class="pasos">
+                <div class="paso" data-paso="1">{{practica_paso1}}</div>
+                <div class="paso" data-paso="2">{{practica_paso2}}</div>
+                <div class="paso" data-paso="3">{{practica_paso3}}</div>
+                <div class="paso" data-paso="4">{{practica_paso4}}</div>
+            </div>
+        </section>
+        
+        <section class="afiliados">
+            <div class="disclaimer">Como afiliado de Amazon percibo ingresos por las compras elegibles.</div>
+            <div class="productos">
+                <div class="producto">
+                    <div class="producto-info">
+                        <h4>{{producto1_título}}</h4>
+                        <p>{{producto1_descripción}}</p>
+                        <a href="{{producto1_url}}" rel="sponsored noopener noreferrer" target="_blank">Ver en Amazon →</a>
+                    </div>
+                </div>
+                
+                <div class="producto">
+                    <div class="producto-info">
+                        <h4>{{producto2_título}}</h4>
+                        <p>{{producto2_descripción}}</p>
+                        <a href="{{producto2_url}}" rel="sponsored noopener noreferrer" target="_blank">Ver en Amazon →</a>
+                    </div>
+                </div>
+                
+                <div class="producto">
+                    <div class="producto-info">
+                        <h4>{{producto3_título}}</h4>
+                        <p>{{producto3_descripción}}</p>
+                        <a href="{{producto3_url}}" rel="sponsored noopener noreferrer" target="_blank">Ver en Amazon →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="faqs">
+            <h2>Preguntas Frecuentes</h2>
+            <dl>
+                {{faqs_html}}
+            </dl>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2026 SINTOMARIO.ORG</p>
+        <nav>
+            <a href="/sobre">Sobre</a>
+            <a href="/faq">FAQ</a>
+            <a href="/metodologia">Metodología</a>
+            <a href="/afiliados">Afiliados</a>
+        </nav>
+        <p class="disclaimer">Este contenido no reemplaza la evaluación profesional. Consulta siempre con un especialista.</p>
+    </footer>
+    
+    <div class="barra-flotante">
+        <div class="barra-izquierda">
+            <span>SINTOMARIO.ORG</span>
+            <span class="disclaimer">No reemplaza atención médica</span>
+        </div>
+        <div class="barra-derecha">
+            <a href="{{producto1_url}}" class="boton-afiliado" rel="sponsored noopener noreferrer" target="_blank">
+                Ver recurso recomendado
+            </a>
+        </div>
+    </div>
+    
+    <!-- Selector de Perspectivas con JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const radios = document.querySelectorAll('input[name="perspectiva"]');
+            const perspectivas = document.querySelectorAll('.perspectiva');
+            
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    perspectivas.forEach(p => p.style.display = 'none');
+                    const selected = document.getElementById(this.value);
+                    if (selected) {
+                        selected.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Mostrar la perspectiva inicial
+            const checked = document.querySelector('input[name="perspectiva"]:checked');
+            if (checked) {
+                const initial = document.getElementById(checked.value);
+                if (initial) {
+                    initial.style.display = 'block';
+                }
+            }
+        });
+    </script>
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {{schema_json}}
+    </script>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SABIA — Motor Narrativo Determinista</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;font-size:13px;background:#f8faf9;color:#1a1a1a;padding:20px;line-height:1.6}
+h1{font-size:22px;font-weight:600;color:#0a3d2a;margin-bottom:4px}
+.sub{font-size:12px;color:#666;margin-bottom:20px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+.tab{cursor:pointer;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:500;border:1px solid #d0d0d0;background:none;color:#666;transition:all .15s}
+.tab.on{background:#0a3d2a;color:#e1f5ee;border-color:#0a3d2a}
+.pn{display:none;flex-direction:column;gap:12px}
+.pn.on{display:flex}
+.card{background:#fff;border:1px solid #e0e8e4;border-radius:12px;padding:16px}
+.blk{background:#f5f9f7;border-radius:8px;padding:12px;margin-bottom:8px}
+.code{font-family:'Courier New',monospace;font-size:11px;line-height:1.8;color:#1a1a1a;background:#f5f9f7;border-radius:8px;padding:14px;white-space:pre-wrap;word-break:break-word;border-left:3px solid #1d7a48}
+.pill{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin:2px;white-space:nowrap}
+.ptg{background:#e1f5ee;color:#085041}
+.ptb{background:#e6f1fb;color:#0c447c}
+.ptw{background:#faeeda;color:#412402}
+.ptp{background:#eeedfe;color:#26215c}
+.ptc{background:#faece7;color:#712b13}
+.ptgr{background:#f5f5f5;color:#666;border:1px solid #ddd}
+
+/* DEMO */
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.ctrl-label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;font-weight:600}
+.sb{cursor:pointer;padding:5px 9px;border-radius:6px;font-size:11px;border:1px solid #d0d0d0;background:none;color:#666;transition:all .15s;margin:2px}
+.sb.on{background:#e1f5ee;border-color:#1d9e75;color:#085041;font-weight:600}
+.reading{font-size:14px;line-height:2;color:#1a1a1a;font-family:Georgia,serif;padding:22px 24px;border-radius:10px;border-left:3px solid #1d9e75;background:#f8fdf9;min-height:260px}
+.reading p{margin-bottom:14px}
+.reading p:last-child{margin-bottom:0}
+.meta{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center;padding-top:10px;border-top:1px solid #e0e8e4}
+.meta span{font-size:10px;color:#999;font-family:monospace;padding:2px 8px;background:#f5f5f5;border-radius:4px}
+
+/* FORMULA */
+.move-box{border-radius:8px;padding:12px;margin-bottom:8px;border-left:3px solid}
+.m1{background:#f0fdf5;border-color:#1d9e75}
+.m2{background:#f0f4ff;border-color:#7f77dd}
+.m3{background:#fff8f0;border-color:#ef9f27}
+.m4{background:#fff0f0;border-color:#d85a30}
+.m5{background:#f0fff8;border-color:#059669}
+.m6{background:#faf0ff;border-color:#9b5ac8}
+.move-title{font-size:12px;font-weight:600;color:#1a1a1a;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.move-words{font-size:10px;color:#888;font-weight:400}
+.move-body{font-size:11px;color:#444;line-height:1.7}
+
+/* VARIABLES TABLE */
+table.vtbl{width:100%;border-collapse:collapse;font-size:11px}
+table.vtbl th{padding:6px 8px;background:#0a3d2a;color:#e1f5ee;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+table.vtbl td{padding:6px 8px;border-bottom:1px solid #e8f0ec;vertical-align:top;line-height:1.5;color:#444}
+table.vtbl tr:nth-child(even) td{background:#f8fdf9}
+
+/* VERDICT */
+.verdict{background:#e1f5ee;border-radius:10px;padding:14px;border-left:3px solid #1d9e75}
+.vt{font-size:10px;font-weight:600;color:#085041;margin-bottom:5px;text-transform:uppercase;letter-spacing:.07em}
+.vb{font-size:12px;color:#0f6e56;line-height:1.7}
+</style>
+</head>
+<body>
+
+<h1>SABIA · Motor Narrativo Determinista</h1>
+<div class="sub">Fórmula gramatical de 300 palabras · 47 variables semánticas · 6 movimientos narrativos · anti-mecanicismo</div>
+
+<div class="tabs">
+  <button class="tab on" onclick="go('formula')">Fórmula gramatical</button>
+  <button class="tab" onclick="go('variables')">47 variables</button>
+  <button class="tab" onclick="go('demo')">Generador en vivo</button>
+  <button class="tab" onclick="go('antimecan')">Anti-mecanicismo</button>
+</div>
+
+<!-- ── FÓRMULA ───────────────────────────────────────────────── -->
+<div id="pn-formula" class="pn on">
+<div class="card">
+<p style="font-weight:600;font-size:14px;margin-bottom:14px;color:#0a3d2a">Los 6 movimientos narrativos — estructura que el lector nunca ve</p>
+
+<div class="move-box m1">
+  <div class="move-title">M1 · Apertura sensorial <span class="move-words">~40 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> el usuario se reconoce en los primeros 8 segundos.<br>
+    <strong>6 patrones rotativos</strong> — nunca la misma primera frase:<br>
+    A · Sensación directa ("Hay algo en esa zona...")<br>
+    B · Imagen de la zona ("La espalda baja carga...")<br>
+    C · La situación como espejo ("Cuando todo depende de ti...")<br>
+    D · Pregunta retórica ("¿Cuánto tiempo llevas...?")<br>
+    E · Paradoja corporal ("El cuerpo siempre llega antes.")<br>
+    F · Imagen de la naturaleza ("Como la tierra en sequía...")<br>
+    <em>Variables: [METAFORA_ZONA] [TEXTURA_SINTOMA] [TIEMPO_FRASE]</em>
+  </div>
+</div>
+
+<div class="move-box m2">
+  <div class="move-title">M2 · Nombramiento emocional <span class="move-words">~55 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> dar nombre a lo que el usuario sentía sin poder decirlo.<br>
+    <strong>Técnica clave:</strong> la frase de la emoción raíz va SOLA, sin subordinadas. Su brevedad le da peso.<br>
+    El dato técnico (herida, conflicto) aparece como descripción experiencial, nunca como etiqueta.<br>
+    "rechazo" → "la convicción de que no tenías derecho al espacio que ocupabas."<br>
+    <em>Variables: [EMOCION_RAIZ] [HERIDA_EXPERIENCIAL] [CREENCIA_NUCLEAR]</em>
+  </div>
+</div>
+
+<div class="move-box m3">
+  <div class="move-title">M3 · Origen — puente epistémico <span class="move-words">~65 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> explicar el origen desde 2 perspectivas sin sonido académico.<br>
+    <strong>Estructura:</strong> [BIODESC_CONFLICTO] + [CONECTOR rotante] + [TCM_IMAGEN]<br>
+    8 conectores rotativos: "En otra tradición," / "Algo similar describe" / "Desde el oriente," / "Hay quienes ven en esto" / "Al mismo tiempo," / "Curiosamente," / "Una mirada distinta añade" / "En paralelo,"<br>
+    <strong>Regla de oro:</strong> ninguna palabra clínica visible. El meridiano aparece como imagen, no como nombre.<br>
+    <em>Variables: [BIODESC_CONFLICTO] [CONECTOR_VAR] [TCM_IMAGEN] [EMOCION_TCM]</em>
+  </div>
+</div>
+
+<div class="move-box m4">
+  <div class="move-title">M4 · Espejo — el patrón <span class="move-words">~45 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> mostrar que el patrón es más viejo que el usuario. No es raro — es aprendido.<br>
+    <strong>3 versiones según V8_patron:</strong><br>
+    Individual: "Lo aprendiste en un momento donde tenía sentido."<br>
+    Familiar: "Hay patrones que se heredan como el color de los ojos."<br>
+    Ancestral: "Algunas cargas llegaron antes de que tú nacieras."<br>
+    <strong>Cierre:</strong> pregunta retórica que el usuario ya sabe responder.<br>
+    <em>Variables: [PATRON_ORIGEN_VAR] [PATRON_FRASE] [PREGUNTA_ESPEJO]</em>
+  </div>
+</div>
+
+<div class="move-box m5">
+  <div class="move-title">M5 · Microterapia encarnada <span class="move-words">~50 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> acción concreta que activa el cuerpo, no la mente.<br>
+    <strong>Estructura fija:</strong> instrucción física + respiración + afirmación + observación.<br>
+    <strong>Reglas:</strong> nunca "intenta" / nunca "puedes" / nunca "te sugerimos".<br>
+    Siempre imperativo suave. Máximo 12 palabras por instrucción. Punto. Siguiente.<br>
+    Siempre termina: "Solo observa lo que aparece."<br>
+    <em>Variables: [ZONA_TOUCH] [ACCION_CONCRETA] [AFIRMACION_CORTA] [OBSERVACION_VAR]</em>
+  </div>
+</div>
+
+<div class="move-box m6">
+  <div class="move-title">M6 · Semilla de cierre <span class="move-words">~45 palabras</span></div>
+  <div class="move-body">
+    <strong>Objetivo:</strong> imagen que sigue trabajando después de cerrar la pantalla.<br>
+    La referencia del autor nunca se cita textualmente — se parafrasea e integra en la voz narrativa.<br>
+    <strong>La última frase SIEMPRE termina en apertura, nunca en conclusión.</strong><br>
+    5 imágenes de cierre rotantes por zona.<br>
+    <em>Variables: [IMAGEN_CIERRE_VAR] [AUTOR_PARAFRASEADO] [PREGUNTA_APERTURA]</em>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="vt">La fórmula completa</div>
+  <div class="vb">LECTURA = M1 (40w) + M2 (55w) + M3 (65w) + M4 (45w) + M5 (50w) + M6 (45w) = <strong>300 palabras ±15</strong><br>
+  Si el texto se pasa: comprimir M4 (el patrón puede decirse en menos). Si falta: expandir M3 (el origen admite más matiz).</div>
+</div>
+</div>
+</div>
+
+<!-- ── VARIABLES ──────────────────────────────────────────────── -->
+<div id="pn-variables" class="pn">
+<div class="card">
+<p style="font-weight:600;font-size:14px;margin-bottom:12px;color:#0a3d2a">47 variables semánticas — organizadas por función narrativa</p>
+<table class="vtbl">
+<thead><tr><th>#</th><th>Variable</th><th>Tipo</th><th>Valores</th><th>Movimiento</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><span class="ptp">APERTURA_PATRON</span></td><td>enum 6</td><td>A·sensación · B·imagen · C·situación · D·pregunta · E·paradoja · F·naturaleza</td><td>M1</td></tr>
+<tr><td>2</td><td><span class="ptg">METAFORA_ZONA</span></td><td>array por zona</td><td>Espalda:"raíz que no encuentra tierra" · Garganta:"compuerta" · Rodilla:"bisagra"…</td><td>M1</td></tr>
+<tr><td>3</td><td><span class="ptg">TEXTURA_SINTOMA</span></td><td>lookup conflicto</td><td>Peso:"algo que no termina de irse" · Nudo:"algo atorado" · Ardor:"fuego sin salida"…</td><td>M1</td></tr>
+<tr><td>4</td><td><span class="ptg">TIEMPO_FRASE</span></td><td>lookup fase</td><td>Aguda:"de repente" · Crónica:"desde hace tanto" · Reparación:"ahora más que antes"</td><td>M1</td></tr>
+<tr><td>5</td><td><span class="ptg">ZONA_POETICO</span></td><td>lookup zona</td><td>"el lugar de la palabra" / "articulación del avance" / "cámara del afecto"…</td><td>M1,M5</td></tr>
+<tr><td>6</td><td><span class="ptg">IMAGEN_NATURALEZA</span></td><td>lookup elemento</td><td>Agua:"río bajo roca" · Madera:"árbol en suelo helado" · Fuego:"llama sin aire"…</td><td>M1 patrón F</td></tr>
+<tr><td>7</td><td><span class="ptw">EMOCION_RAIZ</span></td><td>lookup zona+ctx</td><td>"el miedo a no ser suficiente" / "la verdad que no encontró salida"…</td><td>M2</td></tr>
+<tr><td>8</td><td><span class="ptw">HERIDA_EXPERIENCIAL</span></td><td>lookup herida</td><td>Descripción experiencial sin usar el nombre técnico de la herida</td><td>M2</td></tr>
+<tr><td>9</td><td><span class="ptw">CREENCIA_NUCLEAR</span></td><td>lookup herida</td><td>"no tienes derecho al espacio" / "siempre tendrás que arreglártelas solo"…</td><td>M2</td></tr>
+<tr><td>10</td><td><span class="ptw">PATRON_NOMBRE</span></td><td>lookup herida</td><td>Descripción del patrón como experiencia vivida, sin etiqueta psicológica</td><td>M2</td></tr>
+<tr><td>11</td><td><span class="ptc">BIODESC_CONFLICTO</span></td><td>lookup conflicto</td><td>Imagen poética del conflicto biológico sin jerga técnica de Hamer</td><td>M3</td></tr>
+<tr><td>12</td><td><span class="ptc">TCM_IMAGEN</span></td><td>lookup elemento</td><td>Agua:"fluido que sostiene huesos y miedo" · Madera:"impulso del árbol"…</td><td>M3</td></tr>
+<tr><td>13</td><td><span class="ptc">MERIDIANO_IMAGEN</span></td><td>lookup zona</td><td>Riñón:"energía de los ancestros" · Hígado:"flujo de la decisión"…</td><td>M3</td></tr>
+<tr><td>14</td><td><span class="ptc">CONECTOR_VAR</span></td><td>enum 8 rotante</td><td>"En otra tradición," / "Algo similar describe" / "Desde el oriente," / "Hay quienes ven" / "Al mismo tiempo," / "Curiosamente," / "Una mirada distinta añade" / "En paralelo,"</td><td>M3</td></tr>
+<tr><td>15</td><td><span class="ptc">EMOCION_TCM</span></td><td>lookup elemento</td><td>Agua:"el miedo y la voluntad" · Madera:"la ira y la decisión" · Fuego:"la alegría" · Tierra:"la rumia" · Metal:"el duelo"</td><td>M3</td></tr>
+<tr><td>16–20</td><td><span class="ptb">PATRON_ORIGEN_VAR</span></td><td>enum 3 × 5 var.</td><td>Individual × 5 redacciones / Familiar × 5 / Ancestral × 5 = 15 frases únicas</td><td>M4</td></tr>
+<tr><td>21</td><td><span class="ptb">PREGUNTA_ESPEJO</span></td><td>lookup conflicto</td><td>Pregunta retórica específica para el conflicto activo</td><td>M4</td></tr>
+<tr><td>22</td><td><span class="ptg">ZONA_TOUCH</span></td><td>lookup zona</td><td>"ambas manos en la zona lumbar" / "palma en el centro del esternón"…</td><td>M5</td></tr>
+<tr><td>23</td><td><span class="ptg">ACCION_CONCRETA</span></td><td>lookup conflicto</td><td>Acción física verificable en &lt;12 palabras</td><td>M5</td></tr>
+<tr><td>24</td><td><span class="ptg">AFIRMACION_CORTA</span></td><td>lookup herida</td><td>Frase en 1ª persona ≤10 palabras: "Tengo derecho a ocupar este espacio."</td><td>M5</td></tr>
+<tr><td>25</td><td><span class="ptg">OBSERVACION_VAR</span></td><td>enum 4</td><td>"Solo observa" / "Sin nombrarlo todavía" / "Con la calma que observarías la lluvia" / "Sin esperar nada específico"</td><td>M5</td></tr>
+<tr><td>26–30</td><td><span class="ptgr">IMAGEN_CIERRE_VAR</span></td><td>array 5 por zona</td><td>5 imágenes poéticas rotantes específicas por zona corporal</td><td>M6</td></tr>
+<tr><td>31</td><td><span class="ptgr">AUTOR_PARAFRASEADO</span></td><td>lookup herida</td><td>Idea del autor reescrita en voz narrativa, nunca citada textualmente</td><td>M6</td></tr>
+<tr><td>32</td><td><span class="ptgr">PREGUNTA_APERTURA</span></td><td>lookup zona+ctx</td><td>Última frase: siempre en apertura, nunca en conclusión</td><td>M6</td></tr>
+<tr><td>33–39</td><td><span class="ptgr">TONALIDAD_VAR</span></td><td>enum 7</td><td>Cálido · Directo · Poético · Clínico-suave · Ancestral · Contemplativo · Urgente</td><td>Global</td></tr>
+<tr><td>40</td><td><span class="ptw">GENERO_GRAMATICAL</span></td><td>enum 3</td><td>F / M / Neutro — adapta adjetivos y participios</td><td>Global</td></tr>
+<tr><td>41</td><td><span class="ptw">INTENSIDAD_VAR</span></td><td>enum 3</td><td>Alta (aguda) · Media (crónica) · Suave (reparación)</td><td>M1, M5</td></tr>
+<tr><td>42</td><td><span class="ptg">MICRO_DURACION</span></td><td>lookup soporte</td><td>"ahora mismo" / "esta noche" / "en los próximos días"</td><td>M5</td></tr>
+<tr><td>43</td><td><span class="ptgr">REF_LIBRO_NATURAL</span></td><td>lookup herida</td><td>Título integrado en el texto narrativo, no como cita bibliográfica</td><td>M6</td></tr>
+<tr><td>44–46</td><td><span class="ptgr">LONGITUD_M_VAR</span></td><td>int ±10</td><td>Tolerancia de ±10 palabras por movimiento según zona y conflicto</td><td>Validación</td></tr>
+<tr><td>47</td><td><span class="ptgr">CONTADOR_PALABRAS</span></td><td>int 280–320</td><td>Si falta: expandir M3. Si sobra: comprimir M4. Siempre en rango.</td><td>Validación</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ── DEMO EN VIVO ───────────────────────────────────────────── -->
+<div id="pn-demo" class="pn">
+<div class="card">
+<p style="font-weight:600;font-size:14px;margin-bottom:12px;color:#0a3d2a">Generador en vivo — motor determinista, sin IA</p>
+
+<div class="controls">
+  <div>
+    <div class="ctrl-label">Zona corporal</div>
+    <div id="g-zona">
+      <button class="sb on" onclick="sv('zona','espalda',this,'g-zona')">Espalda</button>
+      <button class="sb" onclick="sv('zona','garganta',this,'g-zona')">Garganta</button>
+      <button class="sb" onclick="sv('zona','rodilla',this,'g-zona')">Rodilla</button>
+      <button class="sb" onclick="sv('zona','pecho',this,'g-zona')">Pecho</button>
+      <button class="sb" onclick="sv('zona','cabeza',this,'g-zona')">Cabeza</button>
+      <button class="sb" onclick="sv('zona','estomago',this,'g-zona')">Estómago</button>
+    </div>
+  </div>
+  <div>
+    <div class="ctrl-label">Contexto</div>
+    <div id="g-ctx">
+      <button class="sb on" onclick="sv('ctx','carga',this,'g-ctx')">Carga</button>
+      <button class="sb" onclick="sv('ctx','soledad',this,'g-ctx')">Soledad</button>
+      <button class="sb" onclick="sv('ctx','conflicto',this,'g-ctx')">Conflicto</button>
+      <button class="sb" onclick="sv('ctx','cambio',this,'g-ctx')">Cambio</button>
+      <button class="sb" onclick="sv('ctx','bloqueo',this,'g-ctx')">Bloqueo</button>
+    </div>
+  </div>
+  <div>
+    <div class="ctrl-label">Patrón de apertura</div>
+    <div id="g-ap">
+      <button class="sb on" onclick="sv('ap','A',this,'g-ap')">A · sensación</button>
+      <button class="sb" onclick="sv('ap','B',this,'g-ap')">B · imagen zona</button>
+      <button class="sb" onclick="sv('ap','C',this,'g-ap')">C · situación</button>
+      <button class="sb" onclick="sv('ap','D',this,'g-ap')">D · pregunta</button>
+      <button class="sb" onclick="sv('ap','E',this,'g-ap')">E · paradoja</button>
+      <button class="sb" onclick="sv('ap','F',this,'g-ap')">F · naturaleza</button>
+    </div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+  <div>
+    <div class="ctrl-label">Herida primaria</div>
+    <div id="g-herida">
+      <button class="sb on" onclick="sv('herida','rechazo',this,'g-herida')">Rechazo</button>
+      <button class="sb" onclick="sv('herida','abandono',this,'g-herida')">Abandono</button>
+      <button class="sb" onclick="sv('herida','injusticia',this,'g-herida')">Injusticia</button>
+      <button class="sb" onclick="sv('herida','traicion',this,'g-herida')">Traición</button>
+      <button class="sb" onclick="sv('herida','humillacion',this,'g-herida')">Humillación</button>
+    </div>
+  </div>
+  <div>
+    <div class="ctrl-label">Patrón de origen</div>
+    <div id="g-patron">
+      <button class="sb on" onclick="sv('patron','individual',this,'g-patron')">Individual</button>
+      <button class="sb" onclick="sv('patron','familiar',this,'g-patron')">Familiar</button>
+      <button class="sb" onclick="sv('patron','ancestral',this,'g-patron')">Ancestral</button>
+    </div>
+  </div>
+</div>
+
+<div id="reading-out" class="reading"></div>
+
+<div class="meta">
+  <span id="wc-badge">— palabras</span>
+  <span id="combo-badge">—</span>
+  <span style="color:#999;font-size:10px">generado sin IA · motor determinista · &lt;5ms</span>
+</div>
+</div>
+</div>
+
+<!-- ── ANTI-MECANICISMO ──────────────────────────────────────── -->
+<div id="pn-antimecan" class="pn">
+<div class="card">
+<p style="font-weight:600;font-size:14px;margin-bottom:12px;color:#0a3d2a">Las 8 técnicas que hacen el texto sonar humano</p>
+
+<div class="blk"><strong>1 · Rotación de apertura</strong><br><span style="color:#444;font-size:11px">6 patrones de apertura (A–F) con variantes internas. Ningún lector que lea dos lecturas percibe la misma estructura. La primera frase nunca empieza igual.</span></div>
+<div class="blk"><strong>2 · Frase sola para el nombramiento</strong><br><span style="color:#444;font-size:11px">La emoción raíz va sola, sin subordinadas. "La convicción de que no tenías derecho." Su brevedad tipográfica le da peso sin declararlo.</span></div>
+<div class="blk"><strong>3 · Data técnica encarnada</strong><br><span style="color:#444;font-size:11px">El "Meridiano del Riñón" no aparece. Aparece "la energía que sostiene los huesos y el miedo profundo". La información técnica existe — pero como imagen, no como etiqueta.</span></div>
+<div class="blk"><strong>4 · 8 conectores rotativos en M3</strong><br><span style="color:#444;font-size:11px">"En otra tradición" / "Curiosamente" / "Al mismo tiempo" / "Hay quienes ven en esto"... El puente entre las dos perspectivas nunca suena igual.</span></div>
+<div class="blk"><strong>5 · Microterapia en imperativo suave</strong><br><span style="color:#444;font-size:11px">Sin "intenta", sin "puedes", sin "te sugerimos". "Pon la mano. Respira. Di en voz alta." Punto. Cada instrucción en 12 palabras máximo. La brevedad de la instrucción le da autoridad sin arrogancia.</span></div>
+<div class="blk"><strong>6 · Pregunta retórica que el usuario ya sabe responder</strong><br><span style="color:#444;font-size:11px">En M4 y M6 hay preguntas cuya respuesta el usuario ya conoce. Eso activa confirmación interna sin afirmar nada desde afuera. La pregunta hace el trabajo que la afirmación no puede hacer.</span></div>
+<div class="blk"><strong>7 · Imagen de cierre que persiste</strong><br><span style="color:#444;font-size:11px">El cierre no resume — planta una imagen. "Las raíces más profundas son las que no se ven." Esa imagen trabaja después de cerrar la pantalla. Es la que el usuario recuerda y comparte.</span></div>
+<div class="blk"><strong>8 · Género gramatical adaptable</strong><br><span style="color:#444;font-size:11px">Los adjetivos y participios se adaptan: "agotado/a", "solo/a", "cargado/a" — o neutro cuando es ambiguo. Pequeño cambio, impacto de resonancia significativo.</span></div>
+
+<div class="verdict">
+  <div class="vt">El test definitivo</div>
+  <div class="vb">Si puedes eliminar la variable técnica (zona, contexto, herida) y el texto sigue funcionando como prosa independiente — el motor está bien calibrado. Si el texto se desmorona sin las etiquetas — es mecanicismo. Cada lectura debe poder vivir sola como texto.</div>
+</div>
+</div>
+</div>
+
+<script>
+// ── DATOS DEL MOTOR ───────────────────────────────────────────
+const METAFORAS = {
+  espalda:  ['raíz que no encuentra tierra','columna que ha cargado en silencio','eje que sostiene lo que no pide permiso'],
+  garganta: ['compuerta entre lo sentido y lo dicho','el umbral donde vive la voz sin nacer','paso estrecho de la verdad'],
+  rodilla:  ['bisagra del avance','el punto donde el cuerpo decide si continúa','articulación que no sabe si doblarse'],
+  pecho:    ['cámara donde el afecto espera','el espacio que se aprieta cuando el amor no puede fluir','lugar donde la emoción aprende a guardarse'],
+  cabeza:   ['el lugar donde el pensamiento se come a sí mismo','centro de mando que no descansa','espacio que gira sin encontrar tierra'],
+  estomago: ['donde se digiere lo que no tiene nombre','el plexo que registra antes de que la mente comprenda','lugar que siente antes de que pienses'],
+};
+const TEXTURA = {
+  desvalorizacion:'peso que no termina de irse',supervivencia:'urgencia que no descansa',
+  separacion:'vacío donde debería haber algo',identidad:'presión de adentro hacia afuera',
+  expresion:'nudo que busca deshacerse',rendimiento:'tensión de no llegar nunca'
+};
+const TIEMPO_FASE = {aguda:'de repente',cronica:'desde hace tanto',reparacion:'ahora más que antes'};
+const CTX_FRASE = {
+  carga:'todo parece depender de ti',soledad:'no encuentras a nadie que sostenga',
+  conflicto:'algo entre tú y otro no termina de resolverse',
+  cambio:'el suelo bajo tus pies se mueve',bloqueo:'no encuentras hacia dónde ir'
+};
+const IMG_NATURALEZA = {
+  agua:'el río que busca cauce bajo la roca',madera:'el árbol que empuja aunque el suelo esté helado',
+  fuego:'la llama que no encuentra ventilación',tierra:'la tierra que rumia la semilla sin saber si ya es tiempo',
+  metal:'el mineral que se afina solo con presión'
+};
+const ZONA_TCM = {
+  espalda:'agua',garganta:'metal',rodilla:'agua',
+  pecho:'fuego',cabeza:'madera',estomago:'tierra'
+};
+const EMOCION_RAIZ = {
+  'espalda-carga':'el miedo a no ser suficiente','espalda-soledad':'la ausencia de soporte real',
+  'espalda-conflicto':'la tensión de cargar lo ajeno','espalda-cambio':'el miedo a que el suelo ceda',
+  'garganta-conflicto':'la verdad que no encontró salida','garganta-carga':'las palabras que se tragaron',
+  'garganta-soledad':'el grito que nunca salió','garganta-cambio':'lo que no sabes cómo pedir',
+  'rodilla-cambio':'la resistencia a doblar ante la vida','rodilla-conflicto':'la negativa a ceder',
+  'rodilla-carga':'el paso que no llega a darse','rodilla-soledad':'el camino sin compañía',
+  'pecho-soledad':'el amor que no puede fluir','pecho-carga':'el afecto que sostiene sin recibir',
+  'pecho-conflicto':'el corazón en medio del fuego','pecho-cambio':'el duelo anticipado',
+  'cabeza-carga':'el pensamiento que no descansa','cabeza-conflicto':'la mente que no puede soltar',
+  'cabeza-cambio':'el control ante la incertidumbre','cabeza-soledad':'la mente que se habla a sí misma',
+  'estomago-bloqueo':'la ansiedad que no digiere','estomago-carga':'lo que no puede procesarse',
+  'estomago-conflicto':'la situación que revuelve por dentro','estomago-cambio':'el malestar ante lo nuevo',
+};
+const HERIDA_EXP = {
+  rechazo:'el rastro de haberte sentido fuera de lugar',
+  abandono:'el aprendizaje de que el apoyo no siempre llega',
+  injusticia:'la acumulación de lo que no fue justo',
+  traicion:'el recuerdo de cuando la confianza costó demasiado',
+  humillacion:'la sombra de haberte sentido demasiado o demasiado poco'
+};
+const CREENCIA = {
+  rechazo:'no tenías derecho al espacio',abandono:'siempre tendrás que arreglártelas solo',
+  injusticia:'el control es la única protección',traicion:'confiar es arriesgarse a perder',
+  humillacion:'vales lo que produces'
+};
+const BIODESC = {
+  desvalorizacion:'la respuesta del cuerpo a sentirse insuficiente durante demasiado tiempo',
+  supervivencia:'el modo alerta sostenido cuando el sistema creyó que el peligro era permanente',
+  separacion:'el registro físico de algo o alguien que ya no está',
+  identidad:'la señal de que algo en ti no sabe cómo reconocerse',
+  expresion:'la acumulación de todo lo que no encontró salida por la voz',
+  rendimiento:'el agotamiento de demostrar continuamente lo que no debería necesitar demostración'
+};
+const CONFLICTO_POR_ZONA_CTX = {
+  'espalda-carga':'desvalorizacion','espalda-soledad':'separacion','espalda-conflicto':'supervivencia',
+  'garganta-conflicto':'expresion','garganta-carga':'expresion','garganta-soledad':'separacion',
+  'rodilla-cambio':'identidad','rodilla-conflicto':'supervivencia',
+  'pecho-soledad':'separacion','pecho-carga':'desvalorizacion',
+  'cabeza-carga':'rendimiento','cabeza-conflicto':'supervivencia',
+  'estomago-bloqueo':'supervivencia','estomago-carga':'desvalorizacion'
+};
+const TCM_IMAGEN = {
+  agua:'el fluido que sostiene los huesos y el miedo profundo',
+  madera:'el impulso del árbol que crece aunque el suelo esté duro',
+  fuego:'la alegría que busca expandirse y encuentra muros',
+  tierra:'la rumia constante que no puede digerir el presente',
+  metal:'el duelo que todavía no encontró forma de despedirse'
+};
+const EMOCION_TCM = {
+  agua:'el miedo y la voluntad',madera:'la ira y la decisión',
+  fuego:'la alegría y la conexión',tierra:'la preocupación y el cuidado',metal:'el duelo y el límite'
+};
+const CONECTORES = ['En otra tradición,','Algo similar describe','Desde el oriente,',
+  'Hay quienes ven en esto','Al mismo tiempo,','Curiosamente,','Una mirada distinta añade','En paralelo,'];
+const PATRON_FRASES = {
+  individual:[
+    'Lo aprendiste en un momento donde tenía sentido. Un momento que ya pasó, aunque el cuerpo no lo sabe todavía.',
+    'No lo elegiste. Nadie elige sus respuestas más tempranas.',
+    'Fue la mejor estrategia disponible entonces. El problema es que siguió funcionando aunque ya no hiciera falta.',
+    'Hubo un tiempo donde esa respuesta te protegió. Reconocerlo no significa quedarte en ella.',
+    'Aprendiste a sobrevivir de la única manera que sabías. Ahora puedes aprender de otra.'
+  ],
+  familiar:[
+    'Hay patrones que se heredan como se hereda el color de los ojos: sin elegirlos, sin saberlo.',
+    'Algunas de las cosas que cargas no comenzaron contigo.',
+    'Lo que sientes puede tener una historia más larga que tu propia historia.',
+    'Las familias transmiten más que los apellidos. Transmiten las formas de sentir el mundo.',
+    'No es tuyo. Pero lo llevas. Y eso cambia lo que puedes hacer con ello.'
+  ],
+  ancestral:[
+    'Algunas cargas llegaron antes de que tú nacieras. No son tuyas, aunque las llevas.',
+    'El cuerpo puede portar lo que el árbol familiar no pudo resolver.',
+    'Hay memorias que van más allá de la memoria personal.',
+    'Generaciones enteras pueden haber sostenido esto antes de que llegara a ti.',
+    'No empezaste tú. Pero puedes ser el lugar donde termina.'
+  ]
+};
+const PREGUNTA_ESPEJO = {
+  desvalorizacion:'¿Cuándo fue la primera vez que sentiste que tenías que ganarte tu lugar?',
+  supervivencia:'¿Qué pasaría si bajaras la guardia una sola vez?',
+  separacion:'¿Qué es lo que más extrañas de lo que ya no está?',
+  identidad:'¿Qué parte de ti quedó afuera de la historia que cuentas sobre ti mismo?',
+  expresion:'¿Qué es lo que más necesitas decir y todavía no encontraste el momento?',
+  rendimiento:'¿Qué necesitarías hacer para sentir que ya es suficiente?'
+};
+const ZONA_TOUCH = {
+  espalda:'Pon ambas manos en la zona lumbar',garganta:'Lleva una mano a la garganta, sin presionar',
+  rodilla:'Pon una mano sobre cada rodilla',pecho:'Pon la palma en el centro del pecho',
+  cabeza:'Pon los dedos en las sienes, suavemente',estomago:'Pon la mano sobre el plexo solar'
+};
+const AFIRMACION = {
+  rechazo:'Tengo derecho a ocupar este espacio.',abandono:'Puedo recibir. No tengo que hacerlo todo solo.',
+  injusticia:'Puedo soltar el control. No todo depende de mí.',traicion:'Es seguro confiar. No todos van a fallar.',
+  humillacion:'Mi valor no depende de lo que produzco.'
+};
+const OBSERVACION_VAR = [
+  'Solo observa lo que aparece.','Sin nombrarlo todavía.',
+  'Con la misma calma que observarías la lluvia.','Sin esperar nada específico.'
+];
+const IMAGEN_CIERRE = {
+  espalda:['Las raíces más profundas son las que no se ven.','La tierra que ha cargado tanto puede aprender a recibir.','Lo que sostiene tanto también merece ser sostenido.'],
+  garganta:['La palabra que todavía no salió ya existe. Solo espera su momento.','La compuerta no necesita abrirse de golpe.','La voz no tiene que ser perfecta para ser verdadera.'],
+  rodilla:['La bisagra no tiene que estar rígida para ser fuerte.','Doblarse no es rendirse. A veces es el único camino que sigue abierto.','El avance no siempre es recto.'],
+  pecho:['El corazón no necesita cerrarse para protegerse.','Hay espacio para el afecto y para el límite. No son opuestos.','Lo que palpita siempre busca la manera.'],
+  cabeza:['La mente que descansa no pierde. Gana perspectiva.','No todo tiene que resolverse esta noche.','Hay preguntas que solo se responden soltando la pregunta.'],
+  estomago:['Lo que no se digiere no desaparece. Solo busca otro lugar.','El cuerpo sabe antes que la mente.','Hay cosas que el estómago entendió mucho antes que las palabras.']
+};
+const AUTOR_PARAF = {
+  rechazo:'Bourbeau describió cómo la herida de rechazo nos enseña a hacernos pequeños antes de que otros lo hagan. No es la única opción disponible.',
+  abandono:'El apego, como lo entendió Bowlby, no es debilidad. Es la necesidad más humana que existe. Y también puede aprenderse.',
+  injusticia:'Hayes propuso que la fusión con el pensamiento —creer que lo que pienso es lo que es— es el origen de mucho sufrimiento innecesario.',
+  traicion:'Las partes internas que Schwartz describe no son enemigas. Son protectoras que aprendieron mal el trabajo. Se pueden re-entrenar.',
+  humillacion:'Lowen estudió cómo la vergüenza se porta en la postura mucho antes de que la mente la nombre. El cuerpo habla siempre primero.'
+};
+const PREGUNTA_FINAL = {
+  'espalda-carga':'¿Qué pasaría si hoy, solo hoy, algo de eso no dependiera de ti?',
+  'espalda-soledad':'¿Quién en tu vida podría sostenerte si se lo pidieras?',
+  'espalda-conflicto':'¿Qué necesitarías que cambiara para que la espalda pudiera soltar?',
+  'garganta-conflicto':'¿Qué es lo que más necesitas decir y todavía no encontraste el momento?',
+  'rodilla-cambio':'¿Hacia qué avance estás resistiéndote que, en el fondo, ya sabes que es correcto?',
+  'pecho-soledad':'¿Quién podría acompañarte en esto, si se lo permitieras?',
+  'cabeza-carga':'¿Qué necesitaría pasar para que la mente descansara, aunque fuera un momento?',
+  'estomago-bloqueo':'¿Qué es lo que el cuerpo sabe y la mente todavía no se atreve a admitir?',
+};
+
+// ── ESTADO ──────────────────────────────────────────────────────
+const S = {zona:'espalda',ctx:'carga',ap:'A',herida:'rechazo',patron:'individual'};
+let conectorIdx = 0;
+let patronIdx = {individual:0,familiar:0,ancestral:0};
+let observIdx = 0;
+let cierreIdx = {espalda:0,garganta:0,rodilla:0,pecho:0,cabeza:0,estomago:0};
+
+// ── MOTOR ────────────────────────────────────────────────────────
+function generate() {
+  const z = S.zona, ctx = S.ctx, h = S.herida, p = S.patron, ap = S.ap;
+  const key = `${z}-${ctx}`;
+  const elemento = ZONA_TCM[z] || 'agua';
+  const conflicto = CONFLICTO_POR_ZONA_CTX[key] || 'desvalorizacion';
+
+  const meta = METAFORAS[z] || ['esta zona del cuerpo'];
+  const metafora = meta[0];
+  const textura = TEXTURA[conflicto] || 'algo difícil de nombrar';
+  const tiempo = TIEMPO_FASE.cronica;
+  const ctxFrase = CTX_FRASE[ctx] || ctx;
+  const imgNat = IMG_NATURALEZA[elemento] || 'la naturaleza cuando busca equilibrio';
+  const emocionRaiz = EMOCION_RAIZ[key] || 'lo que lleva tiempo sin encontrar palabras';
+  const herExperiencial = HERIDA_EXP[h] || 'algo que viene de lejos';
+  const creencia = CREENCIA[h] || 'algo no está del todo bien';
+  const biodesc = BIODESC[conflicto] || 'la respuesta del sistema a algo no procesado';
+  const conector = CONECTORES[conectorIdx % CONECTORES.length];
+  const tcmImg = TCM_IMAGEN[elemento] || '';
+  const emoTCM = EMOCION_TCM[elemento] || 'la emoción correspondiente';
+  const pFrases = PATRON_FRASES[p] || PATRON_FRASES.individual;
+  const patronFrase = pFrases[patronIdx[p] % pFrases.length];
+  const pregEspejo = PREGUNTA_ESPEJO[conflicto] || '¿Qué es lo que el cuerpo sabe que la mente todavía no quiere ver?';
+  const zonaTouch = ZONA_TOUCH[z] || 'Pon la mano sobre la zona';
+  const afirm = AFIRMACION[h] || 'Estoy aquí. Puedo escuchar.';
+  const observ = OBSERVACION_VAR[observIdx % OBSERVACION_VAR.length];
+  const cImgs = IMAGEN_CIERRE[z] || ['La respuesta siempre estuvo más cerca de lo que parecía.'];
+  const cImg = cImgs[cierreIdx[z] % cImgs.length];
+  const autorParaf = AUTOR_PARAF[h] || 'Quienes han estudiado esto por décadas coinciden: el cuerpo nunca miente.';
+  const pregFinal = PREGUNTA_FINAL[key] || '¿Qué necesita este cuerpo que todavía no le has dado?';
+
+  // ── Los 6 movimientos ─────────────────────────────────────────
+  const aperturas = {
+    A: `Hay algo en ${metafora} que lleva ${tiempo} hablando. No siempre en voz alta. A veces solo como ${textura} — como una presencia que se instala justo cuando ${ctxFrase}.`,
+    B: `${meta[Math.min(1,meta.length-1)]}. Así es como podría describirse lo que sientes si el cuerpo pudiera usar metáforas. Y quizás lo está haciendo, exactamente así, ${tiempo}.`,
+    C: `Cuando ${ctxFrase}, el cuerpo suele elegir un lugar donde instalarse. ${metafora} es ese lugar hoy. No es accidental.`,
+    D: `¿Cuánto tiempo llevas cargando eso sin que nadie te lo pregunte? ${metafora} tiene una respuesta. La lleva ${tiempo}, aunque todavía no encontró palabras.`,
+    E: `El cuerpo siempre llega antes. Antes de que la mente decida, antes de que las palabras aparezcan, ${metafora} ya había registrado ${ctxFrase}. ${tiempo}, sin falta.`,
+    F: `Como ${imgNat}, ${metafora} lleva ${tiempo} sosteniendo algo que todavía no ha encontrado cómo soltarse. No porque no pueda. Porque aún no sabe que puede.`
+  };
+  const M1 = aperturas[ap] || aperturas.A;
+  const M2 = `Lo que hay debajo se llama ${emocionRaiz}. No es un defecto. Es ${herExperiencial} — la convicción de que ${creencia}. Una frase aprendida en un momento donde tenía sentido protegerte.`;
+  const M3 = `Desde la perspectiva del cuerpo que aprende a sobrevivir, este síntoma es ${biodesc}. ${conector} ${tcmImg} carga con ${emoTCM} — y cuando esa energía no circula, busca un lugar donde instalarse. Eligió ${metafora}.`;
+  const M4 = `${patronFrase} ${pregEspejo}`;
+  const M5 = `${zonaTouch}. Respira hacia ese lugar, cuatro tiempos. Di en voz alta: "${afirm}" ${observ}`;
+  const M6 = `${cImg} ${autorParaf} ${pregFinal}`;
+
+  const parrafos = [M1,M2,M3,M4,M5,M6];
+  const total = parrafos.join(' ').split(/\s+/).length;
+
+  // render
+  const out = document.getElementById('reading-out');
+  out.innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('wc-badge').textContent = `${total} palabras`;
+  document.getElementById('combo-badge').textContent = `${key} · ${h} · ${p} · apertura ${ap}`;
+}
+
+function sv(key, val, btn, groupId) {
+  document.getElementById(groupId).querySelectorAll('.sb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  S[key] = val;
+  // avanzar índices de rotación
+  conectorIdx++;
+  const z = S.zona;
+  if(key==='patron') patronIdx[val] = (patronIdx[val]||0)+1;
+  if(key==='zona') { cierreIdx[val]=(cierreIdx[val]||0)+1; }
+  observIdx++;
+  generate();
+}
+
+function go(id){
+  document.querySelectorAll('.pn').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('pn-'+id).classList.add('on');
+  event.target.classList.add('on');
+}
+
+generate();
+</script>
+</body>
+</html>
