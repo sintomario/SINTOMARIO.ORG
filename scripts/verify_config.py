@@ -83,7 +83,13 @@ class ConfigVerifier:
                 with open(products_file, 'r', encoding='utf-8') as f:
                     products_data = json.load(f)
                 
-                self.results['amazon']['products_count'] = len(products_data.get('productos', []))
+                # Handle both flat list and nested object formats
+                if isinstance(products_data, list):
+                    self.results['amazon']['products_count'] = len(products_data)
+                elif isinstance(products_data, dict) and 'productos' in products_data:
+                    self.results['amazon']['products_count'] = len(products_data.get('productos', []))
+                else:
+                    self.results['amazon']['products_count'] = 0
                 self.results['amazon']['products_file_exists'] = True
             except:
                 self.results['amazon']['products_count'] = 0
@@ -114,8 +120,19 @@ class ConfigVerifier:
         headers_file = Path('public/_headers')
         self.results['cloudflare']['headers_exist'] = headers_file.exists()
         
-        # Simular verificación de DNS (requiere API call real)
-        self.results['cloudflare']['dns_configured'] = True  # Placeholder
+        # Verificar DNS real mediante nslookup/dig si está disponible
+        try:
+            dns_check = subprocess.run(
+                ['nslookup', 'sintomario.org'],
+                capture_output=True, text=True, timeout=10
+            )
+            # Check if any of the GitHub Pages IPs are in the response
+            github_ips = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153']
+            dns_configured = any(ip in dns_check.stdout for ip in github_ips)
+            self.results['cloudflare']['dns_configured'] = dns_configured
+        except:
+            # If nslookup fails, mark as unknown - needs manual verification
+            self.results['cloudflare']['dns_configured'] = False
         
         print(f"   🌐 CNAME: {'✅' if self.results['cloudflare']['cname_configured'] else '❌'}")
         print(f"   📋 Headers: {'✅' if self.results['cloudflare']['headers_exist'] else '❌'}")
@@ -132,14 +149,21 @@ class ConfigVerifier:
                 with open(products_file, 'r', encoding='utf-8') as f:
                     products_data = json.load(f)
                 
+                # Handle both flat list and nested object formats
+                if isinstance(products_data, list):
+                    products = products_data
+                elif isinstance(products_data, dict) and 'productos' in products_data:
+                    products = products_data.get('productos', [])
+                else:
+                    products = []
+                
                 # Verificar que los productos tengan tag sintomario-20
-                products = products_data.get('productos', [])
                 correct_tag_count = 0
                 for product in products:
-                    if 'sintomario-20' in product.get('url_afiliado', ''):
+                    if isinstance(product, dict) and 'sintomario-20' in product.get('url_afiliado', ''):
                         correct_tag_count += 1
                 
-                self.results['wise']['affiliate_tag_correct'] = correct_tag_count == len(products)
+                self.results['wise']['affiliate_tag_correct'] = correct_tag_count == len(products) if products else False
                 self.results['wise']['products_with_tag'] = correct_tag_count
             except:
                 self.results['wise']['affiliate_tag_correct'] = False

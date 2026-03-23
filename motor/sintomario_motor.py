@@ -523,6 +523,7 @@ class SintomarioMotor:
             "canonical_url": metadata["canonical_url"],
             "meta_robots": metadata["meta_robots"],
             "schema_json": schema_json,
+            "og_image": f"https://sintomario.org/images/og/{entidad['nombre'].lower().replace(' ', '-')}-{contexto['nombre'].lower().replace(' ', '-')}.jpg",
             "color_acento": self._get_color_sistema(entidad.get("sistema", "")),
             "color_acento_dark": self._get_color_sistema_dark(entidad.get("sistema", ""))
         }

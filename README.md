@@ -1,14 +1,18 @@
 # SINTOMARIO.ORG 🏥
 
-> **Plataforma integral de información médica holística con tecnología 5D exclusiva**
+> **Plataforma de información médica holística - Generador estático de contenido**
 >
-> Capacidad para generar **10,000+ artículos de 2000+ palabras** con sistema de índices semánticos AMS-Risomático
+> Sistema experimental de indexación semántica con capacidad de generación masiva
 >
-> **Estado: 95% completado - Listo para producción** 🚀
+> **Estado: ~60% - Prototipo avanzado en desarrollo activo** ⚠️
 
---- **Hosting**: GitHub Pages
-- **DNS**: Cloudflare
-- **Dominio**: sintomario.org
+---
+
+**Advertencia**: Este proyecto está en desarrollo activo. El sistema de build funciona parcialmente pero requiere trabajo adicional antes de considerarse production-ready.
+
+**Hosting**: GitHub Pages  
+**DNS**: Cloudflare (pendiente configuración manual)  
+**Dominio**: sintomario.org
 
 ## Estructura del Proyecto
 - `corpus/` - JSON de entidades, contextos y productos
