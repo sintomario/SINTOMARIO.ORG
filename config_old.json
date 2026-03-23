@@ -3,8 +3,8 @@
     "name": "SINTOMARIO.ORG",
     "version": "5.0",
     "description": "Plataforma de información médica holística - Generador estático",
-    "status": "production",
-    "domain": "https://sintomario.org",
+    "status": "development",
+    "domain": "sintomario.org",
     "url": "https://sintomario.org",
     "email": "sintomario@proton.me",
     "github": "@sintomario"
@@ -46,18 +46,17 @@
   },
   "taxonomia": {
     "formato_indice": "SINTO-XXXXX",
-    "territorio_actual": "cuerpo",
     "dimensiones": {
       "territorio": ["cuerpo", "mente", "espiritu", "social", "ambiental"],
       "sistema": ["organicos", "energeticos", "emocionales", "cognitivos", "relacionales"]
-    }
+    },
+    "capas": [
+      "Reconocimiento corporal",
+      "Contextualización emocional",
+      "Interpretación simbólica",
+      "Integración consciente"
+    ]
   },
-  "capas": [
-    "Reconocimiento corporal",
-    "Contextualización emocional",
-    "Interpretación simbólica",
-    "Integración consciente"
-  ],
   "features": {
     "search_enabled": false,
     "dark_mode": false,

@@ -4,11 +4,11 @@
 >
 > Sistema 5D de indexación semántica con capacidad de generación masiva
 >
-> **Estado: 95% completado - Pipeline CI/CD implementado** ✅
+> **Estado: En desarrollo activo - Pipeline CI/CD implementado** 🔄
 
 ---
 
-**Nota**: El proyecto está técnicamente completo y listo para producción. Solo requiere configuración DNS manual para activarse.
+**Nota**: El proyecto tiene un pipeline de CI/CD implementado pero requiere correcciones críticas antes de estar listo para producción.
 
 **Hosting**: GitHub Pages  
 **DNS**: Cloudflare (pendiente configuración manual)  
