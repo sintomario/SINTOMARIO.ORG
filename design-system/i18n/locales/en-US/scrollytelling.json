@@ -1,0 +1,98 @@
+{
+  "title": "Somatic Journey",
+  "subtitle": "Discover the connection between mind and body",
+  "description": "An immersive body exploration experience through conscious scrolling",
+  "start_journey": "Start Journey",
+  "continue_journey": "Continue Journey",
+  "resume_journey": "Resume Journey",
+  "journey_progress": "Journey Progress",
+  "zones": {
+    "head": {
+      "title": "Head - Consciousness & Thoughts",
+      "description": "The center of conscious thought and sensory perception",
+      "exploration": "Explore your mental landscape",
+      "symptoms": ["Headache", "Migraine", "Tension", "Mental fatigue"],
+      "practices": ["Meditation", "Mindfulness", "Conscious breathing", "Visualization"]
+    },
+    "chest": {
+      "title": "Chest - Heart & Emotions",
+      "description": "The emotional center and vital engine of the body",
+      "exploration": "Connect with your emotional world",
+      "symptoms": ["Anxiety", "Palpitations", "Chest tightness", "Chest pain"],
+      "practices": ["Heart coherence", "Diaphragmatic breathing", "Gratitude", "Self-compassion"]
+    },
+    "solar_plexus": {
+      "title": "Abdomen - Power & Energy",
+      "description": "The center of personal power and vital energy",
+      "exploration": "Awaken your inner strength",
+      "symptoms": ["Indigestion", "Stress", "Nervousness", "Lack of energy"],
+      "practices": ["Abdominal breathing", "Power exercises", "Self-confidence", "Grounding"]
+    },
+    "root": {
+      "title": "Pelvis - Foundation & Roots",
+      "description": "The foundation of your structure and connection to earth",
+      "exploration": "Ground your roots and foundations",
+      "symptoms": ["Lower back pain", "Stiffness", "Instability", "Disconnection"],
+      "practices": ["Grounding", "Pelvic stretches", "Earth connection", "Stability"]
+    }
+  },
+  "navigation": {
+    "previous_zone": "Previous Zone",
+    "next_zone": "Next Zone",
+    "skip_to_zone": "Skip to Zone",
+    "zone_progress": "Zone Progress",
+    "journey_complete": "Journey Complete",
+    "restart_journey": "Restart Journey"
+  },
+  "breathing": {
+    "title": "Conscious Breathing",
+    "instruction": "Sync your breathing with the journey",
+    "inhale": "Inhale",
+    "hold": "Hold",
+    "exhale": "Exhale",
+    "pause": "Pause",
+    "rhythm": "Natural Rhythm"
+  },
+  "progress": {
+    "scroll_depth": "Scroll Depth",
+    "time_spent": "Time in Zone",
+    "completion_rate": "Completion Rate",
+    "insights_gained": "Insights Gained",
+    "practices_completed": "Practices Completed"
+  },
+  "insights": {
+    "title": "Somatic Insights",
+    "body_awareness": "Body Awareness",
+    "emotional_connection": "Emotional Connection",
+    "energy_flow": "Energy Flow",
+    "mind_body_sync": "Mind-Body Sync",
+    "grounding_level": "Grounding Level",
+    "stress_release": "Stress Release"
+  },
+  "practices": {
+    "title": "Therapeutic Practices",
+    "guided_meditation": "Guided Meditation",
+    "breathing_exercise": "Breathing Exercise",
+    "body_scan": "Body Scan",
+    "movement_therapy": "Movement Therapy",
+    "journaling": "Therapeutic Writing",
+    "creative_expression": "Creative Expression"
+  },
+  "completion": {
+    "title": "Congratulations! Journey Complete",
+    "message": "You have completed your somatic journey exploring the four main zones",
+    "achievements": "Achievements Unlocked",
+    "next_steps": "Next Steps",
+    "continue_exploring": "Continue Exploring",
+    "share_experience": "Share Experience",
+    "save_progress": "Save Progress"
+  },
+  "accessibility": {
+    "skip_navigation": "Skip Navigation",
+    "keyboard_controls": "Keyboard Controls",
+    "reduced_motion": "Reduced Motion",
+    "screen_reader_support": "Screen Reader Support",
+    "high_contrast": "High Contrast",
+    "text_size": "Text Size"
+  }
+}

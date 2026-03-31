@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montaje Secuencial - Atlas Somático Editorial</title>
+    <meta name="description" content="Demostración del orden secuenciado de montaje del Atlas Somático">
+    
+    <!-- Design System CSS - CARGA SECUENCIAL -->
+    <link rel="stylesheet" href="../assets-atlas/css/main.css">
+    <link rel="stylesheet" href="../assets-atlas/css/layout-fixed.css">
+    <link rel="stylesheet" href="../assets-atlas/css/content-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/typography-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/marketing-elements.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Demo-specific styles */
+        .demo-section {
+            margin-bottom: 100px;
+            padding: 40px 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .demo-title {
+            font-family: 'Inter Display', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .phase-indicator {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            font-family: 'Inter Display', sans-serif;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 0.875rem;
+        }
+        
+        .interactive-demo {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        
+        .code-preview {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        .status-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        
+        .status-check::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- FASE #1: ESTRUCTURA INAMOVIBLE -->
+    <div class="demo-section">
+        <div class="phase-indicator">FASE #1 - ESTRUCTURA INAMOVIBLE</div>
+        <h1 class="demo-title">Base Fundamental del Atlas Somático</h1>
+        <p class="demo-description">
+            Implementación de los elementos críticos e inamovibles que forman la base del sistema.
+            El disclaimer médico tiene prioridad absoluta y nunca puede ser movido o tapado.
+        </p>
+        
+        <div class="interactive-demo">
+            <h3 class="atlas-h3">Elementos Implementados:</h3>
+            <div class="status-check">Disclaimer Médico (z-index: 9999, bottom: 10px)</div>
+            <div class="status-check">Barra Superior Flotante (z-index: 1000, top: 0)</div>
+            <div class="status-check">Logo a la derecha (siempre visible)</div>
+            <div class="status-check">Slogan centrado</div>
+            <div class="status-check">Lighthouse indicator izquierda</div>
+            <div class="status-check">Search bar izquierda (siempre visible)</div>
+            <div class="status-check">Background capa subanterior (z-index: 998)</div>
+        </div>
+        
+        <div class="code-preview">
+&lt;!-- Disclaimer Médico - PRIORIDAD ABSOLUTA --&gt;
+&lt;div class="medical-disclaimer"&gt;DISCLAIMER MÉDICO&lt;/div&gt;
+
+&lt;!-- Barra Superior Flotante --&gt;
+&lt;div class="atlas-top-bar"&gt;
+  &lt;div class="atlas-search-left"&gt;...&lt;/div&gt;
+  &lt;div class="atlas-slogan"&gt;...&lt;/div&gt;
+  &lt;div class="atlas-logo-right"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Background Capa Subanterior --&gt;
+&lt;div class="atlas-background-layer"&gt;&lt;/div&gt;
+        </div>
+    </div>
+
+    <!-- FASE #2: SISTEMA DE CONTENIDO -->
+    <div class="demo-section">
+        <div class="phase-indicator">FASE #2 - SISTEMA DE CONTENIDO</div>
+        <h2 class="demo-title">Jerarquía Visual y Organización</h2>
+        <p class="demo-description">
+            Sistema de padding, scroll suave, interacciones y tabulaciones terapéuticas
+            para organizar el contenido de manera orgánica y comprensible.
+        </p>
+        
+        <div class="interactive-demo">
+            <h3 class="atlas-h3">Padding y Espaciado Respiratorio</h3>
+            <div class="content-breathing-space">
+                <p class="atlas-description">
+                    El espaciado respiratorio permite que el contenido "respire" 
+                    creando una experiencia visual calmada y terapéutica.
+                </p>
+            </div>
+            
+            <h3 class="atlas-h3">Sistema de Scroll Suave Orgánico</h3>
+            <div class="atlas-scroll-container" style="height: 200px; overflow-y: auto; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px;">
+                <p>Contenido con scroll suave orgánico...</p>
+                <p>Scroll suave para navegación terapéutica...</p>
+                <p>Experiencia fluida y natural...</p>
+                <p>Scrollbar personalizado con colores terapéuticos...</p>
+                <p>Animaciones suaves al hacer scroll...</p>
+                <p>Contenido adicional para demostrar scroll...</p>
+                <p>Final del contenido de demostración...</p>
+            </div>
+            
+            <h3 class="atlas-h3">Sistema de Tabulaciones Terapéuticas</h3>
+            <div class="therapeutic-tabs">
+                <button class="tab-button active">Zona Corporal</button>
+                <button class="tab-button">Contexto Somático</button>
+                <button class="tab-button">Perspectiva Terapéutica</button>
+                <button class="tab-button">Técnicas de Sanación</button>
+            </div>
+            <div class="tab-content active">
+                <p class="atlas-description">Contenido de la zona corporal seleccionada...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE #3: TIPOGRAFÍA Y FORMATOS -->
+    <div class="demo-section">
+        <div class="phase-indicator">FASE #3 - TIPOGRAFÍA Y FORMATOS</div>
+        <h2 class="demo-title">Lenguaje Visual Compasivo</h2>
+        <p class="demo-description">
+            Sistema tipográfico completo con escala fluida, negritas, itálicos 
+            y estilos especializados para contenido terapéutico.
+        </p>
+        
+        <div class="interactive-demo">
+            <h1 class="atlas-h1">Título Principal (H1)</h1>
+            <h2 class="atlas-h2">Subtítulo Principal (H2)</h2>
+            <h3 class="atlas-h3">Sección (H3)</h3>
+            <h4 class="atlas-h4">Subsección (H4)</h4>
+            <h5 class="atlas-h5">Título Menor (H5)</h5>
+            <h6 class="atlas-h6">Título Secundario (H6)</h6>
+            
+            <p class="atlas-description">
+                Texto descriptivo con <span class="atlas-strong">negritas terapéuticas</span>,
+                <span class="atlas-emphasis">itálicos de énfasis</span>, y
+                <span class="atlas-strong-emphasis">combinación de ambos</span>.
+            </p>
+            
+            <blockquote class="therapeutic-quote">
+                "La conexión mente-cuerpo es el fundamento de la sanación somática."
+            </blockquote>
+            
+            <div class="medical-term">Término Médico</div>
+            <div class="somatic-feeling">Sensación Somática</div>
+            <div class="therapeutic-action">Acción Terapéutica</div>
+        </div>
+    </div>
+
+    <!-- FASE #4: ELEMENTOS DE MARKETING -->
+    <div class="demo-section">
+        <div class="phase-indicator">FASE #4 - ELEMENTOS DE MARKETING</div>
+        <h2 class="demo-title">Conversión y Conexión Terapéutica</h2>
+        <p class="demo-description">
+            Elementos de marketing diseñados con sensibilidad terapéutica 
+            para facilitar la conexión y conversión sin presiones.
+        </p>
+        
+        <div class="content-grid-3">
+            <div class="affiliate-card">
+                <div class="affiliate-badge">POPULAR</div>
+                <h3 class="affiliate-title">Programa Básico</h3>
+                <p class="affiliate-description">
+                    Acceso fundamental al Atlas Somático con 10 zonas principales.
+                </p>
+                <div class="affiliate-price">
+                    <span class="price-original">$99</span>
+                    <span class="price-current">$49</span>
+                    <span class="price-period">/mes</span>
+                </div>
+                <ul class="affiliate-features">
+                    <li><span class="feature-icon">✓</span>10 zonas corporales</li>
+                    <li><span class="feature-icon">✓</span>Guías básicas</li>
+                    <li><span class="feature-icon">✓</span>Comunidad básica</li>
+                </ul>
+                <button class="cta-therapeutic">Comenzar Ahora</button>
+            </div>
+            
+            <div class="affiliate-card">
+                <h3 class="affiliate-title">Programa Premium</h3>
+                <p class="affiliate-description">
+                    Acceso completo a las 50 zonas con perspectivas avanzadas.
+                </p>
+                <div class="affiliate-price">
+                    <span class="price-current">$99</span>
+                    <span class="price-period">/mes</span>
+                </div>
+                <ul class="affiliate-features">
+                    <li><span class="feature-icon">✓</span>50 zonas corporales</li>
+                    <li><span class="feature-icon">✓</span>4 perspectivas terapéuticas</li>
+                    <li><span class="feature-icon">✓</span>Sesiones personalizadas</li>
+                    <li><span class="feature-icon">✓</span>Soporte prioritario</li>
+                </ul>
+                <button class="cta-premium">Acceso Premium</button>
+            </div>
+            
+            <div class="connection-form">
+                <div class="form-header">
+                    <h3 class="form-title">Conecta con el Atlas</h3>
+                    <p class="form-subtitle">Recibe guía personalizada para tu viaje somático</p>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Interés Principal</label>
+                        <textarea class="form-textarea" placeholder="Cuéntanos sobre tu interés en el Atlas Somático..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-secondary">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="program-banner">
+            <h3 class="program-title">Maestría en Atlas Somático</h3>
+            <p class="program-subtitle">
+                Transforma tu práctica con el sistema completo de cartografía corporal
+            </p>
+            <div class="program-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>12 semanas</span>
+                </div>
+                <div class="meta-item">
+                    <span>👥</span>
+                    <span>Grupo reducido</span>
+                </div>
+                <div class="meta-item">
+                    <span>🏆</span>
+                    <span>Certificación</span>
+                </div>
+            </div>
+            <button class="cta-premium">Reservar Plaza</button>
+        </div>
+        
+        <div class="social-proof">
+            <div class="social-proof-header">
+                <h3 class="social-proof-title">Experiencias Reales</h3>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "El Atlas Somático transformó completamente mi comprensión 
+                        de la conexión mente-cuerpo en mi práctica clínica."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <div class="author-name">María Castillo</div>
+                            <div class="author-role">Terapeuta Física</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Finalmente tengo un sistema claro para guiar a mis pacientes 
+                        a través de su viaje de autoconocimiento corporal."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <div class="author-name">Juan Rodríguez</div>
+                            <div class="author-role">Psicólogo Clínico</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "La precisión y claridad del Atlas me ha permitido 
+                        identificar patrones que antes pasaban desapercibidos."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AG</div>
+                        <div class="author-info">
+                            <div class="author-name">Ana García</div>
+                            <div class="author-role">Médico Integrativo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trust-stats">
+            <div class="stat-item">
+                <div class="stat-number">2,500+</div>
+                <div class="stat-label">Artículos Expertos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50</div>
+                <div class="stat-label">Zonas Corporales</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Perspectivas Terapéuticas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfacción</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPLEMENTACIÓN DE ESTRUCTURA FIJA -->
+    <!-- Background Capa Subanterior -->
+    <div class="atlas-background-layer"></div>
+    
+    <!-- Barra Superior Flotante -->
+    <header class="atlas-top-bar">
+        <!-- Lighthouse Indicator Izquierda -->
+        <div class="atlas-lighthouse">
+            <div class="lighthouse-indicator"></div>
+            <span class="lighthouse-score">98</span>
+        </div>
+        
+        <!-- Search Bar Izquierda -->
+        <div class="atlas-search-left">
+            <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input-left" placeholder="Buscar en Atlas...">
+        </div>
+        
+        <!-- Slogan Centrado -->
+        <div class="atlas-slogan">
+            Cartografía Corporal para Sanación Integral
+        </div>
+        
+        <!-- Logo Derecha -->
+        <a href="#" class="atlas-logo-right">
+            <div class="logo-icon">AS</div>
+            <span class="logo-text">Atlas Somático</span>
+        </a>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="main-content-wrapper">
+        <!-- El contenido de las fases va aquí -->
+    </div>
+
+    <!-- MEDICAL DISCLAIMER - INAMOVIBLE -->
+    <div class="medical-disclaimer" role="alert">
+        DISCLAIMER MÉDICO
+    </div>
+
+    <script>
+        // Interactive demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Montaje Secuencial Atlas Somático - Sistema Activo');
+            
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.textContent;
+                    
+                    // Remove active class from all tabs and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const contentIndex = Array.from(tabButtons).indexOf(this);
+                    if (tabContents[contentIndex]) {
+                        tabContents[contentIndex].classList.add('active');
+                    }
+                });
+            });
+            
+            // Form interactions
+            const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+            
+            // CTA button interactions
+            const ctaButtons = document.querySelectorAll('.cta-therapeutic, .cta-secondary, .cta-premium');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('CTA clicked:', this.textContent);
+                    
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input-left');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    console.log('Searching for:', this.value);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

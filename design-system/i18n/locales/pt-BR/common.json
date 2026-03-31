@@ -1,0 +1,53 @@
+{
+  "navigation": {
+    "home": "Início",
+    "explore": "Explorar",
+    "search": "Buscar",
+    "profile": "Perfil",
+    "settings": "Configurações"
+  },
+  "scrollytelling": {
+    "title": "Jornada Somática",
+    "subtitle": "Descubra a conexão entre mente e corpo",
+    "start_journey": "Iniciar Jornada",
+    "continue_journey": "Continuar Jornada",
+    "zone_head": "Cabeça - Consciência e Pensamentos",
+    "zone_chest": "Peito - Coração e Emoções",
+    "zone_abdomen": "Abdômen - Poder e Energia",
+    "zone_pelvis": "Pelve - Fundação e Raízes"
+  },
+  "body_maps": {
+    "title": "Atlas Corporal",
+    "subtitle": "Explore sua paisagem somática",
+    "select_zone": "Selecione uma zona",
+    "view_details": "Ver Detalhes",
+    "symptoms": "Sintomas",
+    "treatments": "Tratamentos",
+    "exercises": "Exercícios"
+  },
+  "search": {
+    "placeholder": "Buscar sintomas, tratamentos ou zonas...",
+    "no_results": "Nenhum resultado encontrado",
+    "suggestions": "Sugestões",
+    "recent_searches": "Buscas Recentes"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "high_contrast": "Alto Contraste",
+    "therapeutic": "Terapêutico"
+  },
+  "progress": {
+    "title": "Seu Progresso",
+    "level": "Nível",
+    "experience": "Experiência",
+    "achievements": "Conquistas",
+    "streak": "Sequência de Dias",
+    "next_level": "Próximo Nível"
+  },
+  "medical": {
+    "disclaimer": "Este conteúdo é apenas para fins educacionais e não deve substituir o conselho médico profissional.",
+    "consult_professional": "Sempre consulte um profissional de saúde qualificado para preocupações médicas.",
+    "emergency": "Em caso de emergência, contate seus serviços de emergência locais imediatamente."
+  }
+}

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Somático - Gestor de Configuración</title>
+    
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    <link rel="stylesheet" href="/assets-atlas/css/pcp-persuasion.css">
+    <style>
+        /* Config Manager Specific Styles */
+        .config-manager-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 80px 1fr;
+            height: 100vh;
+            background: var(--color-neutral-50);
+        }
+        
+        .config-header {
+            grid-column: 1 / -1;
+            grid-row: 1;
+            background: var(--dashboard-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+        }
+        
+        .config-header h1 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .header-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .header-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .config-sidebar {
+            grid-column: 1;
+            grid-row: 2;
+            background: white;
+            border-right: 1px solid var(--color-neutral-300);
+            overflow-y: auto;
+        }
+        
+        .config-nav {
+            padding: var(--space-lg);
+        }
+        
+        .config-nav h2 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .nav-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .nav-section h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-neutral-700);
+            margin-bottom: var(--space-md);
+        }
+        
+        .nav-item {
+            display: block;
+            padding: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-xs);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--color-neutral-700);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            background: var(--color-neutral-100);
+            color: var(--dashboard-primary);
+        }
+        
+        .nav-item.active {
+            background: var(--dashboard-primary);
+            color: white;
+        }
+        
+        .config-content {
+            grid-column: 2;
+            grid-row: 2;
+            padding: var(--space-xl);
+            overflow-y: auto;
+        }
+        
+        .config-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .config-section h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-lg);
+            border-bottom: 2px solid var(--dashboard-accent);
+            padding-bottom: var(--space-sm);
+        }
+        
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .config-item {
+            background: var(--color-neutral-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-neutral-200);
+        }
+        
+        .config-item h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .config-item label {
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-neutral-700);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .config-item input,
+        .config-item select,
+        .config-item textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            transition: border-color 0.2s ease;
+        }
+        
+        .config-item input:focus,
+        .config-item select:focus,
+        .config-item textarea:focus {
+            outline: none;
+            border-color: var(--dashboard-accent);
+        }
+        
+        .config-item textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .config-actions {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+        
+        .config-btn {
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .config-btn.primary {
+            background: var(--dashboard-accent);
+            color: white;
+        }
+        
+        .config-btn.primary:hover {
+            background: var(--dashboard-primary);
+        }
+        
+        .config-btn.secondary {
+            background: var(--color-neutral-200);
+            color: var(--color-neutral-700);
+        }
+        
+        .config-btn.secondary:hover {
+            background: var(--color-neutral-300);
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+        
+        .status-indicator.active {
+            background: var(--color-green-vitality-100);
+            color: var(--color-green-vitality-700);
+        }
+        
+        .status-indicator.warning {
+            background: var(--color-golden-illumination-100);
+            color: var(--color-golden-illumination-700);
+        }
+        
+        .status-indicator.error {
+            background: var(--color-red-error-100);
+            color: var(--color-red-error-700);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        
+        .config-preview {
+            background: var(--color-neutral-50);
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .config-preview h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .preview-content {
+            background: white;
+            border: 1px solid var(--color-neutral-200);
+            border-radius: var(--radius-sm);
+            padding: var(--space-md);
+            font-family: monospace;
+            font-size: var(--font-size-xs);
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--color-neutral-300);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .tab {
+            padding: var(--space-md) var(--space-lg);
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-neutral-700);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab:hover {
+            color: var(--dashboard-primary);
+        }
+        
+        .tab.active {
+            color: var(--dashboard-primary);
+            border-bottom-color: var(--dashboard-primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--dashboard-primary);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.success {
+            background: var(--color-green-vitality-500);
+        }
+        
+        .notification.error {
+            background: var(--color-red-error-500);
+        }
+        
+        .notification.warning {
+            background: var(--color-golden-illumination-500);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="config-manager-container">
+        <!-- Header -->
+        <header class="config-header">
+            <h1>Gestor de Configuración</h1>
+            <div class="header-actions">
+                <button class="header-btn" onclick="configManager.exportAll()">Exportar Todo</button>
+                <button class="header-btn" onclick="configManager.importConfig()">Importar</button>
+                <button class="header-btn" onclick="configManager.resetAll()">Restablecer</button>
+            </div>
+        </header>
+        
+        <!-- Sidebar -->
+        <aside class="config-sidebar">
+            <nav class="config-nav">
+                <h2>Configuración</h2>
+                
+                <div class="nav-section">
+                    <h3>Sistema</h3>
+                    <a class="nav-item active" data-section="general">General</a>
+                    <a class="nav-item" data-section="pcp">PCP Engine</a>
+                    <a class="nav-item" data-section="templates">Templates</a>
+                    <a class="nav-item" data-section="i18n">Internacionalización</a>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Diseño</h3>
+                    <a class="nav-item" data-section="colors">Colores</a>
+                    <a class="nav-item" data-section="typography">Tipografía</a>
+                    <a class="nav-item" data-section="spacing">Espaciado</a>
+                </div>
+                
+                <div class="nav-section">
+                    <h3>Avanzado</h3>
+                    <a class="nav-item" data-section="seo">SEO</a>
+                    <a class="nav-item" data-section="analytics">Analytics</a>
+                    <a class="nav-item" data-section="performance">Performance</a>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Content -->
+        <main class="config-content">
+            <!-- General Configuration -->
+            <section class="config-section" id="general-section">
+                <h2>Configuración General</h2>
+                
+                <div class="config-grid">
+                    <div class="config-item">
+                        <h3>Información del Sitio</h3>
+                        <label>Nombre del Sitio</label>
+                        <input type="text" id="site-name" value="Atlas Somático">
+                        
+                        <label>Descripción</label>
+                        <textarea id="site-description">Atlas Somático - Tu guía de bienestar corporal y conexión mente-cuerpo</textarea>
+                        
+                        <label>URL Base</label>
+                        <input type="url" id="site-url" value="https://sintomario.org">
+                    </div>
+                    
+                    <div class="config-item">
+                        <h3>Configuración del Sistema</h3>
+                        <label>Modo de Operación</label>
+                        <select id="operation-mode">
+                            <option value="development">Desarrollo</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Producción</option>
+                        </select>
+                        
+                        <label>Zona Horaria</label>
+                        <select id="timezone">
+                            <option value="America/Mexico_City">America/Mexico_City</option>
+                            <option value="America/New_York">America/New_York</option>
+                            <option value="Europe/Madrid">Europe/Madrid</option>
+                            <option value="Asia/Tokyo">Asia/Tokyo</option>
+                        </select>
+                        
+                        <label>Idioma Predeterminado</label>
+                        <select id="default-language">
+                            <option value="es-ES">Español (España)</option>
+                            <option value="en-US">English (US)</option>
+                            <option value="pt-BR">Português (Brasil)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="config-actions">
+                    <button class="config-btn primary" onclick="configManager.saveSection('general')">Guardar Cambios</button>
+                    <button class="config-btn secondary" onclick="configManager.resetSection('general')">Restablecer</button>
+                </div>
+            </section>
+            
+            <!-- PCP Configuration -->
+            <section class="config-section" id="pcp-section" style="display: none;">
+                <h2>Configuración PCP Engine</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" data-tab="perception">Percepción</button>
+                    <button class="tab" data-tab="context">Contexto</button>
+                    <button class="tab" data-tab="permission">Permiso</button>
+                </div>
+                
+                <div class="tab-content active" id="perception-tab">
+                    <div class="config-grid">
+                        <div class="config-item">
+                            <h3>Colores de Percepción</h3>
+                            <label>Color Primario</label>
+                            <input type="color" id="perception-primary" value="#10b981">
+                            
+                            <label>Color Secundario</label>
+                            <input type="color" id="perception-secondary" value="#059669">
+                            
+                            <label>Color de Acento</label>
+                            <input type="color" id="perception-accent" value="#34d399">
+                        </div>
+                        
+                        <div class="config-item">
+                            <h3>Mensajes de Percepción</h3>
+                            <label>Título Principal</label>
+                            <input type="text" id="perception-title" value="Tu cuerpo habla">
+                            
+                            <label>Subtítulo</label>
+                            <input type="text" id="perception-subtitle" value="¿estás escuchando?">
+                            
+                            <label>CTA Principal</label>
+                            <input type="text" id="perception-cta" value="Comienza a escucharte">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="context-tab">
+                    <div class="config-grid">
+                        <div class="config-item">
+                            <h3>Colores de Contexto</h3>
+                            <label>Color Primario</label>
+                            <input type="color" id="context-primary" value="#3b82f6">
+                            
+                            <label>Color Secundario</label>
+                            <input type="color" id="context-secondary" value="#1d4ed8">
+                            
+                            <label>Color de Acento</label>
+                            <input type="color" id="context-accent" value="#60a5fa">
+                        </div>
+                        
+                        <div class="config-item">
+                            <h3>Mensajes de Contexto</h3>
+                            <label>Título Principal</label>
+                            <input type="text" id="context-title" value="Comprendiendo tu experiencia">
+                            
+                            <label>Mensaje de Validación</label>
+                            <textarea id="context-validation">Lo que sientes es real y válido</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="permission-tab">
+                    <div class="config-grid">
+                        <div class="config-item">
+                            <h3>Colores de Permiso</h3>
+                            <label>Color Primario</label>
+                            <input type="color" id="permission-primary" value="#8b5cf6">
+                            
+                            <label>Color Secundario</label>
+                            <input type="color" id="permission-secondary" value="#7c3aed">
+                            
+                            <label>Color de Acento</label>
+                            <input type="color" id="permission-accent" value="#a78bfa">
+                        </div>
+                        
+                        <div class="config-item">
+                            <h3>Mensajes de Permiso</h3>
+                            <label>Título Principal</label>
+                            <input type="text" id="permission-title" value="Te mereces permiso para cuidarte">
+                            
+                            <label>Mensaje de Empoderamiento</label>
+                            <textarea id="permission-empowerment">Es válido que inviertas en tu bienestar</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="config-actions">
+                    <button class="config-btn primary" onclick="configManager.saveSection('pcp')">Guardar Cambios</button>
+                    <button class="config-btn secondary" onclick="configManager.resetSection('pcp')">Restablecer</button>
+                </div>
+            </section>
+            
+            <!-- Templates Configuration -->
+            <section class="config-section" id="templates-section" style="display: none;">
+                <h2>Configuración de Templates</h2>
+                
+                <div class="config-grid">
+                    <div class="config-item">
+                        <h3>Templates Activos</h3>
+                        <label>
+                            <input type="checkbox" id="template-perception" checked> Percepción
+                        </label>
+                        <label>
+                            <input type="checkbox" id="template-context" checked> Contexto
+                        </label>
+                        <label>
+                            <input type="checkbox" id="template-permission" checked> Permiso
+                        </label>
+                        <label>
+                            <input type="checkbox" id="template-base" checked> Base
+                        </label>
+                    </div>
+                    
+                    <div class="config-item">
+                        <h3>Configuración de Build</h3>
+                        <label>Nodos por Build</label>
+                        <input type="number" id="nodes-per-build" value="2500" min="100" max="10000">
+                        
+                        <label>Timeout de Build (segundos)</label>
+                        <input type="number" id="build-timeout" value="300" min="60" max="3600">
+                        
+                        <label>Cache de Build</label>
+                        <select id="build-cache">
+                            <option value="enabled">Habilitado</option>
+                            <option value="disabled">Deshabilitado</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="config-actions">
+                    <button class="config-btn primary" onclick="configManager.saveSection('templates')">Guardar Cambios</button>
+                    <button class="config-btn secondary" onclick="configManager.resetSection('templates')">Restablecer</button>
+                </div>
+            </section>
+            
+            <!-- I18n Configuration -->
+            <section class="config-section" id="i18n-section" style="display: none;">
+                <h2>Configuración de Internacionalización</h2>
+                
+                <div class="config-grid">
+                    <div class="config-item">
+                        <h3>Idiomas Activos</h3>
+                        <label>
+                            <input type="checkbox" id="lang-es" checked> Español (es-ES)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="lang-en-us" checked> English US (en-US)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="lang-en-gb" checked> English UK (en-GB)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="lang-pt-br" checked> Português BR (pt-BR)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="lang-pt-pt" checked> Português PT (pt-PT)
+                        </label>
+                    </div>
+                    
+                    <div class="config-item">
+                        <h3>Detección de Idioma</h3>
+                        <label>Método de Detección</label>
+                        <select id="detection-method">
+                            <option value="browser">Navegador</option>
+                            <option value="url">URL</option>
+                            <option value="cookie">Cookie</option>
+                            <option value="auto">Automático</option>
+                        </select>
+                        
+                        <label>Redirección Automática</label>
+                        <select id="auto-redirect">
+                            <option value="enabled">Habilitada</option>
+                            <option value="disabled">Deshabilitada</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="config-actions">
+                    <button class="config-btn primary" onclick="configManager.saveSection('i18n')">Guardar Cambios</button>
+                    <button class="config-btn secondary" onclick="configManager.resetSection('i18n')">Restablecer</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Config Manager Script -->
+    <script>
+        class ConfigManager {
+            constructor() {
+                this.config = {
+                    general: {},
+                    pcp: {},
+                    templates: {},
+                    i18n: {},
+                    colors: {},
+                    typography: {},
+                    spacing: {},
+                    seo: {},
+                    analytics: {},
+                    performance: {}
+                };
+                
+                this.currentSection = 'general';
+                this.initEventListeners();
+                this.loadConfiguration();
+            }
+            
+            initEventListeners() {
+                // Navigation
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const section = e.target.dataset.section;
+                        this.showSection(section);
+                    });
+                });
+                
+                // Tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const tabName = e.target.dataset.tab;
+                        this.showTab(tabName);
+                    });
+                });
+            }
+            
+            showSection(sectionName) {
+                // Hide all sections
+                document.querySelectorAll('.config-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Remove active class from nav items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Show selected section
+                const section = document.getElementById(`${sectionName}-section`);
+                if (section) {
+                    section.style.display = 'block';
+                }
+                
+                // Add active class to selected nav item
+                const navItem = document.querySelector(`[data-section="${sectionName}"]`);
+                if (navItem) {
+                    navItem.classList.add('active');
+                }
+                
+                this.currentSection = sectionName;
+            }
+            
+            showTab(tabName) {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Remove active class from tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                const tabContent = document.getElementById(`${tabName}-tab`);
+                if (tabContent) {
+                    tabContent.classList.add('active');
+                }
+                
+                // Add active class to selected tab
+                const tab = document.querySelector(`[data-tab="${tabName}"]`);
+                if (tab) {
+                    tab.classList.add('active');
+                }
+            }
+            
+            loadConfiguration() {
+                // Load from localStorage or API
+                const savedConfig = localStorage.getItem('sintomario-config');
+                if (savedConfig) {
+                    try {
+                        this.config = JSON.parse(savedConfig);
+                        this.populateForm();
+                    } catch (error) {
+                        console.error('Error loading configuration:', error);
+                    }
+                }
+            }
+            
+            populateForm() {
+                // Populate general section
+                if (this.config.general) {
+                    document.getElementById('site-name').value = this.config.general.siteName || 'Atlas Somático';
+                    document.getElementById('site-description').value = this.config.general.siteDescription || '';
+                    document.getElementById('site-url').value = this.config.general.siteUrl || 'https://sintomario.org';
+                    document.getElementById('operation-mode').value = this.config.general.operationMode || 'development';
+                    document.getElementById('timezone').value = this.config.general.timezone || 'America/Mexico_City';
+                    document.getElementById('default-language').value = this.config.general.defaultLanguage || 'es-ES';
+                }
+                
+                // Populate PCP section
+                if (this.config.pcp) {
+                    // Perception colors
+                    document.getElementById('perception-primary').value = this.config.pcp.perception?.primary || '#10b981';
+                    document.getElementById('perception-secondary').value = this.config.pcp.perception?.secondary || '#059669';
+                    document.getElementById('perception-accent').value = this.config.pcp.perception?.accent || '#34d399';
+                    
+                    // Context colors
+                    document.getElementById('context-primary').value = this.config.pcp.context?.primary || '#3b82f6';
+                    document.getElementById('context-secondary').value = this.config.pcp.context?.secondary || '#1d4ed8';
+                    document.getElementById('context-accent').value = this.config.pcp.context?.accent || '#60a5fa';
+                    
+                    // Permission colors
+                    document.getElementById('permission-primary').value = this.config.pcp.permission?.primary || '#8b5cf6';
+                    document.getElementById('permission-secondary').value = this.config.pcp.permission?.secondary || '#7c3aed';
+                    document.getElementById('permission-accent').value = this.config.pcp.permission?.accent || '#a78bfa';
+                }
+                
+                // Populate other sections...
+            }
+            
+            saveSection(sectionName) {
+                const sectionData = this.collectSectionData(sectionName);
+                this.config[sectionName] = sectionData;
+                
+                // Save to localStorage
+                localStorage.setItem('sintomario-config', JSON.stringify(this.config));
+                
+                // Send to API
+                this.sendToAPI(sectionName, sectionData);
+                
+                this.showNotification(`Configuración de ${sectionName} guardada`, 'success');
+            }
+            
+            collectSectionData(sectionName) {
+                const data = {};
+                
+                switch (sectionName) {
+                    case 'general':
+                        data.siteName = document.getElementById('site-name').value;
+                        data.siteDescription = document.getElementById('site-description').value;
+                        data.siteUrl = document.getElementById('site-url').value;
+                        data.operationMode = document.getElementById('operation-mode').value;
+                        data.timezone = document.getElementById('timezone').value;
+                        data.defaultLanguage = document.getElementById('default-language').value;
+                        break;
+                        
+                    case 'pcp':
+                        data.perception = {
+                            primary: document.getElementById('perception-primary').value,
+                            secondary: document.getElementById('perception-secondary').value,
+                            accent: document.getElementById('perception-accent').value,
+                            title: document.getElementById('perception-title').value,
+                            subtitle: document.getElementById('perception-subtitle').value,
+                            cta: document.getElementById('perception-cta').value
+                        };
+                        data.context = {
+                            primary: document.getElementById('context-primary').value,
+                            secondary: document.getElementById('context-secondary').value,
+                            accent: document.getElementById('context-accent').value,
+                            title: document.getElementById('context-title').value,
+                            validation: document.getElementById('context-validation').value
+                        };
+                        data.permission = {
+                            primary: document.getElementById('permission-primary').value,
+                            secondary: document.getElementById('permission-secondary').value,
+                            accent: document.getElementById('permission-accent').value,
+                            title: document.getElementById('permission-title').value,
+                            empowerment: document.getElementById('permission-empowerment').value
+                        };
+                        break;
+                        
+                    case 'templates':
+                        data.activeTemplates = {
+                            perception: document.getElementById('template-perception').checked,
+                            context: document.getElementById('template-context').checked,
+                            permission: document.getElementById('template-permission').checked,
+                            base: document.getElementById('template-base').checked
+                        };
+                        data.build = {
+                            nodesPerBuild: parseInt(document.getElementById('nodes-per-build').value),
+                            timeout: parseInt(document.getElementById('build-timeout').value),
+                            cache: document.getElementById('build-cache').value
+                        };
+                        break;
+                        
+                    case 'i18n':
+                        data.activeLanguages = {
+                            'es-ES': document.getElementById('lang-es').checked,
+                            'en-US': document.getElementById('lang-en-us').checked,
+                            'en-GB': document.getElementById('lang-en-gb').checked,
+                            'pt-BR': document.getElementById('lang-pt-br').checked,
+                            'pt-PT': document.getElementById('lang-pt-pt').checked
+                        };
+                        data.detection = {
+                            method: document.getElementById('detection-method').value,
+                            autoRedirect: document.getElementById('auto-redirect').value
+                        };
+                        break;
+                }
+                
+                return data;
+            }
+            
+            resetSection(sectionName) {
+                if (confirm(`¿Estás seguro de restablecer la configuración de ${sectionName}?`)) {
+                    // Reset form values
+                    switch (sectionName) {
+                        case 'general':
+                            document.getElementById('site-name').value = 'Atlas Somático';
+                            document.getElementById('site-description').value = '';
+                            document.getElementById('site-url').value = 'https://sintomario.org';
+                            document.getElementById('operation-mode').value = 'development';
+                            document.getElementById('timezone').value = 'America/Mexico_City';
+                            document.getElementById('default-language').value = 'es-ES';
+                            break;
+                            
+                        case 'pcp':
+                            // Reset to default colors
+                            document.getElementById('perception-primary').value = '#10b981';
+                            document.getElementById('perception-secondary').value = '#059669';
+                            document.getElementById('perception-accent').value = '#34d399';
+                            document.getElementById('context-primary').value = '#3b82f6';
+                            document.getElementById('context-secondary').value = '#1d4ed8';
+                            document.getElementById('context-accent').value = '#60a5fa';
+                            document.getElementById('permission-primary').value = '#8b5cf6';
+                            document.getElementById('permission-secondary').value = '#7c3aed';
+                            document.getElementById('permission-accent').value = '#a78bfa';
+                            break;
+                    }
+                    
+                    this.showNotification(`Configuración de ${sectionName} restablecida`, 'warning');
+                }
+            }
+            
+            sendToAPI(sectionName, data) {
+                fetch('/api/config/' + sectionName, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Configuration saved:', result);
+                })
+                .catch(error => {
+                    console.error('Error saving configuration:', error);
+                });
+            }
+            
+            exportAll() {
+                const blob = new Blob([JSON.stringify(this.config, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `sintomario-config-${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                
+                this.showNotification('Configuración exportada', 'success');
+            }
+            
+            importConfig() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.json';
+                
+                input.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            try {
+                                const importedConfig = JSON.parse(e.target.result);
+                                this.config = { ...this.config, ...importedConfig };
+                                this.populateForm();
+                                localStorage.setItem('sintomario-config', JSON.stringify(this.config));
+                                this.showNotification('Configuración importada', 'success');
+                            } catch (error) {
+                                this.showNotification('Error al importar configuración', 'error');
+                            }
+                        };
+                        reader.readAsText(file);
+                    }
+                });
+                
+                input.click();
+            }
+            
+            resetAll() {
+                if (confirm('¿Estás seguro de restablecer toda la configuración? Esta acción no se puede deshacer.')) {
+                    localStorage.removeItem('sintomario-config');
+                    location.reload();
+                }
+            }
+            
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        }
+        
+        // Initialize config manager
+        document.addEventListener('DOMContentLoaded', () => {
+            window.configManager = new ConfigManager();
+        });
+    </script>
+</body>
+</html>

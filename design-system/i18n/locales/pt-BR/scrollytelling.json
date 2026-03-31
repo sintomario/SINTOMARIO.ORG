@@ -1,0 +1,98 @@
+{
+  "title": "Jornada Somática",
+  "subtitle": "Descubra a conexão entre mente e corpo",
+  "description": "Uma experiência imersiva de exploração corporal através do scroll consciente",
+  "start_journey": "Iniciar Jornada",
+  "continue_journey": "Continuar Jornada",
+  "resume_journey": "Retomar Jornada",
+  "journey_progress": "Progresso da Jornada",
+  "zones": {
+    "cabeca": {
+      "title": "Cabeça - Consciência e Pensamentos",
+      "description": "O centro do pensamento consciente e percepção sensorial",
+      "exploration": "Explore sua paisagem mental",
+      "symptoms": ["Dor de cabeça", "Enxaqueca", "Tensão", "Fadiga mental"],
+      "practices": ["Meditação", "Mindfulness", "Respiração consciente", "Visualização"]
+    },
+    "peito": {
+      "title": "Peito - Coração e Emoções",
+      "description": "O centro emocional e motor vital do corpo",
+      "exploration": "Conecte-se com seu mundo emocional",
+      "symptoms": ["Ansiedade", "Palpitações", "Aperto no peito", "Dor torácica"],
+      "practices": ["Coerência cardíaca", "Respiração diafragmática", "Gratidão", "Auto-compaixão"]
+    },
+    "plexo_solar": {
+      "title": "Abdômen - Poder e Energia",
+      "description": "O centro do poder pessoal e energia vital",
+      "exploration": "Desperte sua força interior",
+      "symptoms": ["Indigestão", "Estresse", "Nervosismo", "Falta de energia"],
+      "practices": ["Respiração abdominal", "Exercícios de poder", "Autoconfiança", "Grounding"]
+    },
+    "raiz": {
+      "title": "Pelve - Fundação e Raízes",
+      "description": "A fundação de sua estrutura e conexão com a terra",
+      "exploration": "Afirmar suas raízes e fundamentos",
+      "symptoms": ["Dor lombar", "Rigidez", "Instabilidade", "Desconexão"],
+      "practices": ["Grounding", "Alongamentos pélvicos", "Conexão terrena", "Estabilidade"]
+    }
+  },
+  "navigation": {
+    "previous_zone": "Zona Anterior",
+    "next_zone": "Próxima Zona",
+    "skip_to_zone": "Pular para Zona",
+    "zone_progress": "Progresso da Zona",
+    "journey_complete": "Jornada Completa",
+    "restart_journey": "Reiniciar Jornada"
+  },
+  "breathing": {
+    "title": "Respiração Consciente",
+    "instruction": "Sincronize sua respiração com a jornada",
+    "inhale": "Inale",
+    "hold": "Segure",
+    "exhale": "Exale",
+    "pause": "Pausa",
+    "rhythm": "Ritmo Natural"
+  },
+  "progress": {
+    "scroll_depth": "Profundidade do Scroll",
+    "time_spent": "Tempo na Zona",
+    "completion_rate": "Taxa de Conclusão",
+    "insights_gained": "Insights Obtidos",
+    "practices_completed": "Práticas Completadas"
+  },
+  "insights": {
+    "title": "Insights Somáticos",
+    "body_awareness": "Consciência Corporal",
+    "emotional_connection": "Conexão Emocional",
+    "energy_flow": "Fluxo Energético",
+    "mind_body_sync": "Sincronização Mente-Corpo",
+    "grounding_level": "Nível de Grounding",
+    "stress_release": "Liberação de Estresse"
+  },
+  "practices": {
+    "title": "Práticas Terapêuticas",
+    "guided_meditation": "Meditação Guiada",
+    "breathing_exercise": "Exercício Respiratório",
+    "body_scan": "Escaneamento Corporal",
+    "movement_therapy": "Terapia de Movimento",
+    "journaling": "Escrita Terapêutica",
+    "creative_expression": "Expressão Criativa"
+  },
+  "completion": {
+    "title": "Parabéns! Jornada Completa",
+    "message": "Você completou sua jornada somática explorando as quatro zonas principais",
+    "achievements": "Conquistas Desbloqueadas",
+    "next_steps": "Próximos Passos",
+    "continue_exploring": "Continuar Explorando",
+    "share_experience": "Compartilhar Experiência",
+    "save_progress": "Salvar Progresso"
+  },
+  "accessibility": {
+    "skip_navigation": "Pular Navegação",
+    "keyboard_controls": "Controles de Teclado",
+    "reduced_motion": "Movimento Reduzido",
+    "screen_reader_support": "Suporte para Screen Reader",
+    "high_contrast": "Alto Contraste",
+    "text_size": "Tamanho do Texto"
+  }
+}

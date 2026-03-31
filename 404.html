@@ -1,19 +1,114 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='robots' content='noindex,follow'><title>404 | SINTOMARIO</title><style>
-body{margin:0;background:#0a0a0a;color:#efe8d8;font-family:Georgia,serif;line-height:1.76}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
-.hero,.card{background:#171717;border:1px solid #353024;border-radius:18px;padding:24px}
-.hero{background:linear-gradient(180deg,#171717,#111)}
-.eyebrow,.badge{font:600 12px/1.4 "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#c9a961}
-h1,h2,h3{line-height:1.16}
-h1{font-size:clamp(2.4rem,6vw,4.1rem);margin:.2em 0}
-h2{font-size:1.65rem;margin-top:2rem;color:#f6eedf}
-h3{font-size:1.1rem;margin-top:1.2rem;color:#e7d8b4}
-p,li{color:#d8d0be}
-a{color:#d6ba7c}
-.grid{display:grid;gap:16px}
-.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.product{background:#111;border:1px solid #2d2d2d;border-radius:14px;padding:16px}
-.muted{color:#b7ae9a}
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.toc span{padding:6px 10px;border:1px solid #3f3a2c;border-radius:999px;color:#c9a961;font-size:.78rem}
-</style></head><body><main class='wrap'><section class='hero'><h1>Pagina no encontrada</h1><p>La URL solicitada no esta disponible en esta publicacion.</p><p><a href='/'>Volver al inicio</a></p></section></main></body></html>
+<!DOCTYPE html>
+<html lang="es" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 | Página No Encontrada — SINTOMARIO.ORG</title>
+  <meta name="description" content="La página que buscas no existe en nuestro atlas psicosomático.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@300;400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --deep: #2a0115; --mid: #670433; --authority: #F5C400; }
+    html, body {
+      height: 100%;
+      background: var(--deep);
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+      background: #F5C400;
+      color: #1a0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 200;
+    }
+    h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(80px, 20vw, 160px);
+      font-weight: 400;
+      color: var(--authority);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+    p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      max-width: 400px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--mid);
+      color: #fff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #8c0548;
+      border-color: var(--authority);
+    }
+    .links {
+      margin-top: 48px;
+      display: flex;
+      gap: 24px;
+    }
+    .links a {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: var(--authority); }
+  </style>
+</head>
+<body>
+  <div id="bar">⚠ Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
+  
+  <h1>404</h1>
+  <h2>Página No Encontrada</h2>
+  <p>El síntoma o la condición que buscas no está indexada en nuestro atlas psicosomático. Quizás aún no hemos cartografiado esta zona del cuerpo-emoción.</p>
+  
+  <a href="/CLICKER" class="btn">Volver al Atlas</a>
+  
+  <div class="links">
+    <a href="/">Inicio</a>
+    <a href="/faq">FAQ</a>
+    <a href="/sobre">Sobre</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title | escape }}</title>
+  <meta name="description" content="{{ page_description | escape | truncate:160 }}">
+  <meta name="keywords" content="{{ page_keywords | escape }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape | truncate:160 }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page_url }}">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ page_url }}">
+  
+  <!-- Robots -->
+  {% if robots_noindex %}<meta name="robots" content="noindex,nofollow">{% endif %}
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Schema.org JSON-LD -->
+  {% if schema_json %}<script type="application/ld+json">{{ schema_json | safe }}</script>{% endif %}
+</head>
+<body>
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="header-container wrap">
+      <a href="/" class="logo">SINTOMARIO</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="/cuerpo">Cuerpo</a></li>
+          <li><a href="/sobre">Sobre</a></li>
+          <li><a href="/afiliados">Afiliados</a></li>
+        </ul>
+      </nav>
+      <button class="search-toggle" aria-label="Abrir búsqueda" aria-controls="search-panel">
+        &#128269;
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Content (overridden by child templates) -->
+  {% block content %}
+  <main class="wrap">
+    <p>No content provided.</p>
+  </main>
+  {% endblock %}
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="footer-disclaimer">
+        <p>
+          <strong>⚠️ Aviso importante:</strong> El contenido de SINTOMARIO es de carácter informativo 
+          y educativo. No reemplaza la consulta con profesionales de la salud. 
+          Ante síntomas persistentes o preocupantes, consulta a tu médico.
+        </p>
+      </section>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="/sobre">Sobre SINTOMARIO</a></li>
+          <li><a href="/afiliados">Política de Afiliados</a></li>
+          <li><a href="/legal">Términos Legales</a></li>
+          <li><a href="/privacidad">Privacidad</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">
+        © 2026 SINTOMARIO. Proyecto de lectura editorial corporal, emocional y contextual.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Global Scripts -->
+  <script src="/assets/js/index.js" defer></script>
+  {% if extra_scripts %}<script src="{{ extra_scripts }}" defer></script>{% endif %}
+</body>
+</html>

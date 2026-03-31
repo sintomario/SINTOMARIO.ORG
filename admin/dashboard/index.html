@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Somático - Centro de Control</title>
+    
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    <link rel="stylesheet" href="/assets-atlas/css/pcp-persuasion.css">
+    <style>
+        /* Dashboard Specific Styles */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            grid-template-rows: 80px 1fr;
+            min-height: 100vh;
+            background: var(--color-neutral-50);
+        }
+        
+        .dashboard-header {
+            grid-column: 1 / -1;
+            grid-row: 1;
+            background: var(--dashboard-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+            border-bottom: 2px solid var(--dashboard-accent);
+        }
+        
+        .dashboard-header h1 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .status-indicators {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+        
+        .status-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-green-vitality-500);
+            animation: pulse 2s infinite;
+        }
+        
+        .status-dot.active {
+            background: var(--color-green-vitality-500);
+        }
+        
+        .status-dot.warning {
+            background: var(--color-golden-illumination-500);
+        }
+        
+        .status-dot.error {
+            background: var(--color-red-error-500);
+        }
+        
+        .status-label {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .dashboard-main {
+            grid-column: 2;
+            grid-row: 2;
+            padding: var(--space-xl);
+            overflow-y: auto;
+        }
+        
+        .control-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .control-panel h2 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-md);
+            border-bottom: 2px solid var(--dashboard-accent);
+            padding-bottom: var(--space-sm);
+        }
+        
+        .variable-groups {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .variable-group {
+            background: var(--color-neutral-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-neutral-200);
+        }
+        
+        .variable-group h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .variable-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        
+        .variable-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm);
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-neutral-200);
+            transition: all 0.2s ease;
+        }
+        
+        .variable-item:hover {
+            border-color: var(--dashboard-accent);
+            transform: translateY(-1px);
+        }
+        
+        .variable-item label {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-neutral-700);
+        }
+        
+        .variable-item input[type="color"] {
+            width: 40px;
+            height: 30px;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+        
+        .visualization-panel {
+            display: grid;
+            gap: var(--space-xl);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .metric-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .metric-card h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .metric-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--dashboard-accent);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .metric-chart {
+            height: 100px;
+            background: var(--color-neutral-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            color: var(--color-neutral-600);
+        }
+        
+        .flow-visualization {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flow-visualization h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: var(--space-lg);
+            background: var(--color-neutral-50);
+            border-radius: var(--radius-md);
+        }
+        
+        .flow-phase {
+            text-align: center;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--color-neutral-100);
+            transition: all 0.3s ease;
+        }
+        
+        .flow-phase.active {
+            background: var(--dashboard-primary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .phase-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .phase-metrics {
+            display: block;
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+        
+        .flow-arrow {
+            font-size: var(--font-size-xl);
+            color: var(--dashboard-accent);
+            animation: arrowPulse 2s infinite;
+        }
+        
+        .modules-panel {
+            grid-column: 3;
+            grid-row: 2;
+            padding: var(--space-lg);
+            overflow-y: auto;
+        }
+        
+        .module-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .module-item {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .module-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-green-vitality-500);
+            margin-bottom: var(--space-sm);
+            animation: pulse 2s infinite;
+        }
+        
+        .module-info h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--dashboard-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .module-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-neutral-600);
+            margin-bottom: var(--space-md);
+        }
+        
+        .module-controls {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .control-btn {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--dashboard-primary);
+            background: white;
+            color: var(--dashboard-primary);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background: var(--dashboard-primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes arrowPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                grid-template-columns: 200px 1fr;
+                grid-template-rows: 80px 1fr 250px;
+            }
+            
+            .modules-panel {
+                grid-column: 1 / -1;
+                grid-row: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto auto auto;
+            }
+            
+            .dashboard-main,
+            .modules-panel {
+                grid-column: 1;
+            }
+            
+            .status-indicators {
+                flex-wrap: wrap;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header de Control -->
+        <header class="dashboard-header">
+            <h1>Atlas Somático - Centro de Control</h1>
+            <div class="status-indicators">
+                <div class="status-item" data-status="pcp">
+                    <span class="status-dot active"></span>
+                    <span class="status-label">PCP Engine</span>
+                </div>
+                <div class="status-item" data-status="templates">
+                    <span class="status-dot active"></span>
+                    <span class="status-label">Templates V3</span>
+                </div>
+                <div class="status-item" data-status="i18n">
+                    <span class="status-dot active"></span>
+                    <span class="status-label">I18n System</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Panel Principal: Visualización -->
+        <main class="dashboard-main">
+            <!-- Panel de Variables -->
+            <aside class="control-panel variables-panel">
+                <h2>Variables Semánticas</h2>
+                <div class="variable-groups">
+                    <div class="variable-group" data-group="pcp">
+                        <h3>Variables PCP</h3>
+                        <div class="variable-list">
+                            <div class="variable-item">
+                                <label>--phase-perception</label>
+                                <input type="color" value="#10b981" data-var="phase-perception">
+                            </div>
+                            <div class="variable-item">
+                                <label>--phase-context</label>
+                                <input type="color" value="#3b82f6" data-var="phase-context">
+                            </div>
+                            <div class="variable-item">
+                                <label>--phase-permission</label>
+                                <input type="color" value="#8b5cf6" data-var="phase-permission">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="variable-group" data-group="dashboard">
+                        <h3>Variables Dashboard</h3>
+                        <div class="variable-list">
+                            <div class="variable-item">
+                                <label>--dashboard-primary</label>
+                                <input type="color" value="#1f2937" data-var="dashboard-primary">
+                            </div>
+                            <div class="variable-item">
+                                <label>--dashboard-accent</label>
+                                <input type="color" value="#6366f1" data-var="dashboard-accent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Panel Central: Métricas -->
+            <section class="visualization-panel">
+                <h2>Métricas en Tiempo Real</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Tasa de Conversión PCP</h3>
+                        <div class="metric-value">3.2%</div>
+                        <div class="metric-chart">📈 +0.8% esta semana</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Nivel de Confianza</h3>
+                        <div class="metric-value">87%</div>
+                        <div class="metric-chart">📊 Estable</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Reducción de Culpa</h3>
+                        <div class="metric-value">72%</div>
+                        <div class="metric-chart">✅ Mejorando</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Usuarios Activos</h3>
+                        <div class="metric-value">1,247</div>
+                        <div class="metric-chart">👥 En línea</div>
+                    </div>
+                </div>
+                
+                <!-- Visualización del Flujo PCP -->
+                <div class="flow-visualization">
+                    <h3>Flujo PCP Activo</h3>
+                    <div class="flow-diagram" id="pcp-flow">
+                        <div class="flow-phase active" data-phase="perception">
+                            <span class="phase-name">Percepción</span>
+                            <span class="phase-metrics">1,247 usuarios</span>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-phase active" data-phase="context">
+                            <span class="phase-name">Contexto</span>
+                            <span class="phase-metrics">892 usuarios</span>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-phase active" data-phase="permission">
+                            <span class="phase-name">Permiso</span>
+                            <span class="phase-metrics">423 usuarios</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Panel Derecho: Módulos -->
+        <aside class="control-panel modules-panel">
+            <h2>Control de Módulos</h2>
+            <div class="module-list">
+                <div class="module-item active" data-module="persuasion-engine">
+                    <div class="module-status active"></div>
+                    <div class="module-info">
+                        <h4>Motor de Persuasión</h4>
+                        <p>PCP Engine v2.1</p>
+                        <div class="module-controls">
+                            <button class="control-btn restart">Reiniciar</button>
+                            <button class="control-btn configure">Configurar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-item active" data-module="templates">
+                    <div class="module-status active"></div>
+                    <div class="module-info">
+                        <h4>Templates V3</h4>
+                        <p>3 fases PCP implementadas</p>
+                        <div class="module-controls">
+                            <button class="control-btn edit">Editar</button>
+                            <button class="control-btn preview">Previsualizar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-item active" data-module="i18n">
+                    <div class="module-status active"></div>
+                    <div class="module-info">
+                        <h4>Sistema I18n</h4>
+                        <p>5 idiomas activos</p>
+                        <div class="module-controls">
+                            <button class="control-btn manage">Gestionar</button>
+                            <button class="control-btn sync">Sincronizar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-item" data-module="node-editor">
+                    <div class="module-status warning"></div>
+                    <div class="module-info">
+                        <h4>Editor de Nodos</h4>
+                        <p>En desarrollo</p>
+                        <div class="module-controls">
+                            <button class="control-btn" disabled>Editar</button>
+                            <button class="control-btn" disabled>Previsualizar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module-item" data-module="build-engine">
+                    <div class="module-status active"></div>
+                    <div class="module-info">
+                        <h4>Motor de Build</h4>
+                        <p>Listo para producción</p>
+                        <div class="module-controls">
+                            <button class="control-btn build">Construir</button>
+                            <button class="control-btn deploy">Desplegar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Dashboard Engine Script -->
+    <script>
+        class DashboardManager {
+            constructor() {
+                this.metrics = {
+                    pcpEngine: {
+                        status: 'active',
+                        version: '2.1',
+                        uptime: 0,
+                        conversions: 0
+                    },
+                    templates: {
+                        status: 'active',
+                        totalNodes: 2500,
+                        renderedNodes: 2487,
+                        errors: 0
+                    },
+                    i18n: {
+                        status: 'active',
+                        languages: 5,
+                        translations: 1250,
+                        lastSync: null
+                    }
+                };
+                
+                this.initEventListeners();
+                this.startMetricsUpdate();
+                this.loadSavedVariables();
+            }
+            
+            initEventListeners() {
+                // Variable controls
+                document.querySelectorAll('input[type="color"]').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const varName = e.target.dataset.var;
+                        const value = e.target.value;
+                        this.updateVariable(varName, value);
+                    });
+                });
+                
+                // Module controls
+                document.querySelectorAll('.control-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = btn.textContent.toLowerCase();
+                        const module = btn.closest('.module-item').dataset.module;
+                        this.handleModuleAction(module, action);
+                    });
+                });
+                
+                // Phase visualization
+                document.querySelectorAll('.flow-phase').forEach(phase => {
+                    phase.addEventListener('click', (e) => {
+                        this.showPhaseDetails(e.target.closest('.flow-phase').dataset.phase);
+                    });
+                });
+            }
+            
+            updateVariable(name, value) {
+                // Update CSS variable
+                document.documentElement.style.setProperty(`--${name}`, value);
+                
+                // Save to localStorage
+                localStorage.setItem(`dashboard-var-${name}`, value);
+                
+                // Notify other components
+                this.notifyVariableChange(name, value);
+                
+                console.log(`Variable updated: ${name} = ${value}`);
+            }
+            
+            loadSavedVariables() {
+                Object.keys(localStorage).forEach(key => {
+                    if (key.startsWith('dashboard-var-')) {
+                        const varName = key.replace('dashboard-var-', '');
+                        const value = localStorage.getItem(key);
+                        
+                        // Update input
+                        const input = document.querySelector(`input[data-var="${varName}"]`);
+                        if (input) {
+                            input.value = value;
+                        }
+                        
+                        // Update CSS variable
+                        document.documentElement.style.setProperty(`--${varName}`, value);
+                    }
+                });
+            }
+            
+            handleModuleAction(module, action) {
+                console.log(`Module action: ${module} - ${action}`);
+                
+                switch(action) {
+                    case 'reiniciar':
+                        this.restartModule(module);
+                        break;
+                    case 'configurar':
+                        this.configureModule(module);
+                        break;
+                    case 'editar':
+                        this.editModule(module);
+                        break;
+                    case 'previsualizar':
+                        this.previewModule(module);
+                        break;
+                    case 'gestionar':
+                        this.manageModule(module);
+                        break;
+                    case 'sincronizar':
+                        this.syncModule(module);
+                        break;
+                    case 'construir':
+                        this.buildModule(module);
+                        break;
+                    case 'desplegar':
+                        this.deployModule(module);
+                        break;
+                }
+            }
+            
+            restartModule(module) {
+                this.showNotification(`Reiniciando módulo: ${module}`, 'info');
+                // Simulate restart
+                setTimeout(() => {
+                    this.showNotification(`Módulo ${module} reiniciado`, 'success');
+                }, 2000);
+            }
+            
+            configureModule(module) {
+                window.open(`/dashboard/config/${module}`, '_blank');
+            }
+            
+            editModule(module) {
+                window.open(`/dashboard/edit/${module}`, '_blank');
+            }
+            
+            previewModule(module) {
+                window.open(`/templates/pcp-${module}.html`, '_blank');
+            }
+            
+            manageModule(module) {
+                window.open(`/dashboard/manage/${module}`, '_blank');
+            }
+            
+            syncModule(module) {
+                this.showNotification(`Sincronizando ${module}...`, 'info');
+                // Simulate sync
+                setTimeout(() => {
+                    this.showNotification(`${module} sincronizado`, 'success');
+                }, 3000);
+            }
+            
+            buildModule(module) {
+                this.showNotification(`Iniciando build de ${module}...`, 'info');
+                // Simulate build
+                setTimeout(() => {
+                    this.showNotification(`Build de ${module} completado`, 'success');
+                }, 5000);
+            }
+            
+            deployModule(module) {
+                if (confirm(`¿Estás seguro de desplegar ${module}?`)) {
+                    this.showNotification(`Desplegando ${module}...`, 'warning');
+                    // Simulate deploy
+                    setTimeout(() => {
+                        this.showNotification(`${module} desplegado exitosamente`, 'success');
+                    }, 7000);
+                }
+            }
+            
+            showPhaseDetails(phase) {
+                const phaseInfo = {
+                    perception: {
+                        users: 1247,
+                        conversion: 2.1,
+                        avgTime: '3m 24s'
+                    },
+                    context: {
+                        users: 892,
+                        conversion: 3.8,
+                        avgTime: '5m 12s'
+                    },
+                    permission: {
+                        users: 423,
+                        conversion: 5.2,
+                        avgTime: '4m 45s'
+                    }
+                };
+                
+                const info = phaseInfo[phase];
+                this.showNotification(`
+                    Fase: ${phase}
+                    Usuarios: ${info.users}
+                    Conversión: ${info.conversion}%
+                    Tiempo promedio: ${info.avgTime}
+                `, 'info');
+            }
+            
+            startMetricsUpdate() {
+                setInterval(() => {
+                    this.updateMetrics();
+                }, 5000);
+            }
+            
+            updateMetrics() {
+                // Simulate real-time metrics
+                this.metrics.pcpEngine.conversions = Math.floor(Math.random() * 50) + 320;
+                this.metrics.templates.renderedNodes = 2487 + Math.floor(Math.random() * 20) - 10;
+                this.metrics.i18n.lastSync = new Date().toISOString();
+                
+                // Update UI
+                this.updateMetricsDisplay();
+            }
+            
+            updateMetricsDisplay() {
+                // Update conversion rate
+                const conversionElement = document.querySelector('.metric-value');
+                if (conversionElement) {
+                    const rate = (this.metrics.pcpEngine.conversions / 10000 * 100).toFixed(1);
+                    conversionElement.textContent = `${rate}%`;
+                }
+                
+                // Update active users
+                const activeUsersElement = document.querySelectorAll('.metric-value')[3];
+                if (activeUsersElement) {
+                    activeUsersElement.textContent = '1,247';
+                }
+            }
+            
+            notifyVariableChange(name, value) {
+                // Custom event for other components
+                const event = new CustomEvent('variableChange', {
+                    detail: { name, value }
+                });
+                document.dispatchEvent(event);
+            }
+            
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#10b981' : type === 'warning' ? '#f59e0b' : '#3b82f6'};
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            window.dashboardManager = new DashboardManager();
+        });
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,19 +1,616 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>SINTOMARIO | El diccionario del sintoma</title><meta name='description' content='Explora sintomas corporales desde cuerpo, emocion, contexto y lectura integrativa.'><style>
-body{margin:0;background:#0a0a0a;color:#efe8d8;font-family:Georgia,serif;line-height:1.76}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
-.hero,.card{background:#171717;border:1px solid #353024;border-radius:18px;padding:24px}
-.hero{background:linear-gradient(180deg,#171717,#111)}
-.eyebrow,.badge{font:600 12px/1.4 "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#c9a961}
-h1,h2,h3{line-height:1.16}
-h1{font-size:clamp(2.4rem,6vw,4.1rem);margin:.2em 0}
-h2{font-size:1.65rem;margin-top:2rem;color:#f6eedf}
-h3{font-size:1.1rem;margin-top:1.2rem;color:#e7d8b4}
-p,li{color:#d8d0be}
-a{color:#d6ba7c}
-.grid{display:grid;gap:16px}
-.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.product{background:#111;border:1px solid #2d2d2d;border-radius:14px;padding:16px}
-.muted{color:#b7ae9a}
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.toc span{padding:6px 10px;border:1px solid #3f3a2c;border-radius:999px;color:#c9a961;font-size:.78rem}
-</style></head><body><main class='wrap'><section class='hero'><div class='eyebrow'>Fase 2 local</div><h1>SINTOMARIO</h1><p>Build local generado con 2500 articulos. La publicacion final se sincroniza desde este output al repo de deploy.</p></section></main></body></html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico.jpg" type="image/jpeg">
+  <title>SINTOMARIO.ORG — Atlas Psicosomático</title>
+  <meta name="description"
+    content="Atlas psicosomático interactivo. Explora la conexión entre síntomas físicos y estados emocionales.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --deep: #2a0115;
+      --mid: #670433;
+      --bar-h: 18px;
+      --head-h: 64px;
+      --foot-h: 34px;
+      --text-dim: rgba(255, 255, 255, 0.5);
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--deep);
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* ── DISCLAIMER BAR ── */
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--bar-h);
+      background: #F5C400;
+      color: #1a0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 200;
+    }
+
+    /* ── HEADER (single row) ── */
+    #header {
+      position: fixed;
+      top: var(--bar-h);
+      left: 0;
+      right: 0;
+      height: var(--head-h);
+      background: var(--deep);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    #logo {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+      flex: 1;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    #logo img {
+      height: 32px;
+      object-fit: contain;
+    }
+
+    #searchbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 3px;
+      padding: 3px 8px;
+      background: var(--mid);
+    }
+
+    #searchbox input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 10px;
+      width: 100px;
+    }
+
+    #searchbox input::placeholder {
+      color: var(--text-dim);
+    }
+
+    #searchbox span {
+      color: var(--text-dim);
+      font-size: 10px;
+    }
+
+    #nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #nav a {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    #nav a:hover {
+      opacity: 1;
+    }
+
+    #btn-clk {
+      background: #5a1035;
+      color: #fff;
+      border: none;
+      padding: 4px 11px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #btn-clk:hover {
+      background: #8c0548;
+    }
+
+    /* ── MAIN CLICKER ── */
+    #main {
+      position: fixed;
+      top: calc(var(--bar-h) + var(--head-h));
+      bottom: var(--foot-h);
+      left: 0;
+      right: 0;
+    }
+
+    #screen {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      touch-action: none;
+      background: conic-gradient(from 200deg at 50% 55%,
+          #1a010c, #670433, #8c0548, #770839, #4d0228, #1a010c);
+    }
+
+    #screen:focus {
+      outline: none;
+    }
+
+    #screen:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: -4px;
+    }
+
+    .stack {
+      position: absolute;
+      inset: 0;
+      isolation: isolate;
+    }
+
+    .stack img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      transition: opacity 0.9s ease;
+    }
+
+    /* System label — bottom center */
+    #sys-title {
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 20;
+      pointer-events: none;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(16px, 3.1vw, 25px);
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Scroll hint — centered above title */
+    #hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 20;
+      white-space: nowrap;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.2
+      }
+
+      50% {
+        opacity: 0.6
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #hint {
+        animation: none;
+        opacity: 0.4;
+      }
+    }
+
+    /* Word buttons — bottom-left, above title */
+    #words {
+      position: absolute;
+      left: 20px;
+      bottom: 32px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: stretch;
+    }
+
+    .wbtn {
+      padding: 5px 13px;
+      background: rgba(0, 0, 0, 0.55);
+      border: none;
+      border-left: 2px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: all 0.2s;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .wbtn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-left-color: #fff;
+    }
+
+    .wbtn.hub { font-weight: 700; border-left-color: #c084fc; font-size: 13.2px; }
+
+    /* Color equalization overlay */
+    #color-overlay {
+      position: absolute; inset: 0; z-index: 50;
+      pointer-events: none;
+      background: conic-gradient(from 200deg at 50% 55%,
+        #1a010c, #670433, #8c0548, #770839, #4d0228, #1a010c);
+      mix-blend-mode: color;
+      opacity: 0.55;
+    }
+
+    /* ── FOOTER ── */
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--foot-h);
+      background: var(--deep);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      z-index: 100;
+    }
+
+    #foot-txt {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    #foot-txt strong {
+      color: rgba(255, 255, 255, 0.45);
+    }
+    #lang-selector select {
+      background: var(--mid);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      padding: 4px 8px;
+      font-size: 10px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    #lang-selector select option {
+      background: var(--deep);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
+
+  <header id="header">
+    <a href="/" id="logo"><img src="LOGO%20HORIZONTAL-02.png" alt="SINTOMARIO.ORG" style="height:32px;object-fit:contain;"></a>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div id="searchbox">
+          <span>&#128269;</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q">
+        </div>
+        <button id="btn-clk" onclick="openHelpModal()">AYUDA</button>
+      </div>
+      <nav id="nav" style="width: 100%; justify-content: space-between; gap: 0;">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector" style="margin-left: 8px;">
+          <select id="lang-select" onchange="changeLanguage(this.value)" style="background: var(--mid); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 3px 6px; font-size: 10px; cursor: pointer;">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Donation Modal -->
+  <div id="help-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background: var(--deep); border: 1px solid rgba(140, 5, 72, 0.5); border-radius: 8px; padding: 32px; max-width: 480px; width: 90%; color: #fff; position: relative; text-align: center;">
+      <button onclick="closeHelpModal()" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">&times;</button>
+      
+      <h3 style="font-family: 'EB Garamond', serif; font-size: 22px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em; color: #F5C400;">Apoyo al Atlas</h3>
+      
+      <p style="font-family: 'EB Garamond', serif; font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-style: italic; color: rgba(255,255,255,0.9);">
+        "Somos lo que hacemos con lo que nos hicieron, y si lo que hacemos es dar, es que en nuestro gesto de dar se reconoce lo que de bueno nos quedó de lo que recibimos."
+      </p>
+      
+      <p style="font-size: 11px; line-height: 1.6; margin-bottom: 24px; color: var(--text-dim);">
+        SINTOMARIO es un esfuerzo independiente. Tu apoyo mantiene vivo este atlas, permite que las lecturas sigan siendo accesibles para quienes las necesitan, y honra el trabajo de traducir el lenguaje del cuerpo en palabras que alivian.
+      </p>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <a href="https://paypal.me/sintomario" target="_blank" rel="noopener" style="background: #0070BA; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s;">
+          <span style="font-size: 14px;">🅿️</span> Donar con PayPal
+        </a>
+        <a href="https://wise.com/pay/me/joseluisbernalp" target="_blank" rel="noopener" style="background: #9FE870; color: #163300; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s;">
+          <span style="font-size: 14px;">💳</span> Transferencia Wise
+        </a>
+        <a href="https://ko-fi.com/sintomario" target="_blank" rel="noopener" style="background: #FF6433; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s;">
+          <span style="font-size: 14px;">☕</span> Invitar un café (Ko-fi)
+        </a>
+      </div>
+      
+      <p style="font-family: 'EB Garamond', serif; font-size: 13px; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 16px;">
+        Cada gesto cuenta, no importa su tamaño. Gracias por ser parte.
+      </p>
+    </div>
+  </div>
+
+  <main id="main">
+    <div id="screen" tabindex="0">
+      <div id="sys-title">SISTEMA NERVIOSO</div>
+      <div id="hint">↕ scroll para explorar</div>
+      <div id="words"></div>
+      <div class="stack" id="stack">
+        <img src="layers/PNG/01_LUZ.png" data-fixed="luz" data-id="luz" alt="Capa de luz ambiental">
+        <img src="layers/PNG/04_TRIPAS.png" data-sys="DIGESTIVO" data-id="digestivo" alt="Sistema digestivo">
+        <img src="layers/PNG/05_MENTE.png" data-sys="PSÍQUICO" data-id="psiquico" alt="Sistema psíquico">
+        <img src="layers/PNG/03_EMOTION.png" data-sys="EMOCIONAL" data-id="emocional" alt="Sistema emocional">
+        <img src="layers/PNG/07_CARDIOVASCULAR.png" data-sys="CIRCULATORIO" data-id="circulatorio" alt="Sistema circulatorio">
+        <img src="layers/PNG/09_NERVIOS.png" data-sys="NERVIOSO" data-id="nervioso" alt="Sistema nervioso">
+        <img src="layers/PNG/02_PIEL.png" data-sys="PERCEPTUAL" data-id="perceptual" alt="Sistema perceptual">
+        <img src="layers/PNG/06_MUSCULOS.png" data-sys="MUSCULAR" data-id="muscular" alt="Sistema muscular">
+        <img src="layers/PNG/08_OSEO.png" data-sys="ÓSEO" data-id="oseo" alt="Sistema óseo">
+        <img src="layers/PNG/10_BASE.png" data-fixed="base" data-id="base" alt="Capa base corporal">
+      </div>
+      <!-- Color equalization overlay — inert, blend mode color -->
+      <div id="color-overlay"></div>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div id="foot-txt">@2026 — <strong id="cnt">3.789.987.456</strong> Consultas</div>
+  </footer>
+
+  <script>
+    (function () {
+      const WORDS = {
+        "NERVIOSO": [{ t: "Cerebro", s: "cabeza/ansiedad" }, { t: "Ojos", s: "ojos/negacion" }, { t: "Oídos", s: "oidos/no-escuchar" }, { t: "N. Vago", s: "nervios/estres" }, { t: "Migraña", s: "cabeza/migrana" }, { t: "Insomnio", s: "sueno/insomnio" }, { t: "Vértigo", s: "cabeza/vertigo" }],
+        "ÓSEO": [{ t: "Columna", s: "columna/abandono" }, { t: "Rodilla", s: "rodilla/conflicto" }, { t: "Cadera", s: "cadera/miedo" }, { t: "Cervicales", s: "cuello/rigidez" }, { t: "Mandíbula", s: "cabeza/tension" }, { t: "Huesos", s: "huesos/identidad" }, { t: "Dientes", s: "boca/decision" }],
+        "CIRCULATORIO": [{ t: "Corazón", s: "corazon/tristeza" }, { t: "Pulmones", s: "pulmones/ahogo" }, { t: "Pecho", s: "pecho/ansiedad" }, { t: "Presión", s: "presion/control" }, { t: "Taquicardia", s: "corazon/panico" }, { t: "Circulación", s: "circulacion/miedo" }, { t: "Anemia", s: "sangre/agotamiento" }],
+        "MUSCULAR": [{ t: "Hombros", s: "hombro/responsabilidad" }, { t: "Cuello", s: "cuello/estres" }, { t: "Lumbar", s: "espalda/miedo" }, { t: "Mandíbula", s: "cabeza/rabia" }, { t: "Trapecio", s: "hombro/carga" }, { t: "Fibromialgia", s: "musculos/trauma" }, { t: "Contractura", s: "musculos/resistencia" }],
+        "PSÍQUICO": [{ t: "Bucle", s: "cabeza/obsesion" }, { t: "Niebla", s: "cabeza/confusion" }, { t: "Ansiedad", s: "cabeza/ansiedad" }, { t: "Fobias", s: "cabeza/fobia" }, { t: "TOC", s: "cabeza/toc" }, { t: "Burnout", s: "cabeza/burnout" }, { t: "Disociación", s: "cabeza/disociacion" }],
+        "DIGESTIVO": [{ t: "Estómago", s: "estomago/rabia" }, { t: "Colon", s: "colon/injusticia" }, { t: "Hígado", s: "higado/frustracion" }, { t: "Reflujo", s: "estomago/represion" }, { t: "Intestino", s: "intestinos/soltar" }, { t: "Gastritis", s: "estomago/autoexigencia" }, { t: "Boca", s: "boca/expresion" }],
+        "EMOCIONAL": [{ t: "Llanto", s: "cabeza/liberacion" }, { t: "Vacío", s: "cabeza/abandono" }, { t: "Culpa", s: "cabeza/castigo" }, { t: "Vergüenza", s: "cabeza/exposicion" }, { t: "Apatía", s: "cabeza/desconexion" }, { t: "Soledad", s: "cabeza/rechazo" }, { t: "Garganta", s: "garganta/represion" }],
+        "PERCEPTUAL": [{ t: "Dermatitis", s: "dermatitis/limites" }, { t: "Acné", s: "acne/autoestima" }, { t: "Urticaria", s: "piel/rabia" }, { t: "Psoriasis", s: "piel/proteccion" }, { t: "Nariz", s: "nariz/intuicion" }, { t: "Sudoración", s: "piel/miedo" }, { t: "Herpes", s: "piel/conflicto" }]
+      };
+
+      const PRESETS = {
+        luz: { blend: "darken", opacity: 0.84 },
+        digestivo: { blend: "hard-light", opacity: 0.85 },
+        psiquico: { blend: "darken", opacity: 0.85 },
+        emocional: { blend: "darken", opacity: 1.0 },
+        circulatorio: { blend: "darken", opacity: 0.85 },
+        nervioso: { blend: "hard-light", opacity: 0.82 },
+        perceptual: { blend: "hard-light", opacity: 1.0 },
+        muscular: { blend: "luminosity", opacity: 1.0 },
+        oseo: { blend: "multiply", opacity: 1.0 },
+        base: { blend: "luminosity", opacity: 1.0 }
+      };
+
+      const stackEl = document.getElementById("stack");
+      const titleEl = document.getElementById("sys-title");
+      const wordsEl = document.getElementById("words");
+      const screenEl = document.getElementById("screen");
+      const hintEl = document.getElementById("hint");
+
+      const allImgs = Array.from(stackEl.querySelectorAll("img"));
+      let layers = allImgs.map(img => {
+        const p = PRESETS[img.dataset.id] || { blend: "normal", opacity: 0.85 };
+        return { img, id: img.dataset.id, blend: p.blend, opacity: p.opacity };
+      });
+
+      const luzLayer = layers.find(l => l.id === "luz");
+      const getSys = () => layers.filter(l => l.img.dataset.sys);
+
+      function render() {
+        layers.forEach((l, i) => {
+          l.img.style.zIndex = layers.length - i;
+          l.img.style.mixBlendMode = l.blend;
+          l.img.style.opacity = l.opacity;
+        });
+        if (luzLayer) luzLayer.img.style.zIndex = 100;
+
+        const active = getSys()[0];
+        if (!active) return;
+        const sys = active.img.dataset.sys;
+        titleEl.textContent = "SISTEMA " + sys;
+        wordsEl.innerHTML = "";
+        // Word buttons click with language support
+        const currentLang = localStorage.getItem('sintomario-lang') || 'es';
+        const langPrefix = currentLang === 'es' ? '' : '/' + currentLang;
+        
+        (WORDS[sys] || []).forEach(w => {
+          const b = document.createElement("button");
+          b.className = "wbtn"; b.textContent = w.t;
+          b.onclick = () => { window.location.href = langPrefix + "/cuerpo/" + w.s + "/"; };
+          wordsEl.appendChild(b);
+        });
+        const hub = document.createElement("button");
+        hub.className = "wbtn hub"; hub.textContent = "SINTOMARIO";
+        hub.onclick = () => {
+          window.location.href = langPrefix + `/cuerpo/sistema/${active.id}/`;
+        };
+        wordsEl.appendChild(hub);
+      }
+
+      function scrollSys(dir) {
+        const sys = getSys();
+        if (sys.length < 2) return;
+        const top = sys[0], topIdx = layers.indexOf(top);
+        if (dir > 0) {
+          layers.splice(topIdx, 1);
+          const last = getSys().pop();
+          layers.splice(layers.indexOf(last) + 1, 0, top);
+        } else {
+          const bot = sys[sys.length - 1];
+          layers.splice(layers.indexOf(bot), 1);
+          layers.splice(topIdx, 0, bot);
+        }
+        hintEl.style.display = "none";
+        render();
+      }
+
+      // Wheel
+      let wa = 0;
+      screenEl.addEventListener("wheel", e => {
+        e.preventDefault(); wa += e.deltaY;
+        if (Math.abs(wa) >= 80) { scrollSys(wa > 0 ? 1 : -1); wa = 0; }
+      }, { passive: false });
+
+      // Touch
+      let ty = null;
+      screenEl.addEventListener("touchstart", e => { ty = e.touches[0].clientY; }, { passive: true });
+      screenEl.addEventListener("touchmove", e => {
+        if (ty === null) return;
+        const dy = e.touches[0].clientY - ty;
+        if (Math.abs(dy) >= 60) { scrollSys(dy < 0 ? 1 : -1); ty = e.touches[0].clientY; }
+      }, { passive: true });
+
+      // Keys
+      screenEl.addEventListener("keydown", e => {
+        if (["ArrowDown", "ArrowRight"].includes(e.key)) { e.preventDefault(); scrollSys(1); }
+        if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
+      });
+
+      // Visitor counter - real visit tracking with localStorage
+      let cnt = parseInt(localStorage.getItem('sintomario-visits')) || 0;
+      // Increment on new visit (check if already counted this session)
+      if (!sessionStorage.getItem('sintomario-counted')) {
+        cnt++;
+        localStorage.setItem('sintomario-visits', cnt);
+        sessionStorage.setItem('sintomario-counted', 'true');
+      }
+      const cntEl = document.getElementById("cnt");
+      cntEl.textContent = cnt.toLocaleString("es-ES");
+
+      // Align #words to left edge of rendered image
+      function positionWords() {
+        const img = allImgs[0];
+        const mW  = screenEl.offsetWidth;
+        const mH  = screenEl.offsetHeight;
+        if (!img.naturalWidth || !img.naturalHeight) return;
+        const ratio  = img.naturalWidth / img.naturalHeight;
+        const rendW  = Math.min(mW, mH * ratio);
+        const imgLeft = Math.max(0, (mW - rendW) / 2);
+        wordsEl.style.left = imgLeft + 4 + 'px';
+      }
+
+      window.addEventListener('resize', positionWords, { passive: true });
+      // Run after images have a chance to load
+      allImgs[0].addEventListener('load', positionWords);
+      if (allImgs[0].complete) positionWords();
+
+      // Help Modal Functions
+      function openHelpModal() {
+        document.getElementById('help-modal').style.display = 'flex';
+      }
+      
+      function closeHelpModal() {
+        document.getElementById('help-modal').style.display = 'none';
+      }
+      
+      // Close modal when clicking outside
+      document.getElementById('help-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeHelpModal();
+      });
+      
+      // Language selector function
+      function changeLanguage(lang) {
+        localStorage.setItem('sintomario-lang', lang);
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split('/').filter(p => p);
+        const langs = ['es', 'en', 'pt'];
+        const firstPart = pathParts[0];
+        
+        let newPath;
+        if (langs.includes(firstPart)) {
+          pathParts[0] = lang;
+          newPath = '/' + pathParts.join('/');
+        } else if (lang === 'es') {
+          newPath = currentPath;
+        } else {
+          newPath = '/' + lang + currentPath;
+        }
+        
+        window.location.href = newPath;
+      }
+      
+      // Load saved language preference
+      const savedLang = localStorage.getItem('sintomario-lang');
+      if (savedLang) {
+        document.getElementById('lang-select').value = savedLang;
+      }
+
+      screenEl.focus();
+      render();
+      setTimeout(positionWords, 300);
+    })();
+  </script>
+  <script src="search.js"></script>
+</body>
+
+</html>

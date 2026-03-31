@@ -1,0 +1,98 @@
+{
+  "title": "Viaje Somático",
+  "subtitle": "Descubre la conexión entre mente y cuerpo",
+  "description": "Una experiencia inmersiva de exploración corporal a través del scroll consciente",
+  "start_journey": "Iniciar Viaje",
+  "continue_journey": "Continuar Viaje",
+  "resume_journey": "Reanudar Viaje",
+  "journey_progress": "Progreso del Viaje",
+  "zones": {
+    "cabeza": {
+      "title": "Cabeza - Conciencia y Pensamientos",
+      "description": "El centro del pensamiento consciente y la percepción sensorial",
+      "exploration": "Explora tu paisaje mental",
+      "symptoms": ["Dolor de cabeza", "Migraña", "Tensión", "Fatiga mental"],
+      "practices": ["Meditación", "Mindfulness", "Respiración consciente", "Visualización"]
+    },
+    "corazon": {
+      "title": "Pecho - Corazón y Emociones",
+      "description": "El centro emocional y el motor vital del cuerpo",
+      "exploration": "Conecta con tu mundo emocional",
+      "symptoms": ["Ansiedad", "Palpitaciones", "Opresión", "Dolor torácico"],
+      "practices": ["Coherencia cardíaca", "Respiración diafragmática", "Gratitud", "Auto-compasión"]
+    },
+    "plexo_solar": {
+      "title": "Abdomen - Poder y Energía",
+      "description": "El centro del poder personal y la energía vital",
+      "exploration": "Despierta tu fuerza interior",
+      "symptoms": ["Indigestión", "Estrés", "Nerviosismo", "Falta de energía"],
+      "practices": ["Respiración abdominal", "Ejercicios de poder", "Autoconfianza", "Grounding"]
+    },
+    "raiz": {
+      "title": "Pelvis - Fundación y Raíces",
+      "description": "La base de tu estructura y conexión con la tierra",
+      "exploration": "Afirma tus raíces y fundamentos",
+      "symptoms": ["Dolor lumbar", "Rigidez", "Inestabilidad", "Desconexión"],
+      "practices": ["Grounding", "Estiramientos pélvicos", "Conexión terrenal", "Estabilidad"]
+    }
+  },
+  "navigation": {
+    "previous_zone": "Zona Anterior",
+    "next_zone": "Siguiente Zona",
+    "skip_to_zone": "Saltar a Zona",
+    "zone_progress": "Progreso de Zona",
+    "journey_complete": "Viaje Completo",
+    "restart_journey": "Reiniciar Viaje"
+  },
+  "breathing": {
+    "title": "Respiración Consciente",
+    "instruction": "Sincroniza tu respiración con el viaje",
+    "inhale": "Inhala",
+    "hold": "Mantiene",
+    "exhale": "Exhala",
+    "pause": "Pausa",
+    "rhythm": "Ritmo Natural"
+  },
+  "progress": {
+    "scroll_depth": "Profundidad de Scroll",
+    "time_spent": "Tiempo en Zona",
+    "completion_rate": "Tasa de Finalización",
+    "insights_gained": "Insights Obtenidos",
+    "practices_completed": "Prácticas Completadas"
+  },
+  "insights": {
+    "title": "Insights Somáticos",
+    "body_awareness": "Conciencia Corporal",
+    "emotional_connection": "Conexión Emocional",
+    "energy_flow": "Flujo Energético",
+    "mind_body_sync": "Sincronización Mente-Cuerpo",
+    "grounding_level": "Nivel de Grounding",
+    "stress_release": "Liberación de Estrés"
+  },
+  "practices": {
+    "title": "Prácticas Terapéuticas",
+    "guided_meditation": "Meditación Guiada",
+    "breathing_exercise": "Ejercicio Respiratorio",
+    "body_scan": "Escaneo Corporal",
+    "movement_therapy": "Terapia de Movimiento",
+    "journaling": "Escritura Terapéutica",
+    "creative_expression": "Expresión Creativa"
+  },
+  "completion": {
+    "title": "¡Felicidades! Viaje Completo",
+    "message": "Has completado tu viaje somático explorando las cuatro zonas principales",
+    "achievements": "Logros Desbloqueados",
+    "next_steps": "Próximos Pasos",
+    "continue_exploring": "Continuar Explorando",
+    "share_experience": "Compartir Experiencia",
+    "save_progress": "Guardar Progreso"
+  },
+  "accessibility": {
+    "skip_navigation": "Saltar Navegación",
+    "keyboard_controls": "Controles de Teclado",
+    "reduced_motion": "Movimiento Reducido",
+    "screen_reader_support": "Soporte para Screen Reader",
+    "high_contrast": "Alto Contraste",
+    "text_size": "Tamaño de Texto"
+  }
+}

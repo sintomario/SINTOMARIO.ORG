@@ -1,0 +1,249 @@
+/* ===== ESTRUCTURA INAMOVIBLE - ATLAS SOMÁTICO ===== */
+
+/* Disclaimer Médico - PRIORIDAD ABSOLUTA */
+.medical-disclaimer {
+  background: var(--disclaimer-bg);
+  color: var(--disclaimer-text);
+  font-family: var(--font-body);
+  font-size: var(--disclaimer-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: fixed;
+  bottom: var(--disclaimer-bottom);
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+  padding: 2px var(--space-sm);
+  z-index: var(--disclaimer-z-index);
+  text-align: center;
+  line-height: 1;
+  border: none;
+  margin: 0;
+  pointer-events: none;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra Superior Flotante - SIEMPRE VISIBLE */
+.atlas-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo Derecha */
+.atlas-logo-right {
+  position: absolute;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.atlas-logo-right:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--color-blue-trust-500), var(--color-purple-transformation));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+/* Slogan Centrado */
+.atlas-slogan {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Lighthouse Indicator Izquierda */
+.atlas-lighthouse {
+  position: absolute;
+  left: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-green-vitality-50);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-green-vitality-200);
+}
+
+.lighthouse-score {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-green-vitality-700);
+}
+
+.lighthouse-indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--color-green-vitality-500);
+  border-radius: 50%;
+  animation: pulse-green 2s infinite;
+}
+
+/* Search Bar Izquierda */
+.atlas-search-left {
+  position: absolute;
+  left: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs) var(--space-md);
+  width: 240px;
+  transition: all var(--transition-normal);
+}
+
+.atlas-search-left:focus-within {
+  border-color: var(--color-blue-trust-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  width: 280px;
+}
+
+.search-input-left {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-gray-700);
+  width: 100%;
+  margin-left: var(--space-xs);
+}
+
+.search-icon-left {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gray-400);
+  flex-shrink: 0;
+}
+
+/* Background Capa Subanterior */
+.atlas-background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  opacity: 0.8;
+}
+
+/* Espacio para contenido principal */
+.main-content-wrapper {
+  padding-top: 80px; /* Espacio para barra superior */
+  padding-bottom: 40px; /* Espacio para disclaimer */
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animaciones */
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive para barra superior */
+@media (max-width: 768px) {
+  .atlas-top-bar {
+    height: 50px;
+    padding: 0 var(--space-md);
+  }
+  
+  .atlas-search-left {
+    display: none;
+  }
+  
+  .atlas-slogan {
+    font-size: 0.75rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+  
+  .main-content-wrapper {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .atlas-lighthouse {
+    display: none;
+  }
+  
+  .atlas-top-bar {
+    justify-content: center;
+  }
+  
+  .atlas-logo-right {
+    position: static;
+    transform: none;
+  }
+  
+  .atlas-slogan {
+    position: static;
+    transform: none;
+    margin: 0 var(--space-sm);
+  }
+}

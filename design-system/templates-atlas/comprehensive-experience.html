@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia Completa - Atlas Somático Editorial</title>
+    <meta name="description" content="Experiencia integral del Atlas Somático con todos los sistemas activos">
+    
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../assets-atlas/css/main.css">
+    <link rel="stylesheet" href="../assets-atlas/css/layout-fixed.css">
+    <link rel="stylesheet" href="../assets-atlas/css/content-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/typography-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/marketing-elements.css">
+    <link rel="stylesheet" href="../assets-atlas/css/scrollytelling.css">
+    <link rel="stylesheet" href="../assets-atlas/css/body-maps.css">
+    <link rel="stylesheet" href="../assets-atlas/css/progress-therapeutic.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js para visualizaciones médicas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-selection"></script>
+    
+    <style>
+        /* Estilos específicos para la experiencia completa */
+        body {
+            overflow-x: hidden;
+            background: var(--color-gray-50);
+        }
+        
+        .experience-container {
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .navigation-tabs {
+            position: sticky;
+            top: 80px;
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            z-index: 100;
+            padding: var(--space-md) 0;
+        }
+        
+        .tabs-list {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            list-style: none;
+            margin: 0;
+            padding: 0 var(--space-lg);
+            overflow-x: auto;
+        }
+        
+        .tab-item {
+            flex-shrink: 0;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: var(--space-md) var(--space-lg);
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-gray-600);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+        
+        .tab-button:hover {
+            color: var(--color-blue-trust-600);
+            background: var(--color-blue-trust-50);
+        }
+        
+        .tab-button.active {
+            color: var(--color-blue-trust-600);
+            background: var(--color-blue-trust-100);
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--color-blue-trust-600);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: var(--space-xl) var(--space-lg);
+            animation: fadeIn var(--transition-normal);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-description {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.6;
+            color: var(--color-gray-600);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+        
+        .chart-container {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .chart-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        
+        .chart-controls {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .chart-control-btn {
+            background: none;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-xs);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-control-btn:hover {
+            background: var(--color-gray-50);
+            border-color: var(--color-gray-300);
+        }
+        
+        .chart-canvas-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .chart-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            color: var(--color-gray-500);
+        }
+        
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--color-gray-200);
+            border-top: 3px solid var(--color-blue-trust-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: var(--space-md);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .data-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-normal);
+        }
+        
+        .data-detail-modal.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform var(--transition-normal);
+        }
+        
+        .data-detail-modal.visible .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .modal-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-gray-400);
+            cursor: pointer;
+            padding: var(--space-xs);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .modal-close:hover {
+            background: var(--color-gray-100);
+            color: var(--color-gray-600);
+        }
+        
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-md);
+        }
+        
+        .data-item label {
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-gray-700);
+        }
+        
+        .data-item span {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--color-gray-900);
+        }
+        
+        /* Responsive para experiencia completa */
+        @media (max-width: 768px) {
+            .tabs-list {
+                padding: 0 var(--space-md);
+            }
+            
+            .tab-button {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.75rem;
+            }
+            
+            .charts-section {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .chart-container {
+                padding: var(--space-md);
+            }
+            
+            .modal-content {
+                margin: var(--space-lg);
+                padding: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tab-content {
+                padding: var(--space-lg) var(--space-md);
+            }
+            
+            .chart-canvas-container {
+                height: 250px;
+            }
+            
+            .chart-controls {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="experience-container">
+        <!-- Estructura Fija -->
+        <div class="atlas-background-layer"></div>
+        
+        <header class="atlas-top-bar">
+            <div class="atlas-lighthouse">
+                <div class="lighthouse-indicator"></div>
+                <span class="lighthouse-score">98</span>
+            </div>
+            
+            <div class="atlas-search-left">
+                <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input-left" placeholder="Buscar en Atlas...">
+            </div>
+            
+            <div class="atlas-slogan">
+                Experiencia Completa
+            </div>
+            
+            <a href="#" class="atlas-logo-right">
+                <div class="logo-icon">AS</div>
+                <span class="logo-text">Atlas Somático</span>
+            </a>
+        </header>
+
+        <!-- Navegación por Pestañas -->
+        <nav class="navigation-tabs">
+            <ul class="tabs-list">
+                <li class="tab-item">
+                    <button class="tab-button active" data-tab="scrollytelling">Scrollytelling</button>
+                </li>
+                <li class="tab-item">
+                    <button class="tab-button" data-tab="body-maps">Mapas Corporales</button>
+                </li>
+                <li class="tab-item">
+                    <button class="tab-button" data-tab="data-viz">Visualización Médica</button>
+                </li>
+                <li class="tab-item">
+                    <button class="tab-button" data-tab="progress">Progreso Terapéutico</button>
+                </li>
+                <li class="tab-item">
+                    <button class="tab-button" data-tab="search">Búsqueda Somática</button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="main-content-wrapper">
+            <!-- Tab: Scrollytelling -->
+            <section id="scrollytelling" class="tab-content active">
+                <div class="section-header">
+                    <h1 class="section-title">Scrollytelling Terapéutico</h1>
+                    <p class="section-description">
+                        Un viaje somático a través del scroll consciente. Cada pixel revela una capa más profunda de la conexión mente-cuerpo.
+                    </p>
+                </div>
+                
+                <!-- Hero Scroll -->
+                <div class="hero-scroll">
+                    <div class="parallax-layer parallax-bg"></div>
+                    <div class="parallax-layer parallax-mid"></div>
+                    <div class="parallax-layer parallax-fg"></div>
+                    
+                    <div class="hero-content">
+                        <h1 class="hero-title">Atlas Somático</h1>
+                        <p class="hero-subtitle">Viaje a través de tu cuerpo consciente</p>
+                    </div>
+                </div>
+                
+                <!-- Secciones Narrativas -->
+                <div class="story-section zone-cabeza">
+                    <div class="sticky-content">
+                        <h2 class="atlas-h2">Cabeza</h2>
+                        <p class="atlas-description">
+                            El centro del pensamiento y la conciencia. Donde comienza el viaje de autoconocimiento.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="story-section zone-corazon">
+                    <div class="sticky-content">
+                        <h2 class="atlas-h2">Corazón</h2>
+                        <p class="atlas-description">
+                            El centro emocional y respiratorio. Donde late la vida y la conexión.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="story-section zone-abdomen">
+                    <div class="sticky-content">
+                        <h2 class="atlas-h2">Abdomen</h2>
+                        <p class="atlas-description">
+                            El centro del poder y la intuición. La mariposa que transforma el miedo en valentía.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Mapas Corporales -->
+            <section id="body-maps" class="tab-content">
+                <div class="section-header">
+                    <h1 class="section-title">Mapas Corporales Interactivos</h1>
+                    <p class="section-description">
+                        Explora las 50 zonas del Atlas Somático con mapas interactivos, búsqueda semántica y visualización de síntomas.
+                    </p>
+                </div>
+                
+                <!-- Búsqueda Somática -->
+                <div class="search-container">
+                    <input type="text" class="search-input-somatic" placeholder="Buscar zonas, síntomas, tratamientos...">
+                    <div class="search-results-container"></div>
+                </div>
+                
+                <!-- Mapa Corporal -->
+                <div class="body-maps-container">
+                    <div class="map-controls">
+                        <button class="map-control-btn" data-action="zoom-in">+</button>
+                        <button class="map-control-btn" data-action="zoom-out">−</button>
+                        <button class="map-control-btn" data-action="zoom-reset">⟲</button>
+                    </div>
+                    
+                    <svg class="body-map-svg" viewBox="0 0 400 800">
+                        <g class="body-map-group">
+                            <!-- Zonas corporales simplificadas -->
+                            <ellipse class="body-zone" cx="200" cy="80" rx="60" ry="30" data-zone="1"/>
+                            <rect class="body-zone" x="180" y="130" width="40" height="30" rx="10" data-zone="2"/>
+                            <ellipse class="body-zone" cx="200" cy="200" rx="80" ry="60" data-zone="3"/>
+                            <ellipse class="body-zone" cx="200" cy="340" rx="60" ry="35" data-zone="4"/>
+                            <ellipse class="body-zone" cx="200" cy="400" rx="80" ry="40" data-zone="5"/>
+                            <rect class="body-zone" x="160" y="430" width="30" height="120" rx="15" data-zone="6"/>
+                            <rect class="body-zone" x="210" y="430" width="30" height="120" rx="15" data-zone="7"/>
+                        </g>
+                    </svg>
+                    
+                    <!-- Panel de Información -->
+                    <div class="zone-info-panel">
+                        <div class="zone-info-header">
+                            <h3 class="zone-name">Selecciona una zona</h3>
+                            <button class="zone-close">×</button>
+                        </div>
+                        <p class="zone-description">
+                            Haz clic en cualquier zona del mapa corporal para explorar sus características.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Visualización Médica -->
+            <section id="data-viz" class="tab-content">
+                <div class="section-header">
+                    <h1 class="section-title">Visualización de Datos Médicos</h1>
+                    <p class="section-description">
+                        Charts interactivos para visualizar síntomas, progreso terapéutico y correlaciones mente-cuerpo.
+                    </p>
+                </div>
+                
+                <div class="charts-section">
+                    <!-- Chart de Síntomas por Zona -->
+                    <div class="chart-container" id="symptoms-radar">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Síntomas por Zona Corporal</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="symptoms-radar-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart de Progreso Terapéutico -->
+                    <div class="chart-container" id="progress-line">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Progreso Terapéutico</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="progress-line-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart de Distribución Emocional -->
+                    <div class="chart-container" id="emotional-doughnut">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Distribución Emocional</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="emotional-doughnut-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart de Frecuencia de Síntomas -->
+                    <div class="chart-container" id="frequency-bar">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Frecuencia de Síntomas Semanal</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="frequency-bar-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart de Correlación Mente-Cuerpo -->
+                    <div class="chart-container" id="correlation-scatter">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Correlación Mente-Cuerpo</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="correlation-scatter-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart de Mapa de Calor Corporal -->
+                    <div class="chart-container" id="heatmap-bubble">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Mapa de Calor Corporal</h3>
+                            <div class="chart-controls">
+                                <button class="chart-control-btn" data-action="refresh" title="Actualizar">⟲</button>
+                                <button class="chart-control-btn" data-action="download" title="Descargar">⬇</button>
+                            </div>
+                        </div>
+                        <div class="chart-canvas-container">
+                            <canvas id="heatmap-bubble-canvas"></canvas>
+                        </div>
+                        <div class="chart-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Cargando visualización...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Progreso Terapéutico -->
+            <section id="progress" class="tab-content">
+                <div class="section-header">
+                    <h1 class="section-title">Progreso Terapéutico</h1>
+                    <p class="section-description">
+                        Sistema de gamificación consciente para motivar tu viaje somático con logros, rachas y estadísticas personales.
+                    </p>
+                </div>
+                
+                <!-- Panel de Progreso -->
+                <div class="progress-panel visible">
+                    <div class="progress-header">
+                        <h3 class="progress-title">Tu Progreso</h3>
+                        <div class="progress-level">
+                            <span class="level-number">1</span>
+                            <span class="level-name">Explorador Inicial</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Puntos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Zonas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Racha</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="achievements-section">
+                        <h4 class="achievements-title">Logros Recientes</h4>
+                        <div class="achievements-grid" id="achievements-grid">
+                            <!-- Logros se agregarán dinámicamente -->
+                        </div>
+                    </div>
+                    
+                    <div class="progress-actions">
+                        <button class="progress-action-btn">Ver Todos los Logros</button>
+                        <button class="progress-action-btn secondary">Exportar Progreso</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Búsqueda Somática -->
+            <section id="search" class="tab-content">
+                <div class="section-header">
+                    <h1 class="section-title">Búsqueda Somática Semántica</h1>
+                    <p class="section-description">
+                        Motor de búsqueda inteligente con fuzzy search y comprensión contextual del lenguaje somático.
+                    </p>
+                </div>
+                
+                <!-- Búsqueda Avanzada -->
+                <div class="search-container">
+                    <input type="text" class="search-input-somatic" placeholder="Buscar síntomas, tratamientos, zonas, emociones...">
+                    <div class="search-results-container"></div>
+                </div>
+                
+                <!-- Estadísticas de Búsqueda -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">50</div>
+                        <div class="stat-label">Zonas Corporales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Síntomas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Tratamientos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Sistemas Corporales</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Disclaimer Médico Inamovible -->
+    <div class="medical-disclaimer" role="alert">
+        DISCLAIMER MÉDICO
+    </div>
+
+    <!-- Notificaciones -->
+    <div class="notifications-container"></div>
+
+    <!-- JavaScript Engines -->
+    <script src="../assets-atlas/js/scrollytelling-engine.js"></script>
+    <script src="../assets-atlas/js/body-maps-engine.js"></script>
+    <script src="../assets-atlas/js/search-somatic-engine.js"></script>
+    <script src="../assets-atlas/js/theme-manager-enhanced.js"></script>
+    <script src="../assets-atlas/js/progress-therapeutic.js"></script>
+    <script src="../assets-atlas/js/data-viz-medical.js"></script>
+    
+    <script>
+        // Sistema de navegación por pestañas
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Experiencia Completa Atlas Somático - Iniciada');
+            
+            // Configurar navegación por pestañas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.dataset.tab;
+                    
+                    // Remover clase active de todos
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Agregar clase active al seleccionado
+                    button.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                    
+                    // Inicializar componentes específicos del tab
+                    initializeTabComponents(targetTab);
+                });
+            });
+            
+            function initializeTabComponents(tabId) {
+                switch (tabId) {
+                    case 'data-viz':
+                        // Las visualizaciones se inicializan automáticamente con AtlasDataVizMedical
+                        break;
+                    case 'body-maps':
+                        // Los mapas corporales se inicializan automáticamente con AtlasBodyMaps
+                        break;
+                    case 'progress':
+                        // El progreso se inicializa automáticamente con AtlasProgressTherapeutic
+                        break;
+                    case 'search':
+                        // La búsqueda se inicializa automáticamente con AtlasSearchSomatic
+                        break;
+                    case 'scrollytelling':
+                        // El scrollytelling se inicializa automáticamente con AtlasScrollytelling
+                        break;
+                }
+            }
+            
+            // Event listeners para integración entre componentes
+            document.addEventListener('atlasBodyMaps:zoneSelected', (e) => {
+                console.log('Zona seleccionada:', e.detail.zone);
+                // Actualizar progreso si está disponible
+                if (window.AtlasProgressTherapeutic) {
+                    // El progreso se actualiza automáticamente
+                }
+            });
+            
+            document.addEventListener('atlasProgress:achievementUnlocked', (e) => {
+                console.log('Logro desbloqueado:', e.detail.achievement);
+                // Mostrar notificación (se maneja automáticamente)
+            });
+            
+            document.addEventListener('atlasSearch:resultSelected', (e) => {
+                console.log('Resultado de búsqueda seleccionado:', e.detail);
+                // Navegar a la zona o tratamiento correspondiente
+                if (e.detail.type === 'zones' && window.AtlasBodyMaps) {
+                    window.AtlasBodyMaps.selectZone(parseInt(e.detail.id));
+                }
+            });
+            
+            // Atajos de teclado globales
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + 1-5 para navegar entre pestañas
+                if ((e.ctrlKey || e.metaKey) && e.key >= '1' && e.key <= '5') {
+                    e.preventDefault();
+                    const tabIndex = parseInt(e.key) - 1;
+                    const button = tabButtons[tabIndex];
+                    if (button) {
+                        button.click();
+                    }
+                }
+                
+                // Ctrl/Cmd + Shift + T para ciclar temas
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'T') {
+                    e.preventDefault();
+                    if (window.AtlasThemeManagerEnhanced) {
+                        window.AtlasThemeManagerEnhanced.cycleTheme();
+                    }
+                }
+            });
+            
+            // Inicializar primer tab
+            initializeTabComponents('scrollytelling');
+        });
+    </script>
+</body>
+</html>

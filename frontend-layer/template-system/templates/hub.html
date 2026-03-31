@@ -1,0 +1,86 @@
+<!-- 
+hub.html: Template for entity and context hub pages
+
+Extends: base.html
+Context variables:
+  - page_title: Hub title (e.g., "Cuerpo" o "Ansiedad")
+  - page_description: Description of hub
+  - page_url: Full URL to hub
+  - breadcrumbs: List of breadcrumb items [{url, label}]
+  - hub_title: Heading of hub
+  - hub_eyebrow: Small label (entity type, optional)
+  - hub_description: Description text
+  - hub_items: List of sub-items [{url, title, excerpt, icon}]
+  - related_zones: List of related zones [{url, title}]
+  - schema_json: JSON-LD for breadcrumbs/hub (optional)
+-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<main class="wrap">
+  <!-- Breadcrumbs Navigation -->
+  {% if breadcrumbs %}
+  <nav class="breadcrumbs" aria-label="Navegación de ruta">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      {% for item in breadcrumbs %}
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="{{ item.url }}">{{ item.label }}</a>
+        <meta itemprop="position" content="{{ loop.index }}">
+      </li>
+      {% endfor %}
+    </ol>
+  </nav>
+  {% endif %}
+
+  <!-- Hero/Hub Header -->
+  <section class="hero hub-hero">
+    {% if hub_eyebrow %}
+    <div class="eyebrow">{{ hub_eyebrow }}</div>
+    {% endif %}
+    
+    <h1 class="hub-title">{{ hub_title }}</h1>
+    
+    {% if hub_description %}
+    <p class="hub-description">{{ hub_description }}</p>
+    {% endif %}
+  </section>
+
+  <!-- Hub Items Grid -->
+  {% if hub_items %}
+  <section class="hub-items">
+    <div class="grid-3">
+      {% for item in hub_items %}
+      <article class="card card-hub-item">
+        <a href="{{ item.url }}" class="card-link">
+          {% if item.icon %}
+          <div class="card-icon">{{ item.icon | safe }}</div>
+          {% endif %}
+          <div class="card-body">
+            <h2 class="card-title">{{ item.title }}</h2>
+            <p class="card-excerpt">{{ item.excerpt | escape | truncate:100 }}</p>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Related Zones (optional) -->
+  {% if related_zones %}
+  <section class="related-zones">
+    <h2>Explorar otras zonas</h2>
+    <div class="grid-2">
+      {% for zone in related_zones %}
+      <article class="card">
+        <a href="{{ zone.url }}" class="card-link">
+          <h3 class="card-title">{{ zone.title }}</h3>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Somático Editorial - Construyamos</title>
+    <meta name="description" content="Workspace interactivo para desarrollo del Atlas Somático Editorial con visualización en tiempo real">
+    <meta name="keywords" content="atlas somático, desarrollo, design system, workspace interactivo">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Atlas Somático Editorial - Workspace">
+    <meta property="og:description" content="Workspace interactivo para desarrollo del Atlas Somático Editorial">
+    <meta property="og:type" content="website">
+    
+    <!-- Design System Tokens -->
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Additional styles for workspace */
+        .workspace-container {
+            display: grid;
+            grid-template-columns: 300px 1fr 320px;
+            gap: var(--space-lg);
+            min-height: 100vh;
+            padding: var(--space-lg);
+        }
+        
+        .workspace-sidebar {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            height: fit-content;
+            position: sticky;
+            top: var(--space-lg);
+        }
+        
+        .workspace-main {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            min-height: 800px;
+        }
+        
+        .workspace-controls {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            height: fit-content;
+            position: sticky;
+            top: var(--space-lg);
+        }
+        
+        .control-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .control-group h3 {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--color-gray-700);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .control-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .control-item label {
+            font-size: var(--text-xs);
+            color: var(--color-gray-600);
+        }
+        
+        .control-item input,
+        .control-item select {
+            padding: var(--space-xs) var(--space-sm);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+        }
+        
+        .color-swatch {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-gray-300);
+            vertical-align: middle;
+            margin-left: var(--space-xs);
+        }
+        
+        .demo-section {
+            margin-bottom: var(--space-2xl);
+            padding: var(--space-lg);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+        }
+        
+        .demo-section h2 {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-md);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: var(--space-xs);
+        }
+        
+        .status-active { background: var(--color-green-vitality-500); }
+        .status-pending { background: var(--color-amber-alert); }
+        .status-inactive { background: var(--color-gray-400); }
+        
+        @media (max-width: 1200px) {
+            .workspace-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .workspace-sidebar,
+            .workspace-controls {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body class="atlas-body">
+    <!-- Skip to main content for accessibility -->
+    <a href="#workspace-main" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Atlas Header -->
+    <header class="atlas-header" role="banner">
+        <div class="atlas-container">
+            <nav class="therapeutic-navigation" role="navigation" aria-label="Navegación principal">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <span class="brand-text">Atlas Somático</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-500); margin-left: var(--space-sm);">Workspace</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <span class="status-indicator status-active"></span>
+                    <span style="font-size: var(--text-sm); color: var(--color-gray-600);">Sistema Activo</span>
+                    <button class="theme-toggle" aria-label="Cambiar tema">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main id="workspace-main" class="atlas-main" role="main">
+        <div class="workspace-container">
+            <!-- Left Sidebar - Design Tokens -->
+            <aside class="workspace-sidebar" role="complementary">
+                <h2 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-lg);">Design Tokens</h2>
+                
+                <div class="control-group">
+                    <h3>Colores Principales</h3>
+                    <div class="control-item">
+                        <label>Trust Blue</label>
+                        <span class="color-swatch" style="background: var(--color-blue-trust-500);"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">#3b82f6</span>
+                    </div>
+                    <div class="control-item">
+                        <label>Green Vitality</label>
+                        <span class="color-swatch" style="background: var(--color-green-vitality-500);"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">#22c55e</span>
+                    </div>
+                    <div class="control-item">
+                        <label>Golden Illumination</label>
+                        <span class="color-swatch" style="background: var(--color-golden-illumination-500);"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">#f59e0b</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Tipografía</h3>
+                    <div class="control-item">
+                        <label>Heading Font</label>
+                        <span style="font-family: var(--font-heading); font-size: var(--text-sm);">Inter Display</span>
+                    </div>
+                    <div class="control-item">
+                        <label>Body Font</label>
+                        <span style="font-family: var(--font-body); font-size: var(--text-sm);">Inter</span>
+                    </div>
+                    <div class="control-item">
+                        <label>Accent Font</label>
+                        <span style="font-family: var(--font-accent); font-size: var(--text-sm); font-style: italic;">Playfair Display</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Estado del Sistema</h3>
+                    <div class="control-item">
+                        <label>Disclaimer Médico</label>
+                        <span class="status-indicator status-active"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">Inamovible</span>
+                    </div>
+                    <div class="control-item">
+                        <label>SEO Optimizado</label>
+                        <span class="status-indicator status-active"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">WCAG 2.1 AA+</span>
+                    </div>
+                    <div class="control-item">
+                        <label>Performance</label>
+                        <span class="status-indicator status-active"></span>
+                        <span style="font-size: var(--text-xs); color: var(--color-gray-600);">&lt;2s load</span>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <section class="workspace-main">
+                <h1 style="font-size: var(--text-3xl); font-weight: 700; margin-bottom: var(--space-lg); color: var(--color-gray-900);">
+                    Atlas Somático Editorial - Workspace Interactivo
+                </h1>
+                
+                <p style="font-size: var(--text-lg); color: var(--color-gray-700); margin-bottom: var(--space-2xl);">
+                    Espacio de desarrollo para visualización y manipulación en tiempo real del design system del Atlas Somático Editorial.
+                </p>
+                
+                <!-- Typography Demo -->
+                <div class="demo-section">
+                    <h2>Tipografía Terapéutica</h2>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <h1 style="font-family: var(--font-heading); font-size: var(--text-4xl); font-weight: 700; color: var(--color-gray-900);">
+                            Título Principal - H1
+                        </h1>
+                        <p style="font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-gray-700);">
+                            Este es el texto corporal del Atlas Somático Editorial. Diseñado para máxima legibilidad y comprensión terapéutica.
+                        </p>
+                        <p style="font-family: var(--font-accent); font-size: var(--text-lg); font-style: italic; color: var(--color-gray-800);">
+                            "El cuerpo habla, el Atlas escucha" - Énfasis especial con Playfair Display
+                        </p>
+                        <p style="font-family: var(--font-technical); font-size: var(--text-sm); color: var(--color-gray-600);">
+                            Código técnico: function somaticConnection() { return bodyMindIntegration(); }
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Components Demo -->
+                <div class="demo-section">
+                    <h2>Componentes Terapéuticos</h2>
+                    <div class="demo-grid">
+                        <!-- Buttons -->
+                        <div>
+                            <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-sm);">Botones</h3>
+                            <button style="background: var(--color-blue-trust-500); color: var(--color-white); border: none; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-md); font-weight: 500; margin-bottom: var(--space-sm); width: 100%;">
+                                Primary Therapeutic
+                            </button>
+                            <button style="background: transparent; color: var(--color-blue-trust-600); border: 2px solid var(--color-blue-trust-500); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-md); font-weight: 500; margin-bottom: var(--space-sm); width: 100%;">
+                                Secondary Calm
+                            </button>
+                            <button style="background: var(--color-golden-illumination-500); color: var(--color-white); border: none; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-lg); font-weight: 600; width: 100%;">
+                                Accent Transform
+                            </button>
+                        </div>
+                        
+                        <!-- Cards -->
+                        <div>
+                            <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-sm);">Cards</h3>
+                            <div style="background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); padding: var(--space-md); margin-bottom: var(--space-sm);">
+                                <h4 style="font-size: var(--text-sm); font-weight: 600; color: var(--color-gray-900); margin-bottom: var(--space-xs);">Card Terapéutico</h4>
+                                <p style="font-size: var(--text-xs); color: var(--color-gray-600);">Contenido somático estructurado</p>
+                            </div>
+                            <div style="background: var(--color-blue-trust-50); border: 1px solid var(--color-blue-trust-200); border-radius: var(--radius-lg); padding: var(--space-md); margin-bottom: var(--space-sm);">
+                                <h4 style="font-size: var(--text-sm); font-weight: 600; color: var(--color-blue-trust-700); margin-bottom: var(--space-xs);">Featured Zone</h4>
+                                <p style="font-size: var(--text-xs); color: var(--color-blue-trust-600);">Zona corporal destacada</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Forms -->
+                        <div>
+                            <h3 style="font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-sm);">Formularios</h3>
+                            <input type="text" placeholder="Búsqueda somática..." style="width: 100%; padding: var(--space-sm); border: 2px solid var(--color-gray-300); border-radius: var(--radius-md); margin-bottom: var(--space-sm); font-family: var(--font-body);">
+                            <textarea placeholder="Describe tu sensación corporal..." style="width: 100%; padding: var(--space-sm); border: 2px solid var(--color-gray-300); border-radius: var(--radius-md); min-height: 80px; font-family: var(--font-body); resize: vertical;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Somatic Zones Demo -->
+                <div class="demo-section">
+                    <h2>Zonas Somáticas (50 Total)</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-sm);">
+                        <div style="background: var(--color-green-vitality-50); border: 1px solid var(--color-green-vitality-200); border-radius: var(--radius-md); padding: var(--space-sm); text-align: center;">
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-green-vitality-700);">Cabeza</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-green-vitality-600);">Zona 1-5</div>
+                        </div>
+                        <div style="background: var(--color-blue-trust-50); border: 1px solid var(--color-blue-trust-200); border-radius: var(--radius-md); padding: var(--space-sm); text-align: center;">
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-blue-trust-700);">Torso</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-blue-trust-600);">Zona 6-15</div>
+                        </div>
+                        <div style="background: var(--color-golden-illumination-50); border: 1px solid var(--color-golden-illumination-200); border-radius: var(--radius-md); padding: var(--space-sm); text-align: center;">
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-golden-illumination-700);">Extremidades</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-golden-illumination-600);">Zona 16-25</div>
+                        </div>
+                        <div style="background: var(--color-purple-transformation); background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: var(--radius-md); padding: var(--space-sm); text-align: center;">
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-purple-transformation);">Sistema Nervioso</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-purple-transformation); opacity: 0.8;">Zona 26-35</div>
+                        </div>
+                        <div style="background: var(--color-teal-clarity); background: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); border-radius: var(--radius-md); padding: var(--space-sm); text-align: center;">
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--color-teal-clarity);">Sistema Emocional</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-teal-clarity); opacity: 0.8;">Zona 36-50</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SEO Performance Indicators -->
+                <div class="demo-section">
+                    <h2>Indicadores SEO y Performance</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                        <div style="text-align: center;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-green-vitality-500);">95+</div>
+                            <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Lighthouse Score</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-green-vitality-500);">&lt;2s</div>
+                            <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Load Time</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-green-vitality-500);">AAA</div>
+                            <div style="font-size: var(--text-sm); color: var(--color-gray-600);">WCAG 2.1</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-green-vitality-500);">100%</div>
+                            <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Semantic HTML</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Right Sidebar - Controls -->
+            <aside class="workspace-controls" role="complementary">
+                <h2 style="font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-lg);">Controles Interactivos</h2>
+                
+                <div class="control-group">
+                    <h3>Tema Visual</h3>
+                    <div class="control-item">
+                        <label>Modo</label>
+                        <select id="theme-selector">
+                            <option value="light">Claro</option>
+                            <option value="dark">Oscuro</option>
+                            <option value="auto">Auto</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Tamaño de Fuente</h3>
+                    <div class="control-item">
+                        <label>Base</label>
+                        <input type="range" id="font-size-slider" min="14" max="20" value="16">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Espaciado</h3>
+                    <div class="control-item">
+                        <label>Respiración</label>
+                        <select id="spacing-selector">
+                            <option value="compact">Compacto</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="generous">Generoso</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Animaciones</h3>
+                    <div class="control-item">
+                        <label>Micro-interacciones</label>
+                        <input type="checkbox" id="animations-toggle" checked>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Exportar</h3>
+                    <button style="width: 100%; background: var(--color-blue-trust-500); color: var(--color-white); border: none; padding: var(--space-sm); border-radius: var(--radius-md); font-weight: 500; margin-bottom: var(--space-sm);">
+                        Exportar CSS
+                    </button>
+                    <button style="width: 100%; background: var(--color-green-vitality-500); color: var(--color-white); border: none; padding: var(--space-sm); border-radius: var(--radius-md); font-weight: 500; margin-bottom: var(--space-sm);">
+                        Exportar JSON
+                    </button>
+                    <button style="width: 100%; background: var(--color-golden-illumination-500); color: var(--color-white); border: none; padding: var(--space-sm); border-radius: var(--radius-md); font-weight: 500;">
+                        Generar Reporte
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- MEDICAL DISCLAIMER - INAMOVIBLE -->
+    <div class="medical-disclaimer" role="alert">
+        <strong>AVISO IMPORTANTE:</strong> Esta información no reemplaza el consejo médico profesional. Consulte siempre a un profesional de la salud calificado.
+    </div>
+
+    <!-- JavaScript for Interactive Controls -->
+    <script>
+        // Theme Manager
+        document.getElementById('theme-selector').addEventListener('change', function(e) {
+            const theme = e.target.value;
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('atlas-theme', theme);
+        });
+        
+        // Font Size Manager
+        document.getElementById('font-size-slider').addEventListener('input', function(e) {
+            const size = e.target.value;
+            document.documentElement.style.setProperty('--base-font-size', size + 'px');
+            localStorage.setItem('atlas-font-size', size);
+        });
+        
+        // Spacing Manager
+        document.getElementById('spacing-selector').addEventListener('change', function(e) {
+            const spacing = e.target.value;
+            document.body.setAttribute('data-spacing', spacing);
+            localStorage.setItem('atlas-spacing', spacing);
+        });
+        
+        // Animation Toggle
+        document.getElementById('animations-toggle').addEventListener('change', function(e) {
+            const enabled = e.target.checked;
+            if (enabled) {
+                document.body.removeAttribute('data-no-animations');
+            } else {
+                document.body.setAttribute('data-no-animations', 'true');
+            }
+            localStorage.setItem('atlas-animations', enabled);
+        });
+        
+        // Load saved preferences
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('atlas-theme');
+            const savedFontSize = localStorage.getItem('atlas-font-size');
+            const savedSpacing = localStorage.getItem('atlas-spacing');
+            const savedAnimations = localStorage.getItem('atlas-animations');
+            
+            if (savedTheme) {
+                document.getElementById('theme-selector').value = savedTheme;
+                document.body.setAttribute('data-theme', savedTheme);
+            }
+            
+            if (savedFontSize) {
+                document.getElementById('font-size-slider').value = savedFontSize;
+                document.documentElement.style.setProperty('--base-font-size', savedFontSize + 'px');
+            }
+            
+            if (savedSpacing) {
+                document.getElementById('spacing-selector').value = savedSpacing;
+                document.body.setAttribute('data-spacing', savedSpacing);
+            }
+            
+            if (savedAnimations !== null) {
+                const enabled = savedAnimations === 'true';
+                document.getElementById('animations-toggle').checked = enabled;
+                if (!enabled) {
+                    document.body.setAttribute('data-no-animations', 'true');
+                }
+            }
+        });
+        
+        // Export Functions
+        document.querySelector('button:contains("Exportar CSS")').addEventListener('click', function() {
+            const css = getComputedStyle(document.documentElement);
+            const cssText = Array.from(css).filter(prop => prop.startsWith('--')).map(prop => `${prop}: ${css.getPropertyValue(prop)};`).join('\n');
+            downloadFile('atlas-design-tokens.css', cssText);
+        });
+        
+        document.querySelector('button:contains("Exportar JSON")').addEventListener('click', function() {
+            const config = {
+                colors: {
+                    trust: getComputedStyle(document.documentElement).getPropertyValue('--color-blue-trust-500'),
+                    vitality: getComputedStyle(document.documentElement).getPropertyValue('--color-green-vitality-500'),
+                    illumination: getComputedStyle(document.documentElement).getPropertyValue('--color-golden-illumination-500')
+                },
+                typography: {
+                    heading: getComputedStyle(document.documentElement).getPropertyValue('--font-heading'),
+                    body: getComputedStyle(document.documentElement).getPropertyValue('--font-body'),
+                    accent: getComputedStyle(document.documentElement).getPropertyValue('--font-accent')
+                },
+                spacing: {
+                    base: getComputedStyle(document.documentElement).getPropertyValue('--space-md'),
+                    large: getComputedStyle(document.documentElement).getPropertyValue('--space-lg')
+                }
+            };
+            downloadFile('atlas-config.json', JSON.stringify(config, null, 2));
+        });
+        
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema Muscular | SINTOMARIO.ORG</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --deep: #2a0115; --mid: #670433; --light: #8c0548; --text-dim: rgba(255,255,255,0.65); --bar-h: 18px; --head-h: 64px; }
+    body { background: var(--deep); color: #fff; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
+    #bar { position: fixed; top: 0; left: 0; right: 0; height: var(--bar-h); background: #F5C400; color: #1a0000; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; z-index: 200; }
+    #header { position: fixed; top: var(--bar-h); left: 0; right: 0; height: var(--head-h); background: var(--deep); border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; padding: 0 14px; gap: 12px; z-index: 100; }
+    #logo { font-family: 'EB Garamond', Georgia, serif; font-size: 26px; font-weight: 700; letter-spacing: 0.04em; color: #fff; flex: 1; white-space: nowrap; line-height: 1; }
+    #logo img { height: 32px; object-fit: contain; }
+    #nav { display: flex; align-items: center; gap: 16px; }
+    #nav a { font-size: 9px; font-weight: 400; letter-spacing: 0.14em; color: #fff; text-decoration: none; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s; }
+    #nav a:hover { opacity: 1; }
+    main { max-width: 900px; margin: 0 auto; padding: calc(var(--bar-h) + var(--head-h) + 40px) 24px 80px; }
+    h1 { font-family: 'EB Garamond', serif; font-size: clamp(32px, 5vw, 42px); font-weight: 400; margin-bottom: 16px; letter-spacing: 0.02em; }
+    .subtitle { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--text-dim); font-style: italic; margin-bottom: 32px; }
+    .description { font-size: 13px; line-height: 1.7; color: var(--text-dim); margin-bottom: 32px; max-width: 600px; }
+    h2 { font-family: 'EB Garamond', serif; font-size: 20px; font-weight: 500; margin: 32px 0 16px; color: #fff; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    .card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 16px; text-decoration: none; color: #fff; transition: all 0.2s; display: block; }
+    .card:hover { background: rgba(140,5,72,0.2); border-color: rgba(140,5,72,0.4); }
+    .card h3 { font-family: 'EB Garamond', serif; font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+    .card p { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+    footer { text-align: center; padding: 40px 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <div id="bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
+  <header id="header">
+    <a href="/" id="logo"><img src="/LOGO%20HORIZONTAL-02.png" alt="SINTOMARIO.ORG" style="height:32px;object-fit:contain;"></a>
+    <nav id="nav">
+      <a href="/sobre">Sobre</a>
+      <a href="/cuerpo">Atlas</a>
+      <a href="/faq">FAQ</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Sistema Muscular</h1>
+    <p class="subtitle">Movimiento, tensión y contención</p>
+    <p class="description">
+      Tejido contractil que genera movimiento y mantiene postura. Incluye músculos voluntarios e involuntarios. Las manifestaciones musculares suelen asociarse con cargas sostenidas, contención y adaptación.
+    </p>
+    <h2>Zonas del sistema</h2>
+    <div class="grid">
+      <a href="/cuerpo/cuello/" class="card"><h3>Cuello</h3><p>Puente mente-cuerpo, flexibilidad</p></a>
+      <a href="/cuerpo/hombros/" class="card"><h3>Hombros</h3><p>Responsabilidad, alcance</p></a>
+      <a href="/cuerpo/espalda/" class="card"><h3>Espalda</h3><p>Soporte, carga, movimiento</p></a>
+      <a href="/cuerpo/lumbar/" class="card"><h3>Lumbar</h3><p>Sustento económico y emocional</p></a>
+      <a href="/cuerpo/mandibula_muscular/" class="card"><h3>Mandíbula Muscular</h3><p>Masetero, expresión contenida</p></a>
+      <a href="/cuerpo/contracturas/" class="card"><h3>Contracturas</h3><p>Tensión sostenida, nudos</p></a>
+      <a href="/cuerpo/fibromialgia/" class="card"><h3>Fibromialgia</h3><p>Dolor difuso, alarma generalizada</p></a>
+    </div>
+  </main>
+  <footer>&copy; 2026 SINTOMARIO.ORG — Atlas Psicosomático</footer>
+</body>
+</html>

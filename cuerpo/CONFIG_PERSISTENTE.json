@@ -1,0 +1,30 @@
+{
+  "project": "SINTOMARIO CLICKER",
+  "version": "3.6",
+  "config": {
+    "stack_order": "BASE (Bottom) -> Pool (Inactive) -> CONTORNO (3rd) -> SELECTED (2nd) -> LUZ (Top)",
+    "taxonomy": "50x50 (2500 Nodes)",
+    "opacity": {
+      "initial_max": 0.8,
+      "step_degradation": 0.15,
+      "min_visibility": 0.1
+    },
+    "blend_modes": {
+      "00 LUZ": "multiply",
+      "01 CONTORNO": "saturation",
+      "10 BASE": "normal",
+      "SELECTED": "multiply"
+    },
+    "mappings": {
+      "PIEL": 8,
+      "EMOTION": 8,
+      "TRIPAS": 8,
+      "MENTE": 8,
+      "MUSCULOS": 8,
+      "CARDIOVASCULAR": 8,
+      "OSEO": 8,
+      "NERVIOS": 8
+    }
+  },
+  "persistence_rule": "Cualquier modificación en maqueta debe ser reflejada en este archivo para asegurar la consistencia del motor editorial."
+}

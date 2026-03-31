@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapas Corporales Interactivos - Atlas Somático</title>
+    <meta name="description" content="Explora las 50 zonas corporales del Atlas Somático con mapas interactivos">
+    
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../assets-atlas/css/main.css">
+    <link rel="stylesheet" href="../assets-atlas/css/layout-fixed.css">
+    <link rel="stylesheet" href="../assets-atlas/css/content-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/typography-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/marketing-elements.css">
+    <link rel="stylesheet" href="../assets-atlas/css/body-maps.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos específicos para la experiencia */
+        body {
+            overflow-x: hidden;
+            background: var(--color-gray-50);
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .search-input-somatic {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .search-input-somatic:focus {
+            outline: none;
+            border-color: var(--color-blue-trust-400);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .search-results-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all var(--transition-normal);
+            pointer-events: none;
+        }
+        
+        .search-results-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        
+        .search-result-group {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        
+        .search-result-group:last-child {
+            border-bottom: none;
+        }
+        
+        .result-group-title {
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .search-result-item {
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .search-result-item:hover,
+        .search-result-item.selected {
+            background: var(--color-gray-50);
+        }
+        
+        .result-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .result-item-title {
+            font-family: var(--font-heading);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        
+        .result-item-type {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+            background: var(--color-gray-100);
+            padding: 2px 6px;
+            border-radius: var(--radius-full);
+        }
+        
+        .result-item-description {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .result-item-zone,
+        .result-item-duration,
+        .result-item-severity {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--color-gray-500);
+            margin-right: var(--space-sm);
+        }
+        
+        .result-item-severity.mild {
+            color: var(--color-green-vitality-600);
+        }
+        
+        .result-item-severity.moderate {
+            color: var(--color-golden-illumination-600);
+        }
+        
+        .result-item-severity.severe {
+            color: var(--color-red-attention);
+        }
+        
+        mark {
+            background: var(--color-golden-illumination-200);
+            color: var(--color-gray-900);
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+        
+        .search-state {
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        .search-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--color-gray-200);
+            border-top: 2px solid var(--color-blue-trust-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--space-sm);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .stat-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-blue-trust-600);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+        }
+    </style>
+</head>
+<body>
+    <!-- Estructura Fija -->
+    <div class="atlas-background-layer"></div>
+    
+    <header class="atlas-top-bar">
+        <div class="atlas-lighthouse">
+            <div class="lighthouse-indicator"></div>
+            <span class="lighthouse-score">98</span>
+        </div>
+        
+        <div class="atlas-search-left">
+            <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input-left" placeholder="Buscar en Atlas...">
+        </div>
+        
+        <div class="atlas-slogan">
+            Mapas Corporales Interactivos
+        </div>
+        
+        <a href="#" class="atlas-logo-right">
+            <div class="logo-icon">AS</div>
+            <span class="logo-text">Atlas Somático</span>
+        </a>
+    </header>
+
+    <div class="main-content-wrapper">
+        <!-- Hero Section -->
+        <section class="content-section">
+            <div class="atlas-content">
+                <h1 class="atlas-h1">Mapas Corporales Interactivos</h1>
+                <p class="atlas-description">
+                    Explora las 50 zonas del Atlas Somático con mapas interactivos, 
+                    búsqueda semántica y visualización de síntomas y tratamientos.
+                </p>
+                
+                <!-- Búsqueda Somática -->
+                <div class="search-container">
+                    <input type="text" class="search-input-somatic" placeholder="Buscar zonas, síntomas, tratamientos...">
+                    <div class="search-results-container"></div>
+                </div>
+                
+                <!-- Estadísticas -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">50</div>
+                        <div class="stat-label">Zonas Corporales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Sistemas Corporales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Tratamientos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Síntomas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa Corporal Interactivo -->
+        <section class="content-section">
+            <div class="atlas-content">
+                <h2 class="atlas-h2">Explora tu Mapa Corporal</h2>
+                <p class="atlas-description">
+                    Haz clic en cualquier zona para explorar sus características, 
+                    síntomas asociados y tratamientos recomendados.
+                </p>
+                
+                <div class="body-maps-container">
+                    <!-- Controles del Mapa -->
+                    <div class="map-controls">
+                        <button class="map-control-btn" data-action="zoom-in" title="Acercar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                        <button class="map-control-btn" data-action="zoom-out" title="Alejar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                        <button class="map-control-btn" data-action="zoom-reset" title="Restablecer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg>
+                        </button>
+                        <button class="map-control-btn" data-action="view-front" title="Vista Frontal" class="active">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20"></path>
+                                <path d="M8 6h8"></path>
+                                <path d="M7 10h10"></path>
+                                <path d="M7 14h10"></path>
+                                <path d="M8 18h8"></path>
+                            </svg>
+                        </button>
+                        <button class="map-control-btn" data-action="view-back" title="Vista Posterior">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20"></path>
+                                <path d="M8 6h8"></path>
+                                <path d="M7 10h10"></path>
+                                <path d="M7 14h10"></path>
+                                <path d="M8 18h8"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Mapa SVG -->
+                    <svg class="body-map-svg" viewBox="0 0 400 800">
+                        <g class="body-map-group">
+                            <!-- Zonas corporales -->
+                            <ellipse class="body-zone" id="zone-frente" cx="200" cy="80" rx="60" ry="30" data-zone="1"/>
+                            <ellipse class="body-zone" id="zone-sienes" cx="170" cy="70" rx="15" ry="20" data-zone="2"/>
+                            <ellipse class="body-zone" id="zone-sienes" cx="230" cy="70" rx="15" ry="20" data-zone="2"/>
+                            <circle class="body-zone" id="zone-ojos" cx="180" cy="80" r="8" data-zone="3"/>
+                            <circle class="body-zone" id="zone-ojos" cx="220" cy="80" r="8" data-zone="3"/>
+                            <ellipse class="body-zone" id="zone-nariz" cx="200" cy="90" rx="8" ry="15" data-zone="4"/>
+                            <ellipse class="body-zone" id="zone-mejillas" cx="170" cy="90" rx="20" ry="15" data-zone="5"/>
+                            <ellipse class="body-zone" id="zone-mejillas" cx="230" cy="90" rx="20" ry="15" data-zone="5"/>
+                            <ellipse class="body-zone" id="zone-boca" cx="200" cy="105" rx="25" ry="8" data-zone="6"/>
+                            <ellipse class="body-zone" id="zone-menton" cx="200" cy="120" rx="20" ry="10" data-zone="7"/>
+                            <circle class="body-zone" id="zone-orejas" cx="150" cy="85" r="12" data-zone="8"/>
+                            <circle class="body-zone" id="zone-orejas" cx="250" cy="85" r="12" data-zone="8"/>
+                            
+                            <!-- Cuello -->
+                            <rect class="body-zone" id="zone-nuca" x="180" y="130" width="40" height="30" rx="10" data-zone="9"/>
+                            
+                            <!-- Torso -->
+                            <ellipse class="body-zone" id="zone-pecho" cx="200" cy="200" rx="80" ry="60" data-zone="35"/>
+                            <ellipse class="body-zone" id="zone-corazon" cx="200" cy="190" rx="30" ry="25" data-zone="30"/>
+                            <ellipse class="body-zone" id="zone-pulmones" cx="200" cy="200" rx="60" ry="40" data-zone="31"/>
+                            
+                            <!-- Brazos -->
+                            <ellipse class="body-zone" id="zone-hombro-derecho" cx="130" cy="170" rx="25" ry="20" data-zone="13"/>
+                            <ellipse class="body-zone" id="zone-hombro-izquierdo" cx="270" cy="170" rx="25" ry="20" data-zone="14"/>
+                            <rect class="body-zone" id="zone-biceps-derecho" x="100" y="190" width="30" height="80" rx="15" data-zone="15"/>
+                            <rect class="body-zone" id="zone-biceps-izquierdo" x="270" y="190" width="30" height="80" rx="15" data-zone="16"/>
+                            
+                            <!-- Abdomen -->
+                            <ellipse class="body-zone" id="zone-abdomen-superior" cx="200" cy="280" rx="70" ry="40" data-zone="36"/>
+                            <ellipse class="body-zone" id="zone-abdomen-inferior" cx="200" cy="340" rx="60" ry="35" data-zone="37"/>
+                            
+                            <!-- Pelvis -->
+                            <ellipse class="body-zone" id="zone-pelvis" cx="200" cy="400" rx="80" ry="40" data-zone="43"/>
+                            
+                            <!-- Piernas -->
+                            <rect class="body-zone" id="zone-muslos" x="160" y="430" width="30" height="120" rx="15" data-zone="48"/>
+                            <rect class="body-zone" id="zone-muslos" x="210" y="430" width="30" height="120" rx="15" data-zone="48"/>
+                            <circle class="body-zone" id="zone-rodillas" cx="175" cy="560" r="20" data-zone="49"/>
+                            <circle class="body-zone" id="zone-rodillas" cx="225" cy="560" r="20" data-zone="49"/>
+                            <ellipse class="body-zone" id="zone-pies" cx="175" cy="650" rx="25" ry="15" data-zone="50"/>
+                            <ellipse class="body-zone" id="zone-pies" cx="225" cy="650" rx="25" ry="15" data-zone="50"/>
+                            
+                            <!-- Puntos de acupresión -->
+                            <circle class="pressure-point" id="point-yintang" cx="200" cy="75" r="4" data-point="p1"/>
+                            <circle class="pressure-point" id="point-taiyang" cx="170" cy="70" r="4" data-point="p2"/>
+                            <circle class="pressure-point" id="point-hegu" cx="115" cy="190" r="4" data-point="p3"/>
+                            <circle class="pressure-point" id="point-zusanli" cx="175" cy="600" r="4" data-point="p4"/>
+                        </g>
+                    </svg>
+                    
+                    <!-- Panel de Información -->
+                    <div class="zone-info-panel">
+                        <div class="zone-info-header">
+                            <h3 class="zone-name">Selecciona una zona</h3>
+                            <button class="zone-close">×</button>
+                        </div>
+                        <p class="zone-description">
+                            Haz clic en cualquier zona del mapa corporal para explorar sus características.
+                        </p>
+                        <div class="zone-symptoms">
+                            <h4 class="symptom-title">Síntomas Comunes</h4>
+                            <div class="symptom-list">
+                                <span class="symptom-tag">Esperando selección...</span>
+                            </div>
+                        </div>
+                        <div class="zone-actions">
+                            <button class="zone-action-btn" data-action="explore">Explorar en detalle</button>
+                            <button class="zone-action-btn secondary" data-action="treatment">Ver tratamientos</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Leyenda -->
+                    <div class="map-legend">
+                        <h4 class="legend-title">Leyenda</h4>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-gray-100);"></div>
+                                <span>No explorado</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-blue-trust-200);"></div>
+                                <span>Activo</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-green-vitality-100);"></div>
+                                <span>Explorado</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-red-attention);"></div>
+                                <span>Dolor</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-amber-alert);"></div>
+                                <span>Tensión</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--color-teal-clarity);"></div>
+                                <span>Relajación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modos de Interacción -->
+        <section class="content-section">
+            <div class="atlas-content">
+                <h2 class="atlas-h2">Modos de Exploración</h2>
+                <p class="atlas-description">
+                    Elige diferentes modos para explorar tu mapa corporal según tus necesidades.
+                </p>
+                
+                <div class="content-grid-3">
+                    <div class="interactive-demo">
+                        <h3 class="atlas-h3">Exploración</h3>
+                        <p class="atlas-description">
+                            Modo estándar para descubrir las zonas y sus características.
+                        </p>
+                        <button class="cta-therapeutic" data-action="mode-explore">
+                            Comenzar Exploración
+                        </button>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3 class="atlas-h3">Dolor</h3>
+                        <p class="atlas-description">
+                            Identifica zonas de dolor y encuentra tratamientos específicos.
+                        </p>
+                        <button class="cta-secondary" data-action="mode-pain">
+                            Mapear Dolor
+                        </button>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3 class="atlas-h3">Tensión</h3>
+                        <p class="atlas-description">
+                            Detecta zonas de tensión muscular y estrés acumulado.
+                        </p>
+                        <button class="cta-secondary" data-action="mode-tension">
+                            Evaluar Tensión
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Vista Detallada de Zona -->
+    <div class="zone-detail-view" id="zone-overlay">
+        <div class="overlay-content">
+            <div class="detail-header">
+                <h2 class="detail-title">Detalles de Zona</h2>
+                <button class="detail-close">×</button>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-section">
+                    <h3 class="detail-section-title">Información General</h3>
+                    <div class="detail-section-content">
+                        <p>Información detallada sobre la zona seleccionada...</p>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">Síntomas Asociados</h3>
+                    <div class="detail-section-content">
+                        <p>Síntomas comunes en esta zona...</p>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">Tratamientos</h3>
+                    <div class="detail-section-content">
+                        <p>Tratamientos recomendados para esta zona...</p>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">Conexiones Somáticas</h3>
+                    <div class="detail-section-content">
+                        <p>Cómo esta zona se conecta con otras partes del cuerpo...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Médico Inamovible -->
+    <div class="medical-disclaimer" role="alert">
+        DISCLAIMER MÉDICO
+    </div>
+
+    <!-- JavaScript Engines -->
+    <script src="../assets-atlas/js/body-maps-engine.js"></script>
+    <script src="../assets-atlas/js/search-somatic-engine.js"></script>
+    
+    <script>
+        // Interacciones adicionales para la experiencia
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🗺️ Mapas Corporales Interactivos - Experiencia Iniciada');
+            
+            // Configurar botones de modo
+            document.querySelectorAll('[data-action^="mode-"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const mode = this.dataset.action.replace('mode-', '');
+                    if (window.AtlasBodyMaps) {
+                        window.AtlasBodyMaps.setInteractionMode(mode);
+                    }
+                });
+            });
+            
+            // Event listeners para los motores
+            document.addEventListener('atlasBodyMaps:zoneSelected', (e) => {
+                console.log('Zona seleccionada:', e.detail.zone);
+                // Actualizar UI con información de la zona
+            });
+            
+            document.addEventListener('atlasSearch:resultSelected', (e) => {
+                console.log('Resultado de búsqueda seleccionado:', e.detail);
+                // Navegar al resultado seleccionado
+            });
+            
+            // Atajos de teclado adicionales
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + F para focus en búsqueda
+                if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                    e.preventDefault();
+                    const searchInput = document.querySelector('.search-input-somatic');
+                    if (searchInput) {
+                        searchInput.focus();
+                    }
+                }
+                
+                // Ctrl/Cmd + R para resetear mapa
+                if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                    e.preventDefault();
+                    if (window.AtlasBodyMaps) {
+                        window.AtlasBodyMaps.resetExploration();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

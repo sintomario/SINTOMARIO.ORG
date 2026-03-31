@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollytelling Terapéutico - Atlas Somático</title>
+    <meta name="description" content="Viaje somático a través del scroll consciente">
+    
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../assets-atlas/css/main.css">
+    <link rel="stylesheet" href="../assets-atlas/css/layout-fixed.css">
+    <link rel="stylesheet" href="../assets-atlas/css/content-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/typography-system.css">
+    <link rel="stylesheet" href="../assets-atlas/css/marketing-elements.css">
+    <link rel="stylesheet" href="../assets-atlas/css/scrollytelling.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos específicos para la experiencia */
+        body {
+            overflow-x: hidden;
+            background: var(--color-gray-50);
+        }
+        
+        .continue-banner {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-blue-trust-600);
+            color: white;
+            padding: var(--space-lg) var(--space-xl);
+            border-radius: var(--radius-lg);
+            z-index: 1002;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+        }
+        
+        .continue-content p {
+            margin-bottom: var(--space-md);
+            font-family: var(--font-body);
+            font-weight: 500;
+        }
+        
+        .continue-cta,
+        .restart-cta {
+            margin: 0 var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .continue-cta {
+            background: var(--color-green-vitality-500);
+            color: white;
+        }
+        
+        .restart-cta {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .continue-cta:hover,
+        .restart-cta:hover {
+            transform: translateY(-1px);
+        }
+        
+        .skip-to-section {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-blue-trust-600);
+            color: var(--color-white);
+            padding: var(--space-sm) var(--space-md);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            z-index: 10000;
+            transition: top var(--transition-normal);
+        }
+        
+        .skip-to-section:focus {
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Links para Accesibilidad -->
+    <a href="#zone-cabeza" class="skip-to-section">Saltar a Cabeza</a>
+    <a href="#zone-corazon" class="skip-to-section">Saltar a Corazón</a>
+    <a href="#zone-abdomen" class="skip-to-section">Saltar a Abdomen</a>
+    <a href="#zone-pies" class="skip-to-section">Saltar a Pies</a>
+
+    <!-- Barra de Progreso del Viaje -->
+    <div class="journey-progress"></div>
+
+    <!-- Indicadores de Progreso Somático -->
+    <div class="somatic-progress">
+        <div class="progress-zone active" data-zone="1">
+            <span class="zone-tooltip">Cabeza</span>
+        </div>
+        <div class="progress-zone" data-zone="2">
+            <span class="zone-tooltip">Cuello</span>
+        </div>
+        <div class="progress-zone" data-zone="3">
+            <span class="zone-tooltip">Hombros</span>
+        </div>
+        <div class="progress-zone" data-zone="4">
+            <span class="zone-tooltip">Pecho</span>
+        </div>
+        <div class="progress-zone" data-zone="5">
+            <span class="zone-tooltip">Abdomen</span>
+        </div>
+        <div class="progress-zone" data-zone="6">
+            <span class="zone-tooltip">Pelvis</span>
+        </div>
+        <div class="progress-zone" data-zone="7">
+            <span class="zone-tooltip">Muslos</span>
+        </div>
+        <div class="progress-zone" data-zone="8">
+            <span class="zone-tooltip">Piernas</span>
+        </div>
+    </div>
+
+    <!-- Navegación por Capítulos -->
+    <div class="chapter-navigation">
+        <div class="chapter-nav-item active" data-chapter="1"></div>
+        <div class="chapter-nav-item" data-chapter="2"></div>
+        <div class="chapter-nav-item" data-chapter="3"></div>
+        <div class="chapter-nav-item" data-chapter="4"></div>
+        <div class="chapter-nav-item" data-chapter="5"></div>
+        <div class="chapter-nav-item" data-chapter="6"></div>
+        <div class="chapter-nav-item" data-chapter="7"></div>
+        <div class="chapter-nav-item" data-chapter="8"></div>
+    </div>
+
+    <!-- Indicador de Respiración Visual -->
+    <div class="breathing-indicator"></div>
+
+    <!-- Hero Scroll - Entrada Inmersiva -->
+    <section class="hero-scroll">
+        <div class="parallax-layer parallax-bg"></div>
+        <div class="parallax-layer parallax-mid"></div>
+        <div class="parallax-layer parallax-fg"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Atlas Somático</h1>
+            <p class="hero-subtitle">Un viaje a través de tu cuerpo consciente</p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <p class="atlas-description">
+                        Cada scroll es una respiración, cada pixel una revelación.
+                        Bienvenido a tu viaje de autoconocimiento corporal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 1: CABEZA -->
+    <section id="zone-cabeza" class="story-section zone-cabeza context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Cabeza</h2>
+            <p class="atlas-description">
+                El centro del pensamiento y la conciencia. 
+                Donde_begin el viaje de autoconocimiento.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <blockquote class="therapeutic-quote">
+                        "La cabeza es el templo de la conciencia, 
+                        pero la sabiduría habita en todo el cuerpo."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 2: CUELLO -->
+    <section id="zone-cuello" class="story-section zone-cuello context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Cuello</h2>
+            <p class="atlas-description">
+                El puente entre mente y cuerpo. 
+                La conexión que permite la comunicación integral.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="medical-term">Conexión Vertebral</div>
+                    <p class="atlas-description">
+                        El cuello no solo sostiene la cabeza, 
+                        sino que transmite cada pensamiento al resto del cuerpo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 3: HOMBROS -->
+    <section id="zone-hombros" class="story-section zone-hombros context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Hombros</h2>
+            <p class="atlas-description">
+                El lugar donde cargamos el mundo. 
+                La capacidad de soltar y recibir.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="somatic-feeling">
+                        Siente el peso que cargas y la libertad de soltarlo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 4: PECHO -->
+    <section id="zone-corazon" class="story-section zone-pecho context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Pecho y Corazón</h2>
+            <p class="atlas-description">
+                El centro del amor y la compasión. 
+                Donde late la vida y la emoción pura.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="therapeutic-quote">
+                        "El corazón no solo bom sangre, 
+                        bompea emociones y conecta con el universo."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 5: ABDOMEN -->
+    <section id="zone-abdomen" class="story-section zone-abdomen context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Abdomen</h2>
+            <p class="atlas-description">
+                El centro del poder y la intuición. 
+                La mariposa que transforma el miedo en valentía.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="medical-term">Inteligencia Visceral</div>
+                    <p class="atlas-description">
+                        El abdomen alberga el segundo cerebro, 
+                        la intuición que guía nuestras decisiones más profundas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 6: PELVIS -->
+    <section id="zone-pelvis" class="story-section zone-pelvis context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Pelvis</h2>
+            <p class="atlas-description">
+                La base de nuestra estabilidad y creatividad. 
+                La raíz de nuestra energía vital.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="somatic-feeling">
+                        La pelvis es el ancla que nos conecta con la tierra 
+                        y las estrellas simultáneamente.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 7: MUSLOS -->
+    <section id="zone-muslos" class="story-section zone-muslos context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Muslos</h2>
+            <p class="atlas-description">
+                La fuerza que nos impulsa hacia adelante. 
+                El movimiento y la determinación.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="therapeutic-action">
+                        Cada paso es una afirmación de nuestro poder personal.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA 8: PIERNAS -->
+    <section id="zone-pies" class="story-section zone-piernas context-transition">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Piernas y Pies</h2>
+            <p class="atlas-description">
+                Nuestra conexión con la tierra. 
+                La base de nuestro viaje y el principio de cada camino.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <div class="therapeutic-quote">
+                        "Los pies nos recuerdan que estamos aquí, 
+                        en este momento, en este viaje sagrado."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Final de Integración -->
+    <section class="story-section">
+        <div class="sticky-content">
+            <h2 class="atlas-h2">Integración Somática</h2>
+            <p class="atlas-description">
+                Has completado el viaje a través de tu mapa corporal. 
+                Cada zona ahora vive en tu conciencia.
+            </p>
+            <div class="reveal-container">
+                <div class="reveal-overlay"></div>
+                <div class="reveal-content">
+                    <h3 class="atlas-h3">Tu Atlas Personal</h3>
+                    <p class="atlas-description">
+                        Ahora conoces tu territorio interno. 
+                        Cada célula, cada músculo, cada emoción tiene su lugar en tu mapa.
+                    </p>
+                    <div class="trust-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Zonas Exploradas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Viaje Completado</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Posibilidades</div>
+                        </div>
+                    </div>
+                    <button class="cta-premium" onclick="window.AtlasScrollytelling.scrollToProgress(0)">
+                        Comenzar Nuevo Viaje
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estructura Fija -->
+    <div class="atlas-background-layer"></div>
+    
+    <header class="atlas-top-bar">
+        <div class="atlas-lighthouse">
+            <div class="lighthouse-indicator"></div>
+            <span class="lighthouse-score">98</span>
+        </div>
+        
+        <div class="atlas-search-left">
+            <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input-left" placeholder="Buscar en Atlas...">
+        </div>
+        
+        <div class="atlas-slogan">
+            Viaje Somático Consciente
+        </div>
+        
+        <a href="#" class="atlas-logo-right">
+            <div class="logo-icon">AS</div>
+            <span class="logo-text">Atlas Somático</span>
+        </a>
+    </header>
+
+    <div class="main-content-wrapper">
+        <!-- Contenido dinámico del scrollytelling -->
+    </div>
+
+    <!-- Disclaimer Médico Inamovible -->
+    <div class="medical-disclaimer" role="alert">
+        DISCLAIMER MÉDICO
+    </div>
+
+    <!-- Overlays Interactivos -->
+    <div class="interactive-overlay" id="zone-overlay">
+        <div class="overlay-content">
+            <h3 class="atlas-h3">Exploración de Zona</h3>
+            <div id="overlay-zone-content"></div>
+            <button class="cta-secondary" onclick="closeOverlay()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Scrollytelling Engine -->
+    <script src="../assets-atlas/js/scrollytelling-engine.js"></script>
+    
+    <script>
+        // Interacciones adicionales para la experiencia
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧘 Scrollytelling Terapéutico - Experiencia Iniciada');
+            
+            // Navegación por zonas
+            document.querySelectorAll('.progress-zone').forEach(zone => {
+                zone.addEventListener('click', function() {
+                    const zoneId = parseInt(this.dataset.zone);
+                    if (window.AtlasScrollytelling) {
+                        window.AtlasScrollytelling.scrollToZone(zoneId);
+                    }
+                });
+            });
+            
+            // Navegación por capítulos
+            document.querySelectorAll('.chapter-nav-item').forEach(chapter => {
+                chapter.addEventListener('click', function() {
+                    const chapterId = parseInt(this.dataset.chapter);
+                    const progress = (chapterId - 1) * 12.5; // 100% / 8 capítulos
+                    if (window.AtlasScrollytelling) {
+                        window.AtlasScrollytelling.scrollToProgress(progress);
+                    }
+                });
+            });
+            
+            // Teclado para navegación
+            document.addEventListener('keydown', function(e) {
+                if (!window.AtlasScrollytelling) return;
+                
+                switch(e.key) {
+                    case 'ArrowDown':
+                    case 'PageDown':
+                        e.preventDefault();
+                        const currentProgress = window.AtlasScrollytelling.getJourneyStats().progress;
+                        window.AtlasScrollytelling.scrollToProgress(Math.min(100, currentProgress + 12.5));
+                        break;
+                    case 'ArrowUp':
+                    case 'PageUp':
+                        e.preventDefault();
+                        const currentProgressUp = window.AtlasScrollytelling.getJourneyStats().progress;
+                        window.AtlasScrollytelling.scrollToProgress(Math.max(0, currentProgressUp - 12.5));
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        window.AtlasScrollytelling.scrollToProgress(0);
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        window.AtlasScrollytelling.scrollToProgress(100);
+                        break;
+                }
+            });
+            
+            // Función para cerrar overlay
+            window.closeOverlay = function() {
+                document.getElementById('zone-overlay').classList.remove('active');
+            };
+            
+            // Mostrar estadísticas del viaje
+            setInterval(() => {
+                if (window.AtlasScrollytelling) {
+                    const stats = window.AtlasScrollytelling.getJourneyStats();
+                    // Actualizar UI con estadísticas si es necesario
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,19 +1,218 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><title>Sobre | SINTOMARIO</title><style>
-body{margin:0;background:#0a0a0a;color:#efe8d8;font-family:Georgia,serif;line-height:1.76}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
-.hero,.card{background:#171717;border:1px solid #353024;border-radius:18px;padding:24px}
-.hero{background:linear-gradient(180deg,#171717,#111)}
-.eyebrow,.badge{font:600 12px/1.4 "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#c9a961}
-h1,h2,h3{line-height:1.16}
-h1{font-size:clamp(2.4rem,6vw,4.1rem);margin:.2em 0}
-h2{font-size:1.65rem;margin-top:2rem;color:#f6eedf}
-h3{font-size:1.1rem;margin-top:1.2rem;color:#e7d8b4}
-p,li{color:#d8d0be}
-a{color:#d6ba7c}
-.grid{display:grid;gap:16px}
-.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.product{background:#111;border:1px solid #2d2d2d;border-radius:14px;padding:16px}
-.muted{color:#b7ae9a}
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.toc span{padding:6px 10px;border:1px solid #3f3a2c;border-radius:999px;color:#c9a961;font-size:.78rem}
-</style></head><body><main class='wrap'><section class='hero'><h1>Sobre</h1><p>Proyecto editorial de lectura corporal, emocional y contextual.</p></section></main></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre | SINTOMARIO.ORG</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --deep: #2a0115;
+      --mid: #670433;
+      --light: #8c0548;
+      --text-dim: rgba(255, 255, 255, 0.65);
+      --bar-h: 18px;
+      --head-h: 64px;
+    }
+    
+    body {
+      background: var(--deep);
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    
+    #bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--bar-h);
+      background: #F5C400;
+      color: #1a0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 200;
+    }
+    
+    #header {
+      position: fixed;
+      top: var(--bar-h);
+      left: 0;
+      right: 0;
+      height: var(--head-h);
+      background: var(--deep);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 12px;
+      z-index: 100;
+    }
+    
+    #logo {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+      flex: 1;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    
+    #logo img {
+      height: 32px;
+      object-fit: contain;
+    }
+    
+    #nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    #nav a {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    #nav a:hover { opacity: 1; }
+    
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: calc(var(--bar-h) + var(--head-h) + 40px) 24px 80px;
+    }
+    
+    h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(32px, 5vw, 42px);
+      font-weight: 400;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    
+    .intro {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 32px;
+      font-style: italic;
+      text-align: center;
+    }
+    
+    section {
+      margin-bottom: 32px;
+    }
+    
+    h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    
+    p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    
+    p strong { color: #fff; font-weight: 500; }
+    
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-dim);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
+  
+  <header id="header">
+    <a href="/" id="logo"><img src="/LOGO%20HORIZONTAL-02.png" alt="SINTOMARIO.ORG" style="height:32px;object-fit:contain;"></a>
+    <nav id="nav">
+      <a href="/sobre">Sobre</a>
+      <a href="/cuerpo">Atlas</a>
+      <a href="/faq">FAQ</a>
+    </nav>
+  </header>
+  
+  <main>
+    <h1>Sobre SINTOMARIO</h1>
+    
+    <p class="intro">
+      Atlas de correspondencias cuerpo-emoción. Documentación práctica para quienes buscan comprender el lenguaje somático desde múltiples perspectivas.
+    </p>
+    
+    <section>
+      <h2>Propósito</h2>
+      <p>
+        Organizar el conocimiento disperso sobre psicosomática en una cartografía accesible. Cada entrada conecta zonas corporales con contextos emocionales, ofreciendo marcos de lectura que complementan —no sustituyen— la atención médica convencional.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Contenido</h2>
+      <p>
+        <strong>63 zonas corporales</strong> cruzadas con <strong>51 contextos emocionales</strong>, generando 3.213 artículos de referencia. Las lecturas incluyen: anatomía funcional, heridas emocionales asociadas, narrativas ilustrativas y prácticas de integración somática.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Metodología</h2>
+      <p>
+        Compilación de observaciones clínicas y tradiciones terapéuticas: medicina psicosomática, teoría de meridianos, psicología corporal y enfoques integrativos. Las correspondencias se presentan como hipótesis de trabajo, invitando a la exploración personal rather than a la adopción acrítica.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Uso</h2>
+      <p>
+        Navegación por sistemas corporales o búsqueda directa. Cada artículo ofrece múltiples lecturas del mismo fenómeno. El usuario determina qué resonancias son pertinentes a su experiencia. Sin registro, sin costo, sin recolección de datos personales.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Sostenibilidad</h2>
+      <p>
+        El proyecto se mantiene mediante donaciones voluntarias. No hay publicidad ni contenido premium. El conocimiento sobre el cuerpo se entiende como bien común, no como mercancía.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Contacto</h2>
+      <p>
+        <strong>sintomario@proton.me</strong><br>
+        Para sugerencias, correcciones o consultas. Las aportaciones se revisan y, en su caso, integran sin identificación de autor, manteniendo el carácter anónimo y colectivo del atlas.
+      </p>
+    </section>
+  </main>
+  
+  <footer>
+    &copy; 2026 SINTOMARIO.ORG — Atlas Psicosomático
+  </footer>
+</body>
+</html>

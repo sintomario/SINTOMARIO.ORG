@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="wrap">
+  <!-- Hero Section -->
+  <section class="hero hero-homepage">
+    <h1 class="hero-title">{{ hero_title | escape }}</h1>
+    <p class="hero-subtitle">{{ hero_subtitle | escape }}</p>
+    <div class="hero-cta">
+      <a href="/buscar" class="btn btn-primary">Explorar síntomas</a>
+      <a href="/sobre" class="btn btn-secondary">Aprende cómo funciona</a>
+    </div>
+  </section>
+
+  <!-- Featured Articles Section -->
+  {% if featured_articles %}
+  <section class="featured-section">
+    <h2 class="section-title">Artículos destacados</h2>
+    <div class="grid grid-3">
+      {% for article in featured_articles %}
+      <article class="card card-topic">
+        <div class="card-header">
+          {% if article.icon %}<span class="card-icon">{{ article.icon | safe }}</span>{% endif %}
+          <span class="card-eyebrow">{{ article.eyebrow | escape }}</span>
+        </div>
+        <h3 class="card-title">
+          <a href="{{ article.url | escape }}">{{ article.title | escape }}</a>
+        </h3>
+        <p class="card-excerpt">{{ article.excerpt | escape | truncate:120 }}</p>
+        <div class="card-footer">
+          <span class="card-meta">{{ article.category | escape }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Zones / Categories Section -->
+  {% if zones %}
+  <section class="zones-section">
+    <h2 class="section-title">Explora por zona del cuerpo</h2>
+    <div class="grid grid-3">
+      {% for zone in zones %}
+      <a href="{{ zone.slug | escape }}" class="zone-card">
+        <div class="zone-icon">
+          {% if zone.icon %}{{ zone.icon | safe }}{% else %}<span>{{zone.title | truncate:1}}</span>{% endif %}
+        </div>
+        <h3 class="zone-title">{{ zone.title | escape }}</h3>
+        <p class="zone-count">{{ zone.count }} síntomas</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Call-to-Action Section -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>¿No encuentras lo que buscas?</h2>
+      <p>Usa nuestro motor para explorar síntomas en profundidad.</p>
+      <form class="search-form" method="get" action="/buscar">
+        <input 
+          type="text" 
+          name="q" 
+          placeholder="Busca síntomas, causas, contextos..." 
+          class="search-input"
+          required
+        >
+        <button type="submit" class="btn btn-primary">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2 class="section-title">Cómo funciona SINTOMARIO</h2>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Busca un síntoma</h3>
+        <p>Comienza con cualquier síntoma: dolor de cabeza, ansiedad, fatiga, etc.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Explora causas</h3>
+        <p>Descubre qué podría estar causando ese síntoma.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Entiende contextos</h3>
+        <p>Comprende en qué situaciones aparece y cómo manejarlo.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Toma acción</h3>
+        <p>Actúa con información: consulta profesionales, cambia hábitos, etc.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliate / Info Block -->
+  {% if affiliate_block %}
+  <aside class="affiliate-section">
+    {{ affiliate_block | safe }}
+  </aside>
+  {% endif %}
+</main>
+{% endblock %}

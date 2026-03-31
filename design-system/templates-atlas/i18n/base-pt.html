@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Page Title with i18n -->
+    <title data-i18n="page.title">{{ page_title or "Atlas Somático Editorial" }}</title>
+    
+    <!-- Meta Description with i18n -->
+    <meta name="description" data-i18n="page.description" 
+          content="{{ page_description or "Descubra a conexão entre mente e corpo através da terapia somática e exploração terapêutica" }}">
+    
+    <!-- Meta Keywords with i18n -->
+    <meta name="keywords" data-i18n="page.keywords"
+          content="{{ page_keywords or "terapia somática, mapeamento corporal, jornada terapêutica, conexão mente-corpo, bem-estar, cura" }}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" data-i18n="page.title" content="{{ page_title or "Atlas Somático Editorial" }}">
+    <meta property="og:description" data-i18n="page.description" 
+          content="{{ page_description or "Descubra a conexão entre mente e corpo através da terapia somática" }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page_url or request.url }}">
+    <meta property="og:image" content="{{ page_image or "/assets-atlas/images/og-image-pt.jpg" }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" data-i18n="page.title" content="{{ page_title or "Atlas Somático Editorial" }}">
+    <meta name="twitter:description" data-i18n="page.description" 
+          content="{{ page_description or "Descubra a conexão entre mente e corpo" }}">
+    <meta name="twitter:image" content="{{ page_image or "/assets-atlas/images/twitter-image-pt.jpg" }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page_url or request.url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets-atlas/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets-atlas/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets-atlas/images/favicon-16x16.png">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets-atlas/images/apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    <link rel="stylesheet" href="/assets-atlas/css/components.css">
+    <link rel="stylesheet" href="/assets-atlas/css/scrollytelling.css">
+    <link rel="stylesheet" href="/assets-atlas/css/body-maps.css">
+    <link rel="stylesheet" href="/assets-atlas/css/progress-therapeutic.css">
+    <link rel="stylesheet" href="/assets-atlas/css/marketing-elements.css">
+    
+    <!-- Language-specific styles will be loaded by i18n engine -->
+    
+    <!-- Structured Data -->
+    {% if schema_json %}
+    <script type="application/ld+json">{{ schema_json|safe }}</script>
+    {% endif %}
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#10b981">
+    <meta name="msapplication-TileColor" content="#10b981">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="theme-therapeutic">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="accessibility.skip_to_main">Pular para conteúdo principal</a>
+    
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="/" aria-label="Atlas Somático Editorial Início">
+                        <img src="/assets-atlas/images/logo-pt.svg" alt="Atlas Somático Editorial" width="200" height="50">
+                    </a>
+                </div>
+                
+                <!-- Main Navigation -->
+                <nav class="main-nav" role="navigation" aria-label="Navegação principal">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link" data-i18n="navigation.home">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/explore" class="nav-link" data-i18n="navigation.explore">Explorar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/scrollytelling" class="nav-link" data-i18n="scrollytelling.title">Jornada Somática</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/body-maps" class="nav-link" data-i18n="body_maps.title">Atlas Corporal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/about" class="nav-link" data-i18n="navigation.about">Sobre</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Actions -->
+                <div class="header-actions">
+                    <!-- Search -->
+                    <button class="btn btn-icon search-toggle" aria-label="Buscar" data-i18n-aria-label="search.open">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="btn btn-icon language-toggle" aria-label="Mudar idioma" data-i18n-aria-label="navigation.change_language">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Language Dropdown -->
+                        <div class="language-dropdown">
+                            <div class="language-list">
+                                <button class="language-option" data-lang="pt-BR" aria-current="true">
+                                    <span class="flag">🇧🇷</span>
+                                    <span class="name">Português (BR)</span>
+                                </button>
+                                <button class="language-option" data-lang="pt-PT">
+                                    <span class="flag">🇵🇹</span>
+                                    <span class="name">Português (PT)</span>
+                                </button>
+                                <button class="language-option" data-lang="es-ES">
+                                    <span class="flag">🇪🇸</span>
+                                    <span class="name">Español</span>
+                                </button>
+                                <button class="language-option" data-lang="en-US">
+                                    <span class="flag">🇺🇸</span>
+                                    <span class="name">English (US)</span>
+                                </button>
+                                <button class="language-option" data-lang="en-GB">
+                                    <span class="flag">🇬🇧</span>
+                                    <span class="name">English (UK)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <button class="btn btn-icon theme-toggle" aria-label="Alternar tema" data-i18n-aria-label="theme.toggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <button class="btn btn-icon user-menu-toggle" aria-label="Menu do usuário" data-i18n-aria-label="navigation.user_menu">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="btn btn-icon mobile-menu-toggle" aria-label="Alternar menu mobile" data-i18n-aria-label="navigation.mobile_menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal" role="dialog" aria-labelledby="search-title" aria-hidden="true">
+        <div class="search-backdrop"></div>
+        <div class="search-container">
+            <div class="search-header">
+                <h2 id="search-title" data-i18n="search.title">Buscar</h2>
+                <button class="btn btn-icon search-close" aria-label="Fechar busca" data-i18n-aria-label="search.close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="search-form">
+                <div class="search-input-wrapper">
+                    <input type="text" 
+                           class="search-input" 
+                           id="search-input"
+                           placeholder="Buscar sintomas, tratamentos ou zonas..." 
+                           data-i18n-placeholder="search.placeholder"
+                           autocomplete="off"
+                           spellcheck="false">
+                    <button class="btn btn-primary search-submit" data-i18n="search.submit">Buscar</button>
+                </div>
+                
+                <!-- Search Suggestions -->
+                <div class="search-suggestions" id="search-suggestions">
+                    <div class="suggestions-header" data-i18n="search.suggestions">Sugestões</div>
+                    <div class="suggestions-list"></div>
+                </div>
+                
+                <!-- Recent Searches -->
+                <div class="recent-searches" id="recent-searches">
+                    <div class="recent-header" data-i18n="search.recent_searches">Buscas Recentes</div>
+                    <div class="recent-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Footer Columns -->
+                <div class="footer-columns">
+                    <!-- About Column -->
+                    <div class="footer-column">
+                        <h3 class="footer-title" data-i18n="footer.about_title">Sobre Atlas Somático</h3>
+                        <p class="footer-description" data-i18n="footer.about_description">
+                            Descubra a conexão entre mente e corpo através da terapia somática abrangente e exploração terapêutica.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook" class="social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Twitter" class="social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Explore Column -->
+                    <div class="footer-column">
+                        <h3 class="footer-title" data-i18n="footer.explore_title">Explorar</h3>
+                        <nav class="footer-nav">
+                            <ul class="footer-links">
+                                <li><a href="/scrollytelling" data-i18n="scrollytelling.title">Jornada Somática</a></li>
+                                <li><a href="/body-maps" data-i18n="body_maps.title">Atlas Corporal</a></li>
+                                <li><a href="/zones" data-i18n="navigation.zones">Zonas</a></li>
+                                <li><a href="/symptoms" data-i18n="navigation.symptoms">Sintomas</a></li>
+                                <li><a href="/treatments" data-i18n="navigation.treatments">Tratamentos</a></li>
+                                <li><a href="/exercises" data-i18n="navigation.exercises">Exercícios</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <!-- Resources Column -->
+                    <div class="footer-column">
+                        <h3 class="footer-title" data-i18n="footer.resources_title">Recursos</h3>
+                        <nav class="footer-nav">
+                            <ul class="footer-links">
+                                <li><a href="/about" data-i18n="navigation.about">Sobre</a></li>
+                                <li><a href="/blog" data-i18n="navigation.blog">Blog</a></li>
+                                <li><a href="/research" data-i18n="navigation.research">Pesquisa</a></li>
+                                <li><a href="/guides" data-i18n="navigation.guides">Guias</a></li>
+                                <li><a href="/faq" data-i18n="navigation.faq">FAQ</a></li>
+                                <li><a href="/contact" data-i18n="navigation.contact">Contato</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <!-- Legal Column -->
+                    <div class="footer-column">
+                        <h3 class="footer-title" data-i18n="footer.legal_title">Legal</h3>
+                        <nav class="footer-nav">
+                            <ul class="footer-links">
+                                <li><a href="/privacy" data-i18n="footer.privacy_policy">Política de Privacidade</a></li>
+                                <li><a href="/terms" data-i18n="footer.terms_of_service">Termos de Serviço</a></li>
+                                <li><a href="/medical-disclaimer" data-i18n="footer.medical_disclaimer">Isenção Médica</a></li>
+                                <li><a href="/accessibility" data-i18n="footer.accessibility">Acessibilidade</a></li>
+                                <li><a href="/cookies" data-i18n="footer.cookie_policy">Política de Cookies</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        <p data-i18n="footer.copyright">&copy; 2026 Atlas Somático Editorial. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="footer-language">
+                        <span data-i18n="footer.current_language">Idioma:</span>
+                        <strong>Português (BR)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Medical Disclaimer (Fixed) -->
+    <div class="medical-disclaimer" role="alert" aria-live="polite">
+        <p data-i18n="medical.disclaimer">
+            Este conteúdo é apenas para fins educacionais e não deve substituir o conselho médico profissional.
+        </p>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/assets-atlas/js/theme-manager.js"></script>
+    <script src="/assets-atlas/js/interaction-manager.js"></script>
+    <script src="/assets-atlas/js/search-manager.js"></script>
+    <script src="/assets-atlas/js/i18n/i18n-engine.js"></script>
+    <script src="/assets-atlas/js/i18n/spelling-engine.js"></script>
+    
+    <!-- Page-specific scripts -->
+    {% block scripts %}{% endblock %}
+    
+    <!-- Initialize i18n -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize with Portuguese locale
+            window.atlasI18n.init('pt-BR');
+            
+            // Setup language switcher
+            document.querySelectorAll('.language-option').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const locale = button.getAttribute('data-lang');
+                    await window.atlasI18n.changeLocale(locale);
+                    
+                    // Update current language indicator
+                    document.querySelectorAll('.language-option').forEach(btn => {
+                        btn.setAttribute('aria-current', 'false');
+                    });
+                    button.setAttribute('aria-current', 'true');
+                    
+                    // Update footer language display
+                    const config = window.atlasI18n.getLocaleConfig();
+                    const languageDisplay = document.querySelector('.footer-language strong');
+                    if (languageDisplay) {
+                        languageDisplay.textContent = config.name;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

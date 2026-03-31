@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_title %}Atlas Somático Editorial{% endblock %}</title>
+    <meta name="description" content="{% block page_description %}Cartografía corporal sistemática para comprensión mente-cuerpo{% endblock %}">
+    <meta name="keywords" content="{% block page_keywords %}atlas somático, cuerpo mente, terapia, salud{% endblock %}">
+    
+    <!-- Design System Tokens -->
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    <link rel="stylesheet" href="/assets-atlas/css/components.css">
+    <link rel="stylesheet" href="/assets-atlas/css/utilities.css">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="atlas-body">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Atlas Header -->
+    <header class="atlas-header" role="banner">
+        <div class="atlas-container">
+            <nav class="therapeutic-navigation" role="navigation" aria-label="Navegación principal">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <span class="brand-text">Atlas Somático</span>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="/zones" class="nav-link">Zonas Corporales</a></li>
+                        <li><a href="/articles" class="nav-link">Artículos</a></li>
+                        <li><a href="/hubs" class="nav-link">Hubs Temáticos</a></li>
+                        <li><a href="/about" class="nav-link">Sobre</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="search-toggle" aria-label="Buscar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="theme-toggle" aria-label="Cambiar tema">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    {% block breadcrumb %}
+    <nav class="breadcrumb-navigation" aria-label="Navegación de migas de pan">
+        <div class="atlas-container">
+            <ol class="breadcrumb-list">
+                <li><a href="/">Inicio</a></li>
+                {% block breadcrumb_items %}{% endblock %}
+            </ol>
+        </div>
+    </nav>
+    {% endblock %}
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="atlas-main" role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Atlas Footer -->
+    <footer class="atlas-footer" role="contentinfo">
+        <div class="atlas-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Atlas Somático</h3>
+                    <p>Cartografía corporal sistemática para comprensión mente-cuerpo-emoción-espíritu.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="/zones">Zonas Corporales</a></li>
+                        <li><a href="/articles">Artículos Terapéuticos</a></li>
+                        <li><a href="/hubs">Hubs Temáticos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="/about">Sobre el Proyecto</a></li>
+                        <li><a href="/methodology">Metodología</a></li>
+                        <li><a href="/contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Conecta</h4>
+                    <ul>
+                        <li><a href="/newsletter">Newsletter</a></li>
+                        <li><a href="/community">Comunidad</a></li>
+                        <li><a href="/support">Apoyo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Atlas Somático Editorial. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MEDICAL DISCLAIMER - INAMOVIBLE -->
+    <div class="medical-disclaimer" role="alert">
+        DISCLAIMER MÉDICO
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/assets-atlas/js/theme-manager.js"></script>
+    <script src="/assets-atlas/js/interaction-manager.js"></script>
+    <script src="/assets-atlas/js/search-manager.js"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

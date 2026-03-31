@@ -1,0 +1,279 @@
+name: Deploy Atlas Somático Editorial
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'assets-atlas/**'
+      - 'templates-atlas/**'
+      - 'package.json'
+      - 'webpack.config.js'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'assets-atlas/**'
+      - 'templates-atlas/**'
+      - 'package.json'
+      - 'webpack.config.js'
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.9'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test and Validate
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run ESLint
+      run: npm run lint
+      
+    - name: Run unit tests
+      run: npm run test:unit
+      
+    - name: Build assets
+      run: npm run build
+      
+    - name: Run accessibility tests
+      run: npm run test:a11y
+      
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+  build-and-deploy-staging:
+    runs-on: ubuntu-latest
+    name: Build and Deploy to Staging
+    needs: test
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build production assets
+      run: npm run build
+      
+    - name: Optimize images
+      run: npm run optimize:images
+      
+    - name: Deploy to staging
+      run: |
+        rsync -avz --delete assets-atlas/ ${{ secrets.STAGING_SERVER }}/assets/
+        rsync -avz --delete templates-atlas/ ${{ secrets.STAGING_SERVER }}/templates/
+        rsync -avz dist/ ${{ secrets.STAGING_SERVER }}/assets/dist/
+      env:
+        STAGING_SERVER: ${{ secrets.STAGING_SERVER }}
+        
+    - name: Run Lighthouse CI
+      run: |
+        npm install -g @lhci/cli@0.12.x
+        lhci autorun
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        LHCI_SERVER_URL: https://lhci.herokuapp.com
+        LHCI_SERVER_BASE_URL: https://staging.atlas-somatico.com
+
+  build-and-deploy-production:
+    runs-on: ubuntu-latest
+    name: Build and Deploy to Production
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build production assets
+      run: npm run build
+      
+    - name: Optimize images
+      run: npm run optimize:images
+      
+    - name: Analyze bundle size
+      run: npm run analyze
+      
+    - name: Create deployment artifact
+      run: |
+        tar -czf atlas-somatico-${{ github.sha }}.tar.gz \
+          assets-atlas/ \
+          templates-atlas/ \
+          dist/ \
+          README.md \
+          IMPLEMENTATION_FINAL_REPORT.md
+          
+    - name: Upload deployment artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-artifact
+        path: atlas-somatico-${{ github.sha }}.tar.gz
+        retention-days: 30
+        
+    - name: Deploy to production
+      run: |
+        # Backup current version
+        ssh ${{ secrets.PROD_SERVER }} "mkdir -p /var/backups/atlas-somatico && tar -czf /var/backups/atlas-somatico/backup-$(date +%Y%m%d-%H%M%S).tar.gz /var/www/atlas-somatico/"
+        
+        # Deploy new version
+        rsync -avz --delete assets-atlas/ ${{ secrets.PROD_SERVER }}/var/www/atlas-somatico/assets/
+        rsync -avz --delete templates-atlas/ ${{ secrets.PROD_SERVER }}/var/www/atlas-somatico/templates/
+        rsync -avz dist/ ${{ secrets.PROD_SERVER }}/var/www/atlas-somatico/assets/dist/
+        
+        # Clear cache
+        ssh ${{ secrets.PROD_SERVER }} "systemctl reload nginx || true"
+        ssh ${{ secrets.PROD_SERVER }} "redis-cli FLUSHALL || true"
+      env:
+        PROD_SERVER: ${{ secrets.PROD_SERVER }}
+        
+    - name: Run production smoke tests
+      run: |
+        npm run test:smoke
+      env:
+        PRODUCTION_URL: https://atlas-somatico.com
+        
+    - name: Run Lighthouse CI on production
+      run: |
+        npm install -g @lhci/cli@0.12.x
+        lhci autorun --config=.lighthouserc-prod.js
+      env:
+        LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        LHCI_SERVER_URL: https://lhci.herokuapp.com
+        LHCI_SERVER_BASE_URL: https://atlas-somatico.com
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run security audit
+      run: npm audit --audit-level=high
+      
+    - name: Run Snyk security scan
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+
+  performance-monitoring:
+    runs-on: ubuntu-latest
+    name: Performance Monitoring
+    needs: build-and-deploy-production
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run performance tests
+      run: |
+        npm run test:perf
+        npm run test:web-vitals
+        
+    - name: Upload performance reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-reports
+        path: reports/
+        retention-days: 30
+
+  notify:
+    runs-on: ubuntu-latest
+    name: Notify Team
+    needs: [build-and-deploy-production, security-scan, performance-monitoring]
+    if: always() && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Notify Slack on success
+      if: needs.build-and-deploy-production.result == 'success'
+      uses: 8398a7/action-slack@v3
+      with:
+        status: success
+        channel: '#deployments'
+        text: '✅ Atlas Somático Editorial deployed successfully to production!'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        
+    - name: Notify Slack on failure
+      if: needs.build-and-deploy-production.result == 'failure'
+      uses: 8398a7/action-slack@v3
+      with:
+        status: failure
+        channel: '#deployments'
+        text: '❌ Atlas Somático Editorial deployment failed!'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        
+    - name: Send email notification
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.SMTP_SERVER }}
+        server_port: ${{ secrets.SMTP_PORT }}
+        username: ${{ secrets.SMTP_USERNAME }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: "Atlas Somático Editorial Deployment - ${{ needs.build-and-deploy-production.result == 'success' && 'Success' || 'Failed' }}"
+        body: |
+          Deployment Status: ${{ needs.build-and-deploy-production.result == 'success' && 'Success' || 'Failed' }}
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref_name }}
+          Author: ${{ github.actor }}
+          
+          View the deployment at: https://atlas-somatico.com
+        to: ${{ secrets.NOTIFICATION_EMAIL }}
+        from: "Atlas Somático CI/CD <noreply@atlas-somatico.com>"

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Somático - Editor Visual de Nodos</title>
+    
+    <link rel="stylesheet" href="/assets-atlas/css/main.css">
+    <link rel="stylesheet" href="/assets-atlas/css/pcp-persuasion.css">
+    <style>
+        /* Node Editor Specific Styles */
+        .node-editor-container {
+            display: grid;
+            grid-template-columns: 60px 1fr 300px;
+            grid-template-rows: 60px 1fr 40px;
+            height: 100vh;
+            background: var(--color-neutral-100);
+            overflow: hidden;
+        }
+        
+        .editor-toolbar {
+            grid-column: 1 / -1;
+            grid-row: 1;
+            background: var(--dashboard-primary);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-md);
+            gap: var(--space-sm);
+            border-bottom: 2px solid var(--dashboard-accent);
+        }
+        
+        .tool-group {
+            display: flex;
+            gap: var(--space-xs);
+            padding: 0 var(--space-sm);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .tool-group:last-child {
+            border-right: none;
+            margin-left: auto;
+        }
+        
+        .tool-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .tool-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .tool-btn.active {
+            background: var(--dashboard-accent);
+        }
+        
+        .tool-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .tool-btn::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-neutral-900);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        
+        .tool-btn:hover::after {
+            opacity: 1;
+        }
+        
+        .editor-canvas {
+            grid-column: 2;
+            grid-row: 2;
+            position: relative;
+            background: var(--editor-canvas);
+            overflow: hidden;
+            border: 1px solid var(--color-neutral-300);
+        }
+        
+        .canvas-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(var(--editor-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--editor-grid) 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform-origin: 0 0;
+        }
+        
+        .properties-panel {
+            grid-column: 3;
+            grid-row: 2;
+            background: white;
+            border-left: 1px solid var(--color-neutral-300);
+            overflow-y: auto;
+        }
+        
+        .properties-panel h3 {
+            background: var(--dashboard-primary);
+            color: white;
+            padding: var(--space-md);
+            margin: 0;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+        }
+        
+        .properties-form {
+            padding: var(--space-lg);
+        }
+        
+        .property-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .property-group label {
+            display: block;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--color-neutral-700);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .property-group input,
+        .property-group select,
+        .property-group textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            transition: border-color 0.2s ease;
+        }
+        
+        .property-group input:focus,
+        .property-group select:focus,
+        .property-group textarea:focus {
+            outline: none;
+            border-color: var(--dashboard-accent);
+        }
+        
+        .property-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .property-actions {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: var(--space-sm);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .action-btn.apply {
+            background: var(--dashboard-accent);
+            color: white;
+        }
+        
+        .action-btn.apply:hover {
+            background: var(--dashboard-primary);
+        }
+        
+        .action-btn.reset {
+            background: var(--color-neutral-200);
+            color: var(--color-neutral-700);
+        }
+        
+        .action-btn.reset:hover {
+            background: var(--color-neutral-300);
+        }
+        
+        .status-bar {
+            grid-column: 1 / -1;
+            grid-row: 3;
+            background: var(--color-neutral-200);
+            border-top: 1px solid var(--color-neutral-300);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-md);
+            font-size: var(--font-size-xs);
+            color: var(--color-neutral-600);
+        }
+        
+        .status-info {
+            display: flex;
+            gap: var(--space-lg);
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-green-vitality-500);
+        }
+        
+        .minimap {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--dashboard-accent);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        
+        .minimap-viewport {
+            position: absolute;
+            border: 2px solid var(--dashboard-primary);
+            background: rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Node Styles */
+        .node {
+            position: absolute;
+            background: white;
+            border: 2px solid var(--editor-node);
+            border-radius: var(--radius-md);
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: move;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        
+        .node:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .node.selected {
+            border-color: var(--dashboard-accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .node.dragging {
+            opacity: 0.7;
+            z-index: 1000;
+        }
+        
+        .node-header {
+            background: var(--editor-node);
+            color: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .node-type-icon {
+            font-size: var(--font-size-lg);
+        }
+        
+        .node-title {
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+        }
+        
+        .node-body {
+            padding: var(--space-md);
+        }
+        
+        .node-attributes {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        
+        .attribute {
+            font-size: var(--font-size-xs);
+            color: var(--color-neutral-600);
+            padding: 2px var(--space-xs);
+            background: var(--color-neutral-100);
+            border-radius: 2px;
+        }
+        
+        .node-ports {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        
+        .port {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--editor-connection);
+            border: 2px solid white;
+            border-radius: 50%;
+            pointer-events: all;
+            cursor: crosshair;
+            transition: all 0.2s ease;
+        }
+        
+        .port:hover {
+            transform: scale(1.3);
+            background: var(--dashboard-accent);
+        }
+        
+        .port.input {
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .port.output {
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .connection {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .connection svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .connection path {
+            fill: none;
+            stroke: var(--editor-connection);
+            stroke-width: 2;
+        }
+        
+        .connection:hover path {
+            stroke: var(--dashboard-accent);
+            stroke-width: 3;
+        }
+        
+        /* Context Menu */
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            display: none;
+        }
+        
+        .context-menu.show {
+            display: block;
+        }
+        
+        .context-menu-item {
+            padding: var(--space-sm) var(--space-md);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: var(--font-size-sm);
+        }
+        
+        .context-menu-item:hover {
+            background: var(--color-neutral-100);
+        }
+        
+        .context-menu-separator {
+            height: 1px;
+            background: var(--color-neutral-300);
+            margin: var(--space-xs) 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .node-editor-container {
+                grid-template-columns: 60px 1fr;
+                grid-template-rows: 60px 1fr 40px 200px;
+            }
+            
+            .properties-panel {
+                grid-column: 1 / -1;
+                grid-row: 4;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .node-editor-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 60px 1fr 40px 250px;
+            }
+            
+            .editor-toolbar {
+                overflow-x: auto;
+            }
+            
+            .properties-panel {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="node-editor-container">
+        <!-- Toolbar de Herramientas -->
+        <toolbar class="editor-toolbar">
+            <div class="tool-group" data-group="nodes">
+                <button class="tool-btn" data-tool="sintoma-node" title="Nodo de Síntoma">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="sistema-node" title="Nodo de Sistema">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="terapia-node" title="Nodo de Terapia">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="tool-group" data-group="connections">
+                <button class="tool-btn" data-tool="connection" title="Conexión">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+                    </svg>
+                </button>
+                <button class="tool-btn" data-tool="group" title="Agrupar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="tool-group" data-group="actions">
+                <button class="tool-btn" data-action="export" title="Exportar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                </button>
+                <button class="tool-btn" data-action="preview" title="Previsualizar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                </button>
+                <button class="tool-btn" data-action="save" title="Guardar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                    </svg>
+                </button>
+            </div>
+        </toolbar>
+        
+        <!-- Panel de Propiedades -->
+        <aside class="properties-panel">
+            <h3>Propiedades del Nodo</h3>
+            <div class="properties-form" id="node-properties">
+                <div class="property-group">
+                    <label>Identificador</label>
+                    <input type="text" id="node-id" placeholder="node-001">
+                </div>
+                
+                <div class="property-group">
+                    <label>Título</label>
+                    <input type="text" id="node-title" placeholder="Ansiedad en el Pecho">
+                </div>
+                
+                <div class="property-group">
+                    <label>Sistema Corporal</label>
+                    <select id="node-sistema">
+                        <option value="nervioso">Sistema Nervioso</option>
+                        <option value="respiratorio">Sistema Respiratorio</option>
+                        <option value="digestivo">Sistema Digestivo</option>
+                        <option value="circulatorio">Sistema Circulatorio</option>
+                        <option value="linfatico">Sistema Linfático</option>
+                        <option value="muscular">Sistema Muscular</option>
+                        <option value="oseo">Sistema Óseo</option>
+                    </select>
+                </div>
+                
+                <div class="property-group">
+                    <label>Síntoma Principal</label>
+                    <input type="text" id="node-sintoma" placeholder="ansiedad">
+                </div>
+                
+                <div class="property-group">
+                    <label>Zona Corporal</label>
+                    <select id="node-zona">
+                        <option value="cabeza">Cabeza</option>
+                        <option value="cuello">Cuello</option>
+                        <option value="hombros">Hombros</option>
+                        <option value="pecho">Pecho</option>
+                        <option value="abdomen">Abdomen</option>
+                        <option value="espalda">Espalda</option>
+                        <option value="cintura">Cintura</option>
+                        <option value="cadera">Cadera</option>
+                        <option value="piernas">Piernas</option>
+                        <option value="pies">Pies</option>
+                    </select>
+                </div>
+                
+                <div class="property-group">
+                    <label>Fase PCP</label>
+                    <select id="node-pcp-phase">
+                        <option value="perception">Percepción</option>
+                        <option value="context">Contexto</option>
+                        <option value="permission">Permiso</option>
+                    </select>
+                </div>
+                
+                <div class="property-group">
+                    <label>Contenido</label>
+                    <textarea id="node-content" placeholder="Contenido del nodo..."></textarea>
+                </div>
+                
+                <div class="property-group">
+                    <label>Meta Description</label>
+                    <input type="text" id="node-meta-description" placeholder="Descripción para SEO">
+                </div>
+                
+                <div class="property-actions">
+                    <button class="action-btn apply">Aplicar Cambios</button>
+                    <button class="action-btn reset">Restablecer</button>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Canvas de Edición -->
+        <main class="editor-canvas">
+            <div class="canvas-grid" id="node-canvas">
+                <!-- Grid de fondo -->
+                <div class="grid-background"></div>
+                
+                <!-- Nodos existentes -->
+                <div class="node" data-node-id="node-001" data-node-type="sintoma" style="left: 100px; top: 100px;">
+                    <div class="node-header">
+                        <span class="node-type-icon">😰</span>
+                        <span class="node-title">Ansiedad en Pecho</span>
+                    </div>
+                    <div class="node-body">
+                        <div class="node-attributes">
+                            <span class="attribute">Sistema: Nervioso</span>
+                            <span class="attribute">Zona: Pecho</span>
+                            <span class="attribute">PCP: Context</span>
+                        </div>
+                    </div>
+                    <div class="node-ports">
+                        <div class="port input" data-port="input-1"></div>
+                        <div class="port output" data-port="output-1"></div>
+                    </div>
+                </div>
+                
+                <div class="node" data-node-id="node-002" data-node-type="terapia" style="left: 400px; top: 100px;">
+                    <div class="node-header">
+                        <span class="node-type-icon">💝</span>
+                        <span class="node-title">Respiración Consciente</span>
+                    </div>
+                    <div class="node-body">
+                        <div class="node-attributes">
+                            <span class="attribute">Sistema: Respiratorio</span>
+                            <span class="attribute">Zona: Pecho</span>
+                            <span class="attribute">PCP: Permission</span>
+                        </div>
+                    </div>
+                    <div class="node-ports">
+                        <div class="port input" data-port="input-1"></div>
+                        <div class="port output" data-port="output-1"></div>
+                    </div>
+                </div>
+                
+                <!-- Conexiones -->
+                <svg class="connection" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                    <path d="M 300 150 Q 350 150 400 150" stroke="var(--editor-connection)" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            
+            <!-- Minimapa -->
+            <div class="minimap">
+                <div class="minimap-viewport"></div>
+            </div>
+        </main>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-info">
+                <div class="status-item">
+                    <span class="status-dot"></span>
+                    <span>Nodos: 2</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot"></span>
+                    <span>Conexiones: 1</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot"></span>
+                    <span>Zoom: 100%</span>
+                </div>
+            </div>
+            <div class="status-info">
+                <span>Editor de Nodos v3.2</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Context Menu -->
+    <div class="context-menu" id="context-menu">
+        <div class="context-menu-item" data-action="duplicate">Duplicar</div>
+        <div class="context-menu-item" data-action="delete">Eliminar</div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" data-action="bring-front">Traer al frente</div>
+        <div class="context-menu-item" data-action="send-back">Enviar al fondo</div>
+    </div>
+    
+    <!-- Node Editor Script -->
+    <script>
+        class NodeEditor {
+            constructor() {
+                this.canvas = document.getElementById('node-canvas');
+                this.nodes = new Map();
+                this.connections = [];
+                this.selectedNode = null;
+                this.isDragging = false;
+                this.isConnecting = false;
+                this.currentTool = null;
+                this.dragOffset = { x: 0, y: 0 };
+                this.zoom = 1;
+                
+                this.initEventListeners();
+                this.loadExistingNodes();
+            }
+            
+            initEventListeners() {
+                // Toolbar
+                document.querySelectorAll('.tool-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const tool = e.currentTarget.dataset.tool;
+                        const action = e.currentTarget.dataset.action;
+                        
+                        if (tool) {
+                            this.setTool(tool);
+                        } else if (action) {
+                            this.handleAction(action);
+                        }
+                    });
+                });
+                
+                // Canvas events
+                this.canvas.addEventListener('click', this.handleCanvasClick.bind(this));
+                this.canvas.addEventListener('contextmenu', this.handleContextMenu.bind(this));
+                
+                // Property panel
+                document.querySelectorAll('.action-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('apply')) {
+                            this.applyProperties();
+                        } else if (e.target.classList.contains('reset')) {
+                            this.resetProperties();
+                        }
+                    });
+                });
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', this.handleKeyboard.bind(this));
+                
+                // Hide context menu
+                document.addEventListener('click', () => {
+                    document.getElementById('context-menu').classList.remove('show');
+                });
+            }
+            
+            setTool(tool) {
+                this.currentTool = tool;
+                
+                // Update toolbar state
+                document.querySelectorAll('.tool-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                const activeBtn = document.querySelector(`[data-tool="${tool}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+            }
+            
+            handleAction(action) {
+                switch (action) {
+                    case 'export':
+                        this.exportConfiguration();
+                        break;
+                    case 'preview':
+                        this.previewConfiguration();
+                        break;
+                    case 'save':
+                        this.saveConfiguration();
+                        break;
+                }
+            }
+            
+            handleCanvasClick(e) {
+                if (e.target === this.canvas || e.target.classList.contains('grid-background')) {
+                    if (this.currentTool && !this.isDragging) {
+                        const rect = this.canvas.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        this.createNode(this.currentTool, x, y);
+                    }
+                    
+                    this.deselectAllNodes();
+                }
+            }
+            
+            handleContextMenu(e) {
+                e.preventDefault();
+                
+                const node = e.target.closest('.node');
+                if (node) {
+                    this.selectNode(node);
+                    
+                    const menu = document.getElementById('context-menu');
+                    menu.style.left = `${e.clientX}px`;
+                    menu.style.top = `${e.clientY}px`;
+                    menu.classList.add('show');
+                }
+            }
+            
+            handleKeyboard(e) {
+                if (e.key === 'Delete' && this.selectedNode) {
+                    this.deleteNode(this.selectedNode);
+                }
+                
+                if (e.ctrlKey && e.key === 'd' && this.selectedNode) {
+                    e.preventDefault();
+                    this.duplicateNode(this.selectedNode);
+                }
+            }
+            
+            createNode(type, x, y) {
+                const node = {
+                    id: `node-${Date.now()}`,
+                    type: type,
+                    x: x,
+                    y: y,
+                    data: this.getDefaultNodeData(type)
+                };
+                
+                this.nodes.set(node.id, node);
+                this.renderNode(node);
+                this.selectNode(document.querySelector(`[data-node-id="${node.id}"]`));
+                
+                // Reset tool after creation
+                this.setTool(null);
+            }
+            
+            getDefaultNodeData(type) {
+                const defaults = {
+                    'sintoma-node': {
+                        title: 'Nuevo Síntoma',
+                        sistema: 'nervioso',
+                        sintoma: '',
+                        zona: 'cabeza',
+                        pcpPhase: 'perception',
+                        content: '',
+                        metaDescription: ''
+                    },
+                    'sistema-node': {
+                        title: 'Nuevo Sistema',
+                        sistema: 'nervioso',
+                        sintoma: '',
+                        zona: 'cuerpo-completo',
+                        pcpPhase: 'context',
+                        content: '',
+                        metaDescription: ''
+                    },
+                    'terapia-node': {
+                        title: 'Nueva Terapia',
+                        sistema: 'nervioso',
+                        sintoma: '',
+                        zona: 'cuerpo-completo',
+                        pcpPhase: 'permission',
+                        content: '',
+                        metaDescription: ''
+                    }
+                };
+                
+                return defaults[type] || defaults['sintoma-node'];
+            }
+            
+            renderNode(node) {
+                const nodeElement = document.createElement('div');
+                nodeElement.className = `node ${node.type}`;
+                nodeElement.dataset.nodeId = node.id;
+                nodeElement.style.left = `${node.x}px`;
+                nodeElement.style.top = `${node.y}px`;
+                
+                const icon = this.getNodeIcon(node.type);
+                const attributes = [
+                    `Sistema: ${node.data.sistema}`,
+                    `Zona: ${node.data.zona}`,
+                    `PCP: ${node.data.pcpPhase}`
+                ];
+                
+                nodeElement.innerHTML = `
+                    <div class="node-header">
+                        <span class="node-type-icon">${icon}</span>
+                        <span class="node-title">${node.data.title}</span>
+                    </div>
+                    <div class="node-body">
+                        <div class="node-attributes">
+                            ${attributes.map(attr => `<span class="attribute">${attr}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="node-ports">
+                        <div class="port input" data-port="input-1"></div>
+                        <div class="port output" data-port="output-1"></div>
+                    </div>
+                `;
+                
+                // Add drag functionality
+                this.addDragFunctionality(nodeElement);
+                
+                // Add port functionality
+                this.addPortFunctionality(nodeElement);
+                
+                this.canvas.appendChild(nodeElement);
+            }
+            
+            getNodeIcon(type) {
+                const icons = {
+                    'sintoma-node': '😰',
+                    'sistema-node': '⭐',
+                    'terapia-node': '💝'
+                };
+                
+                return icons[type] || '📦';
+            }
+            
+            addDragFunctionality(nodeElement) {
+                let isDragging = false;
+                let startX, startY, initialX, initialY;
+                
+                const header = nodeElement.querySelector('.node-header');
+                
+                header.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    initialX = nodeElement.offsetLeft;
+                    initialY = nodeElement.offsetTop;
+                    
+                    nodeElement.classList.add('dragging');
+                    this.selectNode(nodeElement);
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    
+                    nodeElement.style.left = `${initialX + dx}px`;
+                    nodeElement.style.top = `${initialY + dy}px`;
+                    
+                    this.updateNodePosition(nodeElement.dataset.nodeId, initialX + dx, initialY + dy);
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        nodeElement.classList.remove('dragging');
+                    }
+                });
+            }
+            
+            addPortFunctionality(nodeElement) {
+                const ports = nodeElement.querySelectorAll('.port');
+                
+                ports.forEach(port => {
+                    port.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.handlePortClick(port, nodeElement);
+                    });
+                });
+            }
+            
+            handlePortClick(port, nodeElement) {
+                if (!this.isConnecting) {
+                    // Start connection
+                    this.isConnecting = true;
+                    this.connectingPort = port;
+                    this.connectingNode = nodeElement;
+                    port.style.background = 'var(--dashboard-accent)';
+                } else {
+                    // Complete connection
+                    if (this.connectingPort !== port && this.connectingNode !== nodeElement) {
+                        this.createConnection(this.connectingNode, nodeElement);
+                    }
+                    
+                    // Reset connection state
+                    this.connectingPort.style.background = '';
+                    this.isConnecting = false;
+                    this.connectingPort = null;
+                    this.connectingNode = null;
+                }
+            }
+            
+            createConnection(fromNode, toNode) {
+                const connection = {
+                    id: `connection-${Date.now()}`,
+                    from: fromNode.dataset.nodeId,
+                    to: toNode.dataset.nodeId
+                };
+                
+                this.connections.push(connection);
+                this.renderConnection(connection);
+            }
+            
+            renderConnection(connection) {
+                const fromNode = document.querySelector(`[data-node-id="${connection.from}"]`);
+                const toNode = document.querySelector(`[data-node-id="${connection.to}"]`);
+                
+                if (!fromNode || !toNode) return;
+                
+                const fromRect = fromNode.getBoundingClientRect();
+                const toRect = toNode.getBoundingClientRect();
+                const canvasRect = this.canvas.getBoundingClientRect();
+                
+                const fromX = fromRect.right - canvasRect.left;
+                const fromY = fromRect.top + fromRect.height / 2 - canvasRect.top;
+                const toX = toRect.left - canvasRect.left;
+                const toY = toRect.top + toRect.height / 2 - canvasRect.top;
+                
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.classList.add('connection');
+                svg.style.position = 'absolute';
+                svg.style.left = '0';
+                svg.style.top = '0';
+                svg.style.width = '100%';
+                svg.style.height = '100%';
+                svg.style.pointerEvents = 'none';
+                
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const midX = (fromX + toX) / 2;
+                path.setAttribute('d', `M ${fromX} ${fromY} Q ${midX} ${fromY} ${toX} ${toY}`);
+                path.setAttribute('stroke', 'var(--editor-connection)');
+                path.setAttribute('stroke-width', '2');
+                path.setAttribute('fill', 'none');
+                
+                svg.appendChild(path);
+                this.canvas.appendChild(svg);
+            }
+            
+            selectNode(nodeElement) {
+                this.deselectAllNodes();
+                nodeElement.classList.add('selected');
+                this.selectedNode = nodeElement;
+                this.loadNodeProperties(nodeElement);
+            }
+            
+            deselectAllNodes() {
+                document.querySelectorAll('.node').forEach(node => {
+                    node.classList.remove('selected');
+                });
+                this.selectedNode = null;
+            }
+            
+            loadNodeProperties(nodeElement) {
+                const nodeId = nodeElement.dataset.nodeId;
+                const node = this.nodes.get(nodeId);
+                
+                if (!node) return;
+                
+                document.getElementById('node-id').value = node.id;
+                document.getElementById('node-title').value = node.data.title;
+                document.getElementById('node-sistema').value = node.data.sistema;
+                document.getElementById('node-sintoma').value = node.data.sintoma;
+                document.getElementById('node-zona').value = node.data.zona;
+                document.getElementById('node-pcp-phase').value = node.data.pcpPhase;
+                document.getElementById('node-content').value = node.data.content;
+                document.getElementById('node-meta-description').value = node.data.metaDescription;
+            }
+            
+            applyProperties() {
+                if (!this.selectedNode) return;
+                
+                const nodeId = this.selectedNode.dataset.nodeId;
+                const node = this.nodes.get(nodeId);
+                
+                if (!node) return;
+                
+                // Update node data
+                node.data.title = document.getElementById('node-title').value;
+                node.data.sistema = document.getElementById('node-sistema').value;
+                node.data.sintoma = document.getElementById('node-sintoma').value;
+                node.data.zona = document.getElementById('node-zona').value;
+                node.data.pcpPhase = document.getElementById('node-pcp-phase').value;
+                node.data.content = document.getElementById('node-content').value;
+                node.data.metaDescription = document.getElementById('node-meta-description').value;
+                
+                // Update UI
+                this.updateNodeUI(this.selectedNode, node.data);
+                
+                this.showNotification('Propiedades aplicadas', 'success');
+            }
+            
+            updateNodeUI(nodeElement, data) {
+                const titleElement = nodeElement.querySelector('.node-title');
+                const attributes = nodeElement.querySelector('.node-attributes');
+                
+                titleElement.textContent = data.title;
+                
+                const attributeList = [
+                    `Sistema: ${data.sistema}`,
+                    `Zona: ${data.zona}`,
+                    `PCP: ${data.pcpPhase}`
+                ];
+                
+                attributes.innerHTML = attributeList.map(attr => `<span class="attribute">${attr}</span>`).join('');
+            }
+            
+            resetProperties() {
+                document.getElementById('node-id').value = '';
+                document.getElementById('node-title').value = '';
+                document.getElementById('node-sistema').value = 'nervioso';
+                document.getElementById('node-sintoma').value = '';
+                document.getElementById('node-zona').value = 'cabeza';
+                document.getElementById('node-pcp-phase').value = 'perception';
+                document.getElementById('node-content').value = '';
+                document.getElementById('node-meta-description').value = '';
+            }
+            
+            updateNodePosition(nodeId, x, y) {
+                const node = this.nodes.get(nodeId);
+                if (node) {
+                    node.x = x;
+                    node.y = y;
+                }
+            }
+            
+            deleteNode(nodeElement) {
+                const nodeId = nodeElement.dataset.nodeId;
+                
+                // Remove from data
+                this.nodes.delete(nodeId);
+                
+                // Remove connections
+                this.connections = this.connections.filter(conn => 
+                    conn.from !== nodeId && conn.to !== nodeId
+                );
+                
+                // Remove from UI
+                nodeElement.remove();
+                
+                // Reset properties
+                this.resetProperties();
+                
+                this.showNotification('Nodo eliminado', 'info');
+            }
+            
+            duplicateNode(nodeElement) {
+                const nodeId = nodeElement.dataset.nodeId;
+                const node = this.nodes.get(nodeId);
+                
+                if (!node) return;
+                
+                const newNode = {
+                    id: `node-${Date.now()}`,
+                    type: node.type,
+                    x: node.x + 50,
+                    y: node.y + 50,
+                    data: { ...node.data, title: `${node.data.title} (copia)` }
+                };
+                
+                this.nodes.set(newNode.id, newNode);
+                this.renderNode(newNode);
+                this.selectNode(document.querySelector(`[data-node-id="${newNode.id}"]`));
+            }
+            
+            exportConfiguration() {
+                const config = {
+                    nodes: Array.from(this.nodes.values()),
+                    connections: this.connections,
+                    metadata: {
+                        version: '3.2',
+                        timestamp: new Date().toISOString(),
+                        exportedBy: 'Node Editor V3.2'
+                    }
+                };
+                
+                const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `sintomario-nodes-${Date.now()}.json`;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                
+                this.showNotification('Configuración exportada', 'success');
+            }
+            
+            previewConfiguration() {
+                const config = {
+                    nodes: Array.from(this.nodes.values()),
+                    connections: this.connections
+                };
+                
+                // Send to preview endpoint
+                fetch('/api/preview', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(config)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    window.open(data.previewUrl, '_blank');
+                })
+                .catch(error => {
+                    console.error('Error al generar preview:', error);
+                    this.showNotification('Error al generar preview', 'error');
+                });
+            }
+            
+            saveConfiguration() {
+                const config = {
+                    nodes: Array.from(this.nodes.values()),
+                    connections: this.connections
+                };
+                
+                // Save to backend
+                fetch('/api/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(config)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    this.showNotification('Configuración guardada', 'success');
+                })
+                .catch(error => {
+                    console.error('Error al guardar configuración:', error);
+                    this.showNotification('Error al guardar configuración', 'error');
+                });
+            }
+            
+            loadExistingNodes() {
+                // Load nodes from backend or localStorage
+                const savedNodes = localStorage.getItem('node-editor-nodes');
+                if (savedNodes) {
+                    try {
+                        const config = JSON.parse(savedNodes);
+                        config.nodes.forEach(node => {
+                            this.nodes.set(node.id, node);
+                            this.renderNode(node);
+                        });
+                        this.connections = config.connections || [];
+                    } catch (error) {
+                        console.error('Error al cargar nodos:', error);
+                    }
+                }
+            }
+            
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        }
+        
+        // Initialize editor
+        document.addEventListener('DOMContentLoaded', () => {
+            window.nodeEditor = new NodeEditor();
+        });
+        
+        // Context menu actions
+        document.querySelectorAll('.context-menu-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const action = e.target.dataset.action;
+                if (window.nodeEditor && window.nodeEditor.selectedNode) {
+                    switch (action) {
+                        case 'duplicate':
+                            window.nodeEditor.duplicateNode(window.nodeEditor.selectedNode);
+                            break;
+                        case 'delete':
+                            window.nodeEditor.deleteNode(window.nodeEditor.selectedNode);
+                            break;
+                        case 'bring-front':
+                            window.nodeEditor.selectedNode.style.zIndex = '1000';
+                            break;
+                        case 'send-back':
+                            window.nodeEditor.selectedNode.style.zIndex = '1';
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

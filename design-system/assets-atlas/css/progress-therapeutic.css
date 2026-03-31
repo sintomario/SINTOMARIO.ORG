@@ -1,0 +1,799 @@
+/* ===== PROGRESO TERAPÉUTICO CON GAMIFICACIÓN - ATLAS SOMÁTICO ===== */
+
+/* Panel de Progreso Principal */
+.progress-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 320px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 900;
+  transform: translateX(350px);
+  transition: transform var(--transition-normal);
+}
+
+.progress-panel.visible {
+  transform: translateX(0);
+}
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.progress-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.progress-level {
+  text-align: right;
+}
+
+.level-number {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-blue-trust-600);
+  display: block;
+  line-height: 1;
+}
+
+.level-name {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Estadísticas de Progreso */
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--space-sm);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.stat-item:hover {
+  background: var(--color-blue-trust-50);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-blue-trust-600);
+  display: block;
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Barra de Progreso */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-blue-trust-500), var(--color-purple-transformation-500));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Sección de Logros */
+.achievements-section {
+  margin-top: var(--space-lg);
+}
+
+.achievements-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-md);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: var(--space-sm);
+}
+
+.achievement-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+}
+
+.achievement-item:hover {
+  background: var(--color-golden-illumination-50);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+  filter: grayscale(0);
+  transition: all var(--transition-normal);
+}
+
+.achievement-item.locked .achievement-icon {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.achievement-name {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.achievement-points {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  color: var(--color-green-vitality-600);
+  font-weight: 600;
+}
+
+/* Notificaciones de Progreso */
+.notifications-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.progress-notification {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+  box-shadow: var(--shadow-xl);
+  max-width: 350px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all var(--transition-normal);
+  pointer-events: all;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-notification.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.progress-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-blue-trust-500);
+}
+
+.progress-notification.notification-success::before {
+  background: var(--color-green-vitality-500);
+}
+
+.progress-notification.notification-level-up::before {
+  background: linear-gradient(180deg, var(--color-golden-illumination-500), var(--color-purple-transformation-500));
+}
+
+.progress-notification.notification-achievement::before {
+  background: var(--color-golden-illumination-500);
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-xs);
+}
+
+.notification-message {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+}
+
+.notification-close {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-xs);
+  background: none;
+  border: none;
+  color: var(--color-gray-400);
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: var(--space-xs);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.notification-close:hover {
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+/* Indicadores de Racha */
+.streak-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: linear-gradient(135deg, var(--color-orange-500), var(--color-red-500));
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: pulse-fire 2s ease-in-out infinite;
+}
+
+@keyframes pulse-fire {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(251, 146, 60, 0);
+  }
+}
+
+/* Modal de Logros Completos */
+.achievements-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.achievements-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.achievements-modal-content {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  transition: transform var(--transition-normal);
+}
+
+.achievements-modal.active .achievements-modal-content {
+  transform: scale(1);
+}
+
+.achievements-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--color-gray-200);
+}
+
+.achievements-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+.achievements-modal-close {
+  background: none;
+  border: none;
+  color: var(--color-gray-400);
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.achievements-modal-close:hover {
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+.achievements-categories {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.achievement-category {
+  background: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.category-icon {
+  font-size: 1.25rem;
+}
+
+.achievement-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-md);
+}
+
+.achievement-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.achievement-card.unlocked {
+  border-color: var(--color-golden-illumination-300);
+  background: linear-gradient(135deg, var(--color-white), var(--color-golden-illumination-50));
+}
+
+.achievement-card.locked {
+  opacity: 0.6;
+  filter: grayscale(1);
+}
+
+.achievement-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-card-name {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-xs);
+}
+
+.achievement-card-description {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-card-points {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-green-vitality-600);
+  font-weight: 600;
+}
+
+.achievement-card-date {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  color: var(--color-gray-500);
+  margin-top: var(--space-xs);
+}
+
+/* Panel de Estadísticas Detalladas */
+.stats-detailed-panel {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  width: 320px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 900;
+  transform: translateX(-350px);
+  transition: transform var(--transition-normal);
+}
+
+.stats-detailed-panel.visible {
+  transform: translateX(0);
+}
+
+.stats-section {
+  margin-bottom: var(--space-lg);
+}
+
+.stats-section-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gray-800);
+  margin-bottom: var(--space-md);
+}
+
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.stats-item:last-child {
+  border-bottom: none;
+}
+
+.stats-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.stats-value {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-blue-trust-600);
+}
+
+/* Indicadores de Meta */
+.goal-indicator {
+  position: relative;
+  padding: var(--space-md);
+  background: linear-gradient(135deg, var(--color-blue-trust-50), var(--color-green-vitality-50));
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.goal-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.goal-title {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gray-800);
+}
+
+.goal-value {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+}
+
+.goal-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.goal-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-blue-trust-500), var(--color-green-vitality-500));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.goal-indicator.completed {
+  background: linear-gradient(135deg, var(--color-green-vitality-50), var(--color-green-vitality-100));
+}
+
+.goal-indicator.completed::after {
+  content: '✓';
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-green-vitality-500);
+  color: var(--color-white);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Botones de Acción de Progreso */
+.progress-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.progress-action-btn {
+  flex: 1;
+  background: var(--color-blue-trust-500);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.progress-action-btn:hover {
+  background: var(--color-blue-trust-600);
+  transform: translateY(-1px);
+}
+
+.progress-action-btn.secondary {
+  background: transparent;
+  color: var(--color-blue-trust-600);
+  border: 1px solid var(--color-blue-trust-600);
+}
+
+.progress-action-btn.secondary:hover {
+  background: var(--color-blue-trust-50);
+}
+
+/* Responsive para Progreso Terapéutico */
+@media (max-width: 1024px) {
+  .progress-panel {
+    width: 280px;
+    right: 10px;
+    top: 70px;
+  }
+  
+  .stats-detailed-panel {
+    width: 280px;
+    left: 10px;
+    top: 70px;
+  }
+  
+  .progress-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-panel,
+  .stats-detailed-panel {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin: var(--space-lg) 0;
+    border-radius: var(--radius-lg);
+  }
+  
+  .notifications-container {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+  }
+  
+  .progress-notification {
+    max-width: none;
+  }
+  
+  .achievements-modal-content {
+    margin: var(--space-lg);
+    padding: var(--space-lg);
+  }
+  
+  .achievement-category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-panel,
+  .stats-detailed-panel {
+    margin: var(--space-md) 0;
+    padding: var(--space-md);
+  }
+  
+  .progress-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .achievement-category-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-actions {
+    flex-direction: column;
+  }
+}
+
+/* Accesibilidad para Progreso Terapéutico */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill,
+  .achievement-item,
+  .progress-notification,
+  .achievement-card,
+  .progress-panel,
+  .stats-detailed-panel {
+    animation: none;
+    transition: none;
+  }
+  
+  .streak-indicator {
+    animation: none;
+  }
+}
+
+.progress-panel:focus-within,
+.stats-detailed-panel:focus-within {
+  outline: 3px solid var(--color-blue-trust-500);
+  outline-offset: 2px;
+}
+
+.achievement-item:focus-visible,
+.achievement-card:focus-visible {
+  outline: 2px solid var(--color-blue-trust-500);
+  outline-offset: 2px;
+}
+
+/* Estados de Carga */
+.progress-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  color: var(--color-gray-500);
+}
+
+.progress-loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-gray-200);
+  border-top: 2px solid var(--color-blue-trust-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: var(--space-sm);
+}
+
+/* Estados Vacíos */
+.progress-empty {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-gray-500);
+}
+
+.progress-empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.progress-empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-sm);
+}
+
+.progress-empty-description {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+}

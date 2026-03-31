@@ -1,0 +1,169 @@
+{
+  "atlas-respiratory-spacing": {
+    "base-unit": "8px",
+    "scale": {
+      "micro": "2px",
+      "tiny": "4px",
+      "xs": "8px",
+      "sm": "12px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "2xl": "48px",
+      "3xl": "64px",
+      "4xl": "96px",
+      "5xl": "128px"
+    },
+    "semantic-spacing": {
+      "component-internal": {
+        "tight": "8px",
+        "normal": "16px",
+        "loose": "24px"
+      },
+      "component-external": {
+        "tight": "16px",
+        "normal": "24px",
+        "loose": "32px"
+      },
+      "section-spacing": {
+        "tight": "32px",
+        "normal": "48px",
+        "loose": "64px"
+      },
+      "page-spacing": {
+        "tight": "64px",
+        "normal": "96px",
+        "loose": "128px"
+      }
+    },
+    "therapeutic-spacing": {
+      "breathing-room": {
+        "inhale": "24px",
+        "exhale": "32px",
+        "hold": "48px"
+      },
+      "body-zones": {
+        "head": "16px",
+        "neck": "12px",
+        "shoulders": "20px",
+        "chest": "24px",
+        "abdomen": "28px",
+        "pelvis": "16px",
+        "arms": "14px",
+        "legs": "18px"
+      },
+      "connection-lines": {
+        "thin": "1px",
+        "medium": "2px",
+        "thick": "4px"
+      }
+    }
+  },
+  "layout-spacing": {
+    "container": {
+      "padding-x": {
+        "mobile": "16px",
+        "tablet": "24px",
+        "desktop": "32px",
+        "wide": "48px"
+      },
+      "margin-x": "auto",
+      "max-width": {
+        "mobile": "100%",
+        "tablet": "768px",
+        "desktop": "1024px",
+        "wide": "1440px"
+      }
+    },
+    "grid": {
+      "gap": {
+        "tight": "16px",
+        "normal": "24px",
+        "loose": "32px"
+      },
+      "columns": {
+        "mobile": 1,
+        "tablet": 2,
+        "desktop": 3,
+        "wide": 4
+      }
+    },
+    "header": {
+      "height": {
+        "mobile": "64px",
+        "tablet": "72px",
+        "desktop": "80px"
+      },
+      "padding": {
+        "vertical": "16px",
+        "horizontal": "24px"
+      }
+    },
+    "footer": {
+      "padding": {
+        "vertical": "48px",
+        "horizontal": "24px"
+      },
+      "margin-top": "96px"
+    },
+    "disclaimer": {
+      "height": "20px",
+      "bottom": "10px",
+      "padding": "2px 8px",
+      "margin": "0"
+    }
+  },
+  "component-spacing": {
+    "buttons": {
+      "padding": {
+        "sm": "8px 16px",
+        "md": "12px 24px",
+        "lg": "16px 32px"
+      },
+      "margin": "8px",
+      "gap": "12px"
+    },
+    "cards": {
+      "padding": {
+        "tight": "16px",
+        "normal": "24px",
+        "loose": "32px"
+      },
+      "margin": "16px",
+      "gap": "24px",
+      "border-radius": "12px"
+    },
+    "forms": {
+      "field-margin": "16px",
+      "label-margin": "4px",
+      "input-padding": "12px 16px",
+      "button-margin": "24px"
+    },
+    "navigation": {
+      "item-padding": "8px 16px",
+      "item-margin": "4px",
+      "dropdown-padding": "8px",
+      "breadcrumb-gap": "8px"
+    },
+    "body-maps": {
+      "zone-padding": "8px",
+      "zone-margin": "4px",
+      "connection-stroke": "2px",
+      "label-offset": "12px"
+    }
+  },
+  "responsive-spacing": {
+    "breakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1440px"
+    },
+    "fluid-spacing": {
+      "min": "16px",
+      "max": "48px",
+      "viewport-min": "320px",
+      "viewport-max": "1440px"
+    }
+  }
+}

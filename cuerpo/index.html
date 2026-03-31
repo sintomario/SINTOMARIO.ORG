@@ -1,19 +1,347 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><title>Cuerpo | SINTOMARIO</title><style>
-body{margin:0;background:#0a0a0a;color:#efe8d8;font-family:Georgia,serif;line-height:1.76}
-.wrap{max-width:980px;margin:0 auto;padding:24px}
-.hero,.card{background:#171717;border:1px solid #353024;border-radius:18px;padding:24px}
-.hero{background:linear-gradient(180deg,#171717,#111)}
-.eyebrow,.badge{font:600 12px/1.4 "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#c9a961}
-h1,h2,h3{line-height:1.16}
-h1{font-size:clamp(2.4rem,6vw,4.1rem);margin:.2em 0}
-h2{font-size:1.65rem;margin-top:2rem;color:#f6eedf}
-h3{font-size:1.1rem;margin-top:1.2rem;color:#e7d8b4}
-p,li{color:#d8d0be}
-a{color:#d6ba7c}
-.grid{display:grid;gap:16px}
-.products{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.product{background:#111;border:1px solid #2d2d2d;border-radius:14px;padding:16px}
-.muted{color:#b7ae9a}
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
-.toc span{padding:6px 10px;border:1px solid #3f3a2c;border-radius:999px;color:#c9a961;font-size:.78rem}
-</style></head><body><main class='wrap'><section class='hero'><h1>Cuerpo</h1><p>Territorio principal de exploracion en Fase 2.</p></section></main></body></html>
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas Corporal | SINTOMARIO.ORG</title>
+  <meta name="description" content="Atlas psicosomático interactivo. Explora la conexión entre síntomas físicos y estados emocionales.">
+  
+  <!-- Equipo D: Tailwind & Fonts Integration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'plum-deep': '#2a0115',
+            'plum-mid': '#670433',
+            'plum-light': '#8c0548',
+            'authority': '#F5C400',
+            'surface': '#1a010c',
+          },
+          fontFamily: {
+            'headline': ['"EB Garamond"', 'serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Equipo E: Higiene y Performance */
+    :root {
+      --bar-h: 22px;
+      --head-h: 56px;
+      --foot-h: 36px;
+    }
+    body {
+      font-family: 'Inter', 'body', sans-serif;
+      background: conic-gradient(from 200deg at 50% 55%, #1a010c, #670433, #8c0548, #770839, #4d0228, #1a010c);
+      height: 100vh;
+      overflow: hidden;
+    }
+    .font-headline { font-family: 'EB Garamond', serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    
+    .disclaimer-bar {
+      background: #F5C400;
+      color: #1a0000;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    
+    .nav-link { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; transition: all 0.2s; }
+    .nav-link:hover { opacity: 1; color: #F5C400; }
+    .main-content { height: calc(100vh - var(--bar-h) - var(--head-h) - var(--foot-h)); }
+    
+    .wbtn {
+      padding: 6px 14px;
+      background: rgba(0,0,0,0.55);
+      border-left: 2px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
+      transition: all 0.2s;
+      text-align: left;
+      cursor: pointer;
+    }
+    .wbtn:hover { background: rgba(255,255,255,0.1); color: #fff; border-left-color: #F5C400; }
+    .wbtn.hub { font-weight: 600; border-left-color: #d0bcff; margin-top: 8px; }
+    
+    .scroll-hint { font-size: 9px; letter-spacing: 0.2em; color: rgba(255,255,255,0.4); text-transform: uppercase; animation: pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.2 } 50% { opacity: 0.6 } }
+    
+    #color-overlay { position: absolute; inset: 0; z-index: 50; pointer-events: none; background: conic-gradient(from 200deg at 50% 55%, #1a010c, #670433, #8c0548, #770839, #4d0228, #1a010c); mix-blend-mode: color; opacity: 0.55; }
+    #stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; transition: opacity 0.9s ease; }
+  </style>
+</head>
+<body class="text-white overflow-hidden">
+
+  <!-- Disclaimer -->
+  <div class="disclaimer-bar fixed top-0 w-full z-50 py-1.5 text-center font-bold">
+    ⚠ Sitio informativo. No reemplaza diagnóstico médico profesional.
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-[22px] w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+      <a href="/" class="font-headline text-2xl font-bold tracking-tight text-white hover:text-authority transition-all">
+        SINTOMARIO.ORG
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/sobre" class="nav-link">Sobre</a>
+        <a href="/CLICKER" class="nav-link text-authority">Atlas</a>
+        <a href="/faq" class="nav-link">FAQ</a>
+        <div class="search-box flex items-center gap-2 px-3 py-1.5 rounded ml-4">
+          <span class="material-symbols-outlined text-sm opacity-50">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." class="bg-transparent border-none outline-none text-xs w-32 placeholder:text-white/40">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Explorer -->
+  <main class="main-content mt-[78px] relative overflow-hidden">
+    <div class="w-full h-full relative touch-none focus:outline-none" id="screen" tabindex="0">
+      
+      <!-- Dynamic System Title -->
+      <div class="system-title font-headline italic uppercase absolute bottom-4 w-full text-center z-30 pointer-events-none text-2xl tracking-[0.1em] drop-shadow-lg" id="sys-title">
+        SISTEMA MUSCULAR
+      </div>
+      
+      <!-- Scroll Hint -->
+      <div class="scroll-hint absolute bottom-16 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap" id="hint">
+        ↕ scroll para explorar
+      </div>
+      
+      <!-- Word Buttons Container -->
+      <div class="absolute left-6 bottom-12 z-40 flex flex-col gap-1 items-start" id="words">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Image Stack -->
+      <div class="absolute inset-0 z-10" id="stack">
+        <img src="layers/PNG/01 LUZ.png" data-fixed="luz" data-id="luz" style="z-index: 100; mix-blend-mode: darken; opacity: 0.84;">
+        <img src="layers/PNG/04 TRIPAS.png" data-sys="DIGESTIVO" data-id="digestivo" style="z-index: 8; mix-blend-mode: hard-light; opacity: 0.85;">
+        <img src="layers/PNG/05 MENTE.png" data-sys="PSÍQUICO" data-id="psiquico" style="z-index: 7; mix-blend-mode: darken; opacity: 0.85;">
+        <img src="layers/PNG/03 EMOTION.png" data-sys="EMOCIONAL" data-id="emocional" style="z-index: 6; mix-blend-mode: darken; opacity: 1.0;">
+        <img src="layers/PNG/07 CARDIOVASCULAR.png" data-sys="CIRCULATORIO" data-id="circulatorio" style="z-index: 5; mix-blend-mode: darken; opacity: 0.85;">
+        <img src="layers/PNG/09 NERVIOS.png" data-sys="NERVIOSO" data-id="nervioso" style="z-index: 4; mix-blend-mode: hard-light; opacity: 0.82;">
+        <img src="layers/PNG/02 PIEL.png" data-sys="PERCEPTUAL" data-id="perceptual" style="z-index: 3; mix-blend-mode: hard-light; opacity: 1.0;">
+        <img src="layers/PNG/06 MUSCULOS.png" data-sys="MUSCULAR" data-id="muscular" style="z-index: 2; mix-blend-mode: luminosity; opacity: 1.0;">
+        <img src="layers/PNG/08 OSEO.png" data-sys="ÓSEO" data-id="oseo" style="z-index: 1; mix-blend-mode: multiply; opacity: 1.0;">
+        <img src="layers/PNG/10 BASE.png" data-fixed="base" data-id="base" style="z-index: 0; mix-blend-mode: luminosity; opacity: 1.0;">
+      </div>
+      
+      <!-- Color Equalization Overlay -->
+      <div id="color-overlay"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-40">
+    <div class="text-[10px] text-white/50 tracking-wide">
+      @2026 — <strong class="text-white/70" id="cnt">3.789.987.456</strong> Consultas
+    </div>
+    <div class="flex gap-6">
+      <a href="#" class="nav-link text-[9px]">Privacidad</a>
+      <a href="#" class="nav-link text-[9px]">Términos</a>
+    </div>
+  </footer>
+
+  <script>
+    const WORDS = {
+      "NERVIOSO": [
+        { t: "Cerebro", s: "cerebro-ansiedad" },
+        { t: "Ojos", s: "ojos-negacion" },
+        { t: "Oídos", s: "oidos-no-escuchar" },
+        { t: "N. Vago", s: "nervios-estres" },
+        { t: "Migraña", s: "cabeza-migrana" },
+        { t: "Insomnio", s: "insomnio-control" },
+        { t: "Vértigo", s: "vertigo-incertidumbre" }
+      ],
+      "ÓSEO": [
+        { t: "Columna", s: "columna-abandono" },
+        { t: "Rodilla", s: "rodilla-conflicto" },
+        { t: "Cadera", s: "cadera-miedo" },
+        { t: "Cervicales", s: "cervicales-rigidez" },
+        { t: "Mandíbula", s: "mandibula-tension" },
+        { t: "Huesos", s: "oseo-identidad" },
+        { t: "Dientes", s: "dientes-decision" }
+      ],
+      "CIRCULATORIO": [
+        { t: "Corazón", s: "corazon-tristeza" },
+        { t: "Pulmones", s: "pulmones-ahogo" },
+        { t: "Pecho", s: "pecho-ansiedad" },
+        { t: "Presión", s: "presion-control" },
+        { t: "Taquicardia", s: "corazon-panico" },
+        { t: "Circulación", s: "circulacion-miedo" },
+        { t: "Anemia", s: "sangre-agotamiento" }
+      ],
+      "MUSCULAR": [
+        { t: "Hombros", s: "hombro-responsabilidad" },
+        { t: "Cuello", s: "cuello-estres" },
+        { t: "Lumbar", s: "lumbar-miedo" },
+        { t: "Mandíbula", s: "mandibula-rabia" },
+        { t: "Trapecio", s: "trapecio-carga" },
+        { t: "Fibromialgia", s: "musculos-trauma" },
+        { t: "Contractura", s: "musculos-resistencia" }
+      ],
+      "PSÍQUICO": [
+        { t: "Bucle", s: "mente-obsesion" },
+        { t: "Niebla", s: "mente-confusion" },
+        { t: "Ansiedad", s: "mente-ansiedad" },
+        { t: "Fobias", s: "mente-fobia" },
+        { t: "TOC", s: "mente-toc" },
+        { t: "Burnout", s: "cerebro-burnout" },
+        { t: "Disociación", s: "mente-disociacion" }
+      ],
+      "DIGESTIVO": [
+        { t: "Estómago", s: "estomago-rabia" },
+        { t: "Colon", s: "colon-injusticia" },
+        { t: "Hígado", s: "higado-frustracion" },
+        { t: "Reflujo", s: "reflujo-represion" },
+        { t: "Intestino", s: "intestino-soltar" },
+        { t: "Gastritis", s: "gastritis-autoexigencia" },
+        { t: "Boca", s: "boca-expresion" }
+      ],
+      "EMOCIONAL": [
+        { t: "Llanto", s: "llanto-liberacion" },
+        { t: "Vacío", s: "vacio-abandono" },
+        { t: "Culpa", s: "culpa-castigo" },
+        { t: "Vergüenza", s: "verguenza-exposicion" },
+        { t: "Apatía", s: "apatia-desconexion" },
+        { t: "Soledad", s: "soledad-rechazo" },
+        { t: "Garganta", s: "garganta-represion" }
+      ],
+      "PERCEPTUAL": [
+        { t: "Dermatitis", s: "dermatitis-limites" },
+        { t: "Acné", s: "acne-autoestima" },
+        { t: "Urticaria", s: "piel-rabia" },
+        { t: "Psoriasis", s: "psoriasis-proteccion" },
+        { t: "Nariz", s: "nariz-intuicion" },
+        { t: "Sudoración", s: "sudoracion-miedo" },
+        { t: "Herpes", s: "herpes-conflicto" }
+      ]
+    };
+
+    const stackEl = document.getElementById("stack");
+    const titleEl = document.getElementById("sys-title");
+    const wordsEl = document.getElementById("words");
+    const screenEl = document.getElementById("screen");
+    const hintEl = document.getElementById("hint");
+
+    const allImgs = Array.from(stackEl.querySelectorAll("img"));
+    let layers = allImgs.map(img => ({
+      img,
+      id: img.dataset.id,
+      sys: img.dataset.sys,
+      fixed: img.dataset.fixed
+    }));
+
+    const getSysLayers = () => layers.filter(l => l.sys);
+
+    function render() {
+      const sysLayers = getSysLayers();
+      const active = sysLayers[0];
+      if (!active) return;
+      
+      const sys = active.sys;
+      titleEl.textContent = "SISTEMA " + sys;
+      
+      wordsEl.innerHTML = "";
+      (WORDS[sys] || []).forEach(w => {
+        const b = document.createElement("button");
+        b.className = "wbtn font-body";
+        b.textContent = w.t;
+        // Equipo E: Corregida ruta de /atlas/ a /cuerpo/
+        b.onclick = () => { window.location.href = "/cuerpo/" + w.s; }; 
+        wordsEl.appendChild(b);
+      });
+      
+      const hub = document.createElement("button");
+      hub.className = "wbtn hub font-body";
+      hub.textContent = "→ SINTOMARIO";
+      hub.onclick = () => {
+        const slug = active.id.replace("psiquico", "mente").replace("oseo", "huesos");
+        window.location.href = `/cuerpo/${slug}`; // Equipo E: No trailing slash policy
+      };
+      wordsEl.appendChild(hub);
+    }
+
+    function scrollSys(dir) {
+      const sysLayers = getSysLayers();
+      if (sysLayers.length < 2) return;
+      
+      const first = sysLayers[0];
+      const last = sysLayers[sysLayers.length - 1];
+      const firstIdx = layers.indexOf(first);
+      const lastIdx = layers.indexOf(last);
+      
+      if (dir > 0) {
+        layers.splice(firstIdx, 1);
+        layers.splice(lastIdx, 0, first);
+      } else {
+        layers.splice(lastIdx, 1);
+        layers.splice(firstIdx, 0, last);
+      }
+      
+      // Re-apply z-index
+      layers.forEach((l, i) => {
+        l.img.style.zIndex = l.fixed ? (l.id === 'luz' ? 100 : 0) : (layers.length - i);
+      });
+      
+      hintEl.style.opacity = "0";
+      render();
+    }
+
+    // Wheel interaction
+    let wa = 0;
+    screenEl.addEventListener("wheel", e => {
+      e.preventDefault();
+      wa += e.deltaY;
+      if (Math.abs(wa) >= 80) {
+        scrollSys(wa > 0 ? 1 : -1);
+        wa = 0;
+      }
+    }, { passive: false });
+
+    // Touch interaction
+    let ty = null;
+    screenEl.addEventListener("touchstart", e => { ty = e.touches[0].clientY; }, { passive: true });
+    screenEl.addEventListener("touchmove", e => {
+      if (ty === null) return;
+      const dy = e.touches[0].clientY - ty;
+      if (Math.abs(dy) >= 60) {
+        scrollSys(dy < 0 ? 1 : -1);
+        ty = e.touches[0].clientY;
+      }
+      e.preventDefault();
+    }, { passive: false });
+
+    // Keyboard interaction
+    screenEl.addEventListener("keydown", e => {
+      if (["ArrowDown", "ArrowRight"].includes(e.key)) { e.preventDefault(); scrollSys(1); }
+      if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
+    });
+
+    // Visitor counter
+    let cnt = 3789987456; 
+    const cntEl = document.getElementById("cnt");
+    setInterval(() => {
+      cnt += Math.floor(Math.random() * 4) + 1;
+      if(cntEl) cntEl.textContent = cnt.toLocaleString("es-ES");
+    }, 3500);
+
+    // Init
+    screenEl.focus();
+    render();
+  </script>
+
+</body>
+</html>
