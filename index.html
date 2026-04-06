@@ -541,21 +541,63 @@
         if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
       });
 
-      // Global counter and online users
-      let globalVisits = 3789987456; // Starting global count
-      let onlineUsers = Math.floor(Math.random() * 50) + 20; // Simulated online users
-      
-      // Update footer
-      const visitsEl = document.getElementById("visits");
-      const onlineEl = document.getElementById("online");
-      visitsEl.textContent = globalVisits.toLocaleString("es-ES");
-      onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-      
-      // Simulate online users fluctuation
-      setInterval(() => {
-        onlineUsers = Math.floor(Math.random() * 50) + 20;
-        onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-      }, 30000); // Update every 30 seconds
+      // Real-time counter with API
+      (async function() {
+        let globalVisits = 0;
+        let onlineUsers = 0;
+        let dailyVisits = 0;
+        
+        // Fetch initial data
+        async function fetchCounter() {
+          try {
+            const response = await fetch('/api/counter.php?action=get');
+            const data = await response.json();
+            globalVisits = data.visits;
+            onlineUsers = data.online_users;
+            dailyVisits = data.daily_visits;
+            updateFooter();
+          } catch (error) {
+            console.log('Counter API unavailable, using fallback');
+            // Fallback to simulated data
+            globalVisits = 3789987456;
+            onlineUsers = Math.floor(Math.random() * 50) + 20;
+            updateFooter();
+          }
+        }
+        
+        // Update footer display
+        function updateFooter() {
+          const visitsEl = document.getElementById("visits");
+          const onlineEl = document.getElementById("online");
+          if (visitsEl) visitsEl.textContent = globalVisits.toLocaleString("es-ES");
+          if (onlineEl) onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+        }
+        
+        // Register visit
+        async function registerVisit() {
+          try {
+            await fetch('/api/counter.php?action=visit');
+            await fetchCounter(); // Refresh data after registering
+          } catch (error) {
+            console.log('Failed to register visit');
+          }
+        }
+        
+        // Send heartbeat to track online users
+        function sendHeartbeat() {
+          fetch('/api/counter.php?action=heartbeat').catch(() => {});
+        }
+        
+        // Initialize
+        await fetchCounter();
+        await registerVisit();
+        
+        // Send heartbeat every 2 minutes
+        setInterval(sendHeartbeat, 120000);
+        
+        // Update counter every 30 seconds
+        setInterval(fetchCounter, 30000);
+      })();
 
       // Align #words to left edge of rendered image
       function positionWords() {
