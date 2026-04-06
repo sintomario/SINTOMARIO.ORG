@@ -152,7 +152,7 @@
   <!-- Footer -->
   <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-40">
     <div class="text-[13px] text-white/60 tracking-wide flex items-center">
-      ©2026 — <strong class="text-white/80" id="visits">0</strong> visitas • <strong class="text-white/80" id="online">0</strong> en línea
+      ©2026 — <strong class="text-white/80" id="visits">0</strong> visitas
     </div>
     <div class="flex gap-4">
       <a href="#" class="nav-link text-[12px]">Privacidad</a>
@@ -336,88 +336,39 @@
       if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
     });
 
-    // Local counter system - no dependencies
-    (async function() {
-      let globalVisits = 0;
-      let onlineUsers = 0;
-      let dailyVisits = 0;
+    // Simple visitor counter - solo visitas acumuladas
+    (function() {
+      let totalVisits = 0;
 
-      // Initialize local storage
+      // Initialize counter from localStorage
       function initCounter() {
-        const stored = localStorage.getItem('sintomario_counter');
+        const stored = localStorage.getItem('sintomario_visits');
         if (stored) {
-          const data = JSON.parse(stored);
-          globalVisits = data.visits || 3789987456;
-          dailyVisits = data.daily_visits || 0;
-          
-          // Reset daily counter if new day
-          const today = new Date().toDateString();
-          if (data.last_reset !== today) {
-            dailyVisits = 1;
-            localStorage.setItem('sintomario_counter', JSON.stringify({
-              visits: globalVisits,
-              daily_visits: dailyVisits,
-              last_reset: today
-            }));
-          } else {
-            dailyVisits++;
-          }
+          totalVisits = parseInt(stored) || 3789987456;
         } else {
-          // First visit
-          globalVisits = 3789987456;
-          dailyVisits = 1;
-          localStorage.setItem('sintomario_counter', JSON.stringify({
-            visits: globalVisits,
-            daily_visits: dailyVisits,
-            last_reset: new Date().toDateString()
-          }));
+          totalVisits = 3789987456;
         }
+        updateDisplay();
       }
 
-      // Simulate online users
-      function getOnlineUsers() {
-        const baseUsers = 15;
-        const variation = Math.floor(Math.random() * 20) + 5;
-        return baseUsers + variation;
-      }
-
-      // Update footer display
-      function updateFooter() {
-        const visitsEl = document.getElementById("visits");
-        const onlineEl = document.getElementById("online");
-        if (visitsEl) visitsEl.textContent = globalVisits.toLocaleString("es-ES");
-        if (onlineEl) onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-      }
-
-      // Register visit
+      // Register new visit
       function registerVisit() {
-        globalVisits++;
-        dailyVisits++;
-        
-        // Save to localStorage
-        const today = new Date().toDateString();
-        localStorage.setItem('sintomario_counter', JSON.stringify({
-          visits: globalVisits,
-          daily_visits: dailyVisits,
-          last_reset: today
-        }));
-        
-        updateFooter();
+        totalVisits++;
+        localStorage.setItem('sintomario_visits', totalVisits.toString());
+        updateDisplay();
       }
 
-      // Update online users periodically
-      function updateOnlineUsers() {
-        onlineUsers = getOnlineUsers();
-        updateFooter();
+      // Update display
+      function updateDisplay() {
+        const visitsEl = document.getElementById("visits");
+        if (visitsEl) {
+          visitsEl.textContent = totalVisits.toLocaleString("es-ES");
+        }
       }
 
       // Initialize
       initCounter();
       registerVisit();
-      updateOnlineUsers();
-
-      // Update online users every 30 seconds
-      setInterval(updateOnlineUsers, 30000);
     })();
 
     // Init
