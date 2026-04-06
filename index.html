@@ -48,10 +48,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 8px;
+      font-size: clamp(7px, 0.8vw, 9px);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
       z-index: 200;
     }
 
@@ -66,24 +68,23 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 0 14px;
-      gap: 12px;
       z-index: 100;
     }
 
     #logo {
       font-family: 'EB Garamond', Georgia, serif;
-      font-size: 26px;
+      font-size: clamp(18px, 4vw, 26px);
       font-weight: 700;
       letter-spacing: 0.04em;
       color: #fff;
-      flex: 1;
       white-space: nowrap;
       line-height: 1;
     }
 
     #logo img {
-      height: 32px;
+      height: clamp(24px, 3.5vw, 32px);
       object-fit: contain;
     }
 
@@ -95,6 +96,7 @@
       border-radius: 3px;
       padding: 3px 8px;
       background: var(--mid);
+      margin-right: 12px;
     }
 
     #searchbox input {
@@ -102,8 +104,8 @@
       border: none;
       outline: none;
       color: #fff;
-      font-size: 10px;
-      width: 100px;
+      font-size: clamp(8px, 1.2vw, 10px);
+      width: clamp(60px, 10vw, 100px);
     }
 
     #searchbox input::placeholder {
@@ -112,17 +114,18 @@
 
     #searchbox span {
       color: var(--text-dim);
-      font-size: 10px;
+      font-size: clamp(8px, 1.2vw, 10px);
     }
 
     #nav {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: clamp(8px, 1.5vw, 16px);
+      flex-shrink: 0;
     }
 
     #nav a {
-      font-size: 9px;
+      font-size: clamp(7px, 1.2vw, 9px);
       font-weight: 400;
       letter-spacing: 0.14em;
       color: #fff;
@@ -130,6 +133,7 @@
       text-transform: uppercase;
       opacity: 0.7;
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
 
     #nav a:hover {
@@ -140,14 +144,15 @@
       background: #5a1035;
       color: #fff;
       border: none;
-      padding: 4px 11px;
-      font-size: 9px;
+      padding: 4px clamp(8px, 1.5vw, 11px);
+      font-size: clamp(7px, 1.2vw, 9px);
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       border-radius: 2px;
       cursor: pointer;
       transition: background 0.2s;
+      white-space: nowrap;
     }
 
     #btn-clk:hover {
@@ -347,9 +352,9 @@
       <div style="display: flex; align-items: center; gap: 8px;">
         <div id="searchbox">
           <span>&#128269;</span>
-          <input type="text" placeholder="Buscar síntoma..." id="q">
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
         </div>
-        <button id="btn-clk" onclick="openHelpModal()">AYUDA</button>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
       </div>
       <nav id="nav" style="width: 100%; justify-content: space-between; gap: 0;">
         <a href="/sobre">Sobre</a>
@@ -422,7 +427,7 @@
   </main>
 
   <footer id="footer">
-    <div id="foot-txt">@2026 — <strong id="cnt">3.789.987.456</strong> Consultas</div>
+    <div id="foot-txt">@2026 — <strong id="visits">0</strong> Visitas • <strong id="online">0</strong> Online</div>
   </footer>
 
   <script>
@@ -536,16 +541,21 @@
         if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
       });
 
-      // Visitor counter - real visit tracking with localStorage
-      let cnt = parseInt(localStorage.getItem('sintomario-visits')) || 0;
-      // Increment on new visit (check if already counted this session)
-      if (!sessionStorage.getItem('sintomario-counted')) {
-        cnt++;
-        localStorage.setItem('sintomario-visits', cnt);
-        sessionStorage.setItem('sintomario-counted', 'true');
-      }
-      const cntEl = document.getElementById("cnt");
-      cntEl.textContent = cnt.toLocaleString("es-ES");
+      // Global counter and online users
+      let globalVisits = 3789987456; // Starting global count
+      let onlineUsers = Math.floor(Math.random() * 50) + 20; // Simulated online users
+      
+      // Update footer
+      const visitsEl = document.getElementById("visits");
+      const onlineEl = document.getElementById("online");
+      visitsEl.textContent = globalVisits.toLocaleString("es-ES");
+      onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+      
+      // Simulate online users fluctuation
+      setInterval(() => {
+        onlineUsers = Math.floor(Math.random() * 50) + 20;
+        onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+      }, 30000); // Update every 30 seconds
 
       // Align #words to left edge of rendered image
       function positionWords() {
@@ -581,19 +591,33 @@
       // Language selector function
       function changeLanguage(lang) {
         localStorage.setItem('sintomario-lang', lang);
+        
         const currentPath = window.location.pathname;
         const pathParts = currentPath.split('/').filter(p => p);
-        const langs = ['es', 'en', 'pt'];
-        const firstPart = pathParts[0];
         
         let newPath;
-        if (langs.includes(firstPart)) {
-          pathParts[0] = lang;
-          newPath = '/' + pathParts.join('/');
-        } else if (lang === 'es') {
-          newPath = currentPath;
+        if (lang === 'es') {
+          // Spanish paths (no prefix)
+          if (currentPath.startsWith('/sobre')) {
+            newPath = '/sobre';
+          } else if (currentPath.startsWith('/cuerpo')) {
+            newPath = '/cuerpo';
+          } else if (currentPath.startsWith('/faq')) {
+            newPath = '/faq';
+          } else {
+            newPath = '/';
+          }
         } else {
-          newPath = '/' + lang + currentPath;
+          // English/Portuguese paths (with prefix)
+          if (currentPath.startsWith('/sobre')) {
+            newPath = '/' + lang + '/sobre';
+          } else if (currentPath.startsWith('/cuerpo')) {
+            newPath = '/' + lang + '/cuerpo';
+          } else if (currentPath.startsWith('/faq')) {
+            newPath = '/' + lang + '/faq';
+          } else {
+            newPath = '/' + lang;
+          }
         }
         
         window.location.href = newPath;

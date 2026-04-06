@@ -50,10 +50,12 @@
     .disclaimer-bar {
       background: #F5C400;
       color: #1a0000;
-      font-size: 9px;
+      font-size: clamp(7px, 0.8vw, 9px);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
     }
     
     .nav-link { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; transition: all 0.2s; }
@@ -89,17 +91,17 @@
 
   <!-- Navigation -->
   <nav class="fixed top-[22px] w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-      <a href="/" class="font-headline text-2xl font-bold tracking-tight text-white hover:text-authority transition-all">
-        SINTOMARIO.ORG
+    <div class="flex justify-between items-center px-4 sm:px-6 py-3">
+      <a href="/" class="font-headline text-lg sm:text-2xl font-bold tracking-tight text-white hover:text-authority transition-all flex-shrink-0">
+        <img src="/LOGO%20HORIZONTAL-02.png" alt="SINTOMARIO.ORG" class="h-6 sm:h-8 w-auto">
       </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/sobre" class="nav-link">Sobre</a>
-        <a href="/CLICKER" class="nav-link text-authority">Atlas</a>
-        <a href="/faq" class="nav-link">FAQ</a>
-        <div class="search-box flex items-center gap-2 px-3 py-1.5 rounded ml-4">
-          <span class="material-symbols-outlined text-sm opacity-50">🔍</span>
-          <input type="text" placeholder="Buscar síntoma..." class="bg-transparent border-none outline-none text-xs w-32 placeholder:text-white/40">
+      <div class="hidden md:flex items-center gap-2 sm:gap-4 lg:gap-8">
+        <a href="/sobre" class="nav-link text-xs sm:text-sm">Sobre</a>
+        <a href="/CLICKER" class="nav-link text-xs sm:text-sm text-authority">Atlas</a>
+        <a href="/faq" class="nav-link text-xs sm:text-sm">FAQ</a>
+        <div class="search-box flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded ml-2 sm:ml-4">
+          <span class="material-symbols-outlined text-xs sm:text-sm opacity-50">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." class="bg-transparent border-none outline-none text-xs w-20 sm:w-32 placeholder:text-white/40">
         </div>
       </div>
     </div>
@@ -146,7 +148,7 @@
   <!-- Footer -->
   <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-40">
     <div class="text-[10px] text-white/50 tracking-wide">
-      @2026 — <strong class="text-white/70" id="cnt">3.789.987.456</strong> Consultas
+      @2026 — <strong class="text-white/70" id="visits">0</strong> Visitas • <strong class="text-white/70" id="online">0</strong> Online
     </div>
     <div class="flex gap-6">
       <a href="#" class="nav-link text-[9px]">Privacidad</a>
@@ -330,13 +332,21 @@
       if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
     });
 
-    // Visitor counter
-    let cnt = 3789987456; 
-    const cntEl = document.getElementById("cnt");
+    // Global counter and online users
+    let globalVisits = 3789987456; // Starting global count
+    let onlineUsers = Math.floor(Math.random() * 50) + 20; // Simulated online users
+    
+    // Update footer
+    const visitsEl = document.getElementById("visits");
+    const onlineEl = document.getElementById("online");
+    visitsEl.textContent = globalVisits.toLocaleString("es-ES");
+    onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+    
+    // Simulate online users fluctuation
     setInterval(() => {
-      cnt += Math.floor(Math.random() * 4) + 1;
-      if(cntEl) cntEl.textContent = cnt.toLocaleString("es-ES");
-    }, 3500);
+      onlineUsers = Math.floor(Math.random() * 50) + 20;
+      onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+    }, 30000); // Update every 30 seconds
 
     // Init
     screenEl.focus();
