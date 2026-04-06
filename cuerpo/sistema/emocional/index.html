@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistema Emocional | SINTOMARIO.ORG</title>
+  <title>Sistema Nervioso | SINTOMARIO.ORG</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,19 +56,21 @@
     </div>
   </header>
   <main>
-    <h1>Sistema Emocional</h1>
-    <p class="subtitle">Afecto, vínculo y expresión</p>
+    <h1>Sistema Nervioso</h1>
+    <p class="subtitle">Procesamiento, percepción y cognición</p>
     <p class="description">
-      Estados afectivos y su expresión corporal. Incluye llanto, culpa, vergüenza, apatía y soledad. Las manifestaciones emocionales suelen vincularse con procesos de vínculo, pérdida y reconocimiento.
+      Centro de comando del organismo. Regula la percepción sensorial, el pensamiento, la memoria y la respuesta al entorno. Las manifestaciones en este sistema suelen vincularse con procesos de integración de información y adaptación al estrés.
     </p>
     <h2>Zonas del sistema</h2>
     <div class="grid">
-      <a href="/cuerpo/llanto/" class="card"><h3>Llanto</h3><p>Descarga, expresión sin palabras</p></a>
-      <a href="/cuerpo/vacio/" class="card"><h3>Vacío</h3><p>Pérdida existencial sin objeto</p></a>
-      <a href="/cuerpo/culpa/" class="card"><h3>Culpa</h3><p>Autocrítica, transgresión</p></a>
-      <a href="/cuerpo/verguenza/" class="card"><h3>Vergüenza</h3><p>Deseo de invisibilidad</p></a>
-      <a href="/cuerpo/apatia/" class="card"><h3>Apatía</h3><p>Falta de respuesta afectiva</p></a>
-      <a href="/cuerpo/soledad/" class="card"><h3>Soledad</h3><p>Desconexión vincular percibida</p></a>
+      <a href="/cuerpo/cabeza/index.html" class="card"><h3>Cabeza</h3><p>Cefalea, migraña, procesamiento cognitivo</p></a>
+      <a href="/cuerpo/cerebro/index.html" class="card"><h3>Cerebro</h3><p>Cognición, pensamiento, construcción de realidad</p></a>
+      <a href="/cuerpo/nervios/index.html" class="card"><h3>Nervios</h3><p>Sistema de transmisión, comunicación corporal</p></a>
+      <a href="/cuerpo/ojos/index.html" class="card"><h3>Ojos</h3><p>Visión, percepción visual, proyección externa</p></a>
+      <a href="/cuerpo/oidos/index.html" class="card"><h3>Oídos</h3><p>Audición, escucha, procesamiento sonoro</p></a>
+      <a href="/cuerpo/insomnio/index.html" class="card"><h3>Insomnio</h3><p>Descanso, reparación nocturna, ritmos</p></a>
+      <a href="/cuerpo/vertigo/index.html" class="card"><h3>Vértigo</h3><p>Equilibrio, orientación espacial</p></a>
+      <a href="/cuerpo/memoria/index.html" class="card"><h3>Memoria</h3><p>Almacenamiento, recuerdo, organización</p></a>
     </div>
   </main>
   <footer>
@@ -76,21 +78,63 @@
   </footer>
   
   <script>
-    // Global counter and online users
-    let globalVisits = 3789987456; // Starting global count
-    let onlineUsers = Math.floor(Math.random() * 50) + 20; // Simulated online users
-    
-    // Update footer
-    const visitsEl = document.getElementById("visits");
-    const onlineEl = document.getElementById("online");
-    visitsEl.textContent = globalVisits.toLocaleString("es-ES");
-    onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-    
-    // Simulate online users fluctuation
-    setInterval(() => {
-      onlineUsers = Math.floor(Math.random() * 50) + 20;
-      onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-    }, 30000); // Update every 30 seconds
+    // Real-time counter with API
+    (async function() {
+      let globalVisits = 0;
+      let onlineUsers = 0;
+      let dailyVisits = 0;
+      
+      // Fetch initial data
+      async function fetchCounter() {
+        try {
+          const response = await fetch('/api/counter.php?action=get');
+          const data = await response.json();
+          globalVisits = data.visits;
+          onlineUsers = data.online_users;
+          dailyVisits = data.daily_visits;
+          updateFooter();
+        } catch (error) {
+          console.log('Counter API unavailable, using fallback');
+          // Fallback to simulated data
+          globalVisits = 3789987456;
+          onlineUsers = Math.floor(Math.random() * 50) + 20;
+          updateFooter();
+        }
+      }
+      
+      // Update footer display
+      function updateFooter() {
+        const visitsEl = document.getElementById("visits");
+        const onlineEl = document.getElementById("online");
+        if (visitsEl) visitsEl.textContent = globalVisits.toLocaleString("es-ES");
+        if (onlineEl) onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
+      }
+      
+      // Register visit
+      async function registerVisit() {
+        try {
+          await fetch('/api/counter.php?action=visit');
+          await fetchCounter(); // Refresh data after registering
+        } catch (error) {
+          console.log('Failed to register visit');
+        }
+      }
+      
+      // Send heartbeat to track online users
+      function sendHeartbeat() {
+        fetch('/api/counter.php?action=heartbeat').catch(() => {});
+      }
+      
+      // Initialize
+      await fetchCounter();
+      await registerVisit();
+      
+      // Send heartbeat every 2 minutes
+      setInterval(sendHeartbeat, 120000);
+      
+      // Update counter every 30 seconds
+      setInterval(fetchCounter, 30000);
+    })();
     
     // Language selector function
     function changeLanguage(lang) {

@@ -63,14 +63,14 @@
     </p>
     <h2>Zonas del sistema</h2>
     <div class="grid">
-      <a href="/cuerpo/cabeza/" class="card"><h3>Cabeza</h3><p>Cefalea, migraña, procesamiento cognitivo</p></a>
-      <a href="/cuerpo/cerebro/" class="card"><h3>Cerebro</h3><p>Cognición, pensamiento, construcción de realidad</p></a>
-      <a href="/cuerpo/nervios/" class="card"><h3>Nervios</h3><p>Sistema de transmisión, comunicación corporal</p></a>
-      <a href="/cuerpo/ojos/" class="card"><h3>Ojos</h3><p>Visión, percepción visual, proyección externa</p></a>
-      <a href="/cuerpo/oidos/" class="card"><h3>Oídos</h3><p>Audición, escucha, procesamiento sonoro</p></a>
-      <a href="/cuerpo/insomnio/" class="card"><h3>Insomnio</h3><p>Descanso, reparación nocturna, ritmos</p></a>
-      <a href="/cuerpo/vertigo/" class="card"><h3>Vértigo</h3><p>Equilibrio, orientación espacial</p></a>
-      <a href="/cuerpo/memoria/" class="card"><h3>Memoria</h3><p>Almacenamiento, recuerdo, organización</p></a>
+      <a href="/cuerpo/cabeza/index.html" class="card"><h3>Cabeza</h3><p>Cefalea, migraña, procesamiento cognitivo</p></a>
+      <a href="/cuerpo/cerebro/index.html" class="card"><h3>Cerebro</h3><p>Cognición, pensamiento, construcción de realidad</p></a>
+      <a href="/cuerpo/nervios/index.html" class="card"><h3>Nervios</h3><p>Sistema de transmisión, comunicación corporal</p></a>
+      <a href="/cuerpo/ojos/index.html" class="card"><h3>Ojos</h3><p>Visión, percepción visual, proyección externa</p></a>
+      <a href="/cuerpo/oidos/index.html" class="card"><h3>Oídos</h3><p>Audición, escucha, procesamiento sonoro</p></a>
+      <a href="/cuerpo/insomnio/index.html" class="card"><h3>Insomnio</h3><p>Descanso, reparación nocturna, ritmos</p></a>
+      <a href="/cuerpo/vertigo/index.html" class="card"><h3>Vértigo</h3><p>Equilibrio, orientación espacial</p></a>
+      <a href="/cuerpo/memoria/index.html" class="card"><h3>Memoria</h3><p>Almacenamiento, recuerdo, organización</p></a>
     </div>
   </main>
   <footer>

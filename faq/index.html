@@ -270,11 +270,12 @@
           dailyVisits = data.daily_visits;
           updateFooter();
         } catch (error) {
-          console.log('Counter API unavailable, using fallback');
-          // Fallback to simulated data
-          globalVisits = 3789987456;
-          onlineUsers = Math.floor(Math.random() * 50) + 20;
-          updateFooter();
+          console.log('Counter API unavailable - showing error');
+          // Show error state instead of fallback
+          const visitsEl = document.getElementById("visits");
+          const onlineEl = document.getElementById("online");
+          if (visitsEl) visitsEl.textContent = "Error";
+          if (onlineEl) onlineEl.textContent = "Error";
         }
       }
       
