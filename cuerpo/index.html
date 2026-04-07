@@ -349,40 +349,30 @@
       if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
     });
 
-    // Global visitor counter - acumulativo real
+    // Global visitor counter - simple backend API
     (function() {
-      // Base inicial real del sitio
-      const BASE_VISITS = 1234567; // Número base real de visitas
+      function updateGlobalCounter() {
+        // Increment counter and get updated value
+        fetch('/api/counter.php?action=visit')
+          .then(response => response.json())
+          .then(data => {
+            const visitsEl = document.getElementById("visits");
+            if (visitsEl) {
+              visitsEl.textContent = data.visits.toLocaleString("es-ES");
+            }
+          })
+          .catch(error => {
+            console.error('Error updating counter:', error);
+            // Fallback: show basic message
+            const visitsEl = document.getElementById("visits");
+            if (visitsEl) {
+              visitsEl.textContent = "Conectando...";
+            }
+          });
+      }
       
-      function initCounter() {
-        // Obtener contador global de localStorage
-        let globalVisits = localStorage.getItem('sintomario_global_visits');
-        
-        if (!globalVisits) {
-          // Primera visita global - establecer base
-          globalVisits = BASE_VISITS;
-          localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        } else {
-          globalVisits = parseInt(globalVisits);
-        }
-        
-        // Incrementar por cada nueva visita
-        globalVisits++;
-        localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        
-        // Mostrar
-        updateDisplay(globalVisits);
-      }
-
-      function updateDisplay(visits) {
-        const visitsEl = document.getElementById("visits");
-        if (visitsEl) {
-          visitsEl.textContent = visits.toLocaleString("es-ES");
-        }
-      }
-
-      // Inicializar contador global
-      initCounter();
+      // Update counter immediately when page loads
+      updateGlobalCounter();
     })();
 
     // Language selector function

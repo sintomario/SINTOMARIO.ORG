@@ -483,57 +483,6 @@
     </div>
   </nav>
 
-  <main class="main-content max-w-4xl mx-auto px-6 py-8">
-    <div class="text-center mb-12">
-      <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight text-white mb-8 uppercase">Atlas Psicosomático</h1>
-      <p class="font-body text-lg md:text-xl text-white/80 italic max-w-2xl mx-auto">
-        Explora la conexión entre síntomas físicos y estados emocionales a través de un atlas interactivo del cuerpo humano.
-      </p>
-    </div>
-
-    <div class="system-grid">
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/nervioso'">
-        <h3>Sistema Nervioso</h3>
-        <p>Cerebro, nervios, percepción y respuesta. El centro de control que traduce experiencia en sensación.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/oseo'">
-        <h3>Sistema Óseo</h3>
-        <p>Estructura, soporte y fundamento. El esqueleto que sostiene nuestra posición en el mundo.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/circulatorio'">
-        <h3>Sistema Circulatorio</h3>
-        <p>Vida, movimiento y conexión. El río que transporta energía a cada rincón del ser.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/muscular'">
-        <h3>Sistema Muscular</h3>
-        <p>Acción, fuerza y expresión. Los motores que transforman intención en movimiento.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/digestivo'">
-        <h3>Sistema Digestivo</h3>
-        <p>Nutrición, procesamiento y asimilación. El centro que transforma experiencia en sustancia.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/psiquico'">
-        <h3>Sistema Psíquico</h3>
-        <p>Pensamiento, conciencia y significado. El espacio donde interpretamos nuestra existencia.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/emocional'">
-        <h3>Sistema Emocional</h3>
-        <p>Sentimiento, resonancia y afecto. El lenguaje del corazón que habla sin palabras.</p>
-      </div>
-      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/perceptual'">
-        <h3>Sistema Perceptual</h3>
-        <p>Sentidos, experiencia y presencia. Las ventanas a través de las cuales encontramos el mundo.</p>
-      </div>
-    </div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-text">©2026 — <strong id="visits">0</strong> visitas</div>
-    <div class="flex gap-4">
-      <a href="#" class="nav-link text-xs">Privacidad</a>
-      <a href="#" class="nav-link text-xs">Términos</a>
-    </div>
-  </footer>
 
   <!-- Donation Modal -->
   <div id="help-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center;">
@@ -705,40 +654,30 @@
         if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
       });
 
-      // Global visitor counter - acumulativo real
+      // Global visitor counter - simple backend API
       (function() {
-        // Base inicial real del sitio
-        const BASE_VISITS = 1234567; // Número base real de visitas
+        function updateGlobalCounter() {
+          // Increment counter and get updated value
+          fetch('/api/counter.php?action=visit')
+            .then(response => response.json())
+            .then(data => {
+              const visitsEl = document.getElementById("visits");
+              if (visitsEl) {
+                visitsEl.textContent = data.visits.toLocaleString("es-ES");
+              }
+            })
+            .catch(error => {
+              console.error('Error updating counter:', error);
+              // Fallback: show basic message
+              const visitsEl = document.getElementById("visits");
+              if (visitsEl) {
+                visitsEl.textContent = "Conectando...";
+              }
+            });
+        }
         
-        function initCounter() {
-          // Obtener contador global de localStorage
-          let globalVisits = localStorage.getItem('sintomario_global_visits');
-          
-          if (!globalVisits) {
-            // Primera visita global - establecer base
-            globalVisits = BASE_VISITS;
-            localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-          } else {
-            globalVisits = parseInt(globalVisits);
-          }
-          
-          // Incrementar por cada nueva visita
-          globalVisits++;
-          localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-          
-          // Mostrar
-          updateDisplay(globalVisits);
-        }
-
-        function updateDisplay(visits) {
-          const visitsEl = document.getElementById("visits");
-          if (visitsEl) {
-            visitsEl.textContent = visits.toLocaleString("es-ES");
-          }
-        }
-
-        // Inicializar contador global
-        initCounter();
+        // Update counter immediately when page loads
+        updateGlobalCounter();
       })();
 
       // Align #words to left edge of rendered image
