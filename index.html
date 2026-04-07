@@ -8,14 +8,124 @@
   <title>SINTOMARIO.ORG — Atlas Psicosomático</title>
   <meta name="description"
     content="Atlas psicosomático interactivo. Explora la conexión entre síntomas físicos y estados emocionales.">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap">
+  
+  <!-- Tailwind & Fonts Integration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'plum-deep': '#2a0115',
+            'plum-mid': '#670433',
+            'surface': 'rgba(103, 4, 51, 0.8)',
+            'authority': '#F5C400'
+          },
+          fontFamily: {
+            'headline': ['EB Garamond', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    body {
+      background: #2a0115;
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .disclaimer-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 18px;
+      background: rgba(140, 5, 72, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 1000;
+    }
+
+    .main-content {
+      margin-top: calc(22px + 78px);
+      min-height: 100vh;
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .system-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .system-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .system-card h3 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #F5C400;
+    }
+
+    .system-card p {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: rgba(42, 1, 21, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 100;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-text strong {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
     }
 
     :root {
@@ -343,33 +453,85 @@
 </head>
 
 <body>
+  <div class="disclaimer-bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
 
-  <div id="bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
-
-  <header id="header">
-    <a href="/" id="logo"><img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG" style="height:32px;object-fit:contain;"></a>
-    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <div id="searchbox">
-          <span>&#128269;</span>
-          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+  <!-- Navigation -->
+  <nav class="fixed top-[22px] w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/5">
+    <div class="flex justify-between items-center px-4 sm:px-6 py-3">
+      <a href="/" class="font-headline text-lg sm:text-2xl font-bold tracking-tight text-white hover:text-authority transition-all flex-shrink-0">
+        <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG" class="h-6 sm:h-8 w-auto">
+      </a>
+      <div class="hidden md:flex items-center gap-2 sm:gap-4 lg:gap-8">
+        <a href="/sobre" class="nav-link text-xs sm:text-sm">Sobre</a>
+        <a href="/cuerpo" class="nav-link text-xs sm:text-sm text-authority">Atlas</a>
+        <a href="/faq" class="nav-link text-xs sm:text-sm">FAQ</a>
+        <div class="search-box flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded ml-2 sm:ml-4">
+          <span class="material-symbols-outlined text-sm opacity-60">search</span>
+          <input type="text" placeholder="Buscar síntoma..." class="bg-transparent border-none outline-none text-sm w-24 sm:w-36 placeholder:text-white/50" aria-label="Buscar síntoma" id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
         </div>
-        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
-      </div>
-      <nav id="nav" style="width: 100%; justify-content: space-between; gap: 0;">
-        <a href="/sobre">Sobre</a>
-        <a href="/cuerpo">Atlas</a>
-        <a href="/faq">FAQ</a>
-        <div id="lang-selector" style="margin-left: 8px;">
-          <select id="lang-select" onchange="changeLanguage(this.value)" style="background: var(--mid); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 3px 6px; font-size: 10px; cursor: pointer;">
+        <button class="nav-link text-xs sm:text-sm px-3 py-1 rounded border border-white/20 hover:bg-white/10 transition-all" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+        <div class="lang-selector">
+          <select class="bg-transparent border border-white/20 text-white text-xs px-2 py-1 rounded cursor-pointer hover:bg-white/10 transition-all" onchange="changeLanguage(this.value)">
             <option value="es" selected>ES</option>
             <option value="en">EN</option>
             <option value="pt">PT</option>
           </select>
         </div>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
+
+  <main class="main-content max-w-4xl mx-auto px-6 py-8">
+    <div class="text-center mb-12">
+      <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight text-white mb-8 uppercase">Atlas Psicosomático</h1>
+      <p class="font-body text-lg md:text-xl text-white/80 italic max-w-2xl mx-auto">
+        Explora la conexión entre síntomas físicos y estados emocionales a través de un atlas interactivo del cuerpo humano.
+      </p>
+    </div>
+
+    <div class="system-grid">
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/nervioso'">
+        <h3>Sistema Nervioso</h3>
+        <p>Cerebro, nervios, percepción y respuesta. El centro de control que traduce experiencia en sensación.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/oseo'">
+        <h3>Sistema Óseo</h3>
+        <p>Estructura, soporte y fundamento. El esqueleto que sostiene nuestra posición en el mundo.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/circulatorio'">
+        <h3>Sistema Circulatorio</h3>
+        <p>Vida, movimiento y conexión. El río que transporta energía a cada rincón del ser.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/muscular'">
+        <h3>Sistema Muscular</h3>
+        <p>Acción, fuerza y expresión. Los motores que transforman intención en movimiento.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/digestivo'">
+        <h3>Sistema Digestivo</h3>
+        <p>Nutrición, procesamiento y asimilación. El centro que transforma experiencia en sustancia.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/psiquico'">
+        <h3>Sistema Psíquico</h3>
+        <p>Pensamiento, conciencia y significado. El espacio donde interpretamos nuestra existencia.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/emocional'">
+        <h3>Sistema Emocional</h3>
+        <p>Sentimiento, resonancia y afecto. El lenguaje del corazón que habla sin palabras.</p>
+      </div>
+      <div class="system-card" onclick="window.location.href='/cuerpo/sistema/perceptual'">
+        <h3>Sistema Perceptual</h3>
+        <p>Sentidos, experiencia y presencia. Las ventanas a través de las cuales encontramos el mundo.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-text">©2026 — <strong id="visits">0</strong> visitas</div>
+    <div class="flex gap-4">
+      <a href="#" class="nav-link text-xs">Privacidad</a>
+      <a href="#" class="nav-link text-xs">Términos</a>
+    </div>
+  </footer>
 
   <!-- Donation Modal -->
   <div id="help-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center;">
