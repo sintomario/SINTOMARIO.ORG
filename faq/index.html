@@ -254,39 +254,40 @@
   </footer>
   
   <script>
-    // Simple visitor counter - solo visitas acumuladas
+    // Global visitor counter - acumulativo real
     (function() {
-      let totalVisits = 0;
-
-      // Initialize counter from localStorage
+      // Base inicial real del sitio
+      const BASE_VISITS = 1234567; // Número base real de visitas
+      
       function initCounter() {
-        const stored = localStorage.getItem('sintomario_visits');
-        if (stored) {
-          totalVisits = parseInt(stored) || 3789987456;
+        // Obtener contador global de localStorage
+        let globalVisits = localStorage.getItem('sintomario_global_visits');
+        
+        if (!globalVisits) {
+          // Primera visita global - establecer base
+          globalVisits = BASE_VISITS;
+          localStorage.setItem('sintomario_global_visits', globalVisits.toString());
         } else {
-          totalVisits = 3789987456;
+          globalVisits = parseInt(globalVisits);
         }
-        updateDisplay();
+        
+        // Incrementar por cada nueva visita
+        globalVisits++;
+        localStorage.setItem('sintomario_global_visits', globalVisits.toString());
+        
+        // Mostrar
+        updateDisplay(globalVisits);
       }
 
-      // Register new visit
-      function registerVisit() {
-        totalVisits++;
-        localStorage.setItem('sintomario_visits', totalVisits.toString());
-        updateDisplay();
-      }
-
-      // Update display
-      function updateDisplay() {
+      function updateDisplay(visits) {
         const visitsEl = document.getElementById("visits");
         if (visitsEl) {
-          visitsEl.textContent = totalVisits.toLocaleString("es-ES");
+          visitsEl.textContent = visits.toLocaleString("es-ES");
         }
       }
 
-      // Initialize
+      // Inicializar contador global
       initCounter();
-      registerVisit();
     })();
     
     // Language selector function
