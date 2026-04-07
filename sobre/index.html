@@ -3,158 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico.jpg" type="image/jpeg">
   <title>Sobre | SINTOMARIO.ORG</title>
+  <meta name="description" content="Información sobre el atlas psicosomático interactivo y su propósito.">
+  
+  <!-- Tailwind & Fonts Integration -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    :root {
-      --deep: #2a0115;
-      --mid: #670433;
-      --light: #8c0548;
-      --text-dim: rgba(255, 255, 255, 0.65);
-      --bar-h: 18px;
-      --head-h: 64px;
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'plum-deep': '#2a0115',
+            'plum-mid': '#670433',
+            'surface': 'rgba(103, 4, 51, 0.8)',
+            'authority': '#F5C400'
+          },
+          fontFamily: {
+            'headline': ['EB Garamond', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
     }
-    
+  </script>
+  <style>
     body {
-      background: var(--deep);
+      background: #2a0115;
       color: #fff;
       font-family: 'Inter', system-ui, sans-serif;
-      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    
-    #bar {
+
+    .disclaimer-bar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: var(--bar-h);
-      background: #F5C400;
-      color: #1a0000;
+      height: 18px;
+      background: rgba(140, 5, 72, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(7px, 0.8vw, 9px);
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-size: 10px;
       text-transform: uppercase;
-      white-space: nowrap;
-      text-align: center;
-      z-index: 200;
+      letter-spacing: 0.1em;
+      z-index: 1000;
     }
-    
-    #header {
+
+    .main-content {
+      margin-top: calc(22px + 78px);
+      min-height: 100vh;
+    }
+
+    .nav-link {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+    .search-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #F5C400;
+    }
+
+    .section p {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+    }
+
+    .footer {
       position: fixed;
-      top: var(--bar-h);
+      bottom: 0;
       left: 0;
       right: 0;
-      height: var(--head-h);
-      background: var(--deep);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      height: 36px;
+      background: rgba(42, 1, 21, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 14px;
+      padding: 0 24px;
       z-index: 100;
     }
-    
-    #logo {
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #fff;
-      white-space: nowrap;
-      line-height: 1;
-    }
-    
-    #logo img {
-      height: clamp(24px, 3.5vw, 32px);
-      object-fit: contain;
-    }
-    
-    #nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(8px, 1.5vw, 16px);
-      flex-shrink: 0;
-    }
-    
-    #nav a {
-      font-size: clamp(9px, 1.2vw, 11px);
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-    
-    #nav a:hover { opacity: 1; }
-    #nav a.active { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); }
-    
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: calc(var(--bar-h) + var(--head-h) + 40px) 24px 80px;
-    }
-    
-    h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(32px, 5vw, 42px);
-      font-weight: 400;
-      margin-bottom: 32px;
-      text-align: center;
-      letter-spacing: 0.02em;
-    }
-    
-    .intro {
-      font-family: 'EB Garamond', serif;
-      font-size: 18px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 32px;
-      font-style: italic;
-      text-align: center;
-    }
-    
-    section {
-      margin-bottom: 32px;
-    }
-    
-    h2 {
-      font-family: 'EB Garamond', serif;
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 12px;
-      color: #fff;
-    }
-    
-    p {
+
+    .footer-text {
       font-size: 13px;
-      line-height: 1.7;
-      color: var(--text-dim);
-      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.05em;
     }
-    
-    p strong { color: #fff; font-weight: 500; }
-    
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      color: var(--text-dim);
-      font-size: 12px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
+
+    .footer-text strong {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
   <div class="disclaimer-bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
-  
+
   <!-- Navigation -->
   <nav class="fixed top-[22px] w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/5">
     <div class="flex justify-between items-center px-4 sm:px-6 py-3">
@@ -180,100 +157,62 @@
       </div>
     </div>
   </nav>
-  
-  <main>
-    <h1>Sobre SINTOMARIO</h1>
+
+  <main class="main-content max-w-4xl mx-auto px-6 py-8">
+    <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight text-white mb-8 uppercase">Sobre SINTOMARIO</h1>
     
-    <p class="intro">
-      Atlas de correspondencias cuerpo-emoción. Documentación práctica para quienes buscan comprender el lenguaje somático desde múltiples perspectivas.
-    </p>
+    <div class="section">
+      <p class="intro">
+        Atlas de correspondencias cuerpo-emoción. Documentación práctica para quienes buscan comprender el lenguaje somático desde múltiples perspectivas.
+      </p>
+    </div>
     
-    <section>
+    <div class="section">
       <h2>Propósito</h2>
       <p>
-        Organizar el conocimiento disperso sobre psicosomática en una cartografía accesible. Cada entrada conecta zonas corporales con contextos emocionales, ofreciendo marcos de lectura que complementan —no sustituyen— la atención médica convencional.
+        Facilitar el acceso organizado a conocimientos psicosomáticos tradicionales y contemporáneos. Ofrecer una herramienta educativa que permita explorar las posibles conexiones entre síntomas físicos y estados emocionales.
       </p>
-    </section>
+    </div>
     
-    <section>
-      <h2>Contenido</h2>
-      <p>
-        <strong>63 zonas corporales</strong> cruzadas con <strong>51 contextos emocionales</strong>, generando 3.213 artículos de referencia. Las lecturas incluyen: anatomía funcional, heridas emocionales asociadas, narrativas ilustrativas y prácticas de integración somática.
-      </p>
-    </section>
-    
-    <section>
+    <div class="section">
       <h2>Metodología</h2>
       <p>
-        Compilación de observaciones clínicas y tradiciones terapéuticas: medicina psicosomática, teoría de meridianos, psicología corporal y enfoques integrativos. Las correspondencias se presentan como hipótesis de trabajo, invitando a la exploración personal rather than a la adopción acrítica.
+        Organización sistemática de 63 zonas corporales y 51 contextos emocionales. Integración de observaciones de medicina tradicional china, psicología corporal, y diversas escuelas de pensamiento psicosomático.
       </p>
-    </section>
+    </div>
     
-    <section>
-      <h2>Uso</h2>
+    <div class="section">
+      <h2>Alcance</h2>
       <p>
-        Navegación por sistemas corporales o búsqueda directa. Cada artículo ofrece múltiples lecturas del mismo fenómeno. El usuario determina qué resonancias son pertinentes a su experiencia. Sin registro, sin costo, sin recolección de datos personales.
+        Atlas interactivo con 8 sistemas principales, más de 3,000 combinaciones posibles. Cobertura completa del cuerpo humano con enfoque educativo e informativo, never reemplazando diagnóstico médico profesional.
       </p>
-    </section>
+    </div>
     
-    <section>
-      <h2>Sostenibilidad</h2>
+    <div class="section">
+      <h2>Accesibilidad</h2>
       <p>
-        El proyecto se mantiene mediante donaciones voluntarias. No hay publicidad ni contenido premium. El conocimiento sobre el cuerpo se entiende como bien común, no como mercancía.
+        Recurso gratuito y de acceso libre. Mantenido a través de apoyo comunitario y donaciones voluntarias. Diseñado para ser comprensible tanto para profesionales como para público general interesado en el tema.
       </p>
-    </section>
+    </div>
     
-    <section>
-      <h2>Contacto</h2>
+    <div class="section">
+      <h2>Responsabilidad</h2>
       <p>
-        <strong>sintomario@proton.me</strong><br>
-        Para sugerencias, correcciones o consultas. Las aportaciones se revisan y, en su caso, integran sin identificación de autor, manteniendo el carácter anónimo y colectivo del atlas.
+        Compromiso con la información responsable y ética. Todas las correspondencias presentadas son de carácter educativo. Siempre se recomienda consultar con profesionales de salud para cualquier condición médica.
       </p>
-    </section>
+    </div>
   </main>
-  
-  <footer>
-    ©2026 — <strong id="visits">0</strong> visitas
+
+  <footer class="footer">
+    <div class="footer-text">2026 — <strong id="visits">0</strong> visitas</div>
+    <div class="flex gap-4">
+      <a href="#" class="nav-link text-xs">Privacidad</a>
+      <a href="#" class="nav-link text-xs">Términos</a>
+    </div>
   </footer>
-  
+
   <script>
-    // Global visitor counter - acumulativo real
-    (function() {
-      // Base inicial real del sitio
-      const BASE_VISITS = 1234567; // Número base real de visitas
-      
-      function initCounter() {
-        // Obtener contador global de localStorage
-        let globalVisits = localStorage.getItem('sintomario_global_visits');
-        
-        if (!globalVisits) {
-          // Primera visita global - establecer base
-          globalVisits = BASE_VISITS;
-          localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        } else {
-          globalVisits = parseInt(globalVisits);
-        }
-        
-        // Incrementar por cada nueva visita
-        globalVisits++;
-        localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        
-        // Mostrar
-        updateDisplay(globalVisits);
-      }
-
-      function updateDisplay(visits) {
-        const visitsEl = document.getElementById("visits");
-        if (visitsEl) {
-          visitsEl.textContent = visits.toLocaleString("es-ES");
-        }
-      }
-
-      // Inicializar contador global
-      initCounter();
-    })();
-    
-    // Language selector function
+    // Language selector
     function changeLanguage(lang) {
       localStorage.setItem('sintomario-lang', lang);
       

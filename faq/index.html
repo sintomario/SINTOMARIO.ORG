@@ -3,169 +3,136 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico.jpg" type="image/jpeg">
   <title>FAQ | SINTOMARIO.ORG</title>
+  <meta name="description" content="Preguntas frecuentes sobre el atlas psicosomático interactivo.">
+  
+  <!-- Tailwind & Fonts Integration -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    :root {
-      --deep: #2a0115;
-      --mid: #670433;
-      --light: #8c0548;
-      --text-dim: rgba(255, 255, 255, 0.65);
-      --bar-h: 18px;
-      --head-h: 64px;
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'plum-deep': '#2a0115',
+            'plum-mid': '#670433',
+            'surface': 'rgba(103, 4, 51, 0.8)',
+            'authority': '#F5C400'
+          },
+          fontFamily: {
+            'headline': ['EB Garamond', 'Georgia', 'serif'],
+            'body': ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
     }
-    
+  </script>
+  <style>
     body {
-      background: var(--deep);
+      background: #2a0115;
       color: #fff;
       font-family: 'Inter', system-ui, sans-serif;
-      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    
-    #bar {
+
+    .disclaimer-bar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: var(--bar-h);
-      background: #F5C400;
-      color: #1a0000;
+      height: 18px;
+      background: rgba(140, 5, 72, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(7px, 0.8vw, 9px);
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-size: 10px;
       text-transform: uppercase;
-      white-space: nowrap;
-      text-align: center;
-      z-index: 200;
+      letter-spacing: 0.1em;
+      z-index: 1000;
     }
-    
-    #header {
+
+    .main-content {
+      margin-top: calc(22px + 78px);
+      min-height: 100vh;
+    }
+
+    .nav-link {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+    .search-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .faq-item {
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 20px;
+    }
+
+    .faq-q {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #F5C400;
+    }
+
+    .faq-a {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.8;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer {
       position: fixed;
-      top: var(--bar-h);
+      bottom: 0;
       left: 0;
       right: 0;
-      height: var(--head-h);
-      background: var(--deep);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      height: 36px;
+      background: rgba(42, 1, 21, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 14px;
+      padding: 0 24px;
       z-index: 100;
     }
-    
-    #logo {
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #fff;
-      white-space: nowrap;
-      line-height: 1;
-    }
-    
-    #logo img {
-      height: clamp(24px, 3.5vw, 32px);
-      object-fit: contain;
-    }
-    
-    #nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(8px, 1.5vw, 16px);
-      flex-shrink: 0;
-    }
-    
-    #nav a {
-      font-size: clamp(9px, 1.2vw, 11px);
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-    
-    #nav a:hover { opacity: 1; }
-    #nav a.active { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); }
-    
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: calc(var(--bar-h) + var(--head-h) + 40px) 24px 80px;
-    }
-    
-    h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: clamp(32px, 5vw, 42px);
-      font-weight: 400;
-      margin-bottom: 48px;
-      text-align: center;
-      letter-spacing: 0.02em;
-    }
-    
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 24px 0;
-    }
-    
-    .faq-item:first-child {
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .faq-q {
-      font-family: 'EB Garamond', serif;
-      font-size: 18px;
-      color: #fff;
-      margin-bottom: 12px;
-      font-weight: 500;
-    }
-    
-    .faq-a {
+
+    .footer-text {
       font-size: 13px;
-      line-height: 1.7;
-      color: var(--text-dim);
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.05em;
     }
-    
-    .faq-a strong { color: #fff; font-weight: 500; }
-    
-    .donation-links {
-      margin-top: 16px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    
-    .donation-links a {
-      color: #fff;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      transition: border-color 0.2s;
-      font-size: 12px;
-    }
-    
-    .donation-links a:hover { border-color: #fff; }
-    
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      color: var(--text-dim);
-      font-size: 12px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
+
+    .footer-text strong {
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
   <div class="disclaimer-bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
-  
+
   <!-- Navigation -->
   <nav class="fixed top-[22px] w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/5">
     <div class="flex justify-between items-center px-4 sm:px-6 py-3">
@@ -191,9 +158,9 @@
       </div>
     </div>
   </nav>
-  
-  <main>
-    <h1>Preguntas Frecuentes</h1>
+
+  <main class="main-content max-w-4xl mx-auto px-6 py-8">
+    <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight text-white mb-8 uppercase">Preguntas Frecuentes</h1>
     
     <div class="faq-item">
       <div class="faq-q">¿Qué es SINTOMARIO?</div>
@@ -201,97 +168,60 @@
         Atlas que cartografía correspondencias entre zonas corporales y estados emocionales. Documenta observaciones de tradiciones psicosomáticas, medicina tradicional china y psicología corporal, organizadas en 63 zonas y 51 contextos.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿Reemplaza la atención médica?</div>
+      <div class="faq-q">¿Cómo funciona el atlas?</div>
       <div class="faq-a">
-        No. El atlas es complementario, no sustituto. Ante síntomas persistentes o agudos, la consulta médica profesional es prioritaria. La información aquí sirve como marco de reflexión, no como diagnóstico ni tratamiento.
+        Explora el cuerpo humano a través de 8 sistemas principales. Cada zona corporal se conecta con contextos emocionales específicos, permitiendo comprender el lenguaje del cuerpo y sus posibles significados psicosomáticos.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿De qué se compone el atlas?</div>
+      <div class="faq-q">¿Es un diagnóstico médico?</div>
       <div class="faq-a">
-        3.213 artículos que cruzan zonas corporales con contextos emocionales. Cada entrada ofrece lectura desde perspectiva anatómica, emocional y simbólica, con prácticas de integración.
+        No. SINTOMARIO es una herramienta informativa y educativa. No reemplaza diagnóstico médico profesional. Siempre consulta con un especialista de salud para cualquier síntoma o condición médica.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿Qué fuentes lo informan?</div>
+      <div class="faq-q">¿Qué tradiciones incluye?</div>
       <div class="faq-a">
-        Medicina psicosomática, tradición china de meridianos, observaciones de biodecodificación y psicología somática. Se presentan como herramientas de interpretación, no como verdades absolutas.
+        Integra conocimientos de medicina tradicional china, psicología corporal, biodescodificación, y diversas observaciones psicosomáticas contemporáneas, organizadas de manera sistemática y accesible.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿Cómo se usa?</div>
+      <div class="faq-q">¿Cómo navegar el atlas?</div>
       <div class="faq-a">
-        Navegando por sistemas corporales o buscando zonas específicas. Cada artículo ofrece correspondencias emocionales sugeridas. Lo que resuena se anota; lo que no, se deja fluir. Sin registro ni costo.
+        Usa el scroll o gestos táctiles para explorar los sistemas. Haz clic en las zonas corporales para ver artículos detallados. Utiliza el buscador para encontrar síntomas específicos o contextos emocionales.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿Es de acceso libre?</div>
+      <div class="faq-q">¿Es gratuito?</div>
       <div class="faq-a">
-        Todo el contenido es abierto, sin registro ni suscripción. La difusión del conocimiento sobre el cuerpo se entiende como bien común. El mantenimiento depende de donaciones voluntarias.
+        Sí, el acceso al atlas es completamente gratuito. Mantenemos el proyecto a través de donaciones voluntarias para seguir expandiendo y mejorando el contenido.
       </div>
     </div>
-    
+
     <div class="faq-item">
-      <div class="faq-q">¿Cómo contactar?</div>
+      <div class="faq-q">¿Cómo puedo colaborar?</div>
       <div class="faq-a">
-        Para sugerencias, correcciones o reflexiones: <strong>sintomario@proton.me</strong>. Para apoyar el proyecto:
-        <div class="donation-links">
-          <a href="https://paypal.me/sintomario" target="_blank" rel="noopener">PayPal</a>
-          <a href="https://wise.com/pay/me/joseluisbernalp" target="_blank" rel="noopener">Wise</a>
-          <a href="https://ko-fi.com/sintomario" target="_blank" rel="noopener">Ko-fi</a>
-        </div>
+        Puedes apoyar el proyecto a través del botón AYUDA, compartir el recurso con quienes puedan beneficiarse, o enviarnos tus observaciones y experiencias para mejorar continuamente el atlas.
       </div>
     </div>
   </main>
-  
-  <footer>
-    ©2026 — <strong id="visits">0</strong> visitas
+
+  <footer class="footer">
+    <div class="footer-text">2026 — <strong id="visits">0</strong> visitas</div>
+    <div class="flex gap-4">
+      <a href="#" class="nav-link text-xs">Privacidad</a>
+      <a href="#" class="nav-link text-xs">Términos</a>
+    </div>
   </footer>
-  
+
   <script>
-    // Global visitor counter - acumulativo real
-    (function() {
-      // Base inicial real del sitio
-      const BASE_VISITS = 1234567; // Número base real de visitas
-      
-      function initCounter() {
-        // Obtener contador global de localStorage
-        let globalVisits = localStorage.getItem('sintomario_global_visits');
-        
-        if (!globalVisits) {
-          // Primera visita global - establecer base
-          globalVisits = BASE_VISITS;
-          localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        } else {
-          globalVisits = parseInt(globalVisits);
-        }
-        
-        // Incrementar por cada nueva visita
-        globalVisits++;
-        localStorage.setItem('sintomario_global_visits', globalVisits.toString());
-        
-        // Mostrar
-        updateDisplay(globalVisits);
-      }
-
-      function updateDisplay(visits) {
-        const visitsEl = document.getElementById("visits");
-        if (visitsEl) {
-          visitsEl.textContent = visits.toLocaleString("es-ES");
-        }
-      }
-
-      // Inicializar contador global
-      initCounter();
-    })();
-    
-    // Language selector function
+    // Language selector
     function changeLanguage(lang) {
       localStorage.setItem('sintomario-lang', lang);
       
