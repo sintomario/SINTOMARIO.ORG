@@ -73,7 +73,7 @@ function showSearchResults(results) {
     html += '<div style="font-size:11px;color:var(--text-dim);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.1em;">' + results.length + ' resultados</div>';
     
     for (const r of results) {
-        const url = langPrefix + '/cuerpo/' + r.slug + '/';
+        const url = langPrefix + '/cuerpo/' + r.slug + '/index.html';
         html += '<a href="' + url + '" style="display:block;padding:12px 16px;margin:8px 0;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-left:3px solid rgba(140, 5, 72, 0.6);text-decoration:none;color:#fff;transition:all 0.2s;border-radius:2px;">';
         html += '<div style="font-family:EB Garamond,serif;font-size:16px;font-weight:500;margin-bottom:4px;">' + r.title + '</div>';
         html += '<div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;">' + r.slug + '</div>';
