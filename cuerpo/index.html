@@ -48,14 +48,21 @@
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
     
     .disclaimer-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
       background: #F5C400;
       color: #1a0000;
-      font-size: clamp(7px, 0.8vw, 9px);
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(8px, 0.8vw, 12px);
       text-transform: uppercase;
-      white-space: nowrap;
-      text-align: center;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      z-index: 1000;
     }
     
     .nav-link { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; transition: all 0.2s; }
