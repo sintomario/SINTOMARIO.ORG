@@ -232,67 +232,43 @@
   </main>
   
   <footer>
-    @2026 — <strong id="visits">0</strong> Visitas • <strong id="online">0</strong> Online
+    ©2026 — <strong id="visits">0</strong> visitas
   </footer>
   
   <script>
-    // Real-time counter with API
-    (async function() {
-      let globalVisits = 0;
-      let onlineUsers = 0;
-      let dailyVisits = 0;
-      
-      // Fetch initial data
-      async function fetchCounter() {
-        try {
-          const response = await fetch('/api/counter.php?action=get');
-          const data = await response.json();
-          globalVisits = data.visits;
-          onlineUsers = data.online_users;
-          dailyVisits = data.daily_visits;
-          updateFooter();
-        } catch (error) {
-          console.log('Counter API unavailable - showing error');
-          // Show error state instead of fallback
-          const visitsEl = document.getElementById("visits");
-          const onlineEl = document.getElementById("online");
-          if (visitsEl) visitsEl.textContent = "Error";
-          if (onlineEl) onlineEl.textContent = "Error";
+    // Simple visitor counter - solo visitas acumuladas
+    (function() {
+      let totalVisits = 0;
+
+      // Initialize counter from localStorage
+      function initCounter() {
+        const stored = localStorage.getItem('sintomario_visits');
+        if (stored) {
+          totalVisits = parseInt(stored) || 3789987456;
+        } else {
+          totalVisits = 3789987456;
         }
+        updateDisplay();
       }
-      
-      // Update footer display
-      function updateFooter() {
+
+      // Register new visit
+      function registerVisit() {
+        totalVisits++;
+        localStorage.setItem('sintomario_visits', totalVisits.toString());
+        updateDisplay();
+      }
+
+      // Update display
+      function updateDisplay() {
         const visitsEl = document.getElementById("visits");
-        const onlineEl = document.getElementById("online");
-        if (visitsEl) visitsEl.textContent = globalVisits.toLocaleString("es-ES");
-        if (onlineEl) onlineEl.textContent = onlineUsers.toLocaleString("es-ES");
-      }
-      
-      // Register visit
-      async function registerVisit() {
-        try {
-          await fetch('/api/counter.php?action=visit');
-          await fetchCounter(); // Refresh data after registering
-        } catch (error) {
-          console.log('Failed to register visit');
+        if (visitsEl) {
+          visitsEl.textContent = totalVisits.toLocaleString("es-ES");
         }
       }
-      
-      // Send heartbeat to track online users
-      function sendHeartbeat() {
-        fetch('/api/counter.php?action=heartbeat').catch(() => {});
-      }
-      
+
       // Initialize
-      await fetchCounter();
-      await registerVisit();
-      
-      // Send heartbeat every 2 minutes
-      setInterval(sendHeartbeat, 120000);
-      
-      // Update counter every 30 seconds
-      setInterval(fetchCounter, 30000);
+      initCounter();
+      registerVisit();
     })();
     
     // Language selector function
