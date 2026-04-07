@@ -65,9 +65,7 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+        </head>
 <body class="theme-therapeutic">
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link" data-i18n="accessibility.skip_to_main">Skip to main content</a>
@@ -84,25 +82,32 @@
                 </div>
                 
                 <!-- Main Navigation -->
-                <nav class="main-nav" role="navigation" aria-label="Main navigation">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link" data-i18n="navigation.home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/explore" class="nav-link" data-i18n="navigation.explore">Explore</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/scrollytelling" class="nav-link" data-i18n="scrollytelling.title">Somatic Journey</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/body-maps" class="nav-link" data-i18n="body_maps.title">Body Atlas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/about" class="nav-link" data-i18n="navigation.about">About</a>
-                        </li>
-                    </ul>
-                </nav>
+                    <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
+        <div id="searchbox">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+        </div>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+      </div>
+      <div class="nav-row bottom-row">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
                 
                 <!-- Actions -->
                 <div class="header-actions">

@@ -20,10 +20,7 @@
     <link rel="stylesheet" href="/assets-atlas/css/main.css">
     
     <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+                
     <style>
         /* Additional styles for workspace */
         .workspace-container {
@@ -147,7 +144,34 @@
                 position: static;
             }
         }
-    </style>
+    
+    /* ── NATIVE HEADER CSS ── */
+    #header { position: fixed; top: var(--bar-h, 18px); left: 0; right: 0; height: var(--head-h, 64px); background: #2a0115; border-bottom: 1px solid rgba(255, 255, 255, 0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; z-index: 100; }
+    #logo { font-family: Georgia, "Times New Roman", serif; font-size: clamp(18px, 4vw, 26px); font-weight: 700; letter-spacing: 0.04em; color: #fff; white-space: nowrap; line-height: 1; }
+    #logo img { height: clamp(24px, 3.5vw, 32px); object-fit: contain; }
+    #searchbox { display: flex; align-items: center; gap: 5px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 3px; padding: 3px 8px; background: #670433; margin-right: 12px; }
+    #searchbox input { background: none; border: none; outline: none; color: #fff; font-size: clamp(8px, 1.2vw, 10px); width: clamp(60px, 10vw, 100px); }
+    #searchbox input::placeholder { color: rgba(255, 255, 255, 0.5); }
+    #nav-container { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; padding: 4px 0; }
+    .nav-row { display: flex; align-items: center; gap: clamp(8px, 1.5vw, 16px); justify-content: flex-end; width: 100%; }
+    .nav-row a { font-size: clamp(7px, 1.2vw, 9px); font-weight: 400; letter-spacing: 0.14em; color: #fff; text-decoration: none; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s; white-space: nowrap; }
+    .nav-row a:hover { opacity: 1; }
+    #btn-clk { background: #5a1035; color: #fff; border: none; padding: 4px clamp(8px, 1.5vw, 11px); font-size: clamp(7px, 1.2vw, 9px); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    #btn-clk:hover { background: #8c0548; }
+    #lang-select { background: #670433; color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 3px; padding: 4px 8px; font-size: 10px; cursor: pointer; outline: none; }
+    #lang-select option { background: #2a0115; color: #fff; }
+    @media (max-width: 640px) {
+      #header { padding: 0 8px; gap: 8px; }
+      #logo { flex-shrink: 0; }
+      #logo img { height: 22px; }
+      #nav-container { gap: 4px; }
+      .nav-row { gap: 8px; justify-content: flex-end; overflow-x: auto; scrollbar-width: none; }
+      .nav-row::-webkit-scrollbar { display: none; }
+      .nav-row.bottom-row a[href="/sobre"], .nav-row.bottom-row a[href="/faq"] { display: none; }
+      #searchbox { padding: 2px 6px; margin-right: 0; }
+      #searchbox input { width: 70px; }
+    }
+  </style>
 </head>
 <body class="atlas-body">
     <!-- Skip to main content for accessibility -->
@@ -156,32 +180,32 @@
     <!-- Atlas Header -->
     <header class="atlas-header" role="banner">
         <div class="atlas-container">
-            <nav class="therapeutic-navigation" role="navigation" aria-label="Navegación principal">
-                <div class="nav-brand">
-                    <a href="/" class="brand-link">
-                        <span class="brand-text">Atlas Somático</span>
-                        <span style="font-size: 0.875rem; color: var(--color-gray-500); margin-left: var(--space-sm);">Workspace</span>
-                    </a>
-                </div>
-                
-                <div class="nav-actions">
-                    <span class="status-indicator status-active"></span>
-                    <span style="font-size: var(--text-sm); color: var(--color-gray-600);">Sistema Activo</span>
-                    <button class="theme-toggle" aria-label="Cambiar tema">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-                </div>
-            </nav>
+                <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
+        <div id="searchbox">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+        </div>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+      </div>
+      <div class="nav-row bottom-row">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
         </div>
     </header>
 

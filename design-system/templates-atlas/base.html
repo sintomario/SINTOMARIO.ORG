@@ -13,10 +13,7 @@
     <link rel="stylesheet" href="/assets-atlas/css/utilities.css">
     
     <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+                
     {% block extra_head %}{% endblock %}
 </head>
 <body class="atlas-body">
@@ -26,44 +23,32 @@
     <!-- Atlas Header -->
     <header class="atlas-header" role="banner">
         <div class="atlas-container">
-            <nav class="therapeutic-navigation" role="navigation" aria-label="Navegación principal">
-                <div class="nav-brand">
-                    <a href="/" class="brand-link">
-                        <span class="brand-text">Atlas Somático</span>
-                    </a>
-                </div>
-                
-                <div class="nav-menu">
-                    <ul class="nav-list">
-                        <li><a href="/zones" class="nav-link">Zonas Corporales</a></li>
-                        <li><a href="/articles" class="nav-link">Artículos</a></li>
-                        <li><a href="/hubs" class="nav-link">Hubs Temáticos</a></li>
-                        <li><a href="/about" class="nav-link">Sobre</a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-actions">
-                    <button class="search-toggle" aria-label="Buscar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </button>
-                    <button class="theme-toggle" aria-label="Cambiar tema">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-                </div>
-            </nav>
+                <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
+        <div id="searchbox">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+        </div>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+      </div>
+      <div class="nav-row bottom-row">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
         </div>
     </header>
 

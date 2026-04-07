@@ -27,19 +27,32 @@
     
     <!-- Header con Geo-título -->
     <header class="sintomario-header">
-        <nav aria-label="Navegación principal" class="persuasive-breadcrumbs">
-            <ol class="breadcrumb-list">
-                {% for crumb in breadcrumbs %}
-                <li>
-                    {% if not loop.last %}
-                    <a href="{{ crumb.url }}">{{ crumb.label }}</a>
-                    {% else %}
-                    <span aria-current="page">{{ crumb.label }}</span>
-                    {% endif %}
-                </li>
-                {% endfor %}
-            </ol>
-        </nav>
+            <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
+        <div id="searchbox">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+        </div>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+      </div>
+      <div class="nav-row bottom-row">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
         
         <h1 class="geo-title" data-geo-default="{{ page_title }}">
             {{ page_title }}

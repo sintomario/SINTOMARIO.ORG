@@ -71,7 +71,7 @@
     }
 
     #logo {
-      font-family: 'EB Garamond', Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: 26px;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -200,7 +200,7 @@
       text-align: center;
       z-index: 20;
       pointer-events: none;
-      font-family: 'EB Garamond', Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(16px, 3.1vw, 25px);
       font-weight: 400;
       font-style: normal;
@@ -313,6 +313,33 @@
     #foot-txt strong {
       color: rgba(255, 255, 255, 0.45);
     }
+  
+    /* ── NATIVE HEADER CSS ── */
+    #header { position: fixed; top: var(--bar-h, 18px); left: 0; right: 0; height: var(--head-h, 64px); background: #2a0115; border-bottom: 1px solid rgba(255, 255, 255, 0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; z-index: 100; }
+    #logo { font-family: Georgia, "Times New Roman", serif; font-size: clamp(18px, 4vw, 26px); font-weight: 700; letter-spacing: 0.04em; color: #fff; white-space: nowrap; line-height: 1; }
+    #logo img { height: clamp(24px, 3.5vw, 32px); object-fit: contain; }
+    #searchbox { display: flex; align-items: center; gap: 5px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 3px; padding: 3px 8px; background: #670433; margin-right: 12px; }
+    #searchbox input { background: none; border: none; outline: none; color: #fff; font-size: clamp(8px, 1.2vw, 10px); width: clamp(60px, 10vw, 100px); }
+    #searchbox input::placeholder { color: rgba(255, 255, 255, 0.5); }
+    #nav-container { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; padding: 4px 0; }
+    .nav-row { display: flex; align-items: center; gap: clamp(8px, 1.5vw, 16px); justify-content: flex-end; width: 100%; }
+    .nav-row a { font-size: clamp(7px, 1.2vw, 9px); font-weight: 400; letter-spacing: 0.14em; color: #fff; text-decoration: none; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s; white-space: nowrap; }
+    .nav-row a:hover { opacity: 1; }
+    #btn-clk { background: #5a1035; color: #fff; border: none; padding: 4px clamp(8px, 1.5vw, 11px); font-size: clamp(7px, 1.2vw, 9px); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    #btn-clk:hover { background: #8c0548; }
+    #lang-select { background: #670433; color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 3px; padding: 4px 8px; font-size: 10px; cursor: pointer; outline: none; }
+    #lang-select option { background: #2a0115; color: #fff; }
+    @media (max-width: 640px) {
+      #header { padding: 0 8px; gap: 8px; }
+      #logo { flex-shrink: 0; }
+      #logo img { height: 22px; }
+      #nav-container { gap: 4px; }
+      .nav-row { gap: 8px; justify-content: flex-end; overflow-x: auto; scrollbar-width: none; }
+      .nav-row::-webkit-scrollbar { display: none; }
+      .nav-row.bottom-row a[href="/sobre"], .nav-row.bottom-row a[href="/faq"] { display: none; }
+      #searchbox { padding: 2px 6px; margin-right: 0; }
+      #searchbox input { width: 70px; }
+    }
   </style>
 </head>
 
@@ -320,21 +347,32 @@
 
   <div id="bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
 
-  <header id="header">
-    <a href="/" id="logo" style="text-decoration: none; color: #fff;">SINTOMARIO.ORG</a>
-    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
-      <div style="display: flex; align-items: center; gap: 8px;">
+    <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
         <div id="searchbox">
-          <span>&#128269;</span>
-          <input type="text" placeholder="Buscar síntoma..." id="q">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
         </div>
-        <button id="btn-clk" onclick="window.location.href='/faq'">AYUDA</button>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
       </div>
-      <nav id="nav" style="width: 100%; justify-content: space-between; gap: 0;">
+      <div class="nav-row bottom-row">
         <a href="/sobre">Sobre</a>
-        <a href="/cuerpo">Atlas</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
         <a href="/faq">FAQ</a>
-      </nav>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
     </div>
   </header>
 

@@ -12,18 +12,32 @@
 </head>
 <body>
   <header class="site-header">
-    <nav class="main-nav">
-      <div class="container">
-        <a href="/" class="logo">SINTOMARIO.ORG</a>
-        <ul class="nav-links">
-          <li><a href="/zona/">Zonas Corporales</a></li>
-          <li><a href="/contexto/">Contextos Emocionales</a></li>
-          <li><a href="/sobre/">Sobre</a></li>
-          <li><a href="/metodologia/">Metodología</a></li>
-          <li><a href="/faq/">FAQ</a></li>
-        </ul>
+        <header id="header">
+    <a href="/" id="logo">
+      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+    </a>
+    <div id="nav-container">
+      <div class="nav-row top-row">
+        <div id="searchbox">
+          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
+          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+        </div>
+        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
       </div>
-    </nav>
+      <div class="nav-row bottom-row">
+        <a href="/sobre">Sobre</a>
+        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
+        <a href="/faq">FAQ</a>
+        <div id="lang-selector">
+          <select id="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es" selected>ES</option>
+            <option value="en">EN</option>
+            <option value="pt">PT</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
   </header>
   
   <main class="wrap"><section class="hero">

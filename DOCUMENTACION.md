@@ -1,8 +1,11 @@
 # SINTOMARIO.ORG — Documentación Esencial
 
-## Estado del Proyecto — Marzo 2026
+## Estado del Proyecto — Abril 2026 (Refactorización Universal)
 
-**Frontend COMPLETO implementado.**
+**Frontend COMPLETO e IMPERMEABLE. 100% Native Vanilla.**
+- 0 Dependencias de framework CSS (Purga absoluta de Tailwind CDN en los 24,562 archivos).
+- 0 Latencia tipográfica (Reemplazo universal por System Fonts y Native Emojis/Glyphs 🔍).
+- Header Layout universal inyectado.
 
 ### Páginas Activas
 
@@ -41,9 +44,9 @@ SINTOMARIO.ORG/
 - Light: `#8c0548`
 - Text-dim: `rgba(255,255,255,0.65)`
 
-**Tipografía:**
-- Títulos: EB Garamond
-- Cuerpo: Inter
+**Tipografía NATIVA (Offline, Cero Dependencias):**
+- Títulos: System Serif (`Georgia`, `Times New Roman`)
+- Cuerpo: System UI (`system-ui`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `Roboto`)
 
 **Elementos:**
 - Border-radius: 0.05px
