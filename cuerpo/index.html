@@ -44,7 +44,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 700;
-      z-index: 1000;
+      z-index: 9999;
     }
     
     .nav-link { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; transition: all 0.2s; }
@@ -75,7 +75,7 @@
     #stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; transition: opacity 0.9s ease; }
   
     /* ── NATIVE HEADER CSS ── */
-    #header { position: fixed; top: var(--bar-h, 18px); left: 0; right: 0; height: var(--head-h, 64px); background: #2a0115; border-bottom: 1px solid rgba(255, 255, 255, 0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; z-index: 100; }
+    #header { position: fixed; top: var(--bar-h, 18px); left: 0; right: 0; height: var(--head-h, 64px); background: #2a0115; border-bottom: 1px solid rgba(255, 255, 255, 0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; z-index: 9998; }
     #logo { font-family: Georgia, "Times New Roman", serif; font-size: clamp(18px, 4vw, 26px); font-weight: 700; letter-spacing: 0.04em; color: #fff; white-space: nowrap; line-height: 1; }
     #logo img { height: clamp(24px, 3.5vw, 32px); object-fit: contain; }
     #searchbox { display: flex; align-items: center; gap: 5px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 3px; padding: 3px 8px; background: #670433; margin-right: 12px; }
@@ -121,9 +121,9 @@
         <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
       </div>
       <div class="nav-row bottom-row">
-        <a href="/sobre">Sobre</a>
-        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
-        <a href="/faq">FAQ</a>
+        <a href="/sobre/index.html">Sobre</a>
+        <a href="/cuerpo/index.html" style="color:#F5C400">Atlas</a>
+        <a href="/faq/index.html">FAQ</a>
         <div id="lang-selector">
           <select id="lang-select" onchange="changeLanguage(this.value)">
             <option value="es" selected>ES</option>
@@ -164,7 +164,8 @@
         <img src="/layers/PNG/09_NERVIOS.png" data-sys="NERVIOSO" data-id="nervioso" alt="Sistema nervioso" style="z-index: 4; mix-blend-mode: hard-light; opacity: 0.82;">
         <img src="/layers/PNG/02_PIEL.png" data-sys="PERCEPTUAL" data-id="perceptual" alt="Sistema perceptual" style="z-index: 3; mix-blend-mode: hard-light; opacity: 1.0;">
         <img src="/layers/PNG/06_MUSCULOS.png" data-sys="MUSCULAR" data-id="muscular" alt="Sistema muscular" style="z-index: 2; mix-blend-mode: luminosity; opacity: 1.0;">
-        <img src="/layers/PNG/08_OSEO.png" data-sys="ÓSEO" data-id="oseo" alt="Sistema óseo" style="z-index: 1; mix-blend-mode: multiply; opacity: 1.0;">
+        <img src="/layers/PNG/11_MATERNO.png" data-sys="MATERNO" data-id="materno" alt="Sistema materno" style="z-index: 1; mix-blend-mode: soft-light; opacity: 0.9;">
+        <img src="/layers/PNG/08_OSEO.png" data-sys="ÓSEO" data-id="oseo" alt="Sistema óseo" style="z-index: 0; mix-blend-mode: multiply; opacity: 1.0;">
         <img src="/layers/PNG/10_BASE.png" data-fixed="base" data-id="base" alt="Capa base anatómica" style="z-index: 0; mix-blend-mode: luminosity; opacity: 1.0;">
       </div>
       
@@ -174,7 +175,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-40">
+  <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-[9997]">
     <div class="text-[13px] text-white/60 tracking-wide flex items-center">
       ©2026 — <strong class="text-white/80" id="visits">0</strong> visitas
     </div>
@@ -257,6 +258,15 @@
         { t: "Nariz", s: "nariz-intuicion" },
         { t: "Sudoración", s: "sudoracion-miedo" },
         { t: "Herpes", s: "herpes-conflicto" }
+      ],
+      "MATERNO": [
+        { t: "Embarazo", s: "fertilidad-concepcion" },
+        { t: "Fertilidad", s: "fertilidad-creacion" },
+        { t: "Menstruación", s: "menstruacion-ciclo" },
+        { t: "Ovarios", s: "ovarios-femenidad" },
+        { t: "Útero", s: "area-reproductiva-gestacion" },
+        { t: "Lactancia", s: "pecho-nutricion" },
+        { t: "Hormonas", s: "hormonas-transformacion" }
       ]
     };
 

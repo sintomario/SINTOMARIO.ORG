@@ -33,7 +33,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 700;
-      z-index: 1000;
+      z-index: 9999;
     }
 
     .main-content {
@@ -159,7 +159,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 14px;
-      z-index: 100;
+      z-index: 9998;
     }
 
     #logo {
@@ -423,7 +423,7 @@
       display: flex;
       align-items: center;
       padding: 0 14px;
-      z-index: 100;
+      z-index: 9997;
     }
 
     #foot-txt {
@@ -470,9 +470,9 @@
         <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
       </div>
       <div class="nav-row bottom-row">
-        <a href="/sobre">Sobre</a>
-        <a href="/cuerpo" style="color:#F5C400">Atlas</a>
-        <a href="/faq">FAQ</a>
+        <a href="/sobre/index.html">Sobre</a>
+        <a href="/cuerpo/index.html" style="color:#F5C400">Atlas</a>
+        <a href="/faq/index.html">FAQ</a>
         <div id="lang-selector">
           <select id="lang-select" onchange="changeLanguage(this.value)">
             <option value="es" selected>ES</option>
@@ -532,6 +532,7 @@
         <img src="layers/PNG/09_NERVIOS.png" data-sys="NERVIOSO" data-id="nervioso" alt="Sistema nervioso">
         <img src="layers/PNG/02_PIEL.png" data-sys="PERCEPTUAL" data-id="perceptual" alt="Sistema perceptual">
         <img src="layers/PNG/06_MUSCULOS.png" data-sys="MUSCULAR" data-id="muscular" alt="Sistema muscular">
+        <img src="layers/PNG/11_MATERNO.png" data-sys="MATERNO" data-id="materno" alt="Sistema materno y embarazo">
         <img src="layers/PNG/08_OSEO.png" data-sys="ÓSEO" data-id="oseo" alt="Sistema óseo">
         <img src="layers/PNG/10_BASE.png" data-fixed="base" data-id="base" alt="Capa base corporal">
       </div>
@@ -554,7 +555,8 @@
         "PSÍQUICO": [{ t: "Bucle", s: "cabeza/obsesion" }, { t: "Niebla", s: "cabeza/confusion" }, { t: "Ansiedad", s: "cabeza/ansiedad" }, { t: "Fobias", s: "cabeza/fobia" }, { t: "TOC", s: "cabeza/toc" }, { t: "Burnout", s: "cabeza/burnout" }, { t: "Disociación", s: "cabeza/disociacion" }],
         "DIGESTIVO": [{ t: "Estómago", s: "estomago/rabia" }, { t: "Colon", s: "colon/injusticia" }, { t: "Hígado", s: "higado/frustracion" }, { t: "Reflujo", s: "estomago/represion" }, { t: "Intestino", s: "intestinos/soltar" }, { t: "Gastritis", s: "estomago/autoexigencia" }, { t: "Boca", s: "boca/expresion" }],
         "EMOCIONAL": [{ t: "Llanto", s: "cabeza/liberacion" }, { t: "Vacío", s: "cabeza/abandono" }, { t: "Culpa", s: "cabeza/castigo" }, { t: "Vergüenza", s: "cabeza/exposicion" }, { t: "Apatía", s: "cabeza/desconexion" }, { t: "Soledad", s: "cabeza/rechazo" }, { t: "Garganta", s: "garganta/represion" }],
-        "PERCEPTUAL": [{ t: "Dermatitis", s: "dermatitis/limites" }, { t: "Acné", s: "acne/autoestima" }, { t: "Urticaria", s: "piel/rabia" }, { t: "Psoriasis", s: "piel/proteccion" }, { t: "Nariz", s: "nariz/intuicion" }, { t: "Sudoración", s: "piel/miedo" }, { t: "Herpes", s: "piel/conflicto" }]
+        "PERCEPTUAL": [{ t: "Dermatitis", s: "dermatitis/limites" }, { t: "Acné", s: "acne/autoestima" }, { t: "Urticaria", s: "piel/rabia" }, { t: "Psoriasis", s: "piel/proteccion" }, { t: "Nariz", s: "nariz/intuicion" }, { t: "Sudoración", s: "piel/miedo" }, { t: "Herpes", s: "piel/conflicto" }],
+        "MATERNO": [{ t: "Embarazo", s: "fertilidad/concepcion" }, { t: "Fertilidad", s: "fertilidad/creacion" }, { t: "Menstruación", s: "menstruacion/ciclo" }, { t: "Ovarios", s: "ovarios/femenidad" }, { t: "Útero", s: "area-reproductora/gestacion" }, { t: "Lactancia", s: "pecho/nutricion" }, { t: "Cambios", s: "hormonas/transformacion" }]
       };
 
       const PRESETS = {
@@ -566,6 +568,7 @@
         nervioso: { blend: "hard-light", opacity: 0.82 },
         perceptual: { blend: "hard-light", opacity: 1.0 },
         muscular: { blend: "luminosity", opacity: 1.0 },
+        materno: { blend: "soft-light", opacity: 0.9 },
         oseo: { blend: "multiply", opacity: 1.0 },
         base: { blend: "luminosity", opacity: 1.0 }
       };
@@ -606,13 +609,13 @@
         (WORDS[sys] || []).forEach(w => {
           const b = document.createElement("button");
           b.className = "wbtn"; b.textContent = w.t;
-          b.onclick = () => { window.location.href = langPrefix + "/cuerpo/" + w.s + "/"; };
+          b.onclick = () => { window.location.href = langPrefix + "/cuerpo/" + w.s + "/index.html"; };
           fragment.appendChild(b);
         });
         const hub = document.createElement("button");
         hub.className = "wbtn hub"; hub.textContent = "SINTOMARIO";
         hub.onclick = () => {
-          window.location.href = langPrefix + `/cuerpo/sistema/${active.id}/`;
+          window.location.href = langPrefix + `/cuerpo/sistema/${active.id}/index.html`;
         };
         fragment.appendChild(hub);
         wordsEl.appendChild(fragment);
