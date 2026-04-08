@@ -173,3 +173,76 @@ if (document.readyState === 'loading') {
 // Exportar para uso global
 window.SINTOMARIO = window.SINTOMARIO || {};
 window.SINTOMARIO.ThemeManager = ThemeManager;
+
+// =====================================================
+// FIX: Sticky Disclaimer & Link Corrections for Articles
+// =====================================================
+(function() {
+  function initArticleFixes() {
+    // 1. Inject yellow disclaimer bar if not present
+    if (!document.querySelector('.disclaimer-bar, #disclaimer, .site-disclaimer')) {
+      const disclaimer = document.createElement('div');
+      disclaimer.className = 'disclaimer-bar';
+      disclaimer.innerHTML = '⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.';
+      disclaimer.style.cssText = `
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 22px !important;
+        background: #F5C400 !important;
+        color: #1a0000 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: clamp(8px, 0.8vw, 12px) !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        font-weight: 700 !important;
+        z-index: 9999 !important;
+        font-family: system-ui, -apple-system, sans-serif !important;
+      `;
+      document.body.insertBefore(disclaimer, document.body.firstChild);
+      
+      // Adjust site-header to account for disclaimer
+      const siteHeader = document.querySelector('.site-header, header.site-header');
+      if (siteHeader) {
+        siteHeader.style.top = '22px !important';
+      }
+      
+      // Adjust body padding
+      document.body.style.paddingTop = '100px !important'; // 22px + 78px
+    }
+    
+    // 2. Fix broken links - add index.html where missing
+    const linksToFix = document.querySelectorAll('a[href="/sobre"], a[href="/cuerpo"], a[href="/faq"], a[href="/zona/"], a[href="/contexto/"]');
+    linksToFix.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.includes('index.html') && !href.includes('?') && !href.includes('#')) {
+        link.setAttribute('href', href + 'index.html');
+      }
+    });
+    
+    // 3. Fix links ending with / that don't have index.html
+    const allLinks = document.querySelectorAll('a[href$="/"]');
+    allLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      // Only fix internal links, not external
+      if (href && href.startsWith('/') && !href.includes('index.html') && href !== '/') {
+        // Don't modify links that are already fixed or are special paths
+        if (href !== '/sobre/' && href !== '/cuerpo/' && href !== '/faq/' && 
+            href !== '/zona/' && href !== '/contexto/') {
+          return;
+        }
+        link.setAttribute('href', href + 'index.html');
+      }
+    });
+  }
+  
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArticleFixes);
+  } else {
+    initArticleFixes();
+  }
+})();
