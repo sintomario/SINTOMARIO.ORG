@@ -660,10 +660,10 @@
         if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
       });
 
-      // Load counter script
-      const counterScript = document.createElement('script');
-      counterScript.src = '/assets/js/counter.js';
-      document.head.appendChild(counterScript);
+      // Load unified elements system
+      const unifiedScript = document.createElement('script');
+      unifiedScript.src = '/assets/includes/unified-elements.js';
+      document.head.appendChild(unifiedScript);
 
       // Align #words to left edge of rendered image
       function positionWords() {

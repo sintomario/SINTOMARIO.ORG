@@ -1,0 +1,138 @@
+<!-- SINTOMARIO.ORG - Unified Header & Footer Template -->
+<!-- Include this in all pages: homepage, sobre, atlas, faq, hubs, articles -->
+
+<!-- CSS -->
+<link rel="stylesheet" href="/assets/css/common.css">
+
+<!-- Disclaimer Bar -->
+<div class="disclaimer-bar">
+  <span>Disclaimer médico: Sitio informativo. No reemplaza diagnóstico profesional.</span>
+</div>
+
+<!-- Header -->
+<header class="site-header" id="header">
+  <a href="/" id="logo">
+    <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
+  </a>
+  
+  <div id="nav-container">
+    <div class="nav-row top-row">
+      <div id="searchbox">
+        <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">&#128269;</span>
+        <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
+      </div>
+      <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
+    </div>
+    
+    <div class="nav-row bottom-row">
+      <a href="/sobre/">Sobre</a>
+      <a href="/cuerpo/atlas-nav.html" style="color:#F5C400">Atlas</a>
+      <a href="/faq/">FAQ</a>
+      <div id="lang-selector">
+        <select id="lang-select" onchange="changeLanguage(this.value)">
+          <option value="es" selected>ES</option>
+          <option value="en">EN</option>
+          <option value="pt">PT</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content Container -->
+<div class="main-content" id="main-content">
+  <!-- Page content goes here -->
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="/cuerpo/atlas-nav.html">Atlas Corporal</a></li>
+          <li><a href="/cuerpo/">Zonas Corporales</a></li>
+          <li><a href="/faq/">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="/sobre/">Sobre SINTOMARIO</a></li>
+          <li><a href="/faq/">Metodología</a></li>
+          <li><a href="#" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">Apoyo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contador Global</h4>
+        <ul>
+          <li><strong id="visits">0</strong> Visitas Totales</li>
+          <li><strong id="online">0</strong> Usuarios Online</li>
+        </ul>
+      </div>
+    </div>
+    <p>&copy; 2026 SINTOMARIO.ORG. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="/assets/js/unified-counter.js"></script>
+
+<style>
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer-section h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-section ul li a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.footer-section ul li strong {
+  color: #F5C400;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+}
+</style>

@@ -293,44 +293,7 @@
     });
   </script>
   
-  <!-- Counter API -->
-  <script>
-    (async function() {
-      // Increment visit counter first
-      try {
-        await fetch('/api/counter.php?action=visit');
-      } catch (error) {
-        console.log('Counter increment failed:', error);
-      }
-      
-      // Then fetch updated counter data
-      async function fetchCounter() {
-        try {
-          const response = await fetch('/api/counter.php?action=get');
-          const data = await response.json();
-          const visitsEl = document.getElementById("visits");
-          const onlineEl = document.getElementById("online");
-          if (visitsEl) visitsEl.textContent = data.visits.toLocaleString("es-ES");
-          if (onlineEl) onlineEl.textContent = data.online_users.toLocaleString("es-ES");
-        } catch (error) {
-          console.log('Counter fetch failed:', error);
-        }
-      }
-      
-      // Fetch immediately and then every 30 seconds
-      fetchCounter();
-      setInterval(fetchCounter, 30000);
-      
-      // Send heartbeat every 2 minutes to track online users
-      setInterval(async () => {
-        try {
-          await fetch('/api/counter.php?action=heartbeat');
-        } catch (error) {
-          console.log('Heartbeat failed:', error);
-        }
-      }, 120000);
-      
-    })();
-  </script>
+  <!-- Unified Elements System -->
+  <script src="/assets/includes/unified-elements.js"></script>
 </body>
 </html>
