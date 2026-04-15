@@ -660,31 +660,10 @@
         if (["ArrowUp", "ArrowLeft"].includes(e.key)) { e.preventDefault(); scrollSys(-1); }
       });
 
-      // Global visitor counter - simple backend API
-      (function() {
-        function updateGlobalCounter() {
-          // Increment counter and get updated value
-          fetch('/api/counter.php?action=visit')
-            .then(response => response.json())
-            .then(data => {
-              const visitsEl = document.getElementById("visits");
-              if (visitsEl) {
-                visitsEl.textContent = data.visits.toLocaleString("es-ES");
-              }
-            })
-            .catch(error => {
-              console.error('Error updating counter:', error);
-              // Fallback: show basic message
-              const visitsEl = document.getElementById("visits");
-              if (visitsEl) {
-                visitsEl.textContent = "Conectando...";
-              }
-            });
-        }
-        
-        // Update counter immediately when page loads
-        updateGlobalCounter();
-      })();
+      // Load counter script
+      const counterScript = document.createElement('script');
+      counterScript.src = '/assets/js/counter.js';
+      document.head.appendChild(counterScript);
 
       // Align #words to left edge of rendered image
       function positionWords() {
