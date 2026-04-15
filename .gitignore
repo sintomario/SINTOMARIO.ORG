@@ -20,3 +20,22 @@ Thumbs.db
 __pycache__/
 *.pyc
 node_modules/
+
+# Development directories (not needed for production)
+/CLICKER/
+/admin/
+/design-system/
+/scripts/
+/docs/
+*.md
+REGENERATION-ROADMAP.md
+AUDIT-REPORT-APR2026.md
+DOCUMENTACION.md
+
+# Git
+.git/
+
+# Contexto and zona (if they contain generated content not needed for main site)
+# Keep cuerpo/ as it contains the main content
+# /contexto/
+# /zona/
