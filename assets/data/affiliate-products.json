@@ -1,0 +1,140 @@
+{
+  "practica": {
+    "journal": {
+      "title": "The Shadow Work Journal: A Guide to Integrate and Transcend Your Shadows",
+      "asin": "B08N7W4J2T",
+      "description": "Cuaderno de trabajo para explorar sombras emocionales y patrones inconscientes",
+      "price": "$12.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "meditation": {
+      "title": "Mindfulness in Plain English: 20th Anniversary Edition",
+      "asin": "B08N7W4J2T", 
+      "description": "Guía práctica de meditación para principiantes y avanzados",
+      "price": "$14.95",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "body": {
+      "title": "The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma",
+      "asin": "0143127748",
+      "description": "Libro fundamental sobre trauma y somatización por Bessel van der Kolk",
+      "price": "$16.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  },
+  "herramienta": {
+    "breathing": {
+      "title": "Breathing Buddha - Meditation Breathing Device",
+      "asin": "B07VXJL4Q9",
+      "description": "Dispositivo de guía respiratoria para meditación y relajación",
+      "price": "$39.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "acupressure": {
+      "title": "Acupressure Mat and Pillow Set for Back Pain Relief",
+      "asin": "B07XQFZ4J2",
+      "description": "Set de acupresión para alivio del dolor y relajación muscular",
+      "price": "$29.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "journal": {
+      "title": "Leuchtturm1917 Medium A5 Dotted Notebook",
+      "asin": "B004SH33QO",
+      "description": "Cuaderno premium de alta calidad para journaling terapéutico",
+      "price": "$19.95",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  },
+  "libro": {
+    "somatic": {
+      "title": "Waking the Tiger: Healing Trauma",
+      "asin": "155643233X",
+      "description": "Libro seminal sobre sanación somática por Peter Levine",
+      "price": "$15.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "emotions": {
+      "title": "The Emotion Code: How to Release Your Trapped Emotions",
+      "asin": "1401953119", 
+      "description": "Método para liberar emociones atrapadas por Bradley Nelson",
+      "price": "$14.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "identity": {
+      "title": "The Body Is Not an Apology: The Power of Radical Self-Love",
+      "asin": "1580056558",
+      "description": "Libro sobre amor propio radical y aceptación corporal",
+      "price": "$16.00",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  },
+  "suplemento": {
+    "magnesium": {
+      "title": "Natural Vitality Calm Magnesium Supplement Powder",
+      "asin": "B000OQ2XLU",
+      "description": "Suplemento de magnesio para relajación muscular y estrés",
+      "price": "$24.95",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "probiotic": {
+      "title": "Garden of Life Dr. Formulated Probiotics Once Daily",
+      "asin": "B0098U0QOK",
+      "description": "Probiótico diario para salud intestinal y sistema inmune",
+      "price": "$28.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "ashwagandha": {
+      "title": "Organic India Ashwagandha Herbal Supplement",
+      "asin": "B004QZ9T2W",
+      "description": "Adaptógeno ayurvédico para manejo del estrés y ansiedad",
+      "price": "$19.95",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  },
+  "descanso": {
+    "sleep": {
+      "title": "Manta Weighted Blanket for Adults (15 lbs, 60x80)",
+      "asin": "B07VXJL4Q9",
+      "description": "Manta ponderada para sueño profundo y reducción de ansiedad",
+      "price": "$59.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "aromatherapy": {
+      "title": "Essential Oil Diffuser with 6 Essential Oils Set",
+      "asin": "B07VXJL4Q9",
+      "description": "Difusor de aceites esenciales con kit de aromaterapia",
+      "price": "$24.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "eye": {
+      "title": "Mavogel Weighted Sleep Mask",
+      "asin": "B07VXJL4Q9",
+      "description": "Antifajos ponderados para sueño profundo y relajación ocular",
+      "price": "$15.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  },
+  "respiracion": {
+    "device": {
+      "title": "Breathing Exercise Device - Respiratory Trainer",
+      "asin": "B07VXJL4Q9",
+      "description": "Dispositivo de entrenamiento respiratorio para pulmones",
+      "price": "$34.99",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "guide": {
+      "title": "Breath: The New Science of a Lost Art",
+      "asin": "0735213615",
+      "description": "Libro científico sobre el poder de la respiración por James Nestor",
+      "price": "$18.00",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    },
+    "app": {
+      "title": "Calm - Premium Meditation and Sleep App Subscription",
+      "asin": "B07VXJL4Q9",
+      "description": "Suscripción premium a app Calm para meditación y sueño",
+      "price": "$69.99/year",
+      "image": "https://m.media-amazon.com/images/I/51+J7P2iKGL._SX331_BO1,204,203,200_.jpg"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "verguenza": {
+    "response": "La vergüenza en vesícula suele manifestarse como una tensión sorda en el hipocondrio derecho, acompañada de dificultad para procesar grasas y sensación de estar 'tragando' situaciones incómodas. El cuerpo está reteniendo experiencias donde uno se sintió defectuoso o inadecuado. La práctica recomendada es escribir tres situaciones recientes donde sintió vergüenza, identificar qué parte de usted sintió que 'no estaba a la altura', y luego ofrecerle a esa parte el mismo reconocimiento que ofrecería a un niño pequeño: validez sin juicio.",
+    "questions": [
+      "¿Por qué la vergüenza afecta específicamente a la vesícula?",
+      "¿Es normal sentir dolor vesicular cuando me siento avergonzado?",
+      "¿Cómo puedo diferenciar entre un problema físico y emocional en la vesícula?"
+    ]
+  },
+  "ansiedad": {
+    "response": "La ansiedad en cabeza se expresa como tensión en sienes, mandíbula apretada y pensamientos acelerados que no encuentran descanso. El cuerpo está tratando de resolver múltiples escenarios futuros simultáneamente, sobrecargando el sistema nervioso central. La práctica consiste en elegir una preocupación dominante, escribir el peor escenario posible, y luego escribir tres pasos concretos para manejarlo. Esto le da al cerebro una tarea específica en lugar de mantenerlo en modo alerta generalizada.",
+    "questions": [
+      "¿Por qué la ansiedad se manifiesta principalmente en la cabeza?",
+      "¿Es normal tener dolores de cabeza constantes con ansiedad?",
+      "¿Cómo puedo calmar mi mente cuando los pensamientos no se detienen?"
+    ]
+  },
+  "trauma": {
+    "response": "El trauma en vesícula representa experiencias no digeridas emocionalmente que el cuerpo sigue procesando como si fueran recientes. La vesícula libera bilis para digerir grasas, pero cuando hay trauma emocional, este mecanismo se altera, creando sensaciones de amargura o 'bilis' emocional. La práctica es identificar qué 'sabor' emocional le queda de experiencias pasadas, y escribir una carta a su versión más joven explicándole que ahora usted tiene los recursos que entonces le faltaban.",
+    "questions": [
+      "¿Por qué el trauma no digerido afecta a la vesícula?",
+      "¿Pueden los problemas vesiculares ser síntomas de trauma antiguo?",
+      "¿Cómo puedo 'digerir' emocionalmente experiencias traumáticas?"
+    ]
+  },
+  "miedo": {
+    "response": "El miedo en vesícula se manifiesta como una contracción que impide el flujo normal, reflejando cómo el miedo nos hace 'retener' lo que necesitamos liberar. El cuerpo está en modo supervivencia, tratando de conservar energía para una amenaza percibida. La práctica es identificar qué específico teme perder o enfrentar, y luego crear un plan de tres pasos para manejar ese escenario específico. Esto le dice al cuerpo: 'Estoy preparado, puedes relajarte'.",
+    "questions": [
+      "¿Por qué el miedo paraliza físicamente la vesícula?",
+      "¿Es normal tener problemas digestivos cuando estoy asustado?",
+      "¿Cómo puedo diferenciar el miedo real del imaginario en mi cuerpo?"
+    ]
+  },
+  "tristeza": {
+    "response": "La tristeza en vesícula representa lágrimas no lloradas y duelos no procesados que el cuerpo sigue cargando. La vesícula, como órgano de liberación, se siente 'obstruida' cuando no permitimos el flujo emocional natural. La práctica es permitirse llorar sin juicio durante 10 minutos diarios, o si no puede llorar, escribir tres cosas que extraña y tres cosas que aprendió de esas pérdidas. El cuerpo necesita saber que el duelo tiene un espacio seguro para expresarse.",
+    "questions": [
+      "¿Por qué la tristeza no expresada afecta a la vesícula?",
+      "¿Es normal sentir el cuerpo 'pesado' cuando estoy triste?",
+      "¿Cómo puedo procesar el duelo sin sentirme abrumado?"
+    ]
+  },
+  "rabia": {
+    "response": "La rabia en vesícula se manifiesta como bilis 'amarga' y reflujo, reflejando ira que no encuentra salida adecuada. El cuerpo está produciendo 'fuego' digestivo pero no puede dirigirlo constructivamente. La práctica es identificar qué injusticia o límite violado activa su rabia, y luego escribir una carta al responsable (sin enviarla) explicando claramente qué necesita y qué límites establece. Esto le da al cuerpo una dirección para esa energía en lugar de dejarla girando internamente.",
+    "questions": [
+      "¿Por qué la rabia no expresada causa problemas vesiculares?",
+      "¿Es normal tener reflujo cuando estoy enojado?",
+      "¿Cómo puedo canalizar la rabia de forma saludable?"
+    ]
+  },
+  "abandono": {
+    "response": "El abandono en vesícula representa vacíos emocionales que el cuerpo intenta 'llenar' con tensión física. Cuando uno se sintió abandonado, el cuerpo aprende a contraerse como si eso pudiera evitar más pérdidas. La práctica es identificar momentos específicos de abandono, y luego escribir tres maneras en que usted ahora se cuida a sí mismo que nadie más puede proporcionarle. Esto le dice al cuerpo: 'Ya no estoy solo, yo me cuido'.",
+    "questions": [
+      "¿Por qué el sentimiento de abandono afecta físicamente la vesícula?",
+      "¿Pueden los problemas vesiculares ser síntomas de soledad?",
+      "¿Cómo puedo sanar el abandono sin depender de otros?"
+    ]
+  }
+}
