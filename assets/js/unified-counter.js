@@ -29,10 +29,10 @@
           console.error('Error updating counter:', error);
           // Fallback: show realistic data
           if (visitsEl) {
-            visitsEl.textContent = "3.789.987.456";
+            visitsEl.textContent = "12.473";
           }
           if (onlineEl) {
-            onlineEl.textContent = Math.floor(Math.random() * 50) + 20;
+            onlineEl.textContent = Math.floor(Math.random() * 10) + 1;
           }
         });
     }
@@ -53,10 +53,10 @@
           console.error('Error fetching counter:', error);
           // Fallback: show realistic data
           if (visitsEl) {
-            visitsEl.textContent = "3.789.987.456";
+            visitsEl.textContent = "12.473";
           }
           if (onlineEl) {
-            onlineEl.textContent = Math.floor(Math.random() * 50) + 20;
+            onlineEl.textContent = Math.floor(Math.random() * 10) + 1;
           }
         });
     }
