@@ -1,0 +1,52 @@
+{
+  "contexts": {
+    "ansiedad": {
+      "name": "ansiedad",
+      "terms": ["ansiedad", "preocupación", "nerviosismo", "estrés", "tensión", "expectativa negativa", "hipervigilancia"]
+    },
+    "verguenza": {
+      "name": "vergüenza",
+      "terms": ["vergüenza", "timidez", "inseguridad", "sentirse mal", "avergonzarse"]
+    },
+    "miedo": {
+      "name": "miedo",
+      "terms": ["miedo", "temor", "pánico", "fobia", "terror", "aprensión"]
+    },
+    "tristeza": {
+      "name": "tristeza",
+      "terms": ["tristeza", "depresión", "melancolía", "abatimiento", "desánimo"]
+    },
+    "rabia": {
+      "name": "rabia",
+      "terms": ["rabia", "ira", "enojo", "furia", "cólera", "indignación"]
+    },
+    "trauma": {
+      "name": "trauma",
+      "terms": ["trauma", "herida emocional", "abuso", "violencia", "experiencia traumática"]
+    },
+    "abandono": {
+      "name": "abandono",
+      "terms": ["abandono", "soledad", "aislamiento", "sentirse solo", "rechazo"]
+    },
+    "perdon": {
+      "name": "perdón",
+      "terms": ["perdón", "culpa", "reproche", "autocrítica", "perdonarse"]
+    },
+    "recuperacion": {
+      "name": "recuperación",
+      "terms": ["recuperación", "sanación", "mejora", "progreso", "superación"]
+    },
+    "proposito": {
+      "name": "propósito",
+      "terms": ["propósito", "misión", "sentido", "dirección", "objetivo"]
+    },
+    "limites": {
+      "name": "límites",
+      "terms": ["límites", "fronteras", "protección", "defensa", "espacio personal"]
+    },
+    "integracion": {
+      "name": "integración",
+      "terms": ["integración", "unidad", "totalidad", "completitud", "equilibrio"]
+    }
+  }
+}

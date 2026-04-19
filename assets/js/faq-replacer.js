@@ -5,11 +5,24 @@
   // Load FAQ responses database
   let faqDB = null;
   
-  // Load FAQ responses from JSON
+  // Load FAQ responses from JSON with caching
   async function loadFAQResponses() {
     try {
+      // Check cache first
+      const cached = sessionStorage.getItem('faq_cache');
+      if (cached) {
+        faqDB = JSON.parse(cached);
+        console.log('FAQ responses loaded from cache');
+        return;
+      }
+      
+      // Fetch from network
       const response = await fetch('/assets/data/faq-responses.json');
       faqDB = await response.json();
+      
+      // Cache for this session
+      sessionStorage.setItem('faq_cache', JSON.stringify(faqDB));
+      console.log('FAQ responses loaded and cached');
     } catch (error) {
       console.error('Error loading FAQ responses:', error);
       faqDB = {};

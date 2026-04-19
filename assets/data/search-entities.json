@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "cabeza": {
+      "name": "cabeza",
+      "terms": ["cabeza", "dolor de cabeza", "migraña", "cefalea", "síntomas cabeza", "dolor cabeza"]
+    },
+    "vesicula": {
+      "name": "vesicula", 
+      "terms": ["vesícula", "vesicula biliar", "dolor vesicula", "problemas vesicula"]
+    },
+    "corazon": {
+      "name": "corazón",
+      "terms": ["corazón", "dolor pecho", "palpitaciones", "dolor torácico", "problemas corazón"]
+    },
+    "estomago": {
+      "name": "estómago",
+      "terms": ["estómago", "dolor estomago", "gastritis", "indigestión", "problemas digestivos"]
+    },
+    "columna": {
+      "name": "columna",
+      "terms": ["columna", "dolor espalda", "problemas columna", "dorsalgia", "lumbalgia"]
+    },
+    "higado": {
+      "name": "hígado",
+      "terms": ["hígado", "dolor hígado", "problemas hepáticos", "función hepática"]
+    },
+    "pulmones": {
+      "name": "pulmones",
+      "terms": ["pulmones", "dolor pecho", "dificultad respirar", "problemas pulmonares"]
+    },
+    "riñones": {
+      "name": "riñones",
+      "terms": ["riñones", "dolor riñones", "problemas renales", "infección urinaria"]
+    }
+  },
+  "contexts": {
+    "ansiedad": {
+      "name": "ansiedad",
+      "terms": ["ansiedad", "preocupación", "nerviosismo", "estrés", "tensión", "expectativa negativa", "hipervigilancia"]
+    },
+    "verguenza": {
+      "name": "vergüenza",
+      "terms": ["vergüenza", "timidez", "inseguridad", "sentirse mal", "avergonzarse"]
+    },
+    "miedo": {
+      "name": "miedo",
+      "terms": ["miedo", "temor", "pánico", "fobia", "terror", "aprensión"]
+    },
+    "tristeza": {
+      "name": "tristeza",
+      "terms": ["tristeza", "depresión", "melancolía", "abatimiento", "desánimo"]
+    },
+    "rabia": {
+      "name": "rabia",
+      "terms": ["rabia", "ira", "enojo", "furia", "cólera", "indignación"]
+    },
+    "trauma": {
+      "name": "trauma",
+      "terms": ["trauma", "herida emocional", "abuso", "violencia", "experiencia traumática"]
+    },
+    "abandono": {
+      "name": "abandono",
+      "terms": ["abandono", "soledad", "aislamiento", "sentirse solo", "rechazo"]
+    }
+  }
+}
