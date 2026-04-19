@@ -1,12 +1,17 @@
-// SINTOMARIO.ORG - Unified Elements System
-// Automatically loads common CSS, counter, affiliate system, and ensures consistent UI
+// SINTOMARIO.ORG - Unified Elements System (Optimized)
+// Automatically loads common CSS, counter, affiliate, FAQ, and optimized search systems
 
 (function() {
-  // Load unified CSS
+  // Load common CSS
   const cssLink = document.createElement('link');
   cssLink.rel = 'stylesheet';
   cssLink.href = '/assets/css/common.css';
   document.head.appendChild(cssLink);
+  
+  // Load optimized search engine
+  const searchScript = document.createElement('script');
+  searchScript.src = '/assets/js/search-normalized.js';
+  document.head.appendChild(searchScript);
   
   // Load unified counter
   const counterScript = document.createElement('script');
@@ -18,33 +23,40 @@
   affiliateScript.src = '/assets/js/affiliate-generator.js';
   document.head.appendChild(affiliateScript);
   
-  // Load FAQ replacer
+  // Load FAQ replacer with expanded responses
   const faqScript = document.createElement('script');
   faqScript.src = '/assets/js/faq-replacer.js';
   document.head.appendChild(faqScript);
   
-  // Ensure footer counter elements exist
+  // Load dynamic clicker system
+  const clickerScript = document.createElement('script');
+  clickerScript.src = '/assets/js/clicker-dynamic.js';
+  document.head.appendChild(clickerScript);
+  
+  // Load data validator (development only)
+  if (window.location.hostname === 'localhost' || 
+      window.location.hostname === '127.0.0.1' ||
+      window.location.search.includes('validate=true')) {
+    const validatorScript = document.createElement('script');
+    validatorScript.src = '/assets/js/data-validator.js';
+    document.head.appendChild(validatorScript);
+  }
+  
+  // Auto-inject counter elements if missing
   function ensureCounterElements() {
-    const footer = document.querySelector('.site-footer, footer');
-    if (!footer) return;
-    
-    // Find or create counter section
-    let counterSection = footer.querySelector('.footer-section:has(#visits)');
-    if (!counterSection) {
-      // Find the last footer section or create a new one
-      const sections = footer.querySelectorAll('.footer-section');
-      const lastSection = sections[sections.length - 1];
-      
-      if (lastSection) {
-        counterSection = lastSection;
-      } else {
-        counterSection = document.createElement('div');
-        counterSection.className = 'footer-section';
-        footer.querySelector('.footer-content, footer').appendChild(counterSection);
-      }
-      
-      // Add counter title and elements
-      counterSection.innerHTML = `
+    const footer = document.querySelector('footer');
+    if (footer && !footer.querySelector('#visits')) {
+      const counterHTML = `
+        <div class="counter-display">
+          <div class="counter-item">
+            <strong id="visits">0</strong>
+            <span>Visitas Totales</span>
+          </div>
+          <div class="counter-item">
+            <strong id="online">0</strong>
+            <span>Usuarios Online</span>
+          </div>
+        </div>
         <h4>Contador Global</h4>
         <ul>
           <li><strong id="visits">0</strong> Visitas Totales</li>

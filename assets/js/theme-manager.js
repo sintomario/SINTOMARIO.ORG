@@ -214,29 +214,8 @@ window.SINTOMARIO.ThemeManager = ThemeManager;
       document.body.style.paddingTop = '100px !important'; // 22px + 78px
     }
     
-    // 2. Fix broken links - add index.html where missing
-    const linksToFix = document.querySelectorAll('a[href="/sobre"], a[href="/cuerpo"], a[href="/faq"], a[href="/zona/"], a[href="/contexto/"]');
-    linksToFix.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && !href.includes('index.html') && !href.includes('?') && !href.includes('#')) {
-        link.setAttribute('href', href + 'index.html');
-      }
-    });
-    
-    // 3. Fix links ending with / that don't have index.html
-    const allLinks = document.querySelectorAll('a[href$="/"]');
-    allLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      // Only fix internal links, not external
-      if (href && href.startsWith('/') && !href.includes('index.html') && href !== '/') {
-        // Don't modify links that are already fixed or are special paths
-        if (href !== '/sobre/' && href !== '/cuerpo/' && href !== '/faq/' && 
-            href !== '/zona/' && href !== '/contexto/') {
-          return;
-        }
-        link.setAttribute('href', href + 'index.html');
-      }
-    });
+    // 2. Link fixing removed - now handled by .htaccess pretty URLs
+    // This eliminates DOM manipulation and layout thrashing
   }
   
   // Run on DOM ready

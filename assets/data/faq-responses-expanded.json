@@ -1,0 +1,404 @@
+{
+  "contexts": {
+    "ansiedad": {
+      "name": "ansiedad",
+      "questions": [
+        {
+          "q": "¿Por qué siento ansiedad en esta parte del cuerpo?",
+          "a": "La ansiedad se manifiesta físicamente cuando el sistema nervioso detecta amenazas potenciales. Esta zona específica actúa como un receptor de tensión acumulada, respondiendo con contracciones o sensaciones que alertan sobre estados de hipervigilancia. El cuerpo traduce la preocupación mental en señales corporales concretas."
+        },
+        {
+          "q": "¿Qué significa esta ansiedad corporal específica?",
+          "a": "Esta ansiedad localizada indica que tu cuerpo está procesando situaciones de estrés que aún no han sido resueltas emocionalmente. La zona específica revela patrones de tensión crónica que necesitan atención consciente. Es una invitación a explorar qué aspectos de tu vida están generando esta respuesta de alerta constante."
+        },
+        {
+          "q": "¿Cómo puedo aliviar esta ansiedad física?",
+          "a": "Comienza por respirar conscientemente hacia esta zona, permitiendo que los músculos se relajen con cada exhalación. La meditación enfocada en esta área específica puede reducir significativamente la tensión. También es útil identificar qué situaciones disparan esta ansiedad para desarrollar estrategias de afrontamiento más efectivas."
+        },
+        {
+          "q": "¿Es normal sentir ansiedad en esta zona?",
+          "a": "Absolutamente normal. Cada persona tiene zonas donde la ansiedad se manifiesta más intensamente según su historia personal y patrones de tensión acumulada. Esta zona en particular puede ser tu 'antena' emocional, alertándote cuando necesitas prestar atención a tu estado mental y emocional."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta ansiedad?",
+          "a": "Generalmente detrás de la ansiedad corporal se esconden miedos no resueltos, preocupaciones excesivas sobre el futuro, o la sensación de perder el control. Puede haber también tristeza reprimida o rabia contenida que no ha encontrado una salida saludable y se expresa como ansiedad."
+        }
+      ]
+    },
+    "verguenza": {
+      "name": "vergüenza",
+      "questions": [
+        {
+          "q": "¿Por qué siento vergüenza en esta parte del cuerpo?",
+          "a": "La vergüenza se aloja en el cuerpo cuando sentimos que hemos fallado o que somos inadecuados. Esta zona específica almacena experiencias de juicio propio o ajeno, creando una sensación de encogimiento o incomodidad física que refleja el deseo de ocultarse o desaparecer."
+        },
+        {
+          "q": "¿Qué significa esta vergüenza corporal?",
+          "a": "Esta vergüenza localizada indica que hay aspectos de ti que no has aceptado plenamente. El cuerpo está recordando situaciones donde te sentiste expuesto o juzgado, pidiéndote que reintegreses esas partes fragmentadas de tu identidad. Es una oportunidad para practicar la autocompasión."
+        },
+        {
+          "q": "¿Cómo puedo sanar esta vergüenza física?",
+          "a": "Practica la aceptación radical de ti mismo, incluyendo tus imperfecciones. Coloca tu atención en esta zona mientras repites afirmaciones de autoaceptación. La vergüenza se disipa cuando nos damos permiso para ser humanos, falibles y dignos de amor incondicional."
+        },
+        {
+          "q": "¿Es normal sentir vergüenza en esta zona?",
+          "a": "Completamente normal. La vergüenza es una emoción humana fundamental que todos experimentamos. Esta zona puede ser tu 'almacenamiento' de experiencias sociales dolorosas, pero también puede convertirse en un centro de poder cuando aprendes a transformarla en humildad y conexión auténtica."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta vergüenza?",
+          "a": "Detrás de la vergüenza suelen encontrarse el miedo al rechazo, el perfeccionismo excesivo, o la comparación con otros. También puede haber dolor por traiciones o humillaciones pasadas. A veces escondemos nuestra vulnerabilidad bajo una máscara de vergüenza para proteger nuestro corazón."
+        }
+      ]
+    },
+    "miedo": {
+      "name": "miedo",
+      "questions": [
+        {
+          "q": "¿Por qué siento miedo en esta parte del cuerpo?",
+          "a": "El miedo se manifiesta físicamente cuando el sistema nervioso percibe amenazas reales o imaginarias. Esta zona específica actúa como un centro de alerta, preparando al cuerpo para la lucha o huida. Es una respuesta de supervivencia que busca protegerte de peligros potenciales."
+        },
+        {
+          "q": "¿Qué significa este miedo corporal?",
+          "a": "Este miedo localizado indica que hay aspectos de tu vida que percibes como amenazantes o incontrolables. El cuerpo está expresando tus inseguridades más profundas a través de sensaciones físicas concretas. Es una invitación a examinar qué miedos están dominando tus decisiones y experiencias."
+        },
+        {
+          "q": "¿Cómo puedo transformar este miedo físico?",
+          "a": "Reconoce el miedo sin intentar eliminarlo inmediatamente. Respira profundamente mientras mantienes tu atención en esta zona, permitiendo que la tensión se disipe gradualmente. El miedo se transforma cuando lo enfrentas con valentía y curiosidad, descubriendo que a menudo es más grande en tu mente que en la realidad."
+        },
+        {
+          "q": "¿Es normal sentir miedo en esta zona?",
+          "a": "Totalmente normal. El miedo es una emoción de supervivencia esencial. Esta zona puede ser tu 'centro de detección de peligros', ayudándote a mantenerte seguro. Aprender a diferenciar entre miedos reales e imaginarios te dará mayor libertad y confianza."
+        },
+        {
+          "q": "¿Qué emociones están detrás de este miedo?",
+          "a": "Detrás del miedo suelen encontrarse la inseguridad, la falta de confianza en uno mismo, o experiencias traumáticas no resueltas. También puede haber ansiedad sobre el futuro o preocupación por perder lo que valoras. A veces el miedo esconde deseos profundos que no te atreves a expresar."
+        }
+      ]
+    },
+    "tristeza": {
+      "name": "tristeza",
+      "questions": [
+        {
+          "q": "¿Por qué siento tristeza en esta parte del cuerpo?",
+          "a": "La tristeza se expresa físicamente cuando el corazón necesita procesar pérdidas o decepciones. Esta zona específica almacena duelos no resueltos y momentos de desilusión, manifestándose como una sensación de peso o vacío que pide ser reconocido y honrado."
+        },
+        {
+          "q": "¿Qué significa esta tristeza corporal?",
+          "a": "Esta tristeza localizada indica que hay aspectos de tu vida que necesitan ser llorados y liberados. El cuerpo está reteniendo emociones que no han encontrado una salida saludable. Es una oportunidad para permitir que la tristeza fluya naturalmente, limpiando y renovando tu energía emocional."
+        },
+        {
+          "q": "¿Cómo puedo honrar esta tristeza física?",
+          "a": "Permítete sentir la tristeza sin juicio. Coloca tu atención en esta zona mientras permites que las lágrimas fluyan si necesitan salir. La tristeza se alivia cuando le damos espacio para expresarse, ya sea a través del llanto, la escritura, o conversaciones honestas contigo mismo o con otros."
+        },
+        {
+          "q": "¿Es normal sentir tristeza en esta zona?",
+          "a": "Completamente normal. La tristeza es una emoción necesaria que nos conecta con nuestra humanidad y capacidad de amar. Esta zona puede ser tu 'corazón emocional', recordándote que es sano sentir profundamente y que cada tristeza prepara el terreno para una mayor alegría."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta tristeza?",
+          "a": "Detrás de la tristeza suelen encontrarse pérdidas reales o simbólicas, desilusiones, o la sensación de desconexión. También puede haber nostalgia por tiempos mejores o dolor por relaciones que han cambiado. A veces la tristeza esconde una profunda capacidad de amar y ser vulnerable."
+        }
+      ]
+    },
+    "rabia": {
+      "name": "rabia",
+      "questions": [
+        {
+          "q": "¿Por qué siento rabia en esta parte del cuerpo?",
+          "a": "La rabia se manifiesta físicamente cuando sentimos que nuestros límites han sido violados o que ha habido injusticia. Esta zona específica almacena frustraciones acumuladas y momentos donde te sentiste impotente, expresándose como tensión o calor que busca una salida constructiva."
+        },
+        {
+          "q": "¿Qué significa esta rabia corporal?",
+          "a": "Esta rabia localizada indica que hay aspectos de tu vida que necesitan ser defendidos o protegidos. El cuerpo está expresando tu necesidad de establecer límites más claros o de comunicar tus necesidades de manera más asertiva. Es una energía poderosa que, canalizada correctamente, puede generar cambios positivos."
+        },
+        {
+          "q": "¿Cómo puedo canalizar esta rabia física?",
+          "a": "Reconoce la rabia como una energía válida que te informa sobre tus valores y necesidades. Usa esta energía para establecer límites saludables o para hacer cambios necesarios en tu vida. La rabia se transforma cuando la usas como combustible para la acción constructiva en lugar de dejarla acumularse destructivamente."
+        },
+        {
+          "q": "¿Es normal sentir rabia en esta zona?",
+          "a": "Absolutamente normal. La rabia es una emoción de autodefensa esencial. Esta zona puede ser tu 'centro de poder personal', activándose cuando necesitas protegerte o defender lo que valoras. Aprender a expresarla de manera saludable te dará mayor fuerza y claridad."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta rabia?",
+          "a": "Detrás de la rabia suelen encontrarse la frustración, el sentimiento de impotencia, o la percepción de injusticia. También puede haber dolor profundo que no ha sido procesado o necesidades que no han sido satisfechas. A veces la rabia esconde una profunda pasión por la justicia y el cambio."
+        }
+      ]
+    },
+    "trauma": {
+      "name": "trauma",
+      "questions": [
+        {
+          "q": "¿Por qué siento trauma en esta parte del cuerpo?",
+          "a": "El trauma se aloja físicamente cuando el cuerpo ha experimentado situaciones abrumadoras que no pudieron ser procesadas completamente. Esta zona específica almacena recuerdos somáticos de momentos difíciles, manifestándose como sensaciones que recuerdan experiencias pasadas que necesitan sanación."
+        },
+        {
+          "q": "¿Qué significa este trauma corporal?",
+          "a": "Este trauma localizado indica que hay heridas profundas que aún necesitan atención y cuidado. El cuerpo está reteniendo la memoria de experiencias dolorosas que buscan ser integradas. Es una invitación a abordar estas heridas con compasión y paciencia, permitiendo que el cuerpo complete procesos que quedaron inconclusos."
+        },
+        {
+          "q": "¿Cómo puedo sanar este trauma físico?",
+          "a": "Aborda el trauma con profesionalismo y apoyo adecuado. Trabaja con terapeutas especializados en trauma somático que puedan guiarte seguro. La sanación ocurre gradualmente cuando creas un entorno de seguridad donde el cuerpo puede liberar tensiones acumuladas de forma controlada y respetuosa."
+        },
+        {
+          "q": "¿Es normal sentir trauma en esta zona?",
+          "a": "Es una respuesta corporal comprensible a experiencias difíciles. Esta zona puede ser el 'almacenamiento' de eventos que tu cuerpo necesita procesar. Reconocer estas sensaciones como parte de tu historia sin dejar que definan tu futuro es el primer paso hacia la sanación."
+        },
+        {
+          "q": "¿Qué emociones están detrás de este trauma?",
+          "a": "Detrás del trauma suelen encontrarse el terror, la impotencia, o el shock. También puede haber profunda tristeza por lo perdido o confusión sobre por qué ocurrió lo ocurrido. A veces el trauma esconde una increíble resiliencia y capacidad de supervivencia que merece ser reconocida y celebrada."
+        }
+      ]
+    },
+    "abandono": {
+      "name": "abandono",
+      "questions": [
+        {
+          "q": "¿Por qué siento abandono en esta parte del cuerpo?",
+          "a": "El abandono se expresa físicamente cuando hemos experimentado desconexión o pérdida de vínculos importantes. Esta zona específica almacena la memoria de separaciones dolorosas, manifestándose como una sensación de vacío o frío que refleja la necesidad de conexión y pertenencia."
+        },
+        {
+          "q": "¿Qué significa este abandono corporal?",
+          "a": "Este abandono localizado indica que hay aspectos de ti que se sienten solos o desconectados. El cuerpo está expresando una herida de conexión que necesita ser atendida. Es una oportunidad para reconectar contigo mismo y para construir relaciones más auténticas y satisfactorias."
+        },
+        {
+          "q": "¿Cómo puedo sanar este abandono físico?",
+          "a": "Comienza por reconectar contigo mismo a través del autocuidado y la autocompasión. Practica la presencia plena en esta zona, enviándole mensajes de amor y aceptación. El abandono se sana cuando aprendes a ser tu propio compañero incondicional y cuando construyes una comunidad de apoyo genuino."
+        },
+        {
+          "q": "¿Es normal sentir abandono en esta zona?",
+          "a": "Completamente normal. El abandono es una experiencia humana fundamental que todos conocemos en algún grado. Esta zona puede ser tu 'centro de conexión', recordándote la importancia de los vínculos y la necesidad de pertenencia. Aprender a estar bien contigo mismo es la base para conectar sanamente con otros."
+        },
+        {
+          "q": "¿Qué emociones están detrás de este abandono?",
+          "a": "Detrás del abandono suelen encontrarse la soledad profunda, el miedo a no ser amado, o la sensación de no pertenecer. También puede haber dolor por pérdidas de personas importantes o nostalgia por conexiones perdidas. A veces el abandono esconde un profundo deseo de amor y aceptación incondicional."
+        }
+      ]
+    },
+    "perdon": {
+      "name": "perdón",
+      "questions": [
+        {
+          "q": "¿Por qué siento necesidad de perdón en esta parte del cuerpo?",
+          "a": "La necesidad de perdón se manifiesta físicamente cuando cargamos con culpa o resentimiento acumulado. Esta zona específica almacena el peso de errores pasados o heridas no liberadas, expresándose como una tensión que busca alivio a través de la compasión y el entendimiento."
+        },
+        {
+          "q": "¿Qué significa esta necesidad de perdón corporal?",
+          "a": "Esta necesidad localizada indica que hay aspectos de tu historia que necesitan ser liberados del juicio. El cuerpo está pidiendo que sueltes el peso del pasado para poder avanzar más ligero. Es una oportunidad para practicar el perdón hacia ti mismo y hacia otros, no como olvido, sino como liberación."
+        },
+        {
+          "q": "¿Cómo puedo cultivar el perdón físico?",
+          "a": "Practica la compasión hacia ti mismo y hacia los demás, reconociendo que todos hacemos lo mejor podemos con las herramientas que tenemos en cada momento. Coloca tu atención en esta zona mientras repites afirmaciones de perdón y liberación. El perdón se cultiva cuando entendemos que soltar el pasado nos libera a todos."
+        },
+        {
+          "q": "¿Es normal necesitar perdón en esta zona?",
+          "a": "Totalmente normal. El perdón es un proceso humano esencial para la sanación. Esta zona puede ser tu 'centro de liberación', ayudándote a soltar cargas que ya no te sirven. Aprender a perdonar te dará mayor paz y libertad para vivir plenamente el presente."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta necesidad de perdón?",
+          "a": "Detrás de la necesidad de perdón suelen encontrarse la culpa, el resentimiento, o el arrepentimiento. También puede haber dolor por heridas causadas o recibidas. A veces la necesidad de perdón esconde un profundo deseo de paz y reconciliación contigo mismo y con los demás."
+        }
+      ]
+    },
+    "recuperacion": {
+      "name": "recuperación",
+      "questions": [
+        {
+          "q": "¿Por qué siento recuperación en esta parte del cuerpo?",
+          "a": "La recuperación se manifiesta físicamente cuando el cuerpo está sanando y reintegrando experiencias pasadas. Esta zona específica muestra signos de renovación y fortalecimiento, indicando que procesos de sanación están activos y que el cuerpo está recuperando su equilibrio natural."
+        },
+        {
+          "q": "¿Qué significa esta recuperación corporal?",
+          "a": "Esta recuperación localizada indica que has estado trabajando consciente o inconscientemente en tu sanación. El cuerpo está mostrando los resultados de tu esfuerzo por integrar experiencias difíciles y construir resiliencia. Es una confirmación de que estás avanzando en tu camino de crecimiento personal."
+        },
+        {
+          "q": "¿Cómo puedo apoyar esta recuperación física?",
+          "a": "Continúa nutriendo esta zona con atención positiva y cuidado consciente. Celebra cada pequeño signo de mejora y mantén prácticas que te han ayudado hasta ahora. La recuperación se fortalece cuando reconoces tus progresos y mantienes la consistencia en tus hábitos de autocuidado."
+        },
+        {
+          "q": "¿Es normal sentir recuperación en esta zona?",
+          "a": "Es una señal positiva y esperanzadora. Esta zona puede ser tu 'centro de resiliencia', mostrándote tu capacidad innata para sanar y recuperarte. Cada señal de recuperación es una confirmación de la increíble sabiduría de tu cuerpo y de tu compromiso con tu propio bienestar."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta recuperación?",
+          "a": "Detrás de la recuperación suelen encontrarse la esperanza, la gratitud, y el orgullo por tu progreso. También puede haber una profunda conexión con tu propia fuerza interior y una mayor confianza en tu capacidad de superar desafíos. A veces la recuperación esconde una nueva sabiduría ganada a través de experiencias difíciles."
+        }
+      ]
+    },
+    "proposito": {
+      "name": "propósito",
+      "questions": [
+        {
+          "q": "¿Por qué siento propósito en esta parte del cuerpo?",
+          "a": "El propósito se manifiesta físicamente cuando encontramos dirección y significado en nuestra vida. Esta zona específica vibra con energía de misión y contribución, indicando que has conectado con algo más grande que tú mismo y que tu cuerpo responde a este llamado con entusiasmo y vitalidad."
+        },
+        {
+          "q": "¿Qué significa este propósito corporal?",
+          "a": "Este propósito localizado indica que has descubierto o estás descubriendo tu razón de ser y tu lugar en el mundo. El cuerpo está expresando la alegría de vivir alineado con tus valores más profundos. Es una confirmación de que estás en el camino correcto y que tus acciones tienen significado y trascendencia."
+        },
+        {
+          "q": "¿Cómo puedo cultivar este propósito físico?",
+          "a": "Mantén la conexión con tu propósito a través de prácticas que te recuerden tu 'porqué'. Coloca tu atención en esta zona mientras visualizas cómo tu vida contribuye al bienestar mayor. El propósito se fortalece cuando vives cada día con intención y cuando tus acciones reflejan tus valores más auténticos."
+        },
+        {
+          "q": "¿Es normal sentir propósito en esta zona?",
+          "a": "Es una experiencia profundamente gratificante y transformadora. Esta zona puede ser tu 'brújula interna', guiándote hacia decisiones y experiencias que alinean con tu misión de vida. Sentir propósito es una de las experiencias más humanas y satisfactorias que podemos experimentar."
+        },
+        {
+          "q": "¿Qué emociones están detrás de este propósito?",
+          "a": "Detrás del propósito suelen encontrarse la pasión, la dedicación, y un profundo sentido de pertenencia. También puede haber gratitud por haber encontrado tu camino y una conexión con algo trascendente. A veces el propósito esconde un deseo profundo de dejar una huella positiva en el mundo."
+        }
+      ]
+    },
+    "limites": {
+      "name": "límites",
+      "questions": [
+        {
+          "q": "¿Por qué siento límites en esta parte del cuerpo?",
+          "a": "Los límites se manifiestan físicamente cuando el cuerpo necesita protegerse o establecer espacios seguros. Esta zona específica actúa como una barrera saludable, indicando que estás aprendiendo a decir 'no' cuando es necesario y a cuidar tu energía y bienestar de manera más consciente."
+        },
+        {
+          "q": "¿Qué significan estos límites corporales?",
+          "a": "Estos límites localizados indican que estás desarrollando una mayor conciencia de tus necesidades y espacios personales. El cuerpo está expresando tu capacidad de autocuidado y protección. Es una señal de madurez emocional y de respeto por ti mismo que te permitirá relaciones más sanas y equilibradas."
+        },
+        {
+          "q": "¿Cómo puedo fortalecer estos límites físicos?",
+          "a": "Practica decir 'no' cuando sea necesario y 'sí' cuando sea auténtico. Coloca tu atención en esta zona mientras afirmas tu derecho a tener espacios y tiempos para ti. Los límites se fortalecen cuando los estableces con claridad, consistencia y compasión tanto hacia ti como hacia los demás."
+        },
+        {
+          "q": "¿Es normal tener límites en esta zona?",
+          "a": "Es completamente saludable y necesario. Esta zona puede ser tu 'escudo protector', ayudándote a mantener tu integridad emocional y física. Tener límites claros es señal de autoestima y de respeto por tu propio bienestar, permitiéndote dar desde un lugar de abundancia en lugar de agotamiento."
+        },
+        {
+          "q": "¿Qué emociones están detrás de estos límites?",
+          "a": "Detrás de los límites suelen encontrarse el autorespeto, la autocompasión, y el deseo de relaciones sanas. También puede haber una nueva confianza en tu propio valor y en tu derecho a cuidarte. A veces los límites esconden un profundo amor propio que está aprendiendo a expresarse de manera asertiva."
+        }
+      ]
+    },
+    "integracion": {
+      "name": "integración",
+      "questions": [
+        {
+          "q": "¿Por qué siento integración en esta parte del cuerpo?",
+          "a": "La integración se manifiesta físicamente cuando diferentes aspectos de ti mismo comienzan a trabajar en armonía. Esta zona específica muestra signos de unidad y equilibrio, indicando que estás integrando experiencias pasadas, emociones diversas, y partes de tu personalidad en un todo coherente y funcional."
+        },
+        {
+          "q": "¿Qué significa esta integración corporal?",
+          "a": "Esta integración localizada indica que has logrado un mayor nivel de coherencia interna. El cuerpo está expresando la armonía entre mente, cuerpo y espíritu, y entre tus diferentes roles y aspectos personales. Es una señal de que estás viviendo con mayor autenticidad y alineación con tu verdadero ser."
+        },
+        {
+          "q": "¿Cómo puedo apoyar esta integración física?",
+          "a": "Continúa practicando la aceptación de todas tus partes, incluyendo aquellas que antes rechazabas. Coloca tu atención en esta zona mientras visualizas cómo todos los aspectos de ti trabajan juntos en armonía. La integración se profundiza cuando vives con congruencia entre tus valores, pensamientos y acciones."
+        },
+        {
+          "q": "¿Es normal sentir integración en esta zona?",
+          "a": "Es un estado avanzado y muy positivo de desarrollo personal. Esta zona puede ser tu 'centro de unidad', mostrándote tu capacidad para vivir de manera integrada y auténtica. Sentir integración es una de las experiencias más profundas y satisfactorias del crecimiento humano."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta integración?",
+          "a": "Detrás de la integración suelen encontrarse la paz interior, la aceptación radical, y un profundo sentido de completitud. También puede haber gratitud por haber llegado a este estado de unidad y una conexión más profunda contigo mismo. A veces la integración esconde la sabiduría ganada a través de aceptar todas tus experiencias como parte valiosa de tu viaje."
+        }
+      ]
+    },
+    "negacion": {
+      "name": "negación",
+      "questions": [
+        {
+          "q": "¿Por qué siento negación en esta parte del cuerpo?",
+          "a": "La negación se manifiesta físicamente cuando el cuerpo protege la mente de verdades dolorosas o abrumadoras. Esta zona específica puede sentirse 'dormida' o desconectada, indicando que hay aspectos de tu realidad que aún no estás listo para enfrentar completamente."
+        },
+        {
+          "q": "¿Qué significa esta negación corporal?",
+          "a": "Esta negación localizada indica que hay verdades o emociones que estás evitando consciente o inconscientemente. El cuerpo está creando una barrera protectora para darte tiempo para procesar información difícil. Es un mecanismo de defensa temporal que puede ser útil cuando las realidades son demasiado abrumadoras para asimilar de inmediato."
+        },
+        {
+          "q": "¿Cómo puedo abordar esta negación física?",
+          "a": "Aborda la negación con gentileza y paciencia, sin forzarte a ver verdades antes de estar listo. Coloca tu atención en esta zona con curiosidad y compasión, permitiendo que la desconexión se disipe naturalmente. La negación se suelta cuando creas un entorno de seguridad suficiente para enfrentar la realidad con apoyo."
+        },
+        {
+          "q": "¿Es normal sentir negación en esta zona?",
+          "a": "Es un mecanismo de defensa comprensible y a veces necesario. Esta zona puede ser tu 'escudo temporal', protegiéndote de verdades que aún no puedes integrar completamente. Reconocer la negación sin juzgarla es el primer paso para poder eventualmente soltarla cuando estés listo."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta negación?",
+          "a": "Detrás de la negación suelen encontrarse el miedo a la verdad, la sensación de estar abrumado, o el deseo de mantener una imagen de seguridad. También puede haber dolor profundo que no estás listo para sentir o verdades que cambiarían tu vida de formas que temes. A veces la negación esconde una profunda necesidad de seguridad y estabilidad."
+        }
+      ]
+    },
+    "aceptacion": {
+      "name": "aceptación",
+      "questions": [
+        {
+          "q": "¿Por qué siento aceptación en esta parte del cuerpo?",
+          "a": "La aceptación se manifiesta físicamente cuando el cuerpo y la mente están en paz con la realidad presente. Esta zona específica muestra signos de relajación y apertura, indicando que has logrado integrar verdades difíciles y vivir en mayor armonía con lo que es, sin resistencia ni lucha."
+        },
+        {
+          "q": "¿Qué significa esta aceptación corporal?",
+          "a": "Esta aceptación localizada indica que has desarrollado una mayor capacidad para enfrentar la realidad con valentía y paz. El cuerpo está expresando la liberación que ocurre cuando dejamos de luchar contra lo que no podemos cambiar y comenzamos a trabajar con lo que es. Es una señal de madurez emocional y sabiduría."
+        },
+        {
+          "q": "¿Cómo puedo cultivar esta aceptación física?",
+          "a": "Practica el mindfulness y la presencia plena, observando la realidad sin juicio. Coloca tu atención en esta zona mientras respiras profundamente y permites que la resistencia se disuelva. La aceptación se profundiza cuando entendemos que la paz no viene de cambiar la realidad, sino de cambiar nuestra relación con ella."
+        },
+        {
+          "q": "¿Es normal sentir aceptación en esta zona?",
+          "a": "Es un estado deseable y transformador. Esta zona puede ser tu 'centro de paz', mostrándote tu capacidad para vivir en armonía con la realidad. Sentir aceptación es una de las experiencias más liberadoras y empoderadoras que podemos cultivar en nuestro viaje de crecimiento."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta aceptación?",
+          "a": "Detrás de la aceptación suelen encontrarse la paz interior, la gratitud, y una profunda confianza en el flujo de la vida. También puede haber liberación del sufrimiento causado por la resistencia y una mayor conexión con el momento presente. A veces la aceptación esconde una profunda sabiduría sobre la naturaleza de la realidad y nuestro lugar en ella."
+        }
+      ]
+    },
+    "resiliencia": {
+      "name": "resiliencia",
+      "questions": [
+        {
+          "q": "¿Por qué siento resiliencia en esta parte del cuerpo?",
+          "a": "La resiliencia se manifiesta físicamente cuando el cuerpo demuestra su capacidad para recuperarse y fortalecerse después de desafíos. Esta zona específica muestra signos de vitalidad y flexibilidad, indicando que has desarrollado una mayor capacidad para adaptarte a las dificultades y salir fortalecido de ellas."
+        },
+        {
+          "q": "¿Qué significa esta resiliencia corporal?",
+          "a": "Esta resiliencia localizada indica que has cultivado una remarkable capacidad para enfrentar y superar adversidades. El cuerpo está expresando la fortaleza que has ganado a través de experiencias difíciles. Es una confirmación de que posees recursos internos poderosos que te permiten navegar la vida con mayor confianza y capacidad."
+        },
+        {
+          "q": "¿Cómo puedo fortalecer esta resiliencia física?",
+          "a": "Continúa desafiándote de manera saludable y celebrando cada vez que superes obstáculos. Coloca tu atención en esta zona mientras recuerdas momentos en que demostraste tu fuerza y capacidad de recuperación. La resiliencia se fortalece cuando reconoces tus propios recursos y cuando practicas el autocuidado durante y después de los desafíos."
+        },
+        {
+          "q": "¿Es normal sentir resiliencia en esta zona?",
+          "a": "Es una cualidad admirable y muy valiosa. Esta zona puede ser tu 'centro de fortaleza', recordándote tu increíble capacidad de adaptación y superación. Sentir resiliencia es una confirmación de que has desarrollado herramientas internas poderosas para navegar la vida con mayor confianza y éxito."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta resiliencia?",
+          "a": "Detrás de la resiliencia suelen encontrarse la confianza en uno mismo, la esperanza, y un profundo sentido de capacidad personal. También puede haber gratitud por las lecciones aprendidas a través de dificultades y orgullo por tu capacidad de superación. A veces la resiliencia esconde una fuerza interior que ni siquiera sabías que poseías."
+        }
+      ]
+    },
+    "transformacion": {
+      "name": "transformación",
+      "questions": [
+        {
+          "q": "¿Por qué siento transformación en esta parte del cuerpo?",
+          "a": "La transformación se manifiesta físicamente cuando el cuerpo está experimentando cambios profundos y significativos. Esta zona específica muestra signos de renovación y reorganización, indicando que estás pasando por un proceso de cambio fundamental que está afectando todos los aspectos de tu ser."
+        },
+        {
+          "q": "¿Qué significa esta transformación corporal?",
+          "a": "Esta transformación localizada indica que estás en medio de un importante proceso de cambio y evolución personal. El cuerpo está expresando la reorganización que ocurre cuando dejas atrás patrones antiguos y abrazas nuevas formas de ser y vivir. Es una señal de que estás creciendo y expandiéndote más allá de tus límites anteriores."
+        },
+        {
+          "q": "¿Cómo puedo apoyar esta transformación física?",
+          "a": "Abraza el cambio con curiosidad y apertura, confiando en el proceso incluso cuando sea incómodo. Coloca tu atención en esta zona mientras permites que la transformación ocurra a su propio ritmo. La transformación se facilita cuando soltamos el control y confiamos en la sabiduría del cuerpo para guiarnos hacia nuestra próxima versión."
+        },
+        {
+          "q": "¿Es normal sentir transformación en esta zona?",
+          "a": "Es un proceso profundo y a veces desafiante pero necesario para el crecimiento. Esta zona puede ser tu 'centro de evolución', mostrándote tu capacidad para cambiar y evolucionar continuamente. Sentir transformación es una señal de que estás vivo y creciendo, expandiéndote hacia tu máximo potencial."
+        },
+        {
+          "q": "¿Qué emociones están detrás de esta transformación?",
+          "a": "Detrás de la transformación suelen encontrarse la expectativa, la esperanza, y a veces el miedo ante lo desconocido. También puede haber excitación por las posibilidades y gratitud por el crecimiento. A veces la transformación esconde un profundo deseo de ser más auténtico y vivir más plenamente tu verdad."
+        }
+      ]
+    }
+  }
+}
