@@ -282,6 +282,10 @@ class SintomarioDisclaimer extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    // Pre-render styles to avoid FOUC
+    const style = document.createElement('style');
+    style.textContent = `:host { display: block; height: 64px; background: #1a010c; }`;
+    this.shadowRoot.appendChild(style);
   }
   
   connectedCallback() {
@@ -332,6 +336,3 @@ class SintomarioDisclaimer extends HTMLElement {
 customElements.define('sintomario-header', SintomarioHeader);
 customElements.define('sintomario-footer', SintomarioFooter);
 customElements.define('sintomario-disclaimer', SintomarioDisclaimer);
-
-// Components are now defined in HTML - no injection needed
-// This prevents CLS and ensures instant rendering

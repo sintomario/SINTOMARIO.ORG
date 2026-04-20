@@ -106,7 +106,6 @@
         const node = nodesIndex.get(slug);
         // Determinar tipo de match predominante para la UI
         const matchType = tokens.some(t => searchData.entities[node.e].terms.includes(t)) ? 'entity' : 'context';
-        const matchTypePartial = tokens.some(t => searchData.entities[node.e].terms.some(term => term.includes(t))) ? 'partial_entity' : 'partial_context';
         
         const entityName = searchData.entities[node.e].name;
         const contextName = searchData.contexts[node.c].name;

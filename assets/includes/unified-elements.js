@@ -14,9 +14,11 @@
   clsCssLink.href = '/assets/css/cls-prevention.css';
   document.head.appendChild(clsCssLink);
   
-  // Load ultra-optimized search engine
+  // Load FAANG-level search engine with Web Worker and SRI
   const searchScript = document.createElement('script');
-  searchScript.src = '/assets/js/search-ultra-optimized.js';
+  searchScript.src = '/assets/js/search-faang.js';
+  searchScript.integrity = 'sha384-FAANG-SEARCH-INTEGRITY';
+  searchScript.crossOrigin = 'anonymous';
   document.head.appendChild(searchScript);
   
   // Load unified counter
