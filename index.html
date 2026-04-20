@@ -456,33 +456,8 @@
 <body>
   <div class="disclaimer-bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
 
-  <!-- Navigation -->
-  <header id="header">
-    <a href="/" id="logo">
-      <img src="/LOGO-HORIZONTAL-02.png" alt="SINTOMARIO.ORG">
-    </a>
-    <div id="nav-container">
-      <div class="nav-row top-row">
-        <div id="searchbox">
-          <span style="font-size:12px;opacity:0.75;padding-bottom:1px;font-family: system-ui, sans-serif;">🔍</span>
-          <input type="text" placeholder="Buscar síntoma..." id="q" onkeypress="if(event.key==='Enter') window.location.href='/search?q='+this.value">
-        </div>
-        <button id="btn-clk" onclick="window.open('https://ko-fi.com/sintomario', '_blank')">AYUDA</button>
-      </div>
-      <div class="nav-row bottom-row">
-        <a href="/sobre/index.html">Sobre</a>
-        <a href="/cuerpo/atlas-nav.html" style="color:#F5C400">Atlas</a>
-        <a href="/faq/index.html">FAQ</a>
-        <div id="lang-selector">
-          <select id="lang-select" onchange="changeLanguage(this.value)">
-            <option value="es" selected>ES</option>
-            <option value="en">EN</option>
-            <option value="pt">PT</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </header>
+  <sintomario-header></sintomario-header>
+  <sintomario-disclaimer></sintomario-disclaimer>
 
 
   <!-- Donation Modal -->
@@ -677,10 +652,17 @@
         wordsEl.style.left = imgLeft + 4 + 'px';
       }
 
-      window.addEventListener('resize', positionWords, { passive: true });
-      // Run after images have a chance to load
-      allImgs[0].addEventListener('load', positionWords);
-      if (allImgs[0].complete) positionWords();
+      window.addEventListener('resize', () => {
+        requestAnimationFrame(positionWords);
+      }, { passive: true });
+      
+      // Run after images have a chance to load with requestAnimationFrame
+      allImgs[0].addEventListener('load', () => {
+        requestAnimationFrame(positionWords);
+      });
+      if (allImgs[0].complete) {
+        requestAnimationFrame(positionWords);
+      }
 
       // Help Modal Functions
       function openHelpModal() {
@@ -746,10 +728,11 @@
 
       screenEl.focus();
       render();
-      setTimeout(positionWords, 300);
+      requestAnimationFrame(positionWords);
     })();
   </script>
-  <script src="search.js"></script>
+  <script src="/assets/js/web-components.js"></script>
+  <script src="/assets/js/search-normalized.js"></script>
 </body>
 
 </html>

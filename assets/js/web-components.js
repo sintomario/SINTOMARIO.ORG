@@ -333,35 +333,5 @@ customElements.define('sintomario-header', SintomarioHeader);
 customElements.define('sintomario-footer', SintomarioFooter);
 customElements.define('sintomario-disclaimer', SintomarioDisclaimer);
 
-// Auto-inject components if not present
-function injectComponents() {
-  // Inject header if missing
-  if (!document.querySelector('sintomario-header')) {
-    const header = document.createElement('sintomario-header');
-    document.body.insertBefore(header, document.body.firstChild);
-  }
-  
-  // Inject disclaimer if missing
-  if (!document.querySelector('sintomario-disclaimer')) {
-    const disclaimer = document.createElement('sintomario-disclaimer');
-    const header = document.querySelector('sintomario-header');
-    if (header) {
-      header.parentNode.insertBefore(disclaimer, header.nextSibling);
-    } else {
-      document.body.insertBefore(disclaimer, document.body.firstChild);
-    }
-  }
-  
-  // Inject footer if missing
-  if (!document.querySelector('sintomario-footer')) {
-    const footer = document.createElement('sintomario-footer');
-    document.body.appendChild(footer);
-  }
-}
-
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', injectComponents);
-} else {
-  injectComponents();
-}
+// Components are now defined in HTML - no injection needed
+// This prevents CLS and ensures instant rendering

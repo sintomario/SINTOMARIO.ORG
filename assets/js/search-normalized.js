@@ -73,121 +73,54 @@
   function performOptimizedSearch(query) {
     if (!searchData || !entitiesIndex || !contextsIndex) return [];
     
-    const queryLower = query.toLowerCase().trim();
-    const results = [];
-    const seen = new Set();
-    
-    // Entity matches (O(1) lookup)
-    const entityMatches = entitiesIndex.get(queryLower) || [];
-    entityMatches.forEach(entity => {
-      // Find all nodes with this entity
-      searchData.nodes
-        .filter(node => node.e === entity.id)
-        .forEach(node => {
-          const key = `${node.s}-entity`;
-          if (!seen.has(key)) {
-            seen.add(key);
-            results.push({
-              slug: node.s,
-              entity_id: node.e,
-              entity_name: entity.name,
-              context_id: node.c,
-              context_name: searchData.contexts[node.c]?.name || node.c,
-              title: `${entity.name} y ${searchData.contexts[node.c]?.name || node.c}`,
-              score: 10,
-              matches: 'exact',
-              match_type: 'entity'
-            });
-          }
+    const tokens = query.toLowerCase().trim().split(/\s+/);
+    const scores = new Map(); // slug -> score
+
+    tokens.forEach(token => {
+      // 1. Matches exactos en Entidades (O(1))
+      (entitiesIndex.get(token) || []).forEach(match => {
+        searchData.nodes.filter(n => n.e === match.id).forEach(n => {
+          scores.set(n.s, (scores.get(n.s) || 0) + 15);
         });
-    });
-    
-    // Context matches (O(1) lookup)
-    const contextMatches = contextsIndex.get(queryLower) || [];
-    contextMatches.forEach(context => {
-      // Find all nodes with this context
-      searchData.nodes
-        .filter(node => node.c === context.id)
-        .forEach(node => {
-          const key = `${node.s}-context`;
-          if (!seen.has(key)) {
-            seen.add(key);
-            results.push({
-              slug: node.s,
-              entity_id: node.e,
-              entity_name: searchData.entities[node.e]?.name || node.e,
-              context_id: node.c,
-              context_name: context.name,
-              title: `${searchData.entities[node.e]?.name || node.e} y ${context.name}`,
-              score: 10,
-              matches: 'exact',
-              match_type: 'context'
-            });
-          }
+      });
+
+      // 2. Matches exactos en Contextos (O(1))
+      (contextsIndex.get(token) || []).forEach(match => {
+        searchData.nodes.filter(n => n.c === match.id).forEach(n => {
+          scores.set(n.s, (scores.get(n.s) || 0) + 15);
         });
-    });
-    
-    // Partial matches (fuzzy search)
-    if (results.length < 10) {
-      // Check for partial matches in entities
+      });
+
+      // 3. Búsqueda difusa (Fuzzy) si no hay suficientes resultados o para mayor cobertura
       for (const [term, entities] of entitiesIndex) {
-        if (term.includes(queryLower) && !entitiesIndex.has(queryLower)) {
-          entities.forEach(entity => {
-            searchData.nodes
-              .filter(node => node.e === entity.id)
-              .forEach(node => {
-                const key = `${node.s}-partial-entity`;
-                if (!seen.has(key)) {
-                  seen.add(key);
-                  results.push({
-                    slug: node.s,
-                    entity_id: node.e,
-                    entity_name: entity.name,
-                    context_id: node.c,
-                    context_name: searchData.contexts[node.c]?.name || node.c,
-                    title: `${entity.name} y ${searchData.contexts[node.c]?.name || node.c}`,
-                    score: 5,
-                    matches: 'partial',
-                    match_type: 'partial_entity'
-                  });
-                }
-              });
-          });
+        if (term.includes(token) && term !== token) {
+          entities.forEach(e => searchData.nodes.filter(n => n.e === e.id).forEach(n => {
+            scores.set(n.s, (scores.get(n.s) || 0) + 5);
+          }));
         }
       }
-      
-      // Check for partial matches in contexts
-      for (const [term, contexts] of contextsIndex) {
-        if (term.includes(queryLower) && !contextsIndex.has(queryLower)) {
-          contexts.forEach(context => {
-            searchData.nodes
-              .filter(node => node.c === context.id)
-              .forEach(node => {
-                const key = `${node.s}-partial-context`;
-                if (!seen.has(key)) {
-                  seen.add(key);
-                  results.push({
-                    slug: node.s,
-                    entity_id: node.e,
-                    entity_name: searchData.entities[node.e]?.name || node.e,
-                    context_id: node.c,
-                    context_name: context.name,
-                    title: `${searchData.entities[node.e]?.name || node.e} y ${context.name}`,
-                    score: 5,
-                    matches: 'partial',
-                    match_type: 'partial_context'
-                  });
-                }
-              });
-          });
-        }
-      }
-    }
+    });
     
-    // Sort by score and limit results
-    return results
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 20);
+    return Array.from(scores.entries())
+      .map(([slug, score]) => {
+        const node = nodesIndex.get(slug);
+        // Determinar tipo de match predominante para la UI
+        const matchType = tokens.some(t => searchData.entities[node.e].terms.includes(t)) ? 'entity' : 'context';
+        const matchTypePartial = tokens.some(t => searchData.entities[node.e].terms.some(term => term.includes(t))) ? 'partial_entity' : 'partial_context';
+        
+        const entityName = searchData.entities[node.e].name;
+        const contextName = searchData.contexts[node.c].name;
+        return {
+          slug: node.s,
+          title: `${entityName} y ${contextName}`,
+          entity_name: entityName,
+          context_name: contextName,
+          score: score,
+          match_type: matchType,
+          matches: score >= 15 ? 'exact' : 'partial'
+        };
+      })
+      .sort((a, b) => b.score - a.score).slice(0, 15);
   }
   
   // Enhanced search display with match type indicators

@@ -8,6 +8,12 @@
   cssLink.href = '/assets/css/common.css';
   document.head.appendChild(cssLink);
   
+  // Load CLS prevention CSS
+  const clsCssLink = document.createElement('link');
+  clsCssLink.rel = 'stylesheet';
+  clsCssLink.href = '/assets/css/cls-prevention.css';
+  document.head.appendChild(clsCssLink);
+  
   // Load ultra-optimized search engine
   const searchScript = document.createElement('script');
   searchScript.src = '/assets/js/search-ultra-optimized.js';

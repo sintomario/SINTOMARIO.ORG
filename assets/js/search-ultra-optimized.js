@@ -193,10 +193,178 @@
       }
     }
     
+    // Add fuzzy matching for typos
+    if (results.length < 10) {
+      addFuzzyMatches(query, results, seen);
+    }
+    
     // Sort by score and limit results
     return results
       .sort((a, b) => b.score - a.score)
       .slice(0, 20);
+  }
+  
+  // Add fuzzy matches for common typos
+  function addFuzzyMatches(query, results, seen) {
+    const queryLower = query.toLowerCase();
+    
+    // Common typo patterns
+    const typoMap = {
+      'ansidad': 'ansiedad',
+      'ansieda': 'ansiedad',
+      'cabeza': 'cabeza',
+      'cavesa': 'cabeza',
+      'cabesa': 'cabeza',
+      'estomago': 'estomago',
+      'estomago': 'estomago',
+      'corazon': 'corazon',
+      'coracon': 'corazon',
+      'tristeza': 'tristeza',
+      'tristesa': 'tristeza',
+      'rabia': 'rabia',
+      'raiva': 'rabia',
+      'miedo': 'miedo',
+      'miedo': 'miedo'
+    };
+    
+    // Check for direct typo matches
+    if (typoMap[queryLower]) {
+      const correctedTerm = typoMap[queryLower];
+      
+      // Search for corrected term
+      const entityMatches = entitiesIndex.get(correctedTerm) || [];
+      const contextMatches = contextsIndex.get(correctedTerm) || [];
+      
+      entityMatches.forEach(entity => {
+        searchData.nodes
+          .filter(node => node.e === entity.id)
+          .forEach(node => {
+            const key = `${node.s}-fuzzy-entity`;
+            if (!seen.has(key)) {
+              seen.add(key);
+              results.push({
+                slug: node.s,
+                entity_id: node.e,
+                context_id: node.c,
+                title: generateTitle(node.e, node.c),
+                score: 75, // Lower score for fuzzy matches
+                matches: 'fuzzy',
+                match_type: 'entity_fuzzy',
+                entity_name: searchData.entities[node.e][0],
+                context_name: searchData.contexts[node.c][0],
+                correction: `"${query}" → "${correctedTerm}"`
+              });
+            }
+          });
+      });
+      
+      contextMatches.forEach(context => {
+        searchData.nodes
+          .filter(node => node.c === context.id)
+          .forEach(node => {
+            const key = `${node.s}-fuzzy-context`;
+            if (!seen.has(key)) {
+              seen.add(key);
+              results.push({
+                slug: node.s,
+                entity_id: node.e,
+                context_id: node.c,
+                title: generateTitle(node.e, node.c),
+                score: 75,
+                matches: 'fuzzy',
+                match_type: 'context_fuzzy',
+                entity_name: searchData.entities[node.e][0],
+                context_name: searchData.contexts[node.c][0],
+                correction: `"${query}" → "${correctedTerm}"`
+              });
+            }
+          });
+      });
+    }
+    
+    // Add phonetic similarity matches
+    addPhoneticMatches(queryLower, results, seen);
+  }
+  
+  // Add phonetic similarity matches
+  function addPhoneticMatches(query, results, seen) {
+    // Simple phonetic matching for Spanish
+    const phoneticMap = {
+      'c': ['k', 'q', 'z'],
+      's': ['c', 'z', 'x'],
+      'z': ['s', 'c', 'x'],
+      'b': ['v'],
+      'v': ['b'],
+      'g': ['j'],
+      'j': ['g'],
+      'h': [''],
+      'll': ['y'],
+      'y': ['ll']
+    };
+    
+    // Generate phonetic variations
+    const variations = [query];
+    for (const [original, replacements] of Object.entries(phoneticMap)) {
+      if (query.includes(original)) {
+        replacements.forEach(replacement => {
+          variations.push(query.replace(new RegExp(original, 'g'), replacement));
+        });
+      }
+    }
+    
+    // Search for phonetic variations
+    variations.forEach(variation => {
+      if (variation !== query) {
+        const entityMatches = entitiesIndex.get(variation) || [];
+        const contextMatches = contextsIndex.get(variation) || [];
+        
+        entityMatches.forEach(entity => {
+          searchData.nodes
+            .filter(node => node.e === entity.id)
+            .forEach(node => {
+              const key = `${node.s}-phonetic-entity`;
+              if (!seen.has(key)) {
+                seen.add(key);
+                results.push({
+                  slug: node.s,
+                  entity_id: node.e,
+                  context_id: node.c,
+                  title: generateTitle(node.e, node.c),
+                  score: 60,
+                  matches: 'phonetic',
+                  match_type: 'entity_phonetic',
+                  entity_name: searchData.entities[node.e][0],
+                  context_name: searchData.contexts[node.c][0],
+                  variation: `"${variation}"`
+                });
+              }
+            });
+        });
+        
+        contextMatches.forEach(context => {
+          searchData.nodes
+            .filter(node => node.c === context.id)
+            .forEach(node => {
+              const key = `${node.s}-phonetic-context`;
+              if (!seen.has(key)) {
+                seen.add(key);
+                results.push({
+                  slug: node.s,
+                  entity_id: node.e,
+                  context_id: node.c,
+                  title: generateTitle(node.e, node.c),
+                  score: 60,
+                  matches: 'phonetic',
+                  match_type: 'context_phonetic',
+                  entity_name: searchData.entities[node.e][0],
+                  context_name: searchData.contexts[node.c][0],
+                  variation: `"${variation}"`
+                });
+              }
+            });
+        });
+      }
+    });
   }
   
   // Calculate similarity between two strings
