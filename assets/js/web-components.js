@@ -104,8 +104,34 @@ class SintomarioHeader extends HTMLElement {
     if (langSelector) {
       langSelector.addEventListener('change', (e) => {
         const lang = e.target.value;
-        const currentPath = window.location.pathname;
-        const newPath = currentPath.replace(/^\/(en|pt)\//, `/${lang}/`);
+        let currentPath = window.location.pathname;
+        
+        // Sanitizar y normalizar ruta actual
+        currentPath = currentPath.replace(/^\/+/, '/'); // Eliminar slashes múltiples
+        currentPath = currentPath.replace(/\/+$/, ''); // Eliminar slash final
+        
+        // Eliminar prefijo de idioma existente si existe
+        currentPath = currentPath.replace(/^\/(en|pt)(\/|$)/, '/');
+        if (!currentPath.startsWith('/')) {
+          currentPath = '/' + currentPath;
+        }
+        
+        // Validar idioma
+        const validLangs = ['es', 'en', 'pt'];
+        if (!validLangs.includes(lang)) {
+          console.warn('Idioma no válido:', lang);
+          return;
+        }
+        
+        // Construir nueva ruta
+        const newPath = lang === 'es' ? currentPath : `/${lang}${currentPath}`;
+        
+        // Evitar bucle infinito
+        if (newPath === window.location.pathname) {
+          console.log('Misma ruta detectada, evitando bucle');
+          return;
+        }
+        
         window.location.href = newPath;
       });
     }

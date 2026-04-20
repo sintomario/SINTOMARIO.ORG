@@ -12,11 +12,15 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 
-# Add .html extension internally
+# Pretty URLs - Remove .html extension
+# Solo aplicar a archivos que no existen como carpetas
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# Excluir carpetas del sistema que deben mantener su estructura
+RewriteCond %{REQUEST_URI} !^/(assets|api|cuerpo|contexto|zona|layers|docs|\.well-known)/
 RewriteCond %{REQUEST_URI} !/$
-RewriteRule ^([^/]+)/?$ $1.html [L]
+# Solo aplicar a archivos HTML sin extensión
+RewriteRule ^([^/]+(?:\.html)?)$ $1.html [L]
 
 # Handle directory/index.html requests
 RewriteCond %{REQUEST_FILENAME} !-f
