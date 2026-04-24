@@ -1,0 +1,12 @@
+{
+  "aceptar": {
+    "organ": "Estómago",
+    "emotion": "Ansiedad",
+    "text": "Y sin embargo el cuerpo sigue ahí, insistiendo en su dolor, como si supiera algo que la mente se niega a escuchar. El estómago se ha vuelto el crisol donde hierven las palabras no dichas, esa bilis amarga que se acumula cuando la garganta se niega a vomitar verdades. No es un fallo del diseño, es la memoria del tejido recordando cada vez que elegimos el silencio sobre la honestidad, cada vez que preferimos la sonrisa social al grito interno que pide ser escuchado, y el ácido sube no por casualidad sino como un recordatorio de que hay verdades que queman más que cualquier comida."
+  },
+  "rechazar": {
+    "organ": "Piel",
+    "emotion": "Miedo",
+    "text": "La piel no es una barrera, es la frontera donde el yo y el mundo se encuentran y a veces chocan. Cuando el miedo se instala, la epidermis se vuelve el mapa de nuestras retiradas, cada poro un pequeño territorio que hemos abandonado, cada erupción un volcán que expresa lava emocional que no supimos contener. No hay defecto en la sensibilidad extrema, hay una honestidad brutal del cuerpo que se niega a seguir mintiendo sobre lo que siente."
+  }
+}

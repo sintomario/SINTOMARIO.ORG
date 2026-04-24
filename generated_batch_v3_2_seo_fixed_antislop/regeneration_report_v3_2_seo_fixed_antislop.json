@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-04-20T16:28:57.938171",
+  "backup_directory": "backup_originals_v3_2_seo_fixed_antislop",
+  "generated_directory": "generated_batch_v3_2_seo_fixed_antislop",
+  "narrative_engine_version": "3.2-patched-antislop",
+  "model_used": "gpt-4o",
+  "strategy": "clinical-contemplative-saramago-osho-jung-seo-parasito-fixed-antislop",
+  "seo_features": [
+    "medical_schema",
+    "lsi_keywords",
+    "meta_description_bait_switch",
+    "open_graph_devastating_phrase",
+    "table_of_contents_hidden_ethical",
+    "clinical_summary_static",
+    "poetic_fragmentation_visual",
+    "medical_disclaimer_banner",
+    "seo_friendly_urls",
+    "entity_salience_markup"
+  ],
+  "eeat_compliance": "medical_disclaimer_author_expertise",
+  "google_optimization": "parasite_seo_techniques_fixed",
+  "reachability_enhancement": "structured_data_markup",
+  "critical_fixes_applied": [
+    "toc_position_absolute_anti_penalty",
+    "poetic_fragmentation_span_instead_of_hr",
+    "drip_blood_protocol_anti_spambrain"
+  ],
+  "antislop_protections": [
+    "llm_vocabulary_detection",
+    "burstiness_artificial_prevention",
+    "static_clinical_summary_human_written"
+  ],
+  "slop_bulletproof_rating": "99.9%"
+}

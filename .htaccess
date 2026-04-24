@@ -138,8 +138,21 @@ AddCharset UTF-8 .json
     Deny from all
 </FilesMatch>
 
-# Allow access to API
-<Files "counter.php">
+# CRITICAL SECURITY FIX - Block access to sensitive files
+<FilesMatch "\.(php|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow access ONLY to specific API endpoint
+<Files "api/counter.php">
     Order allow,deny
     Allow from all
 </Files>
+
+# Block directory listing for sensitive directories
+<DirectoryMatch "^(api|contexto|zona)">
+    Options -Indexes
+    Order allow,deny
+    Allow from all
+</DirectoryMatch>

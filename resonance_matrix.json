@@ -1,0 +1,72 @@
+{
+  "estomago-ansiedad": {
+    "connected_organ": "pulmones",
+    "connection_type": "diafragma_prension",
+    "description": "La ansiedad estomacal presiona el diafragma afectando la respiración"
+  },
+  "estomago-frustracion": {
+    "connected_organ": "higado",
+    "connection_type": "bilis_retenida",
+    "description": "La frustración estomacal afecta el flujo biliar y la función hepática"
+  },
+  "tiroides-frustracion": {
+    "connected_organ": "corazon",
+    "connection_type": "ritmo_cardiaco",
+    "description": "La tiroides hiperactiva acelera el ritmo cardíaco en la frustración"
+  },
+  "tiroides-miedo": {
+    "connected_organ": "sistema_nervioso",
+    "connection_type": "hipervigilancia",
+    "description": "El miedo tiroides mantiene el sistema nervioso en estado de alerta"
+  },
+  "piel-miedo": {
+    "connected_organ": "corazon",
+    "connection_type": "vasoconstruccion_palpitacion",
+    "description": "El miedo en la piel provoca vasoconstricción y afecta el ritmo cardíaco"
+  },
+  "piel-trauma": {
+    "connected_organ": "sistema_nervioso",
+    "connection_type": "sensibilidad_extrema",
+    "description": "El trauma cutáneo hiperestimula el sistema nervioso periférico"
+  },
+  "espalda-carga": {
+    "connected_organ": "cadera",
+    "connection_type": "compensacion_postural",
+    "description": "La carga espalda provoca compensación en la articulación de cadera"
+  },
+  "espalda-trauma": {
+    "connected_organ": "cuello",
+    "connection_type": "tension_cervical",
+    "description": "El trauma espalda genera tensión crónica en la musculatura cervical"
+  },
+  "corazon-trauma": {
+    "connected_organ": "pulmones",
+    "connection_type": "respiracion_superficial",
+    "description": "El trauma cardíaco afecta la profundidad y ritmo respiratorio"
+  },
+  "corazon-duelo": {
+    "connected_organ": "estomago",
+    "connection_type": "nudo_visceral",
+    "description": "El duelo cardíaco se manifiesta como nudo visceral en el estómago"
+  },
+  "cabeza-confusion": {
+    "connected_organ": "ojos",
+    "connection_type": "perdida_enfoque",
+    "description": "La confusión mental provoca pérdida de enfoque visual y fatiga ocular"
+  },
+  "cabeza-estres": {
+    "connected_organ": "sistema_nervioso",
+    "connection_type": "sobrecarga_neural",
+    "description": "El estrés cerebral sobrecarga el sistema nervioso central"
+  },
+  "pulmones-duelo": {
+    "connected_organ": "corazon",
+    "connection_type": "respiracion_entrecortada",
+    "description": "El duelo pulmonar afecta el ritmo y profundidad cardíaca"
+  },
+  "pulmones-miedo": {
+    "connected_organ": "diafragma",
+    "connection_type": "bloqueo_respiratorio",
+    "description": "El miedo pulmonar bloquea el diafragma y limita la expansión torácica"
+  }
+}

@@ -2,49 +2,16 @@
 // Automatically loads ultra-optimized components with automated synchronization
 
 (function() {
-  // Load common CSS
+  // Load common CSS if exists
   const cssLink = document.createElement('link');
   cssLink.rel = 'stylesheet';
   cssLink.href = '/assets/css/common.css';
   document.head.appendChild(cssLink);
   
-  // Load CLS prevention CSS
-  const clsCssLink = document.createElement('link');
-  clsCssLink.rel = 'stylesheet';
-  clsCssLink.href = '/assets/css/cls-prevention.css';
-  document.head.appendChild(clsCssLink);
-  
-  // Load FAANG-level search engine with Web Worker and SRI
-  const searchScript = document.createElement('script');
-  searchScript.src = '/assets/js/search-faang.js';
-  searchScript.integrity = 'sha384-FAANG-SEARCH-INTEGRITY';
-  searchScript.crossOrigin = 'anonymous';
-  document.head.appendChild(searchScript);
-  
   // Load unified counter
   const counterScript = document.createElement('script');
   counterScript.src = '/assets/js/unified-counter.js';
   document.head.appendChild(counterScript);
-  
-  // Load affiliate generator
-  const affiliateScript = document.createElement('script');
-  affiliateScript.src = '/assets/js/affiliate-generator.js';
-  document.head.appendChild(affiliateScript);
-  
-  // Load FAQ replacer with expanded responses
-  const faqScript = document.createElement('script');
-  faqScript.src = '/assets/js/faq-replacer.js';
-  document.head.appendChild(faqScript);
-  
-  // Load dynamic clicker system
-  const clickerScript = document.createElement('script');
-  clickerScript.src = '/assets/js/clicker-dynamic.js';
-  document.head.appendChild(clickerScript);
-  
-  // Load automated data synchronization (production)
-  const syncScript = document.createElement('script');
-  syncScript.src = '/assets/js/data-sync-automated.js';
-  document.head.appendChild(syncScript);
   
   // Load data validator (development only)
   if (window.location.hostname === 'localhost' || 

@@ -102,7 +102,7 @@
     }
   </style>
 </head>
-<body class="text-white overflow-hidden">
+<body>
 
   <!-- Disclaimer -->
   <div class="disclaimer-bar">⚠ Disclaimer — Sitio informativo. No reemplaza diagnóstico médico profesional.</div>
@@ -136,21 +136,21 @@
   </header>
 
   <!-- Main Explorer -->
-  <main class="main-content mt-[78px] relative overflow-hidden">
-    <div class="w-full h-full relative touch-none focus:outline-none" id="screen" tabindex="0">
+  <main class="main-content" style="margin-top: calc(var(--bar-h, 22px) + var(--head-h, 56px)); position: relative; overflow: hidden; height: calc(100vh - var(--bar-h, 22px) - var(--head-h, 56px) - var(--foot-h, 36px));">
+    <div style="width:100%;height:100%;position:relative;touch-action:none;" id="screen" tabindex="0">
       
       <!-- Dynamic System Title -->
-      <div class="system-title font-headline italic uppercase absolute bottom-4 w-full text-center z-30 pointer-events-none text-2xl tracking-[0.1em] drop-shadow-lg" id="sys-title">
+      <div id="sys-title" style="position:absolute;bottom:4px;left:0;right:0;text-align:center;z-index:30;pointer-events:none;font-family:Georgia,'Times New Roman',serif;font-size:clamp(16px,3.1vw,25px);font-weight:400;font-style:italic;letter-spacing:0.1em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,0.9);">
         SISTEMA MUSCULAR
       </div>
       
       <!-- Scroll Hint -->
-      <div class="scroll-hint absolute bottom-20 left-1/2 -translate-x-1/2 z-50 whitespace-nowrap" id="hint">
+      <div class="scroll-hint" id="hint" style="position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:50;white-space:nowrap;">
         ↕ scroll para explorar
       </div>
       
       <!-- Word Buttons Container -->
-      <div class="absolute left-6 bottom-12 z-40 flex flex-col gap-1 items-start" id="words">
+      <div style="position:absolute;left:20px;bottom:32px;z-index:40;display:flex;flex-direction:column;gap:4px;align-items:stretch;" id="words">
         <!-- Populated by JS -->
       </div>
 
@@ -164,7 +164,6 @@
         <img src="/layers/PNG/09_NERVIOS.png" data-sys="NERVIOSO" data-id="nervioso" alt="Sistema nervioso" style="z-index: 4; mix-blend-mode: hard-light; opacity: 0.82;">
         <img src="/layers/PNG/02_PIEL.png" data-sys="PERCEPTUAL" data-id="perceptual" alt="Sistema perceptual" style="z-index: 3; mix-blend-mode: hard-light; opacity: 1.0;">
         <img src="/layers/PNG/06_MUSCULOS.png" data-sys="MUSCULAR" data-id="muscular" alt="Sistema muscular" style="z-index: 2; mix-blend-mode: luminosity; opacity: 1.0;">
-        <img src="/layers/PNG/11_MATERNO.png" data-sys="MATERNO" data-id="materno" alt="Sistema materno" style="z-index: 1; mix-blend-mode: soft-light; opacity: 0.9;">
         <img src="/layers/PNG/08_OSEO.png" data-sys="ÓSEO" data-id="oseo" alt="Sistema óseo" style="z-index: 0; mix-blend-mode: multiply; opacity: 1.0;">
         <img src="/layers/PNG/10_BASE.png" data-fixed="base" data-id="base" alt="Capa base anatómica" style="z-index: 0; mix-blend-mode: luminosity; opacity: 1.0;">
       </div>
@@ -178,99 +177,98 @@
   </main>
 
   <!-- Footer -->
-  <footer class="fixed bottom-0 w-full h-[36px] bg-plum-deep/90 border-t border-white/5 flex items-center justify-between px-6 z-[9997]">
-    <div class="text-[13px] text-white/60 tracking-wide flex items-center">
-      &copy;2026 — <strong class="text-white/80" id="visits">0</strong> visitas
-      ©2026 — <strong class="text-white/80" id="visits">0</strong> visitas
+  <footer style="position:fixed;bottom:0;width:100%;height:var(--foot-h,36px);background:rgba(42,1,21,0.9);border-top:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:9997;">
+    <div style="font-size:13px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;display:flex;align-items:center;">
+      &copy;2026 — <strong style="color:rgba(255,255,255,0.8);margin:0 4px;" id="visits">0</strong> visitas
     </div>
-    <div class="flex gap-4">
-      <a href="#" class="nav-link text-[12px]">Privacidad</a>
-      <a href="#" class="nav-link text-[12px]">Términos</a>
+    <div style="display:flex;gap:16px;">
+      <a href="/sobre/index.html" style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;color:#fff;text-decoration:none;">Sobre</a>
+      <a href="/faq/index.html" style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;color:#fff;text-decoration:none;">FAQ</a>
     </div>
   </footer>
 
   <script>
     const WORDS = {
       "NERVIOSO": [
-        { t: "Cerebro", s: "cerebro-ansiedad" },
-        { t: "Ojos", s: "ojos-negacion" },
-        { t: "Oídos", s: "oidos-no-escuchar" },
-        { t: "N. Vago", s: "nervios-estres" },
-        { t: "Migraña", s: "cabeza-migrana" },
-        { t: "Insomnio", s: "insomnio-control" },
-        { t: "Vértigo", s: "vertigo-incertidumbre" }
+        { t: "Cerebro", s: "cabeza/ansiedad" },
+        { t: "Ojos", s: "ojos/negacion" },
+        { t: "Oídos", s: "oidos/no-escuchar" },
+        { t: "N. Vago", s: "nervios/estres" },
+        { t: "Migraña", s: "cabeza/migrana" },
+        { t: "Insomnio", s: "sueno/insomnio" },
+        { t: "Vértigo", s: "cabeza/vertigo" }
       ],
       "ÓSEO": [
-        { t: "Columna", s: "columna-abandono" },
-        { t: "Rodilla", s: "rodilla-conflicto" },
-        { t: "Cadera", s: "cadera-miedo" },
-        { t: "Cervicales", s: "cervicales-rigidez" },
-        { t: "Mandíbula", s: "mandibula-tension" },
-        { t: "Huesos", s: "oseo-identidad" },
-        { t: "Dientes", s: "dientes-decision" }
+        { t: "Columna", s: "columna/abandono" },
+        { t: "Rodilla", s: "rodilla/conflicto" },
+        { t: "Cadera", s: "cadera/miedo" },
+        { t: "Cervicales", s: "cuello/rigidez" },
+        { t: "Mandíbula", s: "cabeza/tension" },
+        { t: "Huesos", s: "articulaciones/identidad" },
+        { t: "Dientes", s: "boca/decision" }
       ],
       "CIRCULATORIO": [
-        { t: "Corazón", s: "corazon-tristeza" },
-        { t: "Pulmones", s: "pulmones-ahogo" },
-        { t: "Pecho", s: "pecho-ansiedad" },
-        { t: "Presión", s: "presion-control" },
-        { t: "Taquicardia", s: "corazon-panico" },
-        { t: "Circulación", s: "circulacion-miedo" },
-        { t: "Anemia", s: "sangre-agotamiento" }
+        { t: "Corazón", s: "corazon/tristeza" },
+        { t: "Pulmones", s: "pulmones/ahogo" },
+        { t: "Pecho", s: "pecho/ansiedad" },
+        { t: "Presión", s: "presion/control" },
+        { t: "Taquicardia", s: "corazon/panico" },
+        { t: "Circulación", s: "circulacion/miedo" },
+        { t: "Anemia", s: "inflamacion/agotamiento" }
       ],
       "MUSCULAR": [
-        { t: "Hombros", s: "hombro-responsabilidad" },
-        { t: "Cuello", s: "cuello-estres" },
-        { t: "Lumbar", s: "lumbar-miedo" },
-        { t: "Mandíbula", s: "mandibula-rabia" },
-        { t: "Trapecio", s: "trapecio-carga" },
-        { t: "Fibromialgia", s: "musculos-trauma" },
-        { t: "Contractura", s: "musculos-resistencia" }
+        { t: "Hombros", s: "hombro/responsabilidad" },
+        { t: "Cuello", s: "cuello/estres" },
+        { t: "Lumbar", s: "espalda/miedo" },
+        { t: "Mandíbula", s: "cabeza/rabia" },
+        { t: "Trapecio", s: "tendones/carga" },
+        { t: "Fibromialgia", s: "musculos/trauma" },
+        { t: "Contractura", s: "columna/resistencia" }
       ],
       "PSÍQUICO": [
-        { t: "Bucle", s: "mente-obsesion" },
-        { t: "Niebla", s: "mente-confusion" },
-        { t: "Ansiedad", s: "mente-ansiedad" },
-        { t: "Fobias", s: "mente-fobia" },
-        { t: "TOC", s: "mente-toc" },
-        { t: "Burnout", s: "cerebro-burnout" },
-        { t: "Disociación", s: "mente-disociacion" }
+        { t: "Bucle", s: "cabeza/obsesion" },
+        { t: "Niebla", s: "memoria/confusion" },
+        { t: "Ansiedad", s: "cabeza/ansiedad" },
+        { t: "Fobias", s: "sueno/fobia" },
+        { t: "TOC", s: "fatiga/toc" },
+        { t: "Burnout", s: "cabeza/burnout" },
+        { t: "Disociación", s: "cabeza/disociacion" }
       ],
       "DIGESTIVO": [
-        { t: "Estómago", s: "estomago-rabia" },
-        { t: "Colón", s: "colon-injusticia" },
-        { t: "Hígado", s: "higado-ira" },
-        { t: "Reflujo", s: "reflujo-represion" },
-        { t: "Intestino", s: "intestino-soltar" },
-        { t: "Gastritis", s: "gastritis-autoexigencia" },
-        { t: "Boca", s: "boca-expresion" }
+        { t: "Estómago", s: "estomago/rabia" },
+        { t: "Colón", s: "colon/injusticia" },
+        { t: "Hígado", s: "higado/frustracion" },
+        { t: "Reflujo", s: "vesicula/represion" },
+        { t: "Intestino", s: "intestinos/soltar" },
+        { t: "Gastritis", s: "boca/autoexigencia" },
+        { t: "Boca", s: "garganta/expresion" }
       ],
       "EMOCIONAL": [
-        { t: "Llanto", s: "llanto-liberacion" },
-        { t: "Vacío", s: "vacio-abandono" },
-        { t: "Culpa", s: "culpa-castigo" },
-        { t: "Vergüenza", s: "verguenza-exposicion" },
-        { t: "Apatía", s: "apatia-desconexion" },
-        { t: "Soledad", s: "soledad-rechazo" },
-        { t: "Garganta", s: "garganta-represion" }
+        { t: "Llanto", s: "corazon/liberacion" },
+        { t: "Vacío", s: "pecho/abandono" },
+        { t: "Culpa", s: "cabeza/castigo" },
+        { t: "Vergüenza", s: "piel/exposicion" },
+        { t: "Apatía", s: "fatiga/desconexion" },
+        { t: "Soledad", s: "sueno/rechazo" },
+        { t: "Garganta", s: "garganta/represion" }
       ],
       "PERCEPTUAL": [
-        { t: "Dermatitis", s: "dermatitis-limites" },
-        { t: "Acné", s: "acne-autoestima" },
-        { t: "Urticaria", s: "piel-rabia" },
-        { t: "Psoriasis", s: "psoriasis-proteccion" },
-        { t: "Nariz", s: "nariz-intuicion" },
-        { t: "Sudoración", s: "sudoracion-miedo" },
-        { t: "Herpes", s: "herpes-conflicto" }
+        { t: "Dermatitis", s: "piel/limites" },
+        { t: "Acné", s: "acne/autoestima" },
+        { t: "Urticaria", s: "dermatitis/rabia" },
+        { t: "Psoriasis", s: "piel/proteccion" },
+        { t: "Nariz", s: "nariz/intuicion" },
+        { t: "Sudoración", s: "piel/miedo" },
+        { t: "Herpes", s: "piel/conflicto" }
       ],
       "MATERNO": [
-        { t: "Embarazo", s: "fertilidad-concepcion" },
-        { t: "Fertilidad", s: "fertilidad-creacion" },
-        { t: "Menstruación", s: "menstruacion-ciclo" },
-        { t: "Ovarios", s: "ovarios-femenidad" },
-        { t: "Útero", s: "area-reproductiva-gestacion" },
-        { t: "Lactancia", s: "pecho-nutricion" },
-        { t: "Hormonas", s: "hormonas-transformacion" }
+        { t: "Embarazo", s: "fertilidad/concepcion" },
+        { t: "Fertilidad", s: "fertilidad/creacion" },
+        { t: "Menstruación", s: "menstruacion/ciclo" },
+        { t: "Ovarios", s: "ovarios/femenidad" },
+        { t: "Útero", s: "area-reproductiva/gestacion" },
+        { t: "Lactancia", s: "pecho/nutricion" },
+        { t: "Hormonas", s: "hormonas/transformacion" }
       ]
     };
 
@@ -301,19 +299,20 @@
       wordsEl.innerHTML = "";
       (WORDS[sys] || []).forEach(w => {
         const b = document.createElement("button");
-        b.className = "wbtn font-body";
+        b.className = "wbtn";
         b.textContent = w.t;
-        // Equipo E: Ruta corregida de /atlas/ a /cuerpo/
-        b.onclick = () => { window.location.href = "/cuerpo/" + w.s + "/index.html"; }; 
+        // Ruta correcta: /cuerpo/{zona}/index.html
+        const parts = w.s.split('/');
+        const zona = parts[0];
+        b.onclick = () => { window.location.href = "/cuerpo/" + zona + "/index.html"; };
         wordsEl.appendChild(b);
       });
       
       const hub = document.createElement("button");
-      hub.className = "wbtn hub font-body";
+      hub.className = "wbtn hub";
       hub.textContent = "→ SINTOMARIO";
       hub.onclick = () => {
-        const slug = active.id.replace("psiquico", "mente").replace("oseo", "huesos");
-        window.location.href = `/cuerpo/${slug}/index.html`; // Equipo E: Apuntar a index.html
+        window.location.href = `/cuerpo/sistema/${active.id}/index.html`;
       };
       wordsEl.appendChild(hub);
     }
